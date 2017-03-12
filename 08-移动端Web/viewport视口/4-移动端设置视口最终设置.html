@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 设置浏览器的布局视口viewport，只在手机浏览器下生效，设置为和设备宽度等宽，初始缩放1.0，最小缩放1.0（可以不设置），用户不允许手动缩放 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			width: 320px;
+			height: 568px;
+			background: #0cc;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		window.onload = function() {
+			console.log('可视视口：' + window.innerWidth);
+			console.log('布局视口：' + document.documentElement.clientWidth);
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		这是一个移动端的网页内容，请在开发者工具中打开手机模拟器查看
+	</div>
+</body>
+</html>

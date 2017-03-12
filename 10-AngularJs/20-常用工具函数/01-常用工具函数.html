@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope) {
+
+			$scope.username = "ZhangSan";
+			// 大小写转换
+			console.log( angular.uppercase($scope.username) );
+			console.log( angular.lowercase($scope.username) );
+			
+			$scope.arr = [1,2,3];
+			// 判断是否数组对象
+			console.log( angular.isArray($scope.arr) );
+
+			$scope.a = {name:'张三'};
+			$scope.b = {age:27};
+			angular.extend($scope.b,$scope.a); //把一个对象的成员加入到另一个对象
+			console.log( $scope.b );
+
+			$scope.a = {name:'张三'};
+			$scope.b = {name:'张三'};
+			console.log( $scope.a == $scope.b );
+			console.log( angular.equals($scope.a,$scope.b) ); //判断对象的内容是否相等（不是引用地址）
+
+			var json = {"name":"李四","age":27};
+			json = angular.toJson(json); //json对象转为json字符串
+			console.log(typeof json);
+
+			json = angular.fromJson(json); //json字符串转为json对象
+			console.log(typeof json);
+
+			$scope.a = {name:'王五'};
+			// $scope.b = $scope.a;
+			angular.copy($scope.a,$scope.b); //克隆对象
+			$scope.a.name = '赵六';
+			console.log($scope.b);
+		}]);
+	</script>
+</body>
+</html>

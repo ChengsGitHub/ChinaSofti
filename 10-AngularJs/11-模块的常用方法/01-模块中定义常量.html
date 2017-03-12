@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		软件名称：{{appName}}，软件版本：{{appVersion}}，IP地址：{{ip}}
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+
+		var myApp = angular.module('myApp',[]);
+
+		// 用value定义模块中的一些常量（常量命名规范全大写，多个单词用下划线分割）
+		myApp.value('APP_NAME', '手机淘宝');
+		myApp.value('APP_VERSION', '1.2');
+
+		//用constant定义模块的一些常量
+		myApp.constant('IP', "http://192.168.1.254");
+
+		// 控制器
+		myApp.controller('firstController', ['$scope','APP_NAME','APP_VERSION','IP', function($scope,APP_NAME,APP_VERSION,IP) {
+
+			$scope.appName = APP_NAME;
+			$scope.appVersion = APP_VERSION;
+			$scope.ip = IP;
+			
+		}]);
+	</script>
+</body>
+</html>

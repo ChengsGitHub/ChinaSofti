@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		// 学校
+		var school = ["清华大学","北京大学","北京邮电"];
+
+		// 学校中的专业
+		var xi = [
+			["物理系","自动化系","计算机系","软件工程系"],
+			["天文系","新闻系","地理系"],
+			["通迅系","无线电系","无线转播系"]
+		];
+
+		// 专业中的班级
+		var classes = [
+			[
+				["物理1班","物理2班","物理3班"],
+				["自动化系1班","自动化系2班"],
+				["计算机系1班","计算机系2班","计算机系3班","计算机系4班"],
+				["软件工程1班","软件工程2班","软件工程3班","软件工程4班"]
+			],
+			[
+				["天文系1班","天文系2班","天文系3班"],
+				["新闻系1班","新闻系2班"],
+				["地理系1班","地理系2班","地理系3班","地理系4班"]
+			],
+			[
+				["通迅系1班","通迅系2班","通迅系3班"],
+				["无线电系1班","无线电系2班"],
+				["无线转播系1班","无线转播系2班","无线转播系3班","无线转播系4班"]
+			]
+		];
+		
+		//遍历学校		
+		for (var i = 0; i < school.length; i++) {
+
+			document.write('<h3>' + school[i] + '</h3>'); //学校
+
+			document.write('<ul>');
+			
+			// 遍历专业
+			for (var j = 0; j < xi[i].length; j++) {
+
+				document.write('<li>' + xi[i][j] + '</li>'); //专业院系
+				
+				document.write('<ul>');
+				
+				// 遍历班级
+				for (var k = 0; k < classes[i][j].length; k++) {
+					document.write('<li>' + classes[i][j][k] + '</li>'); //班级
+				}
+
+				document.write('</ul>');				
+			}
+
+			document.write('</ul>');
+		}
+
+	</script>
+</head>
+<body>
+<!-- 	遍历输出所有学校的所有专业的所有班级 -->
+</body>
+</html>

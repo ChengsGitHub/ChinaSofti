@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+#div1{
+	font-size:12px;
+	background-color:#CCC; 
+	width:600px; 
+	height:200px; 
+	margin:100px auto;
+	padding:10px;
+	text-align:center;
+}
+#div2{
+	font-size:12px;
+	background-color:#CCC; 
+	margin-right:100px;
+	text-align:right;
+}
+#btu1{
+	width:100px;
+	border: #03C 1px solid;
+	background-color: #FFFFFF;
+}
+
+</style>
+<script type="text/javascript">	
+		
+	function txt1(){
+		
+		//获得文本框内容长度
+		var sum = document.getElementById('t1').value.length;
+		
+		document.title = sum;
+		
+		if(sum <= 40){			
+			document.getElementById('sp1').innerHTML = '还可以输入' + (60 - sum) + '字';
+			document.getElementById('sp1').style.color = '#000';
+			document.getElementById('t1').style.color = '#666';
+			document.getElementById('sp2').innerHTML = '';
+		} else if(sum > 40 && sum < 60) {
+			document.getElementById('sp1').style.color = '#F03';
+			document.getElementById('sp2').innerHTML = '';
+			document.getElementById('sp1').innerHTML = '还可以输入' + (60 - sum) + '字';
+			document.getElementById('t1').style.color = '#666';
+		} else if (sum == 60){
+			document.getElementById('sp1').innerHTML = '已满60字';
+			document.getElementById('t1').style.color = '#F00';
+			document.getElementById('sp2').innerHTML = '';
+		} else {
+			document.getElementById('sp1').innerHTML = '已满60字';
+			document.getElementById('sp2').innerHTML = '已经超出' +(sum - 60) + '字';			
+		}
+	}
+	
+	window.onload = function (){
+		document.getElementById('t1').onkeyup = txt1;
+		document.getElementById('t1').onkeydown = txt1;			
+	}
+		
+</script>
+<title>数字提示</title>
+</head>
+
+<body>
+</body>
+	<div id="div1">
+    	<textarea name="t1" id="t1" cols="60" rows="10" placeholder="请输入文本，不超过60字"></textarea>
+        <div id="div2">
+            <span id="sp1"  style="color:#666;"></span><br />
+		    <span id="sp2"  style="color:#F0C;"></span>
+        </div>
+
+    </div>
+</html>

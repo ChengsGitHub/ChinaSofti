@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	
+		window.onload = function() {
+
+			var btn1 = document.getElementById('btn1');
+			
+			// 初始化元素值 0~34
+			var arr = [];
+
+			for (i = 0;i < 35;i ++) {
+				arr[i] = i;
+			}
+		
+			btn1.onclick = function() {
+
+				var a = '';
+
+				for (var j = 0;j < 7;j ++) {
+
+					// 产生0~最后一个元素下标之间的随机数（随机下标）
+					var random = parseInt(arr.length  * Math.random());
+
+					a = a + ' ' + arr[random];
+
+					//删除掉数组中的元素
+					arr.splice(random,1);
+				}
+
+				alert(a);
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" value="35选7" id="btn1">
+</body>
+</html>

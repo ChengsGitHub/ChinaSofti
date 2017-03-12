@@ -1,0 +1,43 @@
+package chapter3;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import oracle.jdbc.driver.OracleDriver;
+
+/**
+ * 后台分页（SQL分页）
+ */
+public class TestPager2 {
+
+	public static void main(String[] args) throws SQLException {
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请输入一个页码：");
+
+		int recordCount = 0;// 总记录数
+		int pageSize = 6;// 每页多少条
+		int totalPage = 0;// 共几页
+		int pageNum = sc.nextInt();// 当前页码
+
+		DriverManager.registerDriver(new OracleDriver());
+
+		String url = "jdbc:oracle:thin:@localhost:1521:icss";
+		String user = "scott";
+		String password = "tiger";
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		//查询统计总记录数
+		String sql = "select count(*) from employees";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		rs.next();
+		recordCount = rs.getInt(1);
+		
+		System.out.println(recordCount);
+	}
+}

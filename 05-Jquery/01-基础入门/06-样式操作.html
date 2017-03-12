@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.color1 {
+			color: red;
+			font-size: 36px;
+			background: #ccc;
+		}
+	</style>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {
+				
+				$('p').addClass('color1');
+
+			});
+
+		});
+
+	</script>
+</head>
+<body>
+	<p>这是段落文字1</p>
+	<p>这是段落文字2</p>
+	<p>这是段落文字3</p>
+	<p>这是段落文字4</p>
+	<input type="button" value="改变样式" id="btn1">
+</body>
+</html>

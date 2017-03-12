@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		当前数字：{{i}}
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		angular.module('myApp',[])
+			.controller('firstController', ['$scope','$interval', function($scope,$interval){
+				
+				// 计数变量
+				$scope.i = 0;
+
+				// 利用ng自带的定时器，默认就会做脏检查
+				$interval(function() {					
+					
+					$scope.i ++;				
+
+				},1000);
+				
+			}]);
+
+	</script>
+</body>
+</html>

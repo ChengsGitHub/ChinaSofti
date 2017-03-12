@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="photo" namespace="/photo" extends="struts-default">
+	
+		<global-results>
+			<result name="success" type="redirectAction">query?empId=${vo.empId}</result>
+		</global-results>
+	
+		<action name="add" class="photoAction" method="add">
+		</action>
+		
+		<action name="delete" class="photoAction" method="delete">
+		</action>
+		
+		<action name="query" class="photoAction" method="query">
+			<result name="success">/QueryPhoto.jsp</result>
+		</action>
+	</package>
+	
+</struts>

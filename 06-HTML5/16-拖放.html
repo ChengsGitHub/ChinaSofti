@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 600px;
+			height: 200px;
+			border:1px solid red;
+			margin-bottom: 20px;
+		}
+
+		#div2 {
+			width: 600px;
+			height: 200px;
+			border:1px solid blue;		
+		}
+	</style>
+</head>
+<body>
+	<div id="div1" ondragover="dragover(event);" ondrop="drop(event);">
+		
+	</div>
+
+	<div id="div2" ondragover="dragover(event);" ondrop="drop(event);">
+		
+	</div>
+
+	<img id="img1" src="banner.gif" alt="banner图片" draggable="true" ondragstart="dragstart(event);">
+	<img id="img2" src="user.jpg" alt="头像" draggable="true" ondragstart="dragstart(event);">
+
+	<script type="text/javascript">
+		//当开始拖动元素
+		function dragstart(e) {
+			console.log('拖动开始');
+			// 在事件对象存储图片的id
+			e.dataTransfer.setData('objId',e.target.id);
+		}
+
+		//当元素被拖动到当前元素上方
+		function dragover(e) {
+			console.log('拖动到上方');
+			e.preventDefault(); //阻止浏览器默认行为
+		}
+
+		// 当元素被放下
+		function drop(e) {
+			console.log('元素被释放');
+			e.preventDefault(); //阻止浏览器默认行为
+			// 取出拖动的图片id
+			var id = e.dataTransfer.getData('objId');
+			// 获得图片对象
+			var obj = document.getElementById(id);
+
+			if (e.target.nodeName == 'DIV')
+				// 在div中放入图片
+				e.target.appendChild(obj);
+		}
+	</script>
+</body>
+</html>

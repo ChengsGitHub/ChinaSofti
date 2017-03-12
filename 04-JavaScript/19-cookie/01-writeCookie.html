@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function m1() {
+
+			// 写入cookie键值对
+			document.cookie = 'username=张三';
+			document.cookie = 'password=123456';
+
+		}
+
+	</script>
+</head>
+<body>
+	cookie必须基于服务器环境运行
+	<input type="button" value="写入cookie" onclick="m1();">
+</body>
+</html>

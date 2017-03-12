@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html,body {
+			height: 100%;
+		}
+
+		ul,li {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		/*侧滑菜单*/
+		#left-menu {
+			width: 200px;
+			height: 100%;
+			background: #1D1F20;
+			background: rgba(0,0,0,0.8);
+			position: fixed;
+			top: 0;
+			color: #ccc;
+			font-size: 12px;
+			transition:all 2s;
+		}
+
+		#left-menu h4 {
+			line-height: 40px;
+			font-size: 16px;
+			letter-spacing: 0.1em;
+			border-bottom: 1px solid #666;
+		}
+
+		/*菜单列表*/
+		#left-menu ul {
+			height: 100%;
+			overflow-y:auto;
+		}
+
+		#left-menu ul li {
+			line-height: 40px;			
+		}
+
+		#left-menu ul li a {
+			display: block;
+			color: #fff;
+			padding-left: 20px;		
+		}
+
+		#left-menu ul li a:hover {
+			background: #999;
+			background: rgba(255,255,255,0.1);
+		}
+
+		#left-menu .btn {
+			width: 20px;
+			height: 60px;
+			background: #000;
+			color: #fff;
+			position: absolute;
+			top:150px;
+			right: -20px;
+			text-align: center;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<!-- 侧滑菜单开始 -->
+	<div id="left-menu" style="left:-200px;">
+		<h4>侧滑菜单</h4>
+		<ul>
+			<li><a href="#">菜单文字1</a></li>
+			<li><a href="#">菜单文字2</a></li>
+			<li><a href="#">菜单文字3</a></li>
+			<li><a href="#">菜单文字4</a></li>
+			<li><a href="#">菜单文字5</a></li>
+			<li><a href="#">菜单文字6</a></li>
+			<li><a href="#">菜单文字7</a></li>
+			<li><a href="#">菜单文字8</a></li>
+			<li><a href="#">菜单文字9</a></li>
+			<li><a href="#">菜单文字10</a></li>
+			<li><a href="#">菜单文字11</a></li>
+			<li><a href="#">菜单文字12</a></li>
+			<li><a href="#">菜单文字13</a></li>
+			<li><a href="#">菜单文字14</a></li>
+			<li><a href="#">菜单文字15</a></li>
+		</ul>
+		<div class="btn">
+			左侧菜单
+		</div>
+	</div>
+	<!-- 侧滑菜单结束 -->
+
+	<script type="text/javascript">
+		// 输出100个段落
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+
+		// 获得dom对象
+		var leftMenu = document.getElementById('left-menu');
+
+		// 鼠标移上弹出
+		leftMenu.onmouseenter = function() {
+			this.style.left = 0 + 'px';
+		}
+
+		// 鼠标离开收起
+		leftMenu.onmouseleave = function() {
+			this.style.left = -200 + 'px';
+		}
+
+	</script>
+</body>
+</html>

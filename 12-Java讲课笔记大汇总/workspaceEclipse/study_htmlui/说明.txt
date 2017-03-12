@@ -1,0 +1,1 @@
+通过html的js和activity原生程序互相调用，实现用HTML作android的UI界面

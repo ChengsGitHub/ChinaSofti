@@ -1,0 +1,77 @@
+  <!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+	
+	<div class="container" ng-controller="firstController">
+
+		<form name="myForm" class="form-horizontal" ng-submit="submitForm();">
+
+			<div class="form-group" ng-class="{'has-error':myForm.username.$dirty && myForm.username.$invalid}">
+				<label for="" class="col-md-2 control-label">用户名</label>
+				<div class="col-md-10">
+					<!-- 使用自定义指令 -->
+					<custom-text-area ng-model="data.username"></custom-text-area>
+					{{data.username}}		
+					<custom-text-area ng-model="data.username"></custom-text-area>			
+				</div>				
+			</div>	
+					
+			<div class="form-group">
+				<div class="col-md-10 col-md-offset-2">
+					<input type="submit" value="提交" class="btn btn-primary">
+				</div>
+			</div>			
+		</form>
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope) {
+
+			$scope.data = {
+				username:'tom'
+			}
+
+			$scope.submitForm = function() {
+				alert('提交表单：' + $scope.data.username);
+			}
+			
+		}]);
+		
+		// 自定义指令，用div代替文本输入框
+		myApp.directive('customTextArea',[function() {
+			return {
+				restrict:'ECMA',
+				template:'<div contenteditable="true"></div>',
+				replace:true,
+				require:'ngModel',
+				link:function(scope,ele,attrs,controller) {					
+					// view-model的数据绑定
+					ele.on('keyup', function(event) {						
+						
+						// 手动执行脏检查
+						scope.$apply(function(){
+							// 把div的内容设置到model中
+							controller.$setViewValue(ele.html());
+						});
+
+					});
+
+					// model-view的数据绑定 $render：视图数据发生变化回调，$viewValue代表当前的视图传来的数据
+					controller.$render = function() {
+						// console.log(controller.$viewValue);
+						ele.html(controller.$viewValue);
+					}
+				}
+			};
+		}]);
+	</script>
+</body>
+</html>

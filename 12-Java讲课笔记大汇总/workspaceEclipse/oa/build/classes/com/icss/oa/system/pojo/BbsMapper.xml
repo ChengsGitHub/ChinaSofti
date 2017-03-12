@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="BBS">
+	<resultMap id="BaseResultMap" type="com.icss.oa.system.pojo.Bbs">
+		<id column="BBS_ID" property="bbsId" jdbcType="DECIMAL" />
+		<result column="BBS_TITLE" property="bbsTitle" jdbcType="VARCHAR" />
+		<result column="BBS_TIME" property="bbsTime" jdbcType="DATE" />
+		<result column="BBS_TOP" property="bbsTop" jdbcType="DECIMAL" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.icss.oa.system.pojo.Bbs"
+		extends="BaseResultMap">
+		<result column="BBS_CONT" property="bbsCont" jdbcType="CLOB" />
+	</resultMap>
+
+
+	<select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from BBS
+	</select>
+
+	<select id="getConditionCount" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		select
+		count(*)
+		from bbs
+		<where>
+			<if test="bbsCont != null and bbsCont != ''">
+				and bbs_Title like '%'||#{bbsCont}||'%'
+				or bbs_cont like '%'||#{bbsCont}||'%'
+			</if>
+			
+		</where>
+		
+			
+		
+	</select>
+
+
+	<insert id="insert" parameterType="com.icss.oa.system.pojo.Bbs">
+		insert into
+		Bbs(BBS_ID,BBS_TITLE,
+		BBS_CONT,BBS_TIME,BBS_TOP)
+		values
+		(bbs_seq.nextval,
+		#{bbsTitle,jdbcType=VARCHAR},
+		#{bbsCont,jdbcType=CLOB},
+		sysdate,0)
+	</insert>
+
+	<select id="query" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map">
+		select * from (select rownum
+		rnum,e.* from (select * from bbs t
+		order by bbs_top desc) e) where rnum between
+		#{start} and #{end}
+	</select>
+
+
+	<select id="queryByTime" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select * from (select rownum
+		rnum,e.* from (select * from bbs
+		order by bbs_top desc,bbs_time) e) where rnum between
+		#{start} and #{end}
+	</select>
+
+
+	<select id="queryByTime1" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select * from (select rownum
+		rnum,e.* from (select * from bbs
+		order by bbs_top desc, bbs_time desc) e) where rnum between
+		#{start} and #{end}
+	</select>
+
+	<select id="queryById" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		*
+		from BBS
+		where BBS_ID = #{bbsId,jdbcType=DECIMAL}
+	</select>
+
+	<select id="queryByCondition" resultMap="ResultMapWithBLOBs"
+		parameterType="java.util.Map">
+		select * from (select rownum
+		rnum,e.* from (select * from bbs t
+		order by bbs_top desc) e
+		<where>
+			<if test="bbsCont != null and bbsCont != ''">
+				and e.bbs_title like '%'||#{bbsCont}||'%'
+				or e.bbs_cont like '%'||#{bbsCont}||'%'
+			</if>
+			
+		</where>
+		) where rnum between
+		#{start} and #{end}
+	</select>
+
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from BBS
+		where BBS_ID
+		=
+		#{bbsId,jdbcType=DECIMAL}
+	</delete>
+
+
+	<update id="update" parameterType="com.icss.oa.system.pojo.Bbs">
+		update BBS
+		set
+		BBS_TITLE = #{bbsTitle,jdbcType=VARCHAR},
+		BBS_CONT = #{bbsCont,jdbcType=CLOB},
+		BBS_TIME = sysdate,
+		BBS_TOP=#{bbsTop,jdbcType=DECIMAL}
+		where BBS_ID =
+		#{bbsId,jdbcType=DECIMAL}
+	</update>
+
+	<update id="setTop" parameterType="java.lang.Integer">
+		update BBS
+		set
+		BBS_TOP=1
+		where BBS_ID = #{bbsId,jdbcType=DECIMAL}
+	</update>
+
+	<update id="cancelTop" parameterType="java.lang.Integer">
+		update BBS
+		set
+		BBS_TOP=0
+		where BBS_ID = #{bbsId,jdbcType=DECIMAL}
+	</update>
+
+</mapper>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		var str = "abc123de456fghi6789jklmn";
+		
+		// g参数表示全局查找，如果找不到匹配的了，返回null
+		var r = /\d+/g;
+
+		var result = null;
+		
+		while ( (result = r.exec(str)) != null) {
+			console.log(result[0]);
+			console.log(result.index);
+			console.log(result.input);
+		}		
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

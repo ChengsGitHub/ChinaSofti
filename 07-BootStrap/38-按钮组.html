@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 视口设置 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<!-- IE优化 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 引入bootstrap的css文件 -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+	<!-- 判断，如果是IE9以下，引入兼容h5标签的js文件，注意空格的位置 -->
+	
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/html5shiv.min.js"></script>
+	<script type="text/javascript" src="js/respond.min.js"></script>
+	<![end if] -->
+
+	<!-- 引入jquery的js文件 -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!-- 引入bootstrap的js文件 -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>	
+</head>
+<body>
+	<div class="container">	
+		
+		<!-- 按钮组 -->
+		<div class="btn-group">
+			<input type="button" value="按钮1" class="btn btn-info">
+			<input type="button" value="按钮2" class="btn btn-info">
+			<input type="button" value="按钮3" class="btn btn-info">
+		</div>
+
+		<!-- 多个按钮组形成工具条 -->
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				<input type="button" value="按钮1" class="btn btn-info">
+				<input type="button" value="按钮2" class="btn btn-info">
+				<input type="button" value="按钮3" class="btn btn-info">
+			</div>
+
+			<div class="btn-group">
+				<input type="button" value="按钮4" class="btn btn-info">
+				<input type="button" value="按钮5" class="btn btn-info">
+				<input type="button" value="按钮6" class="btn btn-info">
+			</div>
+		</div>
+
+		<!-- 按钮组大小 -->
+		<div class="btn-group btn-group-lg">
+			<input type="button" value="按钮1" class="btn btn-info">
+			<input type="button" value="按钮2" class="btn btn-info">
+			<input type="button" value="按钮3" class="btn btn-info">
+		</div>
+
+		<div class="btn-group btn-group-sm">
+			<input type="button" value="按钮1" class="btn btn-info">
+			<input type="button" value="按钮2" class="btn btn-info">
+			<input type="button" value="按钮3" class="btn btn-info">
+		</div>
+
+		<div class="btn-group btn-group-xs">
+			<input type="button" value="按钮1" class="btn btn-info">
+			<input type="button" value="按钮2" class="btn btn-info">
+			<input type="button" value="按钮3" class="btn btn-info">
+		</div>
+
+		<!-- 带下拉菜单的按钮组 -->
+		<div class="btn-group">
+			<input type="button" value="按钮1" class="btn btn-info">
+			<input type="button" value="按钮2" class="btn btn-info">
+			
+			<div class="btn-group">
+				<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+					按钮3
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">体育</a></li>
+					<li><a href="#">娱乐</a></li>
+					<li><a href="#">股票</a></li>
+					<li><a href="#">新闻</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 按钮组垂直对齐 -->
+		<div class="btn-group btn-group-vertical">
+			<input type="button" value="按钮1" class="btn btn-info">
+			<input type="button" value="按钮2" class="btn btn-info">
+			<input type="button" value="按钮3" class="btn btn-info">
+		</div>
+
+		<!-- 按钮组两端对齐 -->
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<input type="button" value="按钮1" class="btn btn-info">
+			</div>
+			<div class="btn-group">
+				<input type="button" value="按钮2" class="btn btn-info">
+			</div>
+			<div class="btn-group">
+				<input type="button" value="按钮3" class="btn btn-info">
+			</div>
+		</div>
+
+		<!-- 按钮组下拉菜单 -->
+		<div class="btn-group">
+			<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+				下拉菜单
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">体育</a></li>
+				<li><a href="#">娱乐</a></li>
+				<li><a href="#">股票</a></li>
+				<li><a href="#">新闻</a></li>
+			</ul>
+		</div>
+
+		<!-- 按钮组分列式下拉菜单 -->
+		<div class="btn-group">
+			<button class="btn btn-info">
+				分裂式下拉菜单				
+			</button>
+			<button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">体育</a></li>
+				<li><a href="#">娱乐</a></li>
+				<li><a href="#">股票</a></li>
+				<li><a href="#">新闻</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-info btn-lg">
+				分裂式下拉菜单				
+			</button>
+			<button class="btn btn-info dropdown-toggle btn-lg" data-toggle="dropdown">
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">体育</a></li>
+				<li><a href="#">娱乐</a></li>
+				<li><a href="#">股票</a></li>
+				<li><a href="#">新闻</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

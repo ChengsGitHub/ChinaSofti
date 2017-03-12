@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div ng-controller="firstController">		
+		<input type="button" value="发出ajax请求" ng-click="getData();">
+		<p>响应的内容：{{responseData}}</p>
+	</div>
+
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript">
+		// 创建模块
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope','$http',function($scope,$http) {
+
+			// 定义方法
+			$scope.getData = function() {
+
+				// 发出http的ajax请求，返回promise对象
+				var promise = $http({
+					method:'GET', //请求方式GET POST
+					url:'data1.txt' //请求的url
+				});
+
+				//请求成功回调函数
+				promise.success(function(data,status,headers,config) { 
+					console.log(data); //响应的内容
+					console.log(status); //响应的状态码
+					console.log(headers); //报头信息
+					console.log(config); //配置信息
+
+					alert('请求成功！');
+					$scope.responseData = data;
+				});
+
+				//请求失败回调函数
+				promise.error(function(data,status,headers,config) { 
+					alert('请求失败:' + status);				
+				});
+
+			}
+			
+		}]);
+	</script>
+</body>
+</html>

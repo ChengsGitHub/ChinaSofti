@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			var year = parseInt(prompt('请输入一个年份'));
+
+			if (isNaN(year)) {
+				alert('请输入一个有效数字');
+			} else {
+				if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0) {
+					alert('闰年');
+				} else {
+					alert('不是闰年');
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	闰年：能4整除且不能被100整除，或者直接能被400整除
+	<input type="button" value="测试闰年" onclick="m1();">
+</body>
+</html>

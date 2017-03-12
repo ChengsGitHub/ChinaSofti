@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function createTable() {			
+			// 创建表格元素
+			var table = document.createElement('table');
+
+			table.width = 600;
+			table.border = 1;
+
+			// 创建标题内容
+			var cap = table.createCaption();
+			cap.innerHTML = '表格数据';
+
+			// 创建表格头部
+			var thead = table.createTHead();
+
+			// 增加行
+			var tr = table.insertRow();
+
+			// 增加单元格
+			var td = tr.insertCell();
+
+			td.innerHTML = '单元格的数据';
+			
+			// 添加表格到body
+			document.body.appendChild(table);
+		}
+
+		function createTable2() {			
+			// 创建表格元素
+			var table = document.createElement('table');
+			table.width = 600;
+			table.border = 1;
+			
+			for (var i = 0;i < 5;i ++) {
+
+				var tr = table.insertRow();
+
+				for (var j = 0;j < 6;j ++) {
+					var td = tr.insertCell();
+					td.innerHTML = '第' + i + '行,第' + j + '列';
+				}
+			}
+			
+			// 添加表格到body
+			document.body.appendChild(table);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="动态生成表格" onclick="createTable();">
+	<input type="button" value="动态生成表格2" onclick="createTable2();">
+</body>
+</html>

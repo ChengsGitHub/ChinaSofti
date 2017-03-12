@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		select {
+			width: 100%;
+			height: 100%;
+		}
+
+		input[type=button] {
+			width: 100%;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			
+			var select1 = document.getElementById('select1');
+			var select2 = document.getElementById('select2');
+			var in1 = document.getElementById('in1');
+			var in2 = document.getElementById('in2');
+			var in3 = document.getElementById('in3');
+			var in4 = document.getElementById('in4');
+
+			// 右移N个
+			in1.onclick = function() {
+				for(i = 0 ;i < select1.length; i++){
+					if(select1.options[i].selected ){
+						var opt = new Option(select1.options[i].text , select1.options[i].value);
+						select2.add(opt);
+						select1.options[i] = null;
+						i--;
+					}
+				}
+			}
+
+			// 右移全部
+			in2.onclick = function(){
+				
+				// 逐个右移
+				for(i = 0 ;i < select1.length; i++){
+					var opt = new Option(select1.options[i].text , select1.options[i].value);
+					select2.add(opt);
+				}
+				
+				// 清空左侧
+				select1.options.length = 0;	
+			}
+
+			// 左移N个
+			in3.onclick = function(){
+				for(i = 0 ;i < select2.length; i++){
+					if(select2.options[i].selected){
+						var opt = new Option(select2.options[i].text , select2.options[i].value);
+						select1.add(opt);
+						select2.options[i] = null;
+						i--;
+					}
+				}
+			}
+
+			// 左移全部
+			in4.onclick = function() {				
+				// 逐个左移
+				for(i = 0 ;i < select2.options.length; i++){
+					var opt = new Option(select2.options[i].value , select2.options[i].value);
+					select1.add(opt);
+				}
+				
+				// 清空右侧
+				select2.options.length = 0;				
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<table width="400" border="0" align="center">
+		<tr>
+			<td width="160">
+				<select id="select1" size="10" multiple>
+					<option value="java">java</option>
+					<option value="c++">c++</option>
+					<option value="oracle">oracle</option>
+					<option value="html">html</option>
+					<option value="css">css</option>
+					<option value="js">js</option>
+					<option value="mysql">mysql</option>
+				</select>
+			</td>
+			<td>
+				<input id="in1" type="button" value="&gt;">
+				<input id="in2" type="button" value="&gt;&gt;">
+				<input id="in3" type="button" value="&lt;">
+				<input id="in4" type="button" value="&lt;&lt;">
+			</td>
+			<td width="160">
+				<select id="select2" size="10" multiple>
+					
+				</select>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 视口设置 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<!-- IE优化 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 引入bootstrap的css文件 -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<!-- 引入谷歌语法高亮插件的css文件 -->
+	<link href="js/prettify-small-4-Mar-2013/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
+
+	<!-- 判断，如果是IE9以下，引入兼容h5标签的js文件，注意空格的位置 -->
+	
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/html5shiv.min.js"></script>
+	<script type="text/javascript" src="js/respond.min.js"></script>
+	<![end if] -->
+
+	<!-- 引入jquery的js文件 -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!-- 引入bootstrap的js文件 -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>	
+	<!-- 引入谷歌语法高亮插件的js文件 -->
+	<script type="text/javascript" src="js/prettify-small-4-Mar-2013/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(e) {
+	        //语法高亮显示
+			prettyPrint();
+	    });
+	</script>
+
+	<style>
+		/*prettify-small 使用google提供的功能，原始功能有问题需要修改某个样式才能显示行号*/
+		li.L0, li.L1, li.L2, li.L3,li.L5, li.L6, li.L7, li.L8{ list-style-type: decimal !important }
+	</style>
+</head>
+<body>
+	<div class="container">
+    
+        <pre class="prettyprint linenums">
+public class HelloWorld {
+
+    public static void main(String[] args) {
+    
+        System.out.println("hello,world");
+    
+    }
+
+}
+        </pre>
+        
+        <pre class="prettyprint linenums">
+CREATE TABLE emp
+(
+emp_id 		NUMBER(6) PRIMARY KEY,
+emp_name 	VARCAHR2(50),
+emp_salary 	NUMBER(8,2)
+);     
+        </pre>  
+
+        <pre class="prettyprint linenums">
+function m1() {
+	window.alert('hello,world');	
+}        	
+        </pre>       
+		
+	</div>
+</body>
+</html>

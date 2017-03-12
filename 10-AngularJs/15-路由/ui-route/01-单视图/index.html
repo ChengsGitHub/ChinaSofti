@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!--主导航链接-->
+	<a ui-sref="tiyu">体育</a>
+	<a ui-sref="yule">娱乐</a>
+
+	<!-- 显示路由页面的容器开始-->
+	<div ui-view></div>
+	<!-- 显示路由页面的容器结束-->
+
+	<script src="../../js/angular.js"></script>
+	<!-- 引入第三方路由-->
+	<script src="../../js/angular-ui-router.js"></script>
+	<script>
+
+		//创建模块，依赖ui.router模块
+		var myApp = angular.module('myApp',['ui.router']);
+
+		//在config中配置路由，注入$stateProvider,$urlRouterProvider两个服务
+		myApp.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+
+//			配置路由对应的页面url地址
+			$stateProvider
+				.state('home',{
+					url:'', //默认页
+					templateUrl:'tpls/home.html'
+				})
+				.state('tiyu',{
+					url:'/tiyu',
+					templateUrl:'tpls/tiyu.html',
+					controller:'tiyuController'  //引用外部定义好的控制器
+				})
+				.state('tiyu.zuqiu',{
+					url:'/zuqiu',
+					templateUrl:'tpls/tiyu.zuqiu.html'
+				})
+				.state('tiyu.lanqiu',{
+					url:'/lanqiu',
+					templateUrl:'tpls/tiyu.lanqiu.html'
+				})
+				.state('tiyu.paiqiu',{
+					url:'^/paiqiu',  //前面的^表示产生的url不会带/tiyu前缀
+					templateUrl:'tpls/tiyu.paiqiu.html'
+				})
+				.state('yule',{
+					url:'/yule',
+					templateUrl:'tpls/yule.html',
+					controller:function($scope) { //可以在路由中直接配置控制器
+						$scope.data = ['影视','电视','直播','综艺'];
+					}
+				})
+				.state('notfound',{
+					url:'/notfound',
+					templateUrl:'tpls/404.html'
+				});
+
+//			配置默认路由跳转地址（如果路由url不存在）
+			$urlRouterProvider.otherwise('/notfound');
+
+		}]);
+
+//		控制器
+		myApp.controller('tiyuController',['$scope',function($scope){
+			$scope.data = ['世界杯','欧锦赛','亚冠','马拉松','奥运会'];
+		}]);
+	</script>
+</body>
+</html>

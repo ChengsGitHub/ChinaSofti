@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-14 10:47:18 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.icss.hr.dept.po.Dept" table="DEPT">
+        <id name="deptId" type="integer">
+            <column name="DEPT_ID" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="deptName" type="string">
+            <column name="DEPT_NAME" length="50" />
+        </property>
+        <property name="deptLoc" type="string">
+            <column name="DEPT_LOC" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

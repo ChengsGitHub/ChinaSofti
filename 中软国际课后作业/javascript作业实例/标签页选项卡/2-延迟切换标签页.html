@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+		
+		window.onload = function () {
+
+			/*通过id获得对象的工具函数*/
+			function $(_id) {
+				return document.getElementById(_id);
+			}
+
+			//所有标题对象 
+			var titles = $('notice-title').getElementsByTagName('li');
+			//所有内容对象
+			var contents = $('notice-content').getElementsByTagName('div');
+
+			// 标题和内容的个数必须相等
+			if (titles.length != contents.length)
+				return;
+
+			for (var i = 0;i < titles.length;i ++) {
+				
+				// 设置自定义属性tid
+				titles[i].setAttribute('tid',i);
+				
+				// 标题鼠标移上事件
+				titles[i].onmouseenter = function(e) {		
+					
+					// 获得自定义属性tid
+					var tid = this.getAttribute('tid');
+
+					var timeId = setTimeout(function(){
+						changeTab(tid);
+					},1000);
+
+					// 鼠标离开清理定时器
+					this.onmouseleave = function () {	
+						if (timeId) {
+							clearTimeout(timeId);
+							timeId = null;
+						}						
+					}
+				}
+			}
+
+			/*切换标签页功能*/
+			function changeTab(tid) {
+				
+				// 所有标题失去高亮，所有内容都隐藏
+				for (var j = 0;j < titles.length;j ++) {
+					titles[j].className = '';
+					contents[j].style.display = 'none';
+				}
+
+				// 当前标题高亮
+				titles[tid].className = 'select';
+				// 对应的内容显示
+				contents[tid].style.display = 'block';					
+			}	
+		}
+	</script>
+</head>
+<body>
+	<!-- 标签页容器开始 -->
+	<div id="notice">
+		<!-- 标题区开始 -->
+		<div id="notice-title">
+			<ul>
+				<li><a href="#">公共</a></li>
+				<li><a href="#">规则</a></li>
+				<li><a href="#">论坛</a></li>
+				<li><a href="#">安全</a></li>
+				<li class="select"><a href="#">公益</a></li>
+			</ul>
+		</div>
+		<!-- 标题区结束 -->
+		<!-- 内容区开始 -->
+		<div id="notice-content">
+			<div class="content" style="display:none;">
+				<ul>
+					<li><a href="#">公共：xxxxxxxxxxxx1</a></li>
+					<li><a href="#">公共：xxxxxxxxxxxx2</a></li>
+					<li><a href="#">公共：xxxxxxxxxxxx3</a></li>
+					<li><a href="#">公共：xxxxxxxxxxxx4</a></li>
+				</ul>
+			</div>
+			<div class="content" style="display:none;">
+				<ul>
+					<li><a href="#">规则：xxxxxxxxxxxx1</a></li>
+					<li><a href="#">规则：xxxxxxxxxxxx2</a></li>
+					<li><a href="#">规则：xxxxxxxxxxxx3</a></li>
+					<li><a href="#">规则：xxxxxxxxxxxx4</a></li>
+				</ul>
+			</div>
+			<div class="content" style="display:none;">
+				<ul>
+					<li><a href="#">论坛：xxxxxxxxxxxx1</a></li>
+					<li><a href="#">论坛：xxxxxxxxxxxx2</a></li>
+					<li><a href="#">论坛：xxxxxxxxxxxx3</a></li>
+					<li><a href="#">论坛：xxxxxxxxxxxx4</a></li>
+				</ul>
+			</div>
+			<div class="content" style="display:none;">
+				<ul>
+					<li><a href="#">安全：xxxxxxxxxxxx1</a></li>
+					<li><a href="#">安全：xxxxxxxxxxxx2</a></li>
+					<li><a href="#">安全：xxxxxxxxxxxx3</a></li>
+					<li><a href="#">安全：xxxxxxxxxxxx4</a></li>
+				</ul>
+			</div>
+			<div class="content" style="display:block;">
+				<ul>
+					<li><a href="#">公益：xxxxxxxxxxxx1</a></li>
+					<li><a href="#">公益：xxxxxxxxxxxx2</a></li>
+					<li><a href="#">公益：xxxxxxxxxxxx3</a></li>
+					<li><a href="#">公益：xxxxxxxxxxxx4</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 内容区结束 -->
+	</div>
+	<!-- 标签页容器结束 -->
+</body>
+</html>

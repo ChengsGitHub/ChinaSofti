@@ -1,0 +1,51 @@
+package chapter4;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+
+import oracle.jdbc.driver.OracleDriver;
+
+/**
+ * 输出scott用户下所有的表的名称，以及列名
+ * @author Administrator
+ *
+ */
+public class TestQueryTableName {
+
+	public static void main(String[] args) throws SQLException {
+		
+		DriverManager.registerDriver(new OracleDriver());
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:icss";
+		String user = "scott";
+		String password = "tiger";
+		
+		Connection conn = DriverManager.getConnection(url,user,password);
+		
+		String sql = "select table_name from user_tables";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()){
+			
+			String name = rs.getString(1);
+			
+			System.out.println(name);
+			
+			
+			
+		}
+		
+		rs.close();
+		pstmt.close();
+		conn.close();
+		
+	}
+	
+}

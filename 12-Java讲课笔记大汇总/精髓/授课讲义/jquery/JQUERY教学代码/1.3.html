@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">	
+	.color2 {color:blue}
+</style>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(e) {
+		
+		//选择所有class=color的元素
+		//$('.color1').addClass('color2');
+		
+		//选择所有span标签
+		//$('span').addClass('color2');				
+		
+		//选择span标签,id=div1,class=color1的元素
+		//$('span,#div1,.color1').addClass('color2');
+		
+		//选择div1中的所有p
+		//$('#div1 p').addClass('color2');
+		
+		//$('#div1 p.color1').addClass('color2');
+		
+		//:not逻辑非
+		//$('#div1 p:not(.color1)').addClass('color2');
+		
+		$('#div1 :not(span)').addClass('color2');
+	});
+	
+</script>
+
+</head>
+
+<body>
+
+<div id="div1">
+	<p class="color1">1111111</p>
+    <p class="color1">2222222</p> 
+        
+    <span class="color1">aaaaa</span>
+    <span>bbbbb</span> 
+    
+    <p>ccccc</p> 
+    <p>ddddd</p>
+</div>
+
+<p  class="color1">3333333</p>
+<p  class="color1">4444444</p>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		var area = [
+			{
+				state:'辽宁省',
+				city:['沈阳','大连','鞍山','营口']
+			},
+			{
+				state:'吉林省',
+				city:['长春','吉林','四平','图门']
+			},
+			{
+				state:'黑龙江省',
+				city:['哈尔滨','齐齐哈尔','牡丹江','大庆']
+			},
+			{
+				state:'北京市',
+				city:['北京市']
+			}
+		];
+
+		window.onload = function () {
+			
+			// 获得省对象
+			var state = document.getElementById('state');
+			// 获得城市对象
+			var city = document.getElementById('city');
+			// 获得查看按钮对象
+			var lookBtn = document.getElementById('lookBtn');
+
+			// 添加数组中的省份到列表
+			for (var i = 0;i < area.length;i ++) {
+				// state.options[state.length] = new Option(area[i].state,area[i].state);	
+				var opt = new Option(area[i].state,area[i].state);
+				state.add(opt);		
+			}
+			
+			// 选择省份自动出现对应城市
+			state.onchange = function() {
+
+				city.options.length = 1;
+				
+				// 如果选择“请选择省”, 清空城市列表
+				if (state.selectedIndex != 0) {	
+
+					// 获得city数组在area数组中的下标
+					var index = state.selectedIndex - 1;
+
+					var citys = area[index].city;
+
+					// 添加city数组中的元素到city列表
+					for (var j = 0;j < citys.length;j ++) {
+						city.options[city.length] = new Option(citys[j],citys[j]);
+					}
+				}
+			}
+
+			// 点击查看按钮
+			lookBtn.onclick = function() {
+				alert(state.value + city.value);
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<!-- onchange事件 -->
+	<form id="" method="post" action="">
+		<select id="state">
+			<option value="">请选择省</option>
+		</select>
+		<select id="city">
+			<option value="">请选择城市</option>
+		</select>
+		<input type="button" value="查看" id="lookBtn">
+	</form>
+</body>
+</html>

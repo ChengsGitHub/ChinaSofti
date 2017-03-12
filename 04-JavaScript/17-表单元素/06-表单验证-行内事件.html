@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			表单验证函数
+		*/
+		function checkForm() {
+
+			var keyword = document.getElementById('keyword');
+
+			if (keyword.value == '') {
+				alert('请输入搜索关键字');
+				keyword.focus();
+				return false;
+			}
+
+			if (keyword.value.length > 10) {
+				alert('关键字不能超过10个字');
+				keyword.select();
+				return false;
+			}
+
+			return true;
+		}
+	</script>
+</head>
+<body>
+	<form id="form1" method="post" action="xxx.html" onsubmit="return checkForm();">
+		<input type="text" placeholder="请输入搜索关键字" id="keyword">
+		<input type="submit" value="搜索">
+	</form>
+</body>
+</html>

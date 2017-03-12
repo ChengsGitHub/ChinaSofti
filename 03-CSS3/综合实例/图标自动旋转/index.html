@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+
+		#naver {
+			width: 540px;
+			height: 95px;
+			margin:0 auto;
+			perspective:400px;			
+		}
+
+		.p1 {
+			width: 90px;
+			height: 95px;
+			background: url(icons.png);
+			position: relative;
+			float: left;
+			transition:all 1s;
+			transform-style:preserve-3d;
+		}
+
+		.icon1 {
+			background-position: 16px -197px;
+		}
+
+		.icon2 {
+			background-position: -80px -197px;
+		}
+
+		.icon3 {
+			background-position: -174px -197px;
+		}
+
+		.icon4 {
+			background-position: -269px -197px;
+		}
+
+		.icon5 {
+			background-position: -364px -197px;
+		}
+
+		.icon6 {
+			background-position: -459px -197px;
+		}
+
+		p {
+			font-size: 14px;
+			position: absolute;
+			bottom: 0px;
+			width: 90px;
+			text-align: center;
+			margin-bottom: 5px;
+		}
+
+		.p1:hover {
+			transform:rotatey(360deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="naver">
+		<div class="p1 icon1">
+			<p>论文提交</p>
+		</div>
+		<div class="p1 icon2">
+			<p>vpn服务</p>
+		</div>
+		<div class="p1 icon3">
+			<p>研修室预约</p>
+		</div>
+		<div class="p1 icon4">
+			<p>馆长信箱</p>
+		</div>
+		<div class="p1 icon5">
+			<p>失物招领</p>
+		</div>
+		<div class="p1 icon6">
+			<p>入馆指南</p>
+		</div>
+	</div>
+</body>
+</html>

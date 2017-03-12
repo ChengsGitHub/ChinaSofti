@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			width: 200px;
+			padding: 50px;
+			margin: 20px;
+			border:5px solid #ccc;
+			/*父元素必须设置position*/
+			position: relative;
+		}
+
+		#div2 {
+			background: #0cc;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$(document).click(function(event) {
+				
+				//相对于父元素的偏移量
+				var top = $('#div1').position().top;
+				var left = $('#div1').position().left;
+				alert(top + ',' + left);
+
+				top = $('#div2').position().top;
+				left = $('#div2').position().left;
+				alert(top + ',' + left);
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+
+	<div id="div1">
+		<p>段落内容1</p>
+		<p>段落内容2</p>
+		<p>段落内容3</p>
+		<p>段落内容4</p>
+		<p>段落内容5</p>
+		<p>段落内容6</p>
+		<div id="div2">www.baidu.com</div>
+	</div>
+</body>
+</html>

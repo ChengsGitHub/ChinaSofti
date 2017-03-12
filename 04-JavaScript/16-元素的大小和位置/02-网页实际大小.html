@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#container {
+			height: 1500px;
+			width: 1000px;
+			background: #0cc;
+		}
+	</style>
+	<script type="text/javascript">
+		document.onclick = function() {
+			
+			var w = document.body.scrollWidth;//网页实际宽度
+			var h = document.body.scrollHeight;//网页实际高度
+
+			alert(w + ',' + h);
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		
+	</div>	
+</body>
+</html>

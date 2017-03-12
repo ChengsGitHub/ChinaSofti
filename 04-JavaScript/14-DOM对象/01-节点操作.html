@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		function m1() {
+			var div1 = document.getElementById('div1');
+
+			// 创建p元素节点
+			var p = document.createElement('p');
+			// 创建文本节点
+			var txt = document.createTextNode('hello,world');
+
+			// 设置属性节点
+			p.setAttribute('align','center');
+
+			// 添加节点
+			p.appendChild(txt);
+			div1.appendChild(p);
+		}
+
+	</script>
+</head>
+<body>	
+	<div id="div1">
+		
+	</div>
+	<input type="button" value="添加节点" onclick="m1();">
+</body>
+</html>

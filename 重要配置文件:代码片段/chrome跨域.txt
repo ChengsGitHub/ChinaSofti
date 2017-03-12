@@ -1,0 +1,12 @@
+当需要用jQuery通过ajax或者get和post方法从本地加载文件或者跨域访问时，会受到Chrome严格的同源访问策略的限制。绕过的方法也很简单：添加Chrome启动参数即可。
+如果只需要加载本地文件：参数为:
+
+[plain] view plain copy
+--allow-file-access-from-files  
+
+如果要跨域访问，则可以干脆关闭所有安全策略，当然浏览器会提示你稳定性和安全性降低：
+[plain] view plain copy
+--disable-web-security  
+启动参数可以通过命令行/终端来添加。例如对于Windows：
+[html] view plain copy
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --disable-web-security 

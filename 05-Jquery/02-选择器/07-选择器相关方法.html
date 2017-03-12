@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			// $('li').eq(3).css('color','red');
+			// $('li').first().css('color','red');
+			// $('li').last().css('color','red');
+
+			// alert( $('h3').hasClass('1') ); //判断内容是否应用了某个class类
+
+			// alert( $('.red').is('li') );//判断选择器的内容是不是指定的内容 true
+			// alert( $('.red').is('div') ); //false
+			// alert( $('.red').is( $('li') ) ); //true
+			// alert( $('.red').is( $('li').eq(2) ) );//true
+			// alert( $('.red').is( $('li').get(2) ) );//true
+			// alert( $('li').eq(2).is('.red') );true
+
+			// $('ul').has('.red').css('color', 'red'); //返回子元素满足选择器的当前元素
+
+			// $('li').not('.red').css('color', 'red'); //逻辑非
+
+			$('li').slice(3, 7).css('color', 'red'); //返回指定下标范围的元素
+		});	
+	</script>
+</head>
+<body>
+	<div style="display:none;">我们的新域名为：sina.com</div>
+	<div>我们的旧域名为：sohu.com</div>
+	<div>
+		<h1>hello</h1>
+	</div>
+	<div></div>
+
+	<ul id="box">
+		<li>列表1</li>
+		<li>列表2</li>
+		<li class="red">列表3</li>
+		<li>列表4</li>
+		<li>列表5</li>
+		<li>列表6</li>
+	</ul>
+
+	<ul>
+		<li>列表1</li>
+		<li>列表2</li>
+		<li>列表3</li>
+		<li>列表4</li>
+		<li>列表5</li>
+		<li>列表6</li>
+	</ul>
+
+	<input type="text" />
+
+	<h3 class="1">我是标题</h3>	
+</body>
+</html>

@@ -1,0 +1,55 @@
+package chapter3;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import oracle.jdbc.driver.OracleDriver;
+
+/**
+ * 前台分页
+ */
+public class TestPager {
+
+	public static void main(String[] args) throws SQLException {
+
+		int recordCount = 0;// 总记录数
+		int pageSize = 6;// 每页多少条
+		int totalPage = 0;// 共几页
+		int pageNum = 1;// 当前页码
+
+		DriverManager.registerDriver(new OracleDriver());
+
+		String url = "jdbc:oracle:thin:@localhost:1521:icss";
+		String user = "scott";
+		String password = "tiger";
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+		String sql = "select * from employees";
+		PreparedStatement pstmt = conn.prepareStatement(sql,
+				ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		//计算总记录数
+		rs.last();
+		recordCount = rs.getRow(); 
+		
+		//计算共几页
+		totalPage = recordCount / pageSize;
+		if (recordCount % pageSize != 0)
+			totalPage ++;
+		
+		//计算当前页码
+		if (pageNum < 1)
+			pageNum = 1;
+		if (pageNum > totalPage)
+			pageNum = totalPage;
+		
+		
+		
+			
+	}
+}

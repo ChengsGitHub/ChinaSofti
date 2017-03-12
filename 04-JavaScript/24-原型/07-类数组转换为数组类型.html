@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function m1() {
+
+			//类数组转换为数组
+			var arg = Array.prototype.slice.call(arguments);
+
+			//调用数组的api
+			arg.unshift(0);
+			arg.push(100);
+			
+			for (var i = 0;i < arg.length;i ++) {
+				alert(arg[i]);
+			}
+
+		}
+
+		m1(1,2,3);
+	</script>
+</head>
+<body>	
+</body>
+</html>

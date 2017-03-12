@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+
+		console.log($ == jQuery);//true
+
+		$(document).ready(function(){
+
+			alert('页面加载完毕');
+
+			// 原生JS
+			var div1 = document.getElementById('div1');
+			div1.style.color = 'green';
+			div1.style.fontSize = '60px';
+
+
+			// jquery链式调用
+			$('#div1').css('color', 'green').css('font-size', '60px');
+			
+		});
+
+	</script>
+</head>
+<body>	
+	<div id="div1">jquery</div>
+</body>
+</html>

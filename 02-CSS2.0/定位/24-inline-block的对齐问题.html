@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">		
+		/*统一设置所有的元素边距为0*/
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		/*外层包裹容器*/
+		.wrapper {
+			width: 980px;
+			min-height: 300px;
+			/*background: #0cc;*/
+			margin: 0 auto;
+			/*把字号设置为0解决inline-block之间空隙问题*/
+			font-size: 0;
+		}
+
+		/*内存包裹容器*/
+		.wrapper .wrapper-inner {
+			/*width: 1040px;*/
+			margin-right: -60px;
+		}
+
+		/*列表元素*/
+		.wrapper .item {
+			width: 200px;
+			height: 300px;
+			background: orange;
+			display: inline-block;
+			/*由于字号可以继承，所有子元素需要重新设置字号*/
+			font-size: 14px;
+			margin-right: 60px;
+			margin-bottom: 20px;
+			/*解决文字内容不一致，默认按照文字低端对齐的问题*/
+			vertical-align: top;
+		}
+	</style>
+</head>
+<body>	
+	<div class="wrapper">
+		<div class="wrapper-inner">
+			<div class="item">div1</div>
+			<div class="item">div2<br>div2</div>
+			<div class="item">div3<br>div3<br>div3</div>
+			<div class="item">div4<br>div4<br>div4<br>div4<br>div4<br></div>
+			<div class="item">div1</div>
+			<div class="item">div2</div>
+			<div class="item">div3</div>
+			<div class="item">div4</div>
+			<div class="item">div1</div>
+			<div class="item">div2</div>
+			<div class="item">div3</div>
+		</div>		
+	</div>
+</body>
+</html>

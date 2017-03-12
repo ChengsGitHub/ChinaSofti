@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">
+	<!-- 裸奔 -->
+	<p>{{5+3}}</p>
+	
+	<!-- ng-bind -->
+	<p ng-bind="5+3"></p>
+	
+	<!-- ng-bind-template 表达式必须写{{}}，可以写多个表达式-->
+	<p ng-bind-template="{{5+3}} , {{3+6}}"></p>
+
+	<!-- ng-init 相当于在控制器中，写$scope.data = ['tom','jack','rose'] -->
+	<ul ng-init="data = ['tom','jack','rose','zhangsan','lisi']">
+		<li ng-repeat="item in data">
+			{{$index}}
+			{{$first?'第一个':''}}
+			{{$last?'最后一个':''}}
+			{{$middle?'中间的':''}}
+			{{item}}
+		</li>
+	</ul>
+
+	<!-- 遍历二维数组 ng-init可以让内层循环得到外层循环的计数变量-->
+	<ul>
+		<li ng-repeat="item in citys" ng-init="outerIndex=$index">
+			<ul>				
+				<li ng-repeat="name in item">
+					{{outerIndex}} 》{{$index}}：{{name}}
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<!-- 这样使用{{}}避免闪烁 -->
+	<p ng-cloak>{{text}}</p>
+
+	<!-- 转义{{}}语句，变为普通的文本 -->
+	<div ng-non-bindable>{{text}}</div>
+
+	<!-- 默认就是html转义 -->
+	<div>{{html}}</div>
+	<!-- 通过ng-bind-html不转义html语法 -->
+	<div ng-bind-html="html"></div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="angular-sanitize.js"></script>
+	<script type="text/javascript">
+		// 创建模块，依赖ngSanitize模块实现html不转义
+		var myApp = angular.module('myApp',['ngSanitize']);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope){
+			
+			// 二维数组
+			$scope.citys = [
+				['哈尔滨','齐齐哈尔','牡丹江','大庆'],
+				['长春','四平','通化','白城','图门'],
+				['沈阳','大连','鞍山']
+			];
+
+			$scope.text = "你好，世界";
+
+			$scope.html = "<h1>你好，世界</h1>"
+			
+		}])
+
+		myApp.directive
+	</script>
+</body>
+</html>

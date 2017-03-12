@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var a = [45,36,78,92,66];
+
+		console.log('排序前：' + a);
+
+		// 冒泡排序
+		for (var i = 0;i < a.length - 1;i ++) {
+			for (var j = 0;j < a.length - 1 - i;j ++) {
+				if (a[j] > a[j+1]) {
+					var temp = a[j];
+					a[j] = a[j+1];
+					a[j+1] = temp;
+				}
+			}
+		}
+
+		console.log('排序后：' + a);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="READSCH" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.work.pojo.Readsch" >
+   
+    <id column="READSCH_ID" property="readschId" jdbcType="DECIMAL" />
+    <result column="READSCH_EMPID" property="readschEmpid" jdbcType="DECIMAL" />
+    <result column="READSCH" property="readsch" jdbcType="DECIMAL" />
+    <result column="READSCHEMP_ID" property="readschempId" jdbcType="DECIMAL" />
+    <result column="READSCHDEPT_ID" property="readschdeptId" jdbcType="DECIMAL" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.icss.oa.work.pojo.Readsch" >
+    insert into READSCH (READSCH_ID, READSCH_EMPID, READSCH, 
+      READSCHEMP_ID, READSCHDEPT_ID)
+    values (readsch_seq.nextval, #{readschEmpid,jdbcType=DECIMAL}, #{readsch,jdbcType=DECIMAL}, 
+      #{readschempId,jdbcType=DECIMAL}, #{readschdeptId,jdbcType=DECIMAL})
+  </insert>
+  
+  <update id="update" parameterType="com.icss.oa.work.pojo.Readsch" >
+      update READSCH
+      set READSCH_EMPID = #{readschEmpid,jdbcType=DECIMAL},
+      READSCH = #{readsch,jdbcType=DECIMAL},
+      READSCHEMP_ID = #{readschempId,jdbcType=DECIMAL},
+      READSCHDEPT_ID = #{readschdeptId,jdbcType=DECIMAL}
+      WHERE READSCH_ID = #{readschId,jdbcType=DECIMAL}
+  </update>
+  
+    <delete id="delete" parameterType="java.lang.Integer" >
+    	delete from READSCH
+    	where READSCH_ID = #{readschId,jdbcType=DECIMAL}
+  	</delete>
+ 
+  	<select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		*
+		from READSCH
+		where READSCH_ID = #{readschId,jdbcType=DECIMAL}
+	</select>
+	
+	<select id="query" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from (select rownum rnum,t.readsch_id,d.dept_name,e.emp_id,e.emp_name from readsch t
+		inner join dept d on t.readschdept_id=d.dept_id
+		inner join emp e on t.readschemp_id=e.emp_id
+		where t.readsch_empid=#{empId})
+		where rnum between #{start} and #{end}
+	</select>
+	
+  	<select id="query2" resultType="java.util.Map" parameterType="java.util.Map">
+  	     select * from (select rownum rnum,t.readsch_id,d.dept_name,e.emp_id,e.emp_name from readsch t 
+		 inner join emp e on t.readsch_empid=e.emp_id
+		 inner join dept d on e.dept_id=d.dept_id 
+		 where t.readschemp_id=#{empId})
+		 where rnum between #{start} and #{end}
+	</select>
+
+	<select id="getOtherCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		select
+		count(*)
+		from readsch
+		where readschemp_id=#{empId}
+	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		select
+		count(*)
+		from readsch
+		where readsch_empid=#{empId}
+	</select>
+</mapper>

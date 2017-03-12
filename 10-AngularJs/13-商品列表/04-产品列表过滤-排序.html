@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<style type="text/css">
+
+		/*红色样式*/
+		.orderColor {
+			color: #ff0000;
+		}
+
+		/*鼠标移上标题手型*/
+		table th {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" ng-controller="productController">
+		<!-- 搜索框表单开始 -->
+		<form class="form-inline">
+			<div class="form-group">
+				<input type="search" class="form-control" placeholder="请输入搜索关键字" ng-model="keywords">
+			</div>
+		</form>
+		<!-- 搜索框表单结束 -->
+		<!-- 数据表开始 -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th ng-click="changeOrder('id');" ng-class="{dropup:!orderDesc}">
+						产品编号
+						<span class="caret" ng-class="{orderColor:orderField=='id'}"></span>
+					</th>
+					<th ng-click="changeOrder('name');" ng-class="{dropup:!orderDesc}">
+						产品名称
+						<span class="caret" ng-class="{orderColor:orderField=='name'}"></span>
+					</th>
+					<th ng-click="changeOrder('price');" ng-class="{dropup:!orderDesc}">
+						产品单价
+						<span class="caret" ng-class="{orderColor:orderField=='price'}"></span>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 默认按照所有属性过滤 -->
+				<tr ng-repeat="item in data | filter:keywords | orderBy:orderDesc + orderField">
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.price | currency:'￥'}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- 数据表结束 -->
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('productController', ['$scope', function($scope) {
+
+			$scope.data = [
+				{
+					id:1001,
+					name:'iphone6',
+					price:5999
+				},
+				{
+					id:1002,
+					name:'imac',
+					price:15999
+				},
+				{
+					id:1022,
+					name:'macbook',
+					price:7999
+				},
+				{
+					id:1037,
+					name:'华为手机note7',
+					price:5899
+				},
+				{
+					id:2037,
+					name:'小米note7',
+					price:3999
+				},
+				{
+					id:2046,
+					name:'ipad3',
+					price:6999
+				},
+				{
+					id:2047,
+					name:'ipad4',
+					price:5999
+				},
+				{
+					id:2048,
+					name:'thinkpad',
+					price:9999
+				}
+			];
+
+			// 设置排序字段，默认是id
+			$scope.orderField = 'id';
+			// 升序降序
+			$scope.orderDesc = '';
+
+			// 根据传入的属性名称排序
+			$scope.changeOrder = function(fieldName) {
+				
+				// 如果重复点击标题，升序降序切换
+				if (fieldName == $scope.orderField) {
+					$scope.orderDesc = $scope.orderDesc==''?'-':'';
+					return;
+				}
+				
+				// 设置高亮箭头
+				$scope.orderField = fieldName;
+			}
+			
+		}]);
+	</script>
+</body>
+</html>

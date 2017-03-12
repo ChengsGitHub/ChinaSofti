@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html,body {
+			width: 100%;
+			height: 100%;
+		}
+
+		/*飞机图片*/
+		#plane {
+			position: fixed;
+			left: 50%;
+			top: 50%;			
+		}
+
+		/*停机坪*/
+		#airport {
+			position: fixed;
+			width: 240px;
+			height: 280px;
+			background: #0cc;
+			left: 0;
+			top: 0;
+			text-align: center;
+			line-height: 280px;
+		}
+
+	</style>
+	<script type="text/javascript">
+
+		window.onload = function() {
+
+			// 获得飞机图片对象
+			var plane = document.getElementById('plane');
+			// 获得停机坪div对象
+			var airport = document.getElementById('airport');
+
+			// 获得飞机大小
+			var planeW = plane.offsetWidth;
+			var planeH = plane.offsetHeight;
+
+			// 获得停机坪大小
+			var airportW = airport.offsetWidth;
+			var airportH = airport.offsetHeight;
+
+			// 获得视口大小
+			var clientW = document.documentElement.clientWidth;
+			var clientH = document.documentElement.clientHeight;
+
+			// 初始化飞机的位置是正中间
+			plane.style.left = clientW/2 - planeW/2 + 'px';
+			plane.style.top = clientH/2 - planeH/2 + 'px';
+
+			// 当窗口大小改变事件
+			window.onresize = function() {
+				// 重新获得视口大小				
+				clientW = document.documentElement.clientWidth;
+				clientH = document.documentElement.clientHeight;
+				
+				//重新设置飞机的位置是正中间
+				plane.style.left = clientW/2 - planeW/2 + 'px';
+				plane.style.top = clientH/2 - planeH/2 + 'px';
+			}
+
+			// 方向键事件
+			document.onkeydown = function(e) {
+
+				e = e || window.event;
+
+				// 获得当前飞机的坐标
+				var planeX = plane.offsetLeft;
+				var planeY = plane.offsetTop;
+
+				// 上
+				if (e.keyCode == 38) {
+					planeY -= 10;
+
+					if (planeY < 0) 
+						planeY = 0;
+				}
+
+				// 下
+				if (e.keyCode == 40) {
+					planeY += 10;
+
+					if (planeY + planeH > clientH) 
+						planeY = clientH - planeH;
+				}
+
+				// 左
+				if (e.keyCode == 37) {
+					planeX -= 10;
+
+					if (planeX < 0)
+						planeX = 0;
+				}
+
+				// 右
+				if (e.keyCode == 39) {
+					planeX += 10;
+
+					if (planeX + planeW > clientW)
+						planeX = clientW - planeW;
+				}
+
+				// 设置飞机的坐标位置
+				plane.style.top = planeY + 'px';
+				plane.style.left = planeX + 'px';
+			}
+
+			// 松开键盘事件
+			document.onkeyup = function() {
+
+				// 飞机的当前坐标
+				var planeX = plane.offsetLeft;
+				var planeY = plane.offsetTop;
+
+				// 停机坪的当前坐标
+				var airportX = airport.offsetLeft;
+				var airportY = airport.offsetTop;
+
+				// 判断是否停机成功
+				if (planeX >= airportX && planeX + planeW <= airportX + airportW
+					&& planeY >= airportY && planeY + planeH <= airportY + airportH) {
+					
+					alert('停机成功！');
+					clearInterval(timerId);
+
+					var flag = confirm('是否再来一局？');
+
+					if (flag) {
+						timerId = setInterval(moveAreport,5000);
+						moveAreport();
+					} else {
+						window.close();
+					}
+
+				}
+
+			}
+
+			// 定时器
+			var timerId = setInterval(moveAreport,5000);
+
+			// 随机移动停机坪
+			function moveAreport() {
+				// 在视口范围大小产生随机数坐标
+				var x = parseInt( ( clientW - airportW - 0 + 1) * Math.random() + 0); 
+				var y = parseInt( ( clientH - airportH - 0 + 1) * Math.random() + 0);
+				//设置停机坪的坐标
+				airport.style.left = x + 'px';
+				airport.style.top = y + 'px';
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="airport">停机坪</div>
+	<img id="plane" src="plane.png" alt="" width="180" height="220">
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+	<input type="text" id="t1" value="hello,world">
+	<input type="button" value="设置属性" onclick="m1();">
+	<input type="button" value="读取属性" onclick="m2();">
+
+	<script type="text/javascript">
+		
+		var t1 = document.getElementById('t1');
+
+		function m1() {
+			t1.size = 10;
+			t1.disabled = true;
+		}
+
+		function m2() {
+			alert(t1.size);
+			alert(t1.disabled);
+		}
+
+	</script>
+</body>
+</html>

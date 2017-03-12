@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<input type="button" value="执行死循环" onclick="m1();">
+
+	<script type="text/javascript">
+
+		setInterval(function(){
+			alert('定时器程序！');
+		},2000);
+		
+		function m1() {
+			while (true) {
+				console.log('hello,world');
+			}
+		}
+
+	</script>
+</body>
+</html>

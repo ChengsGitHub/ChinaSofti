@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>WebSocket</title>
+</head>
+<body>
+  <div>
+  	<input type="text" id="t1">
+    <input type="button" value="Start" onclick="start()" />
+  </div>
+  <div id="messages"></div>
+  <script type="text/javascript">
+  	
+  	///创建Socket对象，连接服务器
+    var webSocket = new WebSocket('ws://localhost:7777/WebSocket/mywebsocket');
+ 
+  	//当发生错误事件回调
+    webSocket.onerror = function(event) {
+    	alert('连接错误：' + event.data);
+    };
+ 
+    //当网络已连接事件回调
+    webSocket.onopen = function(event) {
+    	document.getElementById('messages').innerHTML = '网络连接已经打开';
+    };
+    
+    //当连接被关闭
+    webSocket.onclose = function(event) {
+    	document.getElementById('messages').innerHTML += '<br /> 网络连接已经关闭';
+    };
+ 
+    //当接收到消息事件回调
+    webSocket.onmessage = function(event) {
+    	document.getElementById('messages').innerHTML += '<br />' + event.data;
+    }; 
+ 
+    function start() {
+      webSocket.send('客户端消息：' + document.getElementById("t1").value);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		#div1 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*谷歌兼容：linear（线性渐变）radial（径向渐变）,起点x,y坐标 ,终点x,y坐标，from(起始颜色)，to(终止颜色)*/
+			background: -webkit-gradient(linear,0 0%,0 100%,from(green),to(red));
+		}
+
+		#div2 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*谷歌兼容：linear（线性渐变）radial（径向渐变）,起点x,y坐标 ,终点x,y坐标，from(起始颜色)，to(终止颜色)*/
+			background: -webkit-gradient(linear,0 0%,100% 0,from(green),to(red));
+		}
+
+		#div3 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*谷歌兼容：linear（线性渐变）radial（径向渐变）,起点x,y坐标 ,终点x,y坐标，from(起始颜色)，to(终止颜色)*/
+			background: -webkit-gradient(linear,0 0%,100% 100%,from(#fff),to(#000));
+		}
+
+		#div4 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*谷歌兼容：linear（线性渐变）radial（径向渐变）,起点x,y坐标 ,终点x,y坐标，from(起始颜色)，to(终止颜色)*/
+			background: -webkit-gradient(linear,0 0%,100% 0,
+				from(green),
+				color-stop(0.3,yellow), /*30%开始黄色*/
+				color-stop(0.6,blue), /*60%开始蓝色*/
+				to(red));
+		}
+
+		#div5 {
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			background: #789;
+			/*谷歌兼容：linear（线性渐变）radial（径向渐变）,起点x,y坐标 ,终点x,y坐标，from(起始颜色)，to(终止颜色)*/
+			background: -webkit-gradient(radial,50% 50%,0,50% 50%,300,from(#fff),to(#000));
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">		
+	</div>
+
+	<div id="div2">		
+	</div>
+
+	<div id="div3">		
+	</div>
+
+	<div id="div4">		
+	</div>
+
+	<div id="div5">		
+	</div>
+</body>
+</html>

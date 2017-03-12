@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+// sass注释，不会生成到css文件
+body {
+	background: #ccc;
+	font-size: 16px;
+}
+
+/* 这是正常的css注释 */
+a {
+	text-decoration: none;
+}
+
+ul,li {
+	list-style: none;
+}

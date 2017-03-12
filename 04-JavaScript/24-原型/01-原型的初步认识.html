@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			人类
+		*/
+		function Person(name,age) {
+
+			this.name = name;
+			this.age = age;
+
+			this.run = function(){
+				alert(this.name + '在跑步');
+			}
+
+		}
+
+		// 在原型对象中定义方法
+		Person.prototype.say = function() {
+			alert(this.name + '在讲话');
+		}
+
+		// 创建对象
+		var p1 = new Person('tom',27);
+		var p2 = new Person('jack',29);
+
+		// p1.run();
+		// p2.run();
+		// alert(p1.run == p2.run);//false
+
+		// p1.say();
+		// p2.say();
+		// alert(p1.say == p2.say);//true
+
+		// alert(p1.toString());// 使用的是Object类的方法
+
+		// console.log(Person == Person.prototype.constructor); //true
+
+		// console.log(p1 instanceof Person);//true
+		// console.log(p1 instanceof Date);//false
+
+		//console.log(Person.prototype instanceof Person);//false
+		// console.log(Person.prototype instanceof Object);//true
+
+		// console.log(Person.prototype == p1.__proto__);//true		
+	</script>
+</head>
+<body>	
+</body>
+</html>

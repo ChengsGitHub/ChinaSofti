@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+	<div class="container" ng-controller="productController">
+		<!-- 搜索框表单开始 -->
+		<form class="form-inline">
+			<div class="form-group">
+				<input type="search" class="form-control" placeholder="请输入搜索关键字" ng-model="keywords.name">
+			</div>
+		</form>
+		<!-- 搜索框表单结束 -->
+		<!-- 数据表开始 -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th>产品编号</th>
+					<th>产品名称</th>
+					<th>产品单价</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 按照指定属性过滤 -->
+				<tr ng-repeat="item in data | filter:keywords">
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.price | currency:'￥'}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- 数据表结束 -->
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('productController', ['$scope', function($scope) {
+
+			$scope.data = [
+				{
+					id:1001,
+					name:'iphone6',
+					price:5999
+				},
+				{
+					id:1002,
+					name:'imac',
+					price:15999
+				},
+				{
+					id:1022,
+					name:'macbook',
+					price:7999
+				},
+				{
+					id:1037,
+					name:'华为手机note7',
+					price:5899
+				},
+				{
+					id:2037,
+					name:'小米note7',
+					price:3999
+				},
+				{
+					id:2046,
+					name:'ipad3',
+					price:6999
+				},
+				{
+					id:2047,
+					name:'ipad4',
+					price:5999
+				},
+				{
+					id:2048,
+					name:'thinkpad',
+					price:9999
+				}
+			];
+			
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="BUS" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.bus.pojo.Bus" >
+    <id column="BUS_ID" property="busId" jdbcType="DECIMAL" />
+    <result column="BUS_TYPE" property="busType" jdbcType="VARCHAR" />
+    <result column="BUS_LICENSE" property="busLicense" jdbcType="VARCHAR" />
+    <result column="BUS_STATE" property="busState" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.icss.oa.bus.pojo.Bus" extends="BaseResultMap" >
+    <result column="BUS_PHOTO" property="busPhoto" jdbcType="BLOB" />
+  </resultMap>
+  
+  
+  <select id="queryById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    *
+    from BUS
+    where BUS_ID = #{busId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="queryByBusId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    *
+    from BUS
+    where BUS_ID = #{busId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="query" resultMap="ResultMapWithBLOBs">
+    select 
+    *
+    from(	select rownum rnum,
+    		b.* from bus b
+    	order by bus_id desc) 
+    where rnum between #{start} and #{end}
+  </select>
+  
+  <select id="queryByBusType" resultMap="BaseResultMap" parameterType="java.lang.String">
+	    select * from bus b where b.BUS_TYPE=#{busType}    
+	</select>
+  
+  <delete id="delete" parameterType="java.lang.Integer" >
+    delete from BUS
+    where BUS_ID = #{busId,jdbcType=DECIMAL}
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.icss.oa.bus.pojo.Bus" >
+    insert into BUS (BUS_ID, BUS_TYPE, BUS_LICENSE, 
+      BUS_STATE, BUS_PHOTO)
+    values (bus_seq.nextval, #{busType,jdbcType=VARCHAR}, #{busLicense,jdbcType=VARCHAR}, 
+      #{busState,jdbcType=DECIMAL}, #{busPhoto,jdbcType=BLOB})
+  </insert>
+  
+  <select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from BUS 
+	</select>
+	
+	<select id="queryByCondition" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * from (select rownum
+		rnum,b.* from bus b
+		<where> 
+			<if test="busType != null and busType != ''">    
+				and bus_type like '%'||#{busType}||'%'
+			</if>
+		</where>
+		) where rnum between
+		#{start} and #{end}
+	</select>
+
+
+	
+	<select id="getConditionCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+		select
+		count(*)
+		from bus
+		<where> 
+			<if test="busType != null and busType != ''">    
+				and bus_type like '%'||#{busType}||'%'
+			</if>
+		</where>
+	</select>
+	<select id="getPrimaryKey" resultType="java.lang.Integer">
+	    select bus_seq.currval from dual
+	</select>
+  
+  
+    
+  <update id="update" parameterType="com.icss.oa.bus.pojo.Bus" >
+    update BUS
+    set BUS_TYPE = #{busType,jdbcType=VARCHAR},
+      BUS_LICENSE = #{busLicense,jdbcType=VARCHAR},
+      BUS_STATE = #{busState,jdbcType=DECIMAL},
+      BUS_PHOTO = #{busPhoto,jdbcType=BLOB}
+    where BUS_ID = #{busId,jdbcType=DECIMAL}
+  </update>
+  
+</mapper>

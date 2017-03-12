@@ -1,0 +1,15 @@
+package chapter4;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class TestConnPool {
+
+	public static void main(String[] args) throws SQLException {
+		
+		Connection conn1 = ConnPool.getConnection();
+		System.out.println("conn1获得连接");
+
+	}
+
+}

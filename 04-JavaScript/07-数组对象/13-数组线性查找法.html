@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var a = [45,36,78,92,66];
+
+		var input = parseInt(prompt('请输入要查找的数字：'));
+
+		var index = -1;
+
+		for (var i = 0;i < a.length;i ++) {
+			if (input == a[i]) {
+				index = i;
+				break;
+			}
+		}
+
+		alert('查找的下标是：' + index);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

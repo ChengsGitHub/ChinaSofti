@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+      <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>无标题文档</title>
+      <script type="text/javascript" src="js/jquery-1.7.js"></script>
+      <script type="text/javascript">
+      $(document).ready(function(e) {
+
+		$('#username').blur(function(e) {
+            
+			var username = document.getElementById('username');
+			
+			if (username.value == "") {
+				$('#usernameSpan').html('用户名不允许为空');
+				return;
+			}			
+			
+			$('#usernameSpan').load('/ajax/CheckUserServlet',{username:username.value},function(data){
+				
+				if (data == '用户名已经被占用') {
+					$('#usernameSpan').css('color','#F00');	
+				} else {
+					$('#usernameSpan').css('color','#090');	
+				}
+				
+				$('#username').prop('disabled',false);
+			});
+			
+			$('#usernameSpan').html('<img src="loading.gif">');
+			$('#username').prop('disabled',true);
+				
+        });
+
+      });
+      </script>
+      </head>
+
+      <body>
+      <form method="post" action="">
+        <input type="text" name="username" id="username">
+        <span id="usernameSpan" style="font-size:12px"></span>
+      </form>
+</body>
+</html>

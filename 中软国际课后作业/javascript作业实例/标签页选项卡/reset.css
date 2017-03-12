@@ -1,0 +1,25 @@
+html, body, h1, h2, h3, h4, h5, h6, div, ul, ol, li, dl, dt, dd, iframe, textarea, input, button, p, strong, b, a, span, del, pre {
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust: none;
+}
+h1, h2, h3, h4, h5, h6, em, del {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	-webkit-text-size-adjust: none;
+}
+ul, dl, ol {
+	list-style-type: none;
+}
+img {
+	border: 0;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+body {
+	font-size: 12px;
+	font-family: Microsoft YaHei, Tahoma, Geneva, sans-serif;
+}

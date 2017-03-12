@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="photoDao" class="com.icss.hr.photo.dao.impl.PhotoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="photoService" class="com.icss.hr.photo.service.impl.PhotoServiceImpl">
+		<property name="dao" ref="photoDao"/>
+	</bean>
+
+	<bean id="photoAction" class="com.icss.hr.photo.controller.PhotoAction" scope="prototype">
+		<property name="service" ref="photoService"/>
+	</bean>
+</beans>

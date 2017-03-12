@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		function m1() {
+
+			var score = prompt('请输入分数：');		
+
+			if (score == null) {
+				alert('操作取消');		
+				return;	
+			}
+
+			if (score == '') {
+				alert('成绩不能为空！');
+				// m1();
+				return;
+			}
+
+			score = parseInt(score);
+
+			if ( isNaN(score) ) {
+				alert('请输入一个有效数字');				
+			} else {
+				if (score < 0 || score > 100) {
+					alert('请输入0~100之间的数字');
+					return;
+				}
+
+				if (score >= 60) {
+					alert('成绩合格');
+				} else {
+					alert('成绩不合格');
+				}
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="测试" onclick="m1();">
+</body>
+</html>

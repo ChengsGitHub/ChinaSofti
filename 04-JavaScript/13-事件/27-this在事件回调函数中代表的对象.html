@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		window.onload = function() {
+
+			var btn1 = document.getElementById('btn1');
+
+			btn1.onclick = function(e) {
+			
+				//把事件源对象赋给一个本地变量
+				var that = this;
+
+				function m1() {
+					//函数级调用this代表的是window对象
+					console.log(this);
+					// 操作事件源对象
+					that.value = 'hello,world';	
+				}		
+
+				m1();
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" value="单击我" id="btn1">
+</body>
+</html>

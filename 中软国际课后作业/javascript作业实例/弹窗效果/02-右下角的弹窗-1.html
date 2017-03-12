@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body{
+			overflow-x:hidden; 
+		}
+
+		#div1 {
+			width: 300px;
+			height: 200px;
+			background: #0cc;
+			position: absolute;
+			left: 100%;
+			bottom: 0;
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.onload = function() {
+
+			var i = 1; //计数变量
+
+			var div1 = document.getElementById('div1'); //弹窗div
+
+			// 运动函数
+			function move() {				
+				// i如果和div宽度相等，停止定时器
+				if(i == div1.offsetWidth){
+					clearInterval(time);
+				} else {
+					div1.style.left = div1.offsetLeft - 1 + 'px';
+					i ++;
+				}
+			}
+			
+			// 定时器
+			var time = setInterval(move,10);
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="div1">
+		右下角弹窗
+	</div>
+</body>
+</html>

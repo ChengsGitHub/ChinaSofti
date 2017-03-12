@@ -1,0 +1,210 @@
+  <!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+	
+	<div class="container" ng-controller="firstController">
+
+		<form name="myForm" class="form-horizontal">
+
+			<div class="form-group">
+				<label for="" class="col-md-2 control-label">地址</label>
+				<div class="col-md-3">
+					<!-- ng-options是动态生成option，item.id设置option的value，item.name设置option的文字，as是固定语法，前面的是value，后面的是文字,for代表数据来源，item in citys表示遍历citys数组的数据，每次取出一个元素赋给item -->
+					<select ng-change="data.city=null" ng-model="data.state" class="form-control" ng-options="item.id as item.name for item in citys | cityFilter:0">					
+					</select>					
+				</div>	
+				<div class="col-md-3">					
+					<select ng-show="data.state" ng-model="data.city" class="form-control" ng-options="item.id as item.name for item in citys | cityFilter:data.state">					
+					</select>					
+				</div>
+				<div class="col-md-3">					
+					<select ng-show="data.state && data.city" ng-model="data.area" class="form-control" ng-options="item.id as item.name for item in citys | cityFilter:data.city">				
+					</select>					
+				</div>			
+			</div>				
+			
+		</form>
+
+		省（直辖市）：{{data.state}}，城市：{{data.city}}，区：{{data.area}}
+	
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope) {
+					
+			// 城市数据
+			$scope.citys = [
+				{
+					id:1,
+					name:'上海',
+					parent:0
+				},
+				{
+					id:2,
+					name:'辽宁',
+					parent:0
+				},
+				{
+					id:3,
+					name:'黑龙江',
+					parent:0
+				},
+				{
+					id:4,
+					name:'上海市',
+					parent:1
+				},
+				{
+					id:5,
+					name:'沈阳市',
+					parent:2
+				},
+				{
+					id:6,
+					name:'大连市',
+					parent:2
+				},
+				{
+					id:7,
+					name:'鞍山市',
+					parent:2
+				},
+				{
+					id:8,
+					name:'哈尔滨市',
+					parent:3
+				},
+				{
+					id:9,
+					name:'齐齐哈尔市',
+					parent:3
+				},
+				{
+					id:10,
+					name:'牡丹江市',
+					parent:3
+				},
+				{
+					id:11,
+					name:'徐汇区',
+					parent:4
+				},
+				{
+					id:12,
+					name:'浦东区',
+					parent:4
+				},
+				{
+					id:13,
+					name:'和平区',
+					parent:5
+				},
+				{
+					id:14,
+					name:'铁西区',
+					parent:5
+				},
+				{
+					id:15,
+					name:'皇姑区',
+					parent:5
+				},
+				{
+					id:16,
+					name:'中山区',
+					parent:6
+				},
+				{
+					id:17,
+					name:'西岗区',
+					parent:6
+				},
+				{
+					id:18,
+					name:'沙河口区',
+					parent:6
+				},
+				{
+					id:19,
+					name:'高新区',
+					parent:7
+				},
+				{
+					id:20,
+					name:'千山区',
+					parent:7
+				},
+				{
+					id:21,
+					name:'南岗区',
+					parent:8
+				},
+				{
+					id:22,
+					name:'道里区',
+					parent:8
+				}
+			];
+
+			$scope.data = {
+
+			}
+
+
+			/*
+				根据id找parent
+			*/
+			function findParentById(id) {
+
+				var parent;
+				
+				for (var i = 0;i < $scope.citys.length;i ++) {
+					if (id == $scope.citys[i].id) {
+						parent = $scope.citys[i].parent;
+						break;
+					}
+				}
+
+				return parent;
+			}
+
+			// 设置默认选中区
+			$scope.data.area = 21;
+			// 设置默认选中城市
+			$scope.data.city = findParentById($scope.data.area);
+			// 设置默认选中省
+			$scope.data.state = findParentById($scope.data.city);			
+		}]);
+
+		// 过滤器
+		myApp.filter('cityFilter',function() {
+
+			return function(data,parent) {
+
+				var filterData = []; //过滤之后的结果
+
+				angular.forEach(data,function(obj) {
+					
+					// 根据parent的值，返回对应的数据
+					if (obj.parent == parent) {
+						filterData.push(obj);
+					}
+
+				});
+
+				return filterData;
+			}
+			
+		});
+	</script>
+</body>
+</html>

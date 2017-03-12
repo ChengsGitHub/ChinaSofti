@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 不要使用css设置画布高度和宽度 -->
+	<canvas id="canvas1" width="400" height="400" style="border:1px solid #ccc">
+		此浏览器不支持html5的画布
+	</canvas>
+
+	<script type="text/javascript">
+
+		window.onload = function() {
+
+			// 判断浏览器是否支持画布
+			try {
+				document.getElementById('canvas1').getContext('2d');
+				alert('此浏览器支持html5的画布');
+			} catch (e) {
+				alert('此浏览器不支持html5的画布');
+				return;
+			}
+
+			//获得画布对象		
+			var canvas1 = document.getElementById('canvas1');
+
+			//获得绘制对象（2d画笔对象）
+			var context = canvas1.getContext('2d');
+
+			// 绘制矩形（无填充矩形，参数左边距，上边距，宽度，高度）
+			context.strokeRect(50,50,200,100);
+
+			// 绘制矩形（带填充颜色）
+			context.fillStyle = '#ff0000'; //设置填充颜色
+			context.fillRect(50,260,100,100);//生成矩形			
+		}		
+
+	</script>
+</body>
+</html>

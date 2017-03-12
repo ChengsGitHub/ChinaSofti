@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+			window.onload = function() {
+				
+				//获得元素对象
+				var btn = document.getElementById('addBtn');
+				var table = document.getElementById('table');
+
+				//取值
+				var sId = document.getElementById('sId');
+				var sName = document.getElementById('sName');
+				var sAge = document.getElementById('sAge');
+				
+				addBtn.onclick = function() {
+					
+					//判定输入是否合理
+					if (sId.value != '' && sName.value != '' && sAge.value != '') {
+
+						//添加表格
+						var tr = table.insertRow();
+
+						var td = tr.insertCell();
+						td.innerHTML = sId.value;
+
+						var td = tr.insertCell();
+						td.innerHTML = sName.value;
+
+						var td = tr.insertCell();
+						td.innerHTML = sAge.value;
+
+						var td = tr.insertCell();
+
+						//添加删除按钮
+						td.innerHTML = '<input type="button"  class="del" value="删除" style="width: 100%;">'
+
+						//清空文本输入内容
+						sId.value = '';
+						sName.value = '';
+						sAge.value = '';
+						
+						//删除表格
+						var del = document.getElementsByClassName('del');
+						var i = del.length;
+						alert(i);
+
+						del[i-1].onclick = function() {
+							debugger;
+							tr.remove();							
+						}
+					} else 
+						alert('请正确输入');
+				}
+			}
+	</script>
+</head>
+<body>
+	<table border="1" width="500" id="table"> 
+		<tr>
+			<th>编号</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>操作</th>
+		</tr>
+	</table>
+	<form id="" method="post" action="">
+		<table>
+			<tr>
+				<td>编号</td>
+				<td>
+					<input type="text" id="sId">
+				</td>
+			</tr>
+			<tr>
+				<td>姓名</td>
+				<td>
+					<input type="text" id="sName">
+				</td>
+			</tr>
+			<tr>
+				<td>年龄</td>
+				<td>
+					<input type="text" id="sAge">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="增加学生" id="addBtn">
+				</td>
+				
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

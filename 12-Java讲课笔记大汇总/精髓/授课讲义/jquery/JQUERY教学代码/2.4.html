@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript">
+
+	function m1() {
+		alert("按钮被单击");		
+	}
+
+	$(document).ready(function(e) {
+       
+	   $('#btn1').click(m1);
+	   
+	   $('#cancelBtn').click(function(e) {
+       	  $('#btn1').unbind('click');
+       });
+	    		
+    });
+
+</script>
+</head>
+
+<body>
+
+<input type="button" value="OK" id="btn1">
+<input type="button" value="取消事件" id="cancelBtn">
+
+</body>
+</html>

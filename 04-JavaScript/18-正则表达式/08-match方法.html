@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+			
+		var str = "张三的手机号是13312345678，李四的手机号是16911111118，王五的手机号是17822222222";
+		
+		var r = /\d{11}/g;
+
+		var result = str.match(r);
+
+		for (var i = 0;i < result.length;i ++) {
+			console.log(result[i]);
+		}
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

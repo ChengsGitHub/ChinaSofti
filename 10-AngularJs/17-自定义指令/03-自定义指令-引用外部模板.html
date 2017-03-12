@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">	
+	<!-- E -->
+	<custom-tag></custom-tag>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		// 模块
+		var myApp = angular.module('myApp',[]);
+	
+		// 指令
+		myApp.directive('customTag',[function(){
+			
+			return {
+					restrict:'ECMA',
+					templateUrl:'other.html',
+					replace:true
+			}
+
+		}]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope){
+			
+			$scope.message = '来自于控制器的数据';
+
+		}]);
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+html, body, h1, h2, h3, h4, h5, h6, div, ul, ol, li, dl, dt, dd, iframe, textarea, input, button, p, strong, b, a, span, del, pre { margin: 0; padding: 0; -webkit-text-size-adjust: none; }
+h1, h2, h3, h4, h5, h6, em, del { font-style: normal; font-weight: normal; font-size: 100%; -webkit-text-size-adjust: none; }
+ul, dl, ol { list-style-type: none; }
+img { border: 0; }
+html, body { height: 100%; }
+body { font-size: 14px; font-family: Microsoft YaHei, Tahoma, Geneva, sans-serif; background: #111; }
+h1 {line-height: 50px; font-size: 28px;color: #666; text-align: center; }
+h2, h2 a {font-size: 16px; text-align: center; color: #666; text-decoration: none; }
+h2 a:hover { text-decoration: underline; }
+.clearfix:after,.clearfix:before{
+	content:'';
+	display: block;
+	clear: both;
+}

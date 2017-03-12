@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		document.onmousedown = function(e) {
+
+			e = e || window.event;
+
+			// alert(e.button);
+
+			if (e.button == 0) {
+				alert('左键');
+			} else if (e.button == 2) {
+				alert('右键');
+			} else if (e.button == 1) {
+				if (navigator.userAgent.indexOf('IE') != -1) {
+					alert('左键');
+				} else {
+					alert('中键');
+				}
+			} else if (e.button == 4) {
+				alert('中键');
+			}
+		}
+	</script>
+</head>
+<body>
+	谷歌浏览器 左键0 右键2 中键1
+	<br>
+	火狐浏览器 左键0 右键2 中键1
+	<br>
+	IE浏览器   左键1 右键2 中键4
+</body>
+</html>

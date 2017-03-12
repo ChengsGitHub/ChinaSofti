@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		// 创建object类的对象，利用Object类存储数据
+		var obj = new Object();
+		
+		// 设置属性值
+		obj.name = 'tom';
+		obj.age = 27;
+		obj.phone = "10086";
+
+		obj.show = function() {
+			alert(this.name + ',' + this.age + ',' + this.phone);
+		}
+		
+		console.log(obj);
+		obj.show();
+	</script>
+</head>
+<body>	
+</body>
+</html>

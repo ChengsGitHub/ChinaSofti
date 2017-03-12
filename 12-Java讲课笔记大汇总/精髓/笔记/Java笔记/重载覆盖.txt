@@ -1,0 +1,114 @@
+1.下面的类中,那些是合法的重载?
+public class Q1{
+	public void method(int i){ };
+}
+A. private void method(int i){};
+B. private void method(int k){};
+C. private int method(int i){};
+D. private float method(float f){};
+E. private String method(int i,int j){};
+
+
+2.在Q2_2类中,哪些是合法的覆盖(override)?
+public class Q2_1{
+	public void method(int i){};
+}
+
+class Q2_2 extends Q2_1{
+	
+}
+A. public void method(int i){};
+B. private void method(int j){};
+C. public int method(int i){};
+D. public float method(float f){};
+E. private String method(String s){};
+
+
+3.同上题,哪些method属于重载?
+
+
+4.请问Q4_2类的运行结果是什么?
+public class Q4_1 {	
+	public void method(int i){
+		System.out.println(10);
+	}
+}
+public class Q4_2  extends Q4_1{
+	public static void main(String[] args){
+		Q4_1 q1 = new Q4_1();
+		Q4_1 q2 = new Q4_2();
+		
+		q1.method(1);
+		q2.method(2);
+	}
+	
+	public void method(int k){
+		System.out.println(20);
+	}
+}
+A.10,20
+B.10,10
+C.20,20
+D.1,2
+E.20,10
+
+
+5.承上题,若把Q4_2类的Q4_2 q2 = new Q4_2();改成Q4_1 q2 = new Q4_2;最后运行结果是什么?
+A.10,20
+B.10,10
+C.20,20
+D.1,2
+E.20,10
+
+
+6.承第4题,若把q2.method(2);改成((Q4_1) q2).method(2);结果是什么?
+A.10,20
+B.10,10
+C.20,20
+D.1,2
+E.20,10
+
+
+7.请问下面哪些方式,可以产生Q7类的对象?
+public class Q7_1{
+	public Q7_1(int i){ };
+	public Q7_1(int I,float f){ };
+}
+A. Q7 q = new Q7();
+B. Q7 q = new Q7(10);
+C. Q7 q = new Q7(10,10);
+D. Q7 q = new Q7(10,10.0);
+E. Q7 q = new Q7(10,10.0f);
+
+
+8.请问Q8_2的运行的结果是什么?
+public class Q8_1 {	
+	int i;
+	
+	public Q8_1(int i){
+		this.i = i;
+	}
+}
+
+public class Q8_2 extends Q8_1{
+	
+	public static void main(String[] args) {
+		Q8_1 q1 = new Q8_1(10);
+		System.out.println(q1.i);
+	}
+}
+A.10
+B.0
+C.编译错误
+
+
+9.请问在Q9_1类中必须有哪些构造函数?
+public class Q9_2 extends Q9_1{
+	public Q9_2(int i){};
+	
+	public Q9_2(int i,float f){super(i,f)};	
+}
+A.public Q9_1(){ };
+B.public Q9_1(int k){ };
+C.public Q9_1(int I,float f){ };
+D.public Q9_1(float f){ };

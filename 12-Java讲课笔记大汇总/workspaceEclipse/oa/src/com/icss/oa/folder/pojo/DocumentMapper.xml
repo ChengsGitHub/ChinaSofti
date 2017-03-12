@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DOCUMENT" >
+  <resultMap id="BaseResultMap"  type="com.icss.oa.folder.pojo.Document" >
+    <id column="DOCUMENT_ID" property="documentId" jdbcType="DECIMAL" />
+    <result column="DOCUMENT_NAME" property="documentName" jdbcType="VARCHAR" />
+    <result column="FOLDER_ID" property="folderId" jdbcType="DECIMAL" />
+    <result column="DOCUMENT_SIZE" property="documentSize" jdbcType="DECIMAL" />
+  </resultMap>
+  	<resultMap id="ResultMapWithBLOBs" type="com.icss.oa.folder.pojo.Document"
+		extends="BaseResultMap">
+		<result column="DOCUMENT_DATA" property="documentData" jdbcType="BLOB" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.icss.oa.folder.pojo.Document">
+		insert into document (document_ID, document_Name, document_data,
+		folder_id,document_size)
+		values (document_seq.nextval,
+		#{documentName,jdbcType=VARCHAR},
+		#{documentData,jdbcType=BLOB},
+		#{folderId,jdbcType=DECIMAL},
+		#{documentSize,jdbcType=DECIMAL}
+		)
+	</insert>
+	
+	<select id="queryByFolderId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		*
+		from Document
+		where folder_ID = #{folderID,jdbcType=DECIMAL}
+	</select>
+	
+	<select id="queryById" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		*
+		from Document
+		where Document_ID = #{documentId,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByDocumentId" parameterType="java.lang.Integer">
+		delete from Document
+		where document_Id = #{documentId,jdbcType=DECIMAL}
+	</delete>
+	<select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from document
+	</select>
+	
+	
+</mapper>                  

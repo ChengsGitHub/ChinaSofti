@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		用户名：##username##,年龄：##age##
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		var myApp = angular.module('myApp',[]);
+		
+		// config配置
+		myApp.config(['$interpolateProvider',function($interpolateProvider) {
+			
+			// 重新定义绑定数据的起始和终止符号
+			$interpolateProvider.startSymbol('##');
+			$interpolateProvider.endSymbol('##');
+			
+		}]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope){
+
+			$scope.username = 'jack';
+			$scope.age = 27;
+			
+		}]);
+		
+	</script>
+</body>
+</html>

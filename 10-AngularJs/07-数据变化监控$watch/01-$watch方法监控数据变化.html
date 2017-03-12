@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		<input type="text" ng-model="username">
+		姓名：{{username}}
+		<br>
+		改变次数：{{count}}
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		angular.module('myApp',[])
+			.controller('firstController', ['$scope', function($scope){
+
+				$scope.username = 'tom';
+				$scope.count = 0; //计数变量
+
+				// 检查数据模型中的username值的变化，执行事件回调函数：参数1 新值，参数 旧值
+				$scope.$watch('username',function(newVal,oldVal) {
+
+					console.log('新值：' + newVal + ',旧值：' + oldVal);
+
+					if ($scope.count >= 5) {
+
+						alert('已经修改超过5次了');
+
+						// 强制修改数据的值为旧值
+						$scope.username = oldVal;
+						$scope.count = 0;
+
+						return;
+					}
+
+					$scope.count ++;
+				});
+				
+			}]);
+
+	</script>
+</body>
+</html>

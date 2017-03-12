@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* 导入其他css文件，需要些扩展名 */
+@import url(global.css);
+/* 
+头部区域的css样式，当前scss文件纯粹为了被其他scss文件引用，
+本身不需要生成css文件，那么当前文件名前面加下划线，例如_header.scss
+但是导入文件的时候，不需要加下划线
+*/
+#header {
+  background: red;
+  width: 960px;
+}
+
+#content {
+  background: red;
+  width: 960px;
+}
+#content div {
+  border: 1px solid #ccc;
+  background: #0cc;
+}
+
+/* 网页底部 */
+#footer {
+  background: green;
+}
+
+/*# sourceMappingURL=style.css.map */

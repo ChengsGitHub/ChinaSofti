@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		/*
+			检测是否支持html5的文件操作
+		*/
+		function isSupportFileApi() {
+
+			if (window.File && window.FileList && window.FileReader && window.Blob)
+				return true;
+			else
+				return false;
+		}
+
+		if ( isSupportFileApi() )
+			alert('支持html5文件操作！');
+		else
+			alert('您的浏览器版本过低，不支持html5文件操作！');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

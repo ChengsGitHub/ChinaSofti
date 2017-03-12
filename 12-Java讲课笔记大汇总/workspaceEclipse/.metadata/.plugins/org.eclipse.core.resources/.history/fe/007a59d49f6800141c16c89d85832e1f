@@ -1,0 +1,126 @@
+package com.icss.html;
+
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.webkit.WebView;
+import android.widget.Toast;
+
+import com.icss.html.pojo.Contact;
+import com.icss.html.service.ContactService;
+
+public class MainActivity extends Activity {
+
+	private WebView webView;
+	private ContactService contactService;
+	private ProgressDialog progress;// 进度条对话框
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
+		// 业务对象
+		contactService = new ContactService();
+
+		// 获得WebView控件
+		webView = (WebView) this.findViewById(R.id.webView);
+
+		// 设置支持javascript
+		webView.getSettings().setJavaScriptEnabled(true);
+
+		// 设置js访问的接口对象，contact就相当于js中的window,document对象一样
+		webView.addJavascriptInterface(new ContactPlugin(), "contact");
+
+		// 可以加载外网网页，但是一定要加入访问互联网权限
+		// webView.loadUrl("http://www.baidu.com");
+
+		/*
+		 * 也可以加载本地assets网页，file:///android_asset是固定的
+		 * file://表示文件协议，/android_asset表示assets目录
+		 */
+		webView.loadUrl("file:///android_asset/index.html");
+	}
+
+	/**
+	 * 写一个自定义类，作为被js调用的接口类
+	 */
+	public class ContactPlugin {
+
+		public void getContacts() {
+			MyTask myTask = new MyTask(MainActivity.this);
+			myTask.execute();
+		}
+
+	}
+
+	// 异步任务内部类，三个泛型参数请参照讲义
+	private class MyTask extends AsyncTask<String, Integer, String> {
+
+		// 构造方法，参数默认是上下文
+		public MyTask(Context context) {
+			progress = new ProgressDialog(context);
+		}
+
+		// 任务执行前回调方法
+		@Override
+		protected void onPreExecute() {
+			// progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);//带进度条的样式
+			progress.setTitle("提示");
+			progress.setMessage("异步任务进行中");
+			progress.show();
+		}
+
+		// 任务执行中回调方法
+		@Override
+		protected String doInBackground(String... params) {
+			JSONArray jsonArray = new JSONArray();
+
+			List<Contact> list = contactService.getContact();
+
+			try {
+				for (Contact contact : list) {
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("id", contact.getId());
+					jsonObject.put("name", contact.getName());
+					jsonObject.put("mobile", contact.getMobile());
+
+					jsonArray.put(jsonObject);
+				}
+
+				String jsonStr = jsonArray.toString();
+
+				// 调试
+				System.out.println(jsonStr);
+
+				return jsonStr;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+		// 任务结束后回调方法
+		@Override
+		protected void onPostExecute(String result) {
+			progress.dismiss();// 去掉进度条
+			Toast.makeText(MainActivity.this, "异步任务执行完毕", 3000).show();
+			// 此处是调用index.html中的javascript方法
+			//webView.loadUrl("javascript:showData('" + result + "')");
+		}
+
+	}
+
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		/*选择器优先级*/
+		p {
+			color: red;
+		}
+
+		.p1 {
+			color: green;
+		}
+
+		#p11 {
+			color: orange;
+		}
+
+	</style>
+</head>
+<body>
+	<p class="p1" id="p11">这是一个段落1</p>
+	<p class="p1">这是一个段落2</p>
+	<p>这是一个段落3</p>
+</body>
+</html>

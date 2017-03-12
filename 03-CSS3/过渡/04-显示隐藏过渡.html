@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 200px;
+			height: 200px;
+			background: #0cc;
+
+			transition:all 2s;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function m1() {
+			document.getElementById('div1').style.width = '0px';
+			document.getElementById('div1').style.height = '0px';
+		}
+
+		function m2() {
+			document.getElementById('div1').style.width = '200px';
+			document.getElementById('div1').style.height = '200px';
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		div1...
+	</div>
+
+	<input type="button" value="隐藏" onclick="m1();">
+	<input type="button" value="显示" onclick="m2();">
+</body>
+</html>

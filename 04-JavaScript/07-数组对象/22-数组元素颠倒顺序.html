@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+
+		function reverseArray(arr) {
+
+			for (var i = 0; i < arr.length / 2; i ++) {
+				// 交换元素值
+				var temp = arr[i];
+				arr[i] = arr[arr.length - i - 1];
+				arr[arr.length - i - 1] = temp;
+			}
+
+			return arr;
+		}
+
+		var a = [5,14,36,41];
+
+		reverseArray(a);
+
+		console.log(a);
+
+	</script>
+</head>
+<body>
+	编写一个函数，传入一个任意数组，把数组元素颠倒顺序返回
+</body>
+</html>

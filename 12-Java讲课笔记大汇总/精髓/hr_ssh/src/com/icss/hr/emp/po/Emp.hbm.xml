@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-17 10:37:01 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.icss.hr.emp.po.Emp" table="EMP">
+        <id name="empId" type="integer">
+            <column name="EMP_ID" precision="6" scale="0" />
+            <generator class="sequence" >
+            	<param name="sequence">emp_seq</param>
+            </generator>
+        </id>
+        <property name="empName" type="string">
+            <column name="EMP_NAME" length="50" />
+        </property>
+        <property name="empEmail" type="string">
+            <column name="EMP_EMAIL" length="100" />
+        </property>
+        <property name="empPhone" type="string">
+            <column name="EMP_PHONE" length="50" />
+        </property>
+        <property name="empHiredate" type="java.sql.Date">
+            <column name="EMP_HIREDATE" length="7" />
+        </property>
+      
+      	<many-to-one name="job" class="com.icss.hr.job.po.Job">
+      		<column name="emp_job_id"/>
+      	</many-to-one>
+      
+        <property name="empSalary" type="java.lang.Integer">
+            <column name="EMP_SALARY" precision="6" scale="0" />
+        </property>
+        
+      	<many-to-one name="dept" class="com.icss.hr.dept.po.Dept">
+      		<column name="emp_dept_id"/>
+      	</many-to-one>   	
+      	
+    </class>
+</hibernate-mapping>

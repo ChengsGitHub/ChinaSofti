@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+	<div ng-controller="firstController">
+		{{msg}}
+		<br/>
+		{{msg2}}
+	</div>
+
+	<script src="angular.js"></script>
+	<script>
+//		创建模块，第三个参数代表模块的配置
+		angular.module('myApp',[],function($provide){
+
+//			利用factory方法注册服务，可以返回任意类型
+			$provide.factory('service1',function() {
+				return 'hello,world';
+			});
+			
+			//利用service方法注册，返回基本类型无意义，只能返回对象类型
+			$provide.service('service2',function() {
+
+				return  {
+					msg:'hello,world2'
+				}
+
+//				return "hello,world2";
+			});
+		})
+//			控制器
+			.controller('firstController',['$scope','service1','service2',function($scope,service1,service2){
+
+//				使用service对象
+				$scope.msg = service1;
+				$scope.msg2 = service2.msg;
+
+			}])
+	</script>
+</body>
+</html>

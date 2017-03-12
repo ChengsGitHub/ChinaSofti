@@ -1,0 +1,19 @@
+package chapter15;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+/**
+ * 服务器端程序 
+ *
+ */
+public class Server {
+
+	public static void main(String[] args) throws IOException {
+		
+		//创建一个服务器对象（传入端口）
+		ServerSocket serverSocket = new ServerSocket(7777);
+
+	}
+
+}

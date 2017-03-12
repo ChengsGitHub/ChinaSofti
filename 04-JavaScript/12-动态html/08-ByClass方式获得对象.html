@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			//通过标签名称返回一组对象
+			var ps = document.getElementsByClassName('item');
+
+			alert('个数：' + ps.length);
+
+			for (var i = 0;i < ps.length;i ++) {
+				ps[i].style.color = 'blue';
+				alert(ps[i].innerHTML);
+			}
+		}
+	</script>
+</head>
+<body>	
+	<p class="item">段落文字1</p>
+	<p class="item">段落文字2</p>
+	<p class="item">段落文字3</p>
+	<p class="item">段落文字4</p>
+	<p>段落文字5</p>
+	<p>段落文字6</p>
+	<input type="button" value="获得对象" onclick="m1();">
+</body>
+</html>

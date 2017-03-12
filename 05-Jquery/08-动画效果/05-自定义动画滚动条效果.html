@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#toTop {
+			width: 50px;
+			height: 50px;
+			background: #0cc;
+			position: fixed;
+			right: 10px;
+			bottom: 10px;
+			cursor: pointer;
+			font-size: 12px;
+			text-align: center;
+			line-height: 50px;
+		}
+
+		#see {
+			height: 1000px;
+			background: red;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			// 单击回到顶部
+			$('#toTop').click(function(event) {
+				
+				// 滚动条动画过渡
+				$('html,body').animate({scrollTop:0}, 1000);
+
+			});
+
+			// 查看详细
+			$('#seeBtn').click(function(event) {				
+				// alert(this.href); //获得完整url地址
+				// alert(this.hash); //获得锚点名称
+
+				//div距离网页原点的偏移量
+				var top = $(this).offset().top; 
+
+				// 滚动条动画过渡
+				$('html,body').animate({scrollTop:top}, 1000);
+
+				return false;
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<a href="#see" id="seeBtn">查看详细</a>
+
+	<script type="text/javascript">
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+
+	<div id="toTop">
+		回到顶部
+	</div>
+
+	<div id="see">
+		这是详细内容......
+	</div>
+</body>
+</html>

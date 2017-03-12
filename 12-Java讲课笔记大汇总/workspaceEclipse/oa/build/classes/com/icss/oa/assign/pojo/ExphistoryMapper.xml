@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EXPHISTORY">
+  <resultMap id="BaseResultMap" type="com.icss.oa.assign.pojo.Exphistory">
+    <result column="EXPHISTORY_ID1" jdbcType="DECIMAL" property="exphistoryId1" />
+    <result column="EXPHISTORY_ID2" jdbcType="DECIMAL" property="exphistoryId2" />
+    <result column="EXPHISTORY_CON" jdbcType="VARCHAR" property="exphistoryCon" />
+    <result column="EXPHISTORY_COM" jdbcType="VARCHAR" property="exphistoryCom" />
+    <result column="EXPHISTORY_BEDATE" jdbcType="DATE" property="exphistoryBedate" />
+    <result column="EXPHISTORY_ENDATE" jdbcType="DATE" property="exphistoryEndate" />
+    <result column="EXPHISTORY_SAL" jdbcType="DECIMAL" property="exphistorySal" />
+    <result column="EXPHISTORY_REM" jdbcType="VARCHAR" property="exphistoryRem" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.icss.oa.assign.pojo.Exphistory">
+      insert into EXPHISTORY (EXPHISTORY_ID1, EXPHISTORY_ID2, EXPHISTORY_CON, 
+      EXPHISTORY_COM, EXPHISTORY_BEDATE, EXPHISTORY_ENDATE, 
+      EXPHISTORY_SAL, EXPHISTORY_REM)
+      values (#{exphistoryId1,jdbcType=DECIMAL}, #{exphistoryId2,jdbcType=DECIMAL}, #{exphistoryCon,jdbcType=VARCHAR}, 
+      #{exphistoryCom,jdbcType=VARCHAR}, #{exphistoryBedate,jdbcType=DATE}, #{exphistoryEndate,jdbcType=DATE}, 
+      #{exphistorySal,jdbcType=DECIMAL}, #{exphistoryRem,jdbcType=VARCHAR})
+  </insert>
+  
+  <update id="update" parameterType="map">
+      update EXPHISTORY
+      set 
+      EXPHISTORY_CON = #{exphistoryCon,jdbcType=VARCHAR},
+      EXPHISTORY_COM = #{exphistoryCom,jdbcType=VARCHAR},
+      EXPHISTORY_BEDATE = #{exphistoryBedate,jdbcType=DATE},
+      EXPHISTORY_ENDATE = #{exphistoryEndate,jdbcType=DATE},
+      EXPHISTORY_SAL = #{exphistorySal,jdbcType=DECIMAL},
+      EXPHISTORY_REM = #{exphistoryRem,jdbcType=VARCHAR}
+      where EXPHISTORY_ID2 = #{exphistoryId2,jdbcType=DECIMAL}
+  </update>
+  
+  <delete id="delete" parameterType="java.lang.Integer" >
+    	delete from EXPHISTORY
+    	where EXPHISTORY_ID2 = #{exphistoryId2,jdbcType=DECIMAL}
+  </delete>
+ 
+  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		*
+		from EXPHISTORY
+		where EXPHISTORY_ID1 = #{exphistoryId1,jdbcType=DECIMAL}
+  </select>
+	
+  <select id="query" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select * from exphistory e where e.exphistory_id1=#{expinfId}
+		
+  </select>
+
+  <select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from exphistory
+  </select>
+</mapper>

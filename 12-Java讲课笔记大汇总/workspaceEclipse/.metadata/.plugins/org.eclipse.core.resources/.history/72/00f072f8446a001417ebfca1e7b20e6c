@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-12 16:15:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.icss.hb.po.Student" table="student" catalog="icss">
+        <id name="stuId" type="java.lang.Integer">
+            <column name="stu_id" />
+            <generator class="native" />
+        </id>
+        <property name="stuName" type="string">
+            <column name="stu_name" length="50" />
+        </property>
+        <property name="stuAge" type="java.lang.Integer">
+            <column name="stu_age" />
+        </property>
+    </class>
+</hibernate-mapping>

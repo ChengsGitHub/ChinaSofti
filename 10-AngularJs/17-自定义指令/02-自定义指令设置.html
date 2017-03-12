@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+	<!-- E -->
+	<custom-tag></custom-tag>
+
+	<!-- C -->
+	<div class="custom-tag"></div>
+
+	<!-- M -->
+	<!-- directive:custom-tag -->
+
+	<!-- A -->
+	<div custom-tag></div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		// 模块
+		var myApp = angular.module('myApp',[]);
+	
+		// 指令
+		myApp.directive('customTag',[function(){
+			
+			return {
+					restrict:'ECMA',
+					template:'<div>你好，世界</div>',
+					replace:true
+			}
+
+		}]);
+
+		
+	</script>
+</body>
+</html>

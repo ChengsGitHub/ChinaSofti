@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function m1(a,b) {
+			alert(a + b);
+		}
+
+		// 函数本身是一个对象，可以正常赋值给变量
+		var m2 = m1;
+
+		// alert(m1);
+		// m2(7,11);
+
+		//匿名函数直接赋给m3
+		var m3 = function(a,b) {
+			alert(a + b);
+		}
+
+		m3(5,3);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

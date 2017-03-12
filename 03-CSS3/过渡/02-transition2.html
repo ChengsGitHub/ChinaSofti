@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 20px;
+			height: 100px;
+			background: #0cc;
+			
+			/*合并写法，后两个参数可以省略*/
+			transition:all 1.5s ease-in 0.5s;
+			/*兼容*/
+			-webkit-transition:all 1.5s ease-in 0.5s;
+			-moz-transition:all 1.5s ease-in 0.5s;
+			-ms-transition:all 1.5s ease-in 0.5s;
+			-o-transition:all 1.5s ease-in 0.5s;
+		}
+
+		#div1:hover {
+			width: 700px;
+			background: #f00;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

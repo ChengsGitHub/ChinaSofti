@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1(){
+			var t10bj = document.getElementById('t1');
+
+			alert('你输入的是:' + t10bj.value);
+
+			// 转换为数字
+			var shu = parseInt(t10bj.value * 100) / 100;
+			
+			alert('你输出的是:' + shu);
+		}
+	</script>
+</head>
+<body>
+<!-- 用户输入一个任意的小数，把这个小数最多保留两位小数。（不需要四舍五入） -->
+<input type="text" id="t1" placeholder="请输入一个小数">
+<input type="button" value="输出值" onclick="m1();">
+</body>
+</html>

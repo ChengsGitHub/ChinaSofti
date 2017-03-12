@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		
+	</div>
+
+	<div ng-controller="secondController">
+		
+	</div>	
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		/*
+			个人认为，如果希望两个控制器能够共享一些数据，完全可以写一个service服务，注入到两个控制器，不一定使用缓存服务
+		*/
+
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器1，注入$cacheFactory服务
+		myApp.controller('firstController', ['$scope','$cacheFactory', function($scope,$cacheFactory) {
+			
+			// 调用$cacheFactory传入自定义名称，返回一个缓存对象
+			var cache = $cacheFactory('cache1');
+
+			// 在缓存对象设置数据
+			cache.put('name','张三');
+			cache.put('age',27);
+
+		}]);
+
+		// 控制器2，注入$cacheFactory服务
+		myApp.controller('secondController', ['$scope','$cacheFactory', function($scope,$cacheFactory) {
+			
+			// 使用相同的名称获得已经存在的缓存对象
+			var cache = $cacheFactory.get('cache1');
+
+			// 从缓存对象中获得数据
+			var name = cache.get('name');
+			var age = cache.get('age');
+
+			console.log(name);
+			console.log(age);
+		}]);
+	</script>
+</body>
+</html>

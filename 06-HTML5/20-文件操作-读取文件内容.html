@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	选择图片
+	<input type="file" id="imgFile" accept="image/*">
+	<br>
+	选择文本
+	<input type="file" id="textFile" accept="text/*">
+	<br>
+	<img src="" alt="图片" id="image">
+	<br>
+	<div id="div1"></div>
+
+	<script type="text/javascript">
+		
+		// 获得dom对象
+		var imgFile = document.getElementById('imgFile');
+		var image = document.getElementById('image');
+		var textFile = document.getElementById('textFile');
+		var div1 = document.getElementById('div1');
+
+		/*
+			读取二进制图片数据
+		*/
+		imgFile.onchange = function() {
+			// 文件读取对象
+			var fr = new FileReader();
+			
+			// 读取文件内容
+			fr.readAsDataURL(this.files[0]);
+
+			// onload事件：异步读取文件内容，读取完毕会触发文件读取对象的onload事件
+			fr.onload = function(e) {
+				// fr对象的result属性代表文件的内容
+				console.log(this.result);
+				// 设置图片显示
+				image.src = this.result;
+			}
+		}
+
+		/*
+			读取纯文本文件
+		*/
+		textFile.onchange = function() {
+			// 文件读取对象
+			var fr = new FileReader();
+			
+			// 读取文件内容
+			fr.readAsText(this.files[0]);
+
+			fr.onload = function(e) {
+				div1.innerText = this.result;
+			}
+		}
+	</script>
+</body>
+</html>

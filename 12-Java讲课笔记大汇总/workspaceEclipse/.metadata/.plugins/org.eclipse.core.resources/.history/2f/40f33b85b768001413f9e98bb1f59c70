@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-10 16:46:08 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    
+    <class name="com.icss.hb.po.Emp" table="EMP">
+        <id name="empId" type="java.lang.Integer">
+            <column name="EMP_ID" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="empName" type="string">
+            <column name="EMP_NAME" length="50" />
+        </property>
+        <property name="empSalary" type="java.lang.Integer">
+            <column name="EMP_SALARY" precision="6" scale="0" />
+        </property>
+        <property name="empHiredate" type="date">
+            <column name="EMP_HIREDATE" length="7" />
+        </property>
+    </class>
+    
+</hibernate-mapping>

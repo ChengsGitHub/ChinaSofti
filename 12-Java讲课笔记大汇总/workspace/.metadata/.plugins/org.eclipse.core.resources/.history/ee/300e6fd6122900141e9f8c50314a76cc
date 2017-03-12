@@ -1,0 +1,19 @@
+package com.icss.test;
+
+public class Test2 {
+	
+	public static void main(String[] args) {
+		float foo = -1;
+		float foo1 = 0x0123;
+		System.out.println(foo1);
+	}
+	public static void mm(String[] args) {
+		float foo = -1;
+		float foo1 = 0x0123;
+		System.out.println(foo1);
+	}
+	
+	
+
+
+}

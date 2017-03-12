@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var json = {
+			"id":101,
+			"username":'jack',
+			"age":27,
+			"contact":{
+				"mobile":'13012345678',
+				"phone":'10086',
+				"qq":'12345678',
+				"email":['jack@163.com','jack@qq.com','jack@sina.com.cn']
+			}
+		}
+
+		// json对象转换为json字符串
+		var str = JSON.stringify(json); //ie8或以上支持
+
+		console.log(str);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

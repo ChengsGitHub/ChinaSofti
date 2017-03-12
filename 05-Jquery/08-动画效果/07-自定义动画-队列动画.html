@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			width: 100px;
+			height: 100px;
+			background: #0cc;
+			position: absolute;
+		}
+
+		#div2 {
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top:150px;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {
+				
+				// 不同元素，动画同时执行，不会产生队列动画效果
+				$('#div1').animate({left:400}, 1000);
+				$('#div2').animate({top:400}, 1000);
+
+			});
+
+			$('#btn2').click(function(event) {
+				
+				// 同一个元素，执行多个动画语句，默认就是队列动画
+				$('#div1').animate({left:400}, 1000);
+				$('#div1').animate({top:400}, 1000);
+
+			});
+
+			$('#btn3').click(function(event) {
+				
+				// 同一个元素，执行多个动画语句，默认就是队列动画-链式调用
+				$('#div1').animate({left:400}, 1000).animate({top:400}, 1000);				
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<input type="button" value="队列动画1" id="btn1">
+	<input type="button" value="队列动画2" id="btn2">
+	<input type="button" value="队列动画3" id="btn3">
+	
+	<div id="div1">		
+	</div>
+	<div id="div2">		
+	</div>
+</body>
+</html>

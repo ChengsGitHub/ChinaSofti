@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双飞翼布局</title>
+	<style type="text/css">	
+		html,body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#left-div {
+			background: #0cc;
+			height: 100%;	
+			float: left;
+			width: 100px;	
+		}
+
+		#content {
+			background: #cc0;
+			height: 100%;
+			float: left;
+			/*把百分比按照现在的实际宽度转换为像素，然后再做计算*/
+			width: calc(100% - 200px);			
+		}
+
+		#right-div {
+			background: #ccc;
+			height: 100%;
+			float: right;
+			width: 100px;
+		}		
+	</style>
+</head>
+<body>
+	<div id="left-div">
+		left
+	</div>
+	<div id="content">
+		content
+	</div>
+	<div id="right-div">
+		right
+	</div>
+</body>
+</html>

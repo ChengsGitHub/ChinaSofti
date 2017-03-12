@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-19 9:24:39 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.icss.hr.admin.po.Admin" table="ADMIN">
+        <id name="adminId" type="integer">
+            <column name="ADMIN_ID" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="adminName" type="string">
+            <column name="ADMIN_NAME" length="50" />
+        </property>
+        <property name="adminPwd" type="string">
+            <column name="ADMIN_PWD" length="50" />
+        </property>
+        <property name="adminLevel" type="integer">
+            <column name="ADMIN_LEVEL" precision="1" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

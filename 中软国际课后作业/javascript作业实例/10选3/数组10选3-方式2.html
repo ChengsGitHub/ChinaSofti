@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var btn1 = document.getElementById('btn1'); 
+			
+			btn1.onclick = function() {
+
+				// 产生0-9随机数
+				var a = parseInt(Math.random() * 10);
+				var b = parseInt(Math.random() * 10);
+				var c = parseInt(Math.random() * 10);
+				
+				// 如果没有重复值，输出，否则再产生一次
+				if(a != b && a != c && b != c)
+					alert(a + ',' + b + ',' + c);
+				else
+					btn1.click();					
+			}
+		}
+
+	</script>
+</head>
+<body>
+	点击按钮，从0-9中随机选出3个不重复的数字
+	<input type="button" value="10选3" id="btn1">
+</body>
+</html>

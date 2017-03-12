@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		function changeFont(size) {
+			var div1 = document.getElementById('div1');
+			div1.style.fontSize = size;
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1" style="font-size:14px;">
+		Get请求和post请求的区别：
+		1.get把数据追加在url后面，以?参数名=参数值 参数名=参数……形式，post请求把数据放到请求正文中
+		2.get由于受到url长度限制，发送数据量小，post发送数据几乎无限制
+		3.get明文发送数据，不安全，post数据放到请求正文中，安全
+		4.get发送中文困难，post发送中文容易
+
+		常用内置函数：
+		parseInt：字符串转为整数
+		parseFloat：字符串转为浮点数
+		isNaN：判断是否是一个非数字
+		eval：动态执行JavaScript语句字符串
+		escape/ unescape：基本编码解码，是unicode编码，不是url编码
+		encodeURI/ decodeURI：url编码解码，常用
+		encodeURIComponent/ decodeURIComponent：url编码解码，和上面的不同的是，=?也会被编码
+	</div>
+	<!-- 超级链接作为按钮单击触发程序使用，不能用href=#，需要用以下三种写法之一 -->
+	<a href="javascript:void(0);" onclick="changeFont('18px');">大</a>
+	<a href="javascript:;" onclick="changeFont('14px');">中</a>
+	<a href="javascript:changeFont('12px');">小</a>
+</body>
+</html>

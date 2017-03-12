@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		<input type="text" ng-model="data.username">
+		姓名：{{data.username}}	
+		<br>
+		<input type="text" ng-model="data.age">
+		年龄：{{data.age}}	
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		angular.module('myApp',[])
+			.controller('firstController', ['$scope', function($scope){
+
+				$scope.data = {
+					username:'tom',
+					age:27
+				}
+
+				// 检查数据模型中的data对象的变化，对象类型监测需要加参数true
+				$scope.$watch('data',function(newVal,oldVal) {
+
+					console.log('新值：' + newVal + ',旧值：' + oldVal);
+					
+				},true);
+				
+			}]);
+
+	</script>
+</body>
+</html>

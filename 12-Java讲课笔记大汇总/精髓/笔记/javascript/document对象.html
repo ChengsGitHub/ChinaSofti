@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+	function m1() {
+		var t1 = document.getElementById('t1');
+		t1.style.color = 'red';	
+	}
+	
+	function m2() {
+		var t2 = document.getElementsByName('t2');
+		for (var i = 0;i < t2.length;i ++) {
+			t2[i].style.color = 'green';	
+		}
+	}
+	
+	function m3() {
+		var t3 = document.getElementsByTagName('textarea');
+		for (var i = 0;i < t3.length;i ++) {
+			t3[i].style.color = 'blue';	
+		}
+	}
+</script>
+</head>
+
+<body>
+
+<textarea id="t1">中国人民解放军</textarea>
+<textarea name="t2">中国人民解放军</textarea>
+<textarea name="t2">中国人民解放军</textarea>
+<textarea>中国人民解放军</textarea>
+<textarea>中国人民解放军</textarea>
+<textarea>中国人民解放军</textarea>
+
+<input type="button" name="button" id="button" value="byId" onClick="m1();">
+<input type="button"  name="button2" id="button2" value="byName" onClick="m2();">
+<input type="button"  name="button3" id="button3" value="byTagName" onClick="m3();">
+
+</body>
+</html>

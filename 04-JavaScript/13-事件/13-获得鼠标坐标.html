@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		document.onmousemove = function(e) {
+			
+			e = e || window.event;
+
+			document.title = e.clientX + ',' + e.clientY;
+		}
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

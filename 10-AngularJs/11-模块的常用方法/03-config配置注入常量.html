@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		var myApp = angular.module('myApp',[]);
+
+		// 用value定义模块中的一些常量（常量命名规范全大写，多个单词用下划线分割）
+		myApp.value('APP_NAME', '手机淘宝');
+		myApp.value('APP_VERSION', '1.2');
+
+		//用constant定义模块的一些常量
+		myApp.constant('IP', "http://192.168.1.254");
+
+		// config只能注入constant常量，无法注入value定义的常量
+		myApp.config(['IP',function(IP) {
+			
+			console.log('config配置！！！');			
+			console.log('IP=' + IP);
+
+		}]);
+		
+	</script>
+</body>
+</html>

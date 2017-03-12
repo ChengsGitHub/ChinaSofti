@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('p').each(function(index, el) {
+
+				alert(index + ',' + $(el).text() );
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<p>这是段落内容1</p>
+	<p>这是段落内容2</p>
+	<p>这是段落内容3</p>
+	<p>这是段落内容4</p>
+	<p>这是段落内容5</p>
+</body>
+</html>

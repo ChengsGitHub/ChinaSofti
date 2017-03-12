@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	
+		var str = "张三的手机号是13312345678，李四的手机号是16911111118，王五的手机号是13822222222";
+		
+		// 默认贪婪模式，尽可能多的匹配
+		var r = /1.*8/g;		
+		var str1 = str.replace(r,'#');
+		console.log(str1);
+		
+		// 非贪婪模式，尽可能少的匹配
+		r = /1.*?8/g;
+		var str2 = str.replace(r,'#');
+		console.log(str2);
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

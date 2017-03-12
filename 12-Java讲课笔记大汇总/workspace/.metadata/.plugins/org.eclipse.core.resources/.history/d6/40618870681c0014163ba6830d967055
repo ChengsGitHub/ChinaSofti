@@ -1,0 +1,12 @@
+package com.icss.array;
+/**
+ * Math.random() 产生 [0.0-1.0)之间的随机小数 
+ * @author Administrator
+ *
+ */
+public class TestRandom {
+	public static void main(String[] args) {
+		System.out.println(Math.random());
+	}
+
+}

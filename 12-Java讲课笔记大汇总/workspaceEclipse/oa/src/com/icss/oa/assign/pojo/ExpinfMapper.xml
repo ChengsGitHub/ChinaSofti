@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="EXPINF" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.assign.pojo.Expinf" >    
+    <id column="EXPINF_ID" property="expinfId" jdbcType="DECIMAL" />
+    <result column="EXPINF_NAME" property="expinfName" jdbcType="VARCHAR" />
+    <result column="EXPINF_EDU" property="expinfEdu" jdbcType="VARCHAR" />
+    <result column="EXPINF_SKI" property="expinfSki" jdbcType="VARCHAR" />
+    <result column="EXPINF_EXP" property="expinfExp" jdbcType="VARCHAR" />
+    <result column="EXPINF_ACC" property="expinfAcc" jdbcType="VARCHAR" />
+    <result column="EXPINF_SAL" property="expinfSal" jdbcType="DECIMAL" />
+    <result column="EXPINF" property="expinf" jdbcType="BLOB" />
+  </resultMap>
+  
+  	<insert id="insert" parameterType="com.icss.oa.assign.pojo.Expinf">
+  	    insert into EXPINF(EXPINF_ID,EXPINF_NAME,EXPINF_EDU,EXPINF_SKI,EXPINF_EXP,EXPINF_ACC,EXPINF_SAL,EXPINF)
+  	    values (expinf_seq.nextval,#{expinfName,jdbcType=VARCHAR},
+  	    #{expinfEdu,jdbcType=VARCHAR},#{expinfSki,jdbcType=VARCHAR},
+  	    #{expinfExp,jdbcType=VARCHAR},#{expinfAcc,jdbcType=VARCHAR},
+  	    #{expinfSal,jdbcType=DECIMAL},#{expinf,jdbcType=BLOB})
+  	</insert>
+  	
+  	<update id="update" parameterType="com.icss.oa.assign.pojo.Expinf" >
+      update EXPINF
+      set EXPINF_NAME = #{expinfName,jdbcType=VARCHAR},
+      EXPINF_EDU = #{expinfEdu,jdbcType=VARCHAR},
+      EXPINF_SKI = #{expinfSki,jdbcType=VARCHAR},
+      EXPINF_EXP = #{expinfExp,jdbcType=VARCHAR},
+      EXPINF_ACC = #{expinfAcc,jdbcType=VARCHAR},
+      EXPINF_SAL = #{expinfSal,jdbcType=DECIMAL},
+      EXPINF = #{expinf,jdbcType=BLOB}
+      where EXPINF_ID=#{expinfId,jdbcType=DECIMAL}
+  	</update>
+  	
+  	<delete id="delete" parameterType="java.lang.Integer" >
+    	delete from EXPINF
+    	where EXPINF_ID = #{expinfId,jdbcType=DECIMAL}
+  	</delete>
+ 
+  	<select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		*
+		from EXPINF
+		where EXPINF_ID = #{expinfId,jdbcType=DECIMAL}
+	</select>
+	
+  	<select id="query" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * from (select rownum
+		rnum,e.* from expinf e
+		order by expinf_id desc) where rnum between
+		#{start} and #{end}
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from expinf
+	</select>
+	
+	<select id="uploadImg" parameterType="com.icss.oa.assign.pojo.Expinf" >
+	    update EXPINF set expinf=#{expinf,jdbcType=BLOB} where expinf_id=#{expinfId}
+	</select>
+	
+	<select id="download" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	    select * from expinf where expinf_id=#{expinfId}
+	</select>
+	
+	<select id="getPrimaryKey" resultType="java.lang.Integer">
+	    select expinf_seq.currval from dual 	    
+	</select>
+	
+</mapper>

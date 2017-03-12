@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<span id="span1">1</span>
+	<input type="button" value="启动WebWorker" onclick="startWorker();">
+	<input type="button" value="停止WebWorker" onclick="stopWorker();">
+
+	<script type="text/javascript">
+
+		var w; //WebWorker对象
+
+		/*
+			启动一个多线程任务
+		*/
+		function startWorker() {
+			
+			// 兼容判断
+			if (window.Worker == undefined) {
+				alert('浏览器不支持WebWorker');
+				return;
+			}
+			
+			//创建WebWorker对象，传入需要执行的js文件路径
+			w = new Worker('script.js');
+
+			//注册消息接收事件,从事件对象的data属性中获得传递的数据
+			w.onmessage = function(e) {
+				document.getElementById('span1').innerHTML = e.data;
+			};
+		}
+
+		/*
+			终止一个多线程任务
+		*/
+		function stopWorker() {
+			if (w) {
+				w.terminate(); //停止当前任务
+			}
+		}
+
+	</script>
+</body>
+</html>

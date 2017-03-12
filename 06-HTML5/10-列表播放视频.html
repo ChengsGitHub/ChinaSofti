@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="videoList">
+		<li><a href="javascript:;" data-video="demo.mp4">视频1</a></li>
+		<li><a href="javascript:;" data-video="demo.ogg">视频2</a></li>
+	</ul>
+
+	<video src="" controls width="400" id="myVideo">
+		浏览器不支持html5视频格式
+	</video>
+
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		
+		var myVideo = document.getElementById('myVideo');
+
+		$('#videoList li a').click(function(event) {
+			
+			// 获得播放路径
+			var url = $(this).attr('data-video');
+			// 指定src路径
+			myVideo.src = url;
+			// 播放视频
+			myVideo.play();
+
+		});
+
+		/*
+			当浏览器加载完毕媒体的时长和文件长度事件回调函数
+		*/
+		$(myVideo).on('loadedmetadata', function(e) {
+			alert('播放时长：' + this.duration);
+		});
+	</script>
+</body>
+</html>

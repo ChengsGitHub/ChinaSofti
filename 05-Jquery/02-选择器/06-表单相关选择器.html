@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			// alert( $('#form1 input').length ); //这种写法，如果不是input标签不会选择
+			// alert( $('#form1 :input').length ); //这种写法，所有的表单元素（包括textarea select button）
+			
+			// alert( $('#form1 :text').length ); //单行文本框
+			// alert( $('#form1 :password').length ); //密码框
+			// alert( $('#form1 :radio').length ); //单选按钮
+			// alert( $('#form1 :checkbox').length ); //复选按钮
+			// alert( $('#form1 :submit').length );提交按钮
+			// alert( $('#form1 :reset').length ); //重置按钮
+			// alert( $('#form1 :button').length ); //普通按钮
+			// alert( $('#form1 :file').length ); //文件域
+			// alert( $('#form1 input:hidden').length ); //隐藏域
+
+			// alert( $('#form1 :input:enabled').length ); //可用表单元素
+			// alert( $('#form1 :input:disabled').length ); //禁用的表单元素
+
+			// alert( $('#form1 :radio:checked').val() ); //checked元素
+			// alert( $('#form1 :checkbox:checked').length ); //checked元素
+
+			// alert( $('#form1 :selected').val() ); //selected元素
+			// alert( $('#form1 :focus').length ); //获得焦点的元素
+		});
+
+	</script>
+</head>
+<body>
+	<form id="form1" method="post" action="xxx.jsp">
+		
+		姓名<input type="text" name="username"/>
+		<br />
+		密码<input type="password" name="userpwd"/>
+		<br />
+		确认<input type="password" name="userpwd2"/>
+		<br />
+		自我介绍
+		<br />
+		<textarea name="zwjs" cols="30" rows="10">这家伙很懒，什么都没有写...</textarea>
+		<br />
+		城市
+		<select name="city">
+			<option value="city1">城市1</option>
+			<option value="city2">城市2</option>
+			<option value="city3">城市3</option>
+			<option value="city4">城市4</option>
+		</select>
+		<br />
+		性别
+		<input type="radio" name="sex" value="boy" checked/>
+		男
+		<input type="radio" name="sex" value="girl"/>
+		女
+		<br />
+		技能
+		<input type="checkbox" name="skill" />技能1
+		<input type="checkbox" name="skill" checked/>技能2
+		<input type="checkbox" name="skill" />技能3
+		<input type="checkbox" name="skill" checked/>技能4
+		<br />
+		上传照片<input type="file" />
+		<br />		
+		<input type="submit" value="注册"/>
+		<input type="reset" value="重置" disabled/>
+		<input type="button" value="离开"/>
+
+		<input type="hidden">
+
+		xhtml
+	</form>
+</body>
+</html>

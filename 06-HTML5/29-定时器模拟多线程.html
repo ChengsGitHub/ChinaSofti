@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		// 定时器需要等待循环全部结束，没有任何其他代码在运行中，才有机会执行
+		for (var i = 0;i < 3;i ++) {			
+			setTimeout(function(){
+				alert(i);
+			},0);
+		}
+	</script>
+</head>
+<body>	
+</body>
+</html>

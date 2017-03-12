@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			caller是函数对象的一个属性对象，永远代表调用了当前函数的那个函数对象
+		*/		
+		function m1() {
+			console.log('m1');
+			console.log(arguments.callee.caller);
+		}
+
+		function m2() {
+			m1();
+		}
+
+		function m3(){
+			m1();
+		}
+
+		// m2();
+		m3();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

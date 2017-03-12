@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MEETINGRECORD" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.meeting.pojo.Meetingrecord" >
+    <id column="RECORD_ID" property="recordId" jdbcType="DECIMAL" />
+    <result column="ORDER_ID" property="orderId" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.icss.oa.meeting.pojo.Meetingrecord" extends="BaseResultMap" >
+    <result column="MEETING_INFO" property="meetingInfo" jdbcType="BLOB" />
+  </resultMap>
+ <insert id="insert" parameterType="com.icss.oa.meeting.pojo.Meetingrecord" >
+    insert into MEETINGRECORD (RECORD_ID,ORDER_ID, MEETING_INFO)
+    values (mrecord_seq.nextval, #{orderId,jdbcType=DECIMAL}, #{meetingInfo,jdbcType=BLOB})
+  </insert>
+  
+ <select id="queryById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    m.meeting_info
+    from MEETINGRECORD m
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="query" resultMap="BaseResultMap">
+    select 
+    *
+   from(select rownum rnum,
+   		m.* from meetingrecord m
+    	order by order_id desc)
+    where rnum between #{start} and #{end}
+  </select>
+  
+   <update id="update" parameterType="com.icss.oa.meeting.pojo.Meetingrecord" >
+	    update MEETINGRECORD
+	    set ORDER_ID = #{orderId,jdbcType=DECIMAL},
+	      MEETING_INFO = #{meetingInfo,jdbcType=BLOB}
+	    where RECORD_ID = #{recordId,jdbcType=DECIMAL}
+  	</update>
+  <delete id="delete" parameterType="java.lang.Integer" >
+   	delete from MEETINGRECORD
+    where RECORD_ID = #{recordId,jdbcType=DECIMAL}
+  </delete>
+  
+ 
+	<select id="download" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+	    select * from MEETINGRECORD where ORDER_ID=#{orderId,jdbcType=DECIMAL}
+	</select>
+  <select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from MEETINGRECORD
+	</select>
+  
+</mapper>

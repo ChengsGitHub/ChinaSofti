@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		ul,ul li {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		#left-menu {
+			width: 200px;
+			height: 100%;
+			position: fixed;
+			top: 0px;			
+			background-color: #1D1F20;
+			background:rgba(0,0,0,0.8);
+			color: #ccc;			
+			font-size: 12px;			
+		}
+
+		#left-menu h4 {
+			line-height: 40px;
+			border-bottom:1px solid #666;
+			letter-spacing: 0.1em;
+			font-size: 16px;
+		}
+
+		#left-menu ul {
+			height: 100%;
+			overflow-y:auto; 
+		}
+
+		#left-menu li {
+			line-height: 40px;			
+		}
+
+		#left-menu li a {
+			padding-left: 20px;
+			display: block;
+			color: #fff;			
+		}
+
+		#left-menu li a:hover {
+			background-color: #999;
+			background: rgba(255,255,255,0.1);
+		}
+
+		#left-menu .btn {
+			width: 20px;
+			height: 60px;
+			position: absolute;
+			right: -20px;
+			top:150px;
+			background: #000;
+			color: #fff;
+			text-align: center;
+			cursor: pointer;
+		}
+	</style>
+
+	<script type="text/javascript">
+		/*	onmouseover和onmouseout会有移动到子元素事件重新触发问题
+			onmouseenter和onmouseleave并没有得到所有浏览器支持,可以用jquery的onmouseenter和onmouseleave事件来解决这个问题
+		*/
+		window.onload = function() {
+
+			var isAnimate = false;//动画同步标识
+			var timerId;//定时器id
+			
+			//菜单容器
+			var leftMenu = document.getElementById('left-menu');
+
+			//菜单容器鼠标移上
+			leftMenu.onmouseenter = function(e) {
+				//如果正在移动中
+				if (isAnimate) {
+					window.clearTimeout(timerId);//终止当前定制器任务 
+					animate(0 - parseInt(leftMenu.style.left) ); //按照当前位置做反向运动
+					return;
+				}					
+
+				animate(200);//调用运动函数
+				console.log('leftMenu鼠标移上');
+			}
+
+			//菜单容器鼠标离开
+			leftMenu.onmouseleave = function(e) {
+				//如果正在移动中
+				if (isAnimate) {
+					window.clearTimeout(timerId);//终止当前定制器任务
+					animate(-200 - parseInt(leftMenu.style.left) );//按照当前位置做反向运动
+					return;
+				}					
+
+				animate(-200);//调用运动函数
+				console.log('leftMenu鼠标离开');
+			}
+
+			/*过渡动画*/
+			function animate(offset) {
+
+				//计算新的偏移量
+				var newLeft = parseInt(leftMenu.style.left) + offset;
+
+				var time = 500;//动画过渡时长
+				var inteval = 10;//每隔10毫秒执行一次
+				var step = offset / (time / inteval);//计算出每次运动的大小
+
+				/*内部函数go：运动函数*/
+				function go() {
+
+					if (step > 0 && parseInt(leftMenu.style.left) < newLeft || step < 0 && parseInt(leftMenu.style.left) > newLeft) {
+
+						var currLeft = leftMenu.style.left = parseInt(leftMenu.style.left) + step + 'px';
+						console.log(currLeft);
+						timerId = setTimeout(go,inteval);
+					} else {
+						isAnimate = false;
+					}
+				}
+				
+				isAnimate = true;//定时器开始执行
+				go();//调用运动函数							
+			}
+		};
+	</script>
+</head>
+<body>
+	<!-- 左侧菜单开始 -->
+	<div id="left-menu" style="left:-200px">
+		<h4>侧滑菜单</h4>
+		<ul>
+			<li><a href="#">菜单文字1</a></li>
+			<li><a href="#">菜单文字2</a></li>
+			<li><a href="#">菜单文字3</a></li>
+			<li><a href="#">菜单文字4</a></li>
+			<li><a href="#">菜单文字5</a></li>
+			<li><a href="#">菜单文字6</a></li>
+			<li><a href="#">菜单文字7</a></li>
+			<li><a href="#">菜单文字8</a></li>
+			<li><a href="#">菜单文字9</a></li>
+			<li><a href="#">菜单文字10</a></li>
+			<li><a href="#">菜单文字11</a></li>
+			<li><a href="#">菜单文字12</a></li>
+			<li><a href="#">菜单文字13</a></li>
+			<li><a href="#">菜单文字14</a></li>
+			<li><a href="#">菜单文字15</a></li>
+			<li><a href="#">菜单文字16</a></li>
+			<li><a href="#">菜单文字17</a></li>			
+		</ul>
+		<div class="btn">
+			左侧菜单
+		</div>
+	</div>
+	<!-- 左侧菜单结束 -->
+
+	<script type="text/javascript">
+		for (var i = 0;i <= 100;i ++) {
+			document.write(i + '<br>');
+		}
+	</script>
+</body>
+</html>

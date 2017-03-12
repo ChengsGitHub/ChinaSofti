@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+
+		function outPut(s) {
+			document.write(s);
+		}
+
+		var i = 0;
+
+		function outer() {
+			outPut(i);
+
+			function inner() {
+				var i = 1;
+				outPut(i);
+			}
+
+			inner();
+			outPut(i);
+		}
+
+		outer();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

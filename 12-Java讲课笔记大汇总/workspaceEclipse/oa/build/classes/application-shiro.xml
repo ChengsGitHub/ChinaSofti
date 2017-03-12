@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- ##########shiro框架配置########## 开始 -->
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<bean id="myRealm" class="com.icss.oa.common.MyRealm"></bean>
+	 
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager" />
+		 
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="realm" ref="myRealm" />
+	</bean>
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+		depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+	<!-- id="shiroFilter"必须要和web.xml中过滤器名称保持一致 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	
+		<property name="securityManager" ref="securityManager" />
+
+		<!-- #####以下为可选配置，请按照实际项目需要进行配置#### -->
+		<!-- 登陆的url -->
+		<property name="loginUrl" value="/login.jsp" />
+		
+		<!-- 登陆成功跳转的页 -->
+		<property name="successUrl" value="/pages/index.jsp" />
+		
+		<!-- 权限验证失败跳转的url -->
+		<property name="unauthorizedUrl" value="/failed.jsp" />
+		
+		<!-- filters属性也是可选的，用来声明一些可以在filterChainDefinitions 里面使用的filter。 如果你声明的filter名称是shiro默认有的，那么将会覆盖默认的filter -->
+		<property name="filterChainDefinitions">
+			<value>
+				/ = anon
+				/login.jsp = anon
+				/login/checkLogin.action* = anon
+				/css/** = anon
+				/images/** = anon
+				/img/** = anon
+				/js/** = anon
+				
+				
+				<!-- 会议管理-设备管理 -->
+				/device/insert.action* = authc,perms[device:insert]
+				/device/toUpdate.action* = authc,perms[device:update]
+				/device/update.action* = authc,perms[device:update]
+				/device/delete.action* = authc,perms[device:delete]
+				/device/query.action* = authc,perms[device:query]
+				
+				/pages/meeting/Device.jsp=authc,perms[device:insert]
+				/pages/meeting/Device.jsp=authc,perms[device:update]
+				/pages/meeting/Device.jsp=authc,perms[device:query]
+				
+				
+				
+				<!-- 会议管理-会议预约 -->
+				/meetingorder/insert.action* = authc,perms[meetOrder:insert]
+				/meetingorder/toUpdate.action* = authc,perms[meetOrder:update]
+				/meetingorder/update.action* = authc,perms[meetOrder:update]
+				/meetingorder/delete.action* = authc,perms[meetOrder:delete]
+				/meetingorder/query.action* = authc,perms[meetOrder:query]
+				/meetingorder/querymeeting.action* = authc,perms[meetOrder:querymeeting]
+				/meetingorder/toApproval.action* = authc,perms[meetOrder:toApproval]
+				
+				/pages/meeting/AddMeetingOrder.jsp=authc,authc,perms[meetOrder:insert]
+				/pages/meeting/MeetingApproval.jsp=authc,authc,perms[meetOrder:toApproval]
+				/pages/meeting/QueryMeetingOrd.jsp=authc,authc,perms[meetOrder:query]
+				/pages/meeting/UpdateMeetingOrder.jsp=authc,perms[meetOrder:update]
+				
+				
+				<!-- 会议管理-会议室管理-->
+				/meetingroom/insert.action* = authc,perms[meetingRoom:insert]
+				/meetingroom/toUpdate.action* = authc,perms[meetingRoom:update]
+				/meetingroom/update.action* = authc,perms[meetingRoom:update]
+				/meetingroom/delete.action* = authc,perms[meetingRoom:delete]
+				/meetingroom/query.action* = authc,perms[meetingRoom:query]
+				/meetingroom/queryByCondition.action* = authc,perms[meetingRoom:queryByCondition]
+				
+				/pages/meeting/Meetingroom.jsp=authc,perms[meetingRoom:query]
+				/pages/meeting/QueryConditionRoom.jsp = authc,perms[meetingRoom:queryByCondition]
+				
+				
+				
+				<!-- 会议管理-会议记录-->
+				/meetingorder/querymeeting.action* = authc,perms[meetingRecorder:query]
+				/meetingrecord/insert.action* = authc,perms[meetingRecorder:uploadRecorder]
+				/meetingrecord/download.action* = authc,perms[meetingRecorder:downloadRecorder]
+				
+				/pages/meeting/UploadRecord.jsp=authc,perms[meetingRecorder:uploadRecorder]
+				/pages/meeting/QueryMeeting.jsp=authc,perms[meetingRecorder:querymeeting]
+				
+				
+				<!-- 系统管理-部门管理-->
+				
+				/dept/insert.action* = authc,perms[dept:insert]
+				/dept/toUpdate.action* = authc,perms[dept:update]
+				/dept/update.action* = authc,perms[dept:update]
+				/dept/delete.action* = authc,perms[dept:delete]
+				/dept/query.action* = authc,perms[dept:query]
+				
+				/pages/systemMana/AddDept.jsp = authc,perms[dept:insert]
+				/pages/systemMana/UpdateDept.jsp = authc,perms[dept:update]
+				/pages/systemMana/QueryDept.jsp = authc,perms[dept:query]
+				
+				<!-- 系统管理-职务管理-->
+				/job/insert.action* = authc,perms[job:insert]
+				/job/toUpdate.action* = authc,perms[job:update]
+				/job/update.action* = authc,perms[job:update]
+				/job/delete.action* = authc,perms[job:delete]
+				/job/query.action* = authc,perms[job:query]
+
+				/pages/systemMana/Job.jsp = authc,perms[job:query]
+				
+				<!-- 系统管理-员工管理-->
+				/emp/insert.action* = authc,perms[emp:insert]
+				/emp/toUpdate.action* = authc,perms[emp:update]
+				/emp/update.action* = authc,perms[emp:update]
+				/emp/delete.action* = authc,perms[emp:delete]
+				/emp/query.action* = authc,perms[emp:query]
+				/emp/toSetAssign.action* = authc,perms[emp:toSetAssign]
+				/emp/insertUserRole.action* = authc,perms[emp:toSetAssign]
+				
+				/pages/systemMana/AddEmp.jsp = authc,perms[emp:insert]
+				/pages/systemMana/EmpDetails.jsp = authc,perms[emp:update]
+				/pages/systemMana/QueryEmp.jsp = authc,perms[emp:query]
+				/pages/systemMana/Autho.jsp = authc,perms[emp:toSetAssign]
+				
+				
+				<!-- 系统管理-公告管理-->
+				/bbs/insert.action* = authc,perms[bbs:insert]
+				/bbs/toUpdate.action* = authc,perms[bbs:update]
+				/bbs/update.action* = authc,perms[bbs:update]
+				/bbs/delete.action* = authc,perms[bbs:delete]
+		
+				
+				/pages/bbs/EditAnno.jsp = authc,perms[bbs:insert]
+				/pages/bbs/ManaAnno.jsp = authc,perms[bbs:query]
+				
+				
+				<!--资产管理-->
+				/offsup/insert.action* = authc,perms[offsup:insert]
+				/offsup/toUpdate.action* = authc,perms[offsup:update]
+				/offsup/update.action* = authc,perms[offsup:update]
+				/offsup/delete.action* = authc,perms[offsup:delete]
+				/offsup/query.action* = authc,perms[offsup:query]
+				/offsup/exportExcel.action* = authc,perms[offsup:export]
+				
+				/pages/offsup/QueryOffsup.jsp = authc,perms[offsup:query]
+				
+				<!--库存管理-->
+				
+				/warehouse/insert.action* = authc,perms[warehouse:insert]
+				/warehouse/toUpdate.action* = authc,perms[warehouse:update]
+				/warehouse/update.action* = authc,perms[warehouse:update]
+				/warehouse/delete.action* = authc,perms[warehouse:delete]
+				/warehouse/query.action* = authc,perms[warehouse:query]
+				
+				/pages/warehouse/QueryWarehouse.jsp= authc,perms[warehouse:query]
+				
+				
+				
+				
+					<!-- 车辆管理-车辆预约 
+				/pages/busorder/insert.action* = authc,perms[busOrder:insert]
+				/pages/busorder/toUpdate.action* = authc,perms[busOrder:update]
+				/pages/busorder/update.action* = authc,perms[busOrder:update]
+				/pages/busorder/delete.action* = authc,perms[busOrder:delete]
+				/pages/busorder/query.action* = authc,perms[busOrder:query]	-->
+				/busorder/toApproval.action* = authc,perms[busOrder:toApproval]
+				<!--
+				/pages/bus/AddBusOrder.jsp=authc,authc,perms[busOrder:insert]
+				/pages/bus/QueryBusOrder.jsp=authc,authc,perms[busOrder:query]
+				/pages/bus/UpdateBusOrder.jsp=authc,authc,perms[busOrder:update]
+				/pages/bus/BusApproval.jsp=authc,authc,perms[busOrder:toApproval]
+				-->
+				<!-- 车辆管理-车辆 -->
+				/bus/insert.action* = authc,perms[bus:insert]
+				/bus/toUpdate.action* = authc,perms[bus:update]
+				/bus/update.action* = authc,perms[bus:update]
+				/bus/delete.action* = authc,perms[bus:delete]
+				/bus/query.action* = authc,perms[bus:query]
+				/bus/queryByCondition.action* = authc,perms[bus:queryByCondition]
+				
+				/pages/bus/Bus.jsp=authc,perms[bus:query]
+				/pages/bus/QueryConditionBus.jsp = authc,perms[bus:queryByCondition]
+				
+				
+				
+				<!-- 车辆管理-车辆记录-->
+				
+				/busrecord/insert.action* = authc,perms[busrecord:insert]
+				/busrecord/delete.action* = authc,perms[busrecord:delete]
+				/busrecord/toUpdate.action* = authc,perms[busrecord:update]
+				/busrecord/update.action* = authc,perms[busrecord:update]
+				/busrecord/query.action* = authc,perms[busrecord:query]
+				
+				/pages/bus/AddBusRecord.jsp=authc,perms[busrecord:insert]
+				/pages/bus/BusRecord.jsp=authc,perms[busrecord:query]
+				/pages/bus/UpdateBusRecord.jsp=authc,perms[busrecord:update]
+				
+								
+				<!-- 外派人才管理-外派人才信息-->
+				
+				/expinf/insert.action* = authc,perms[expinf:insert]
+				/expinf/toUpdate.action* = authc,perms[expinf:update]
+				/expinf/update.action* = authc,perms[expinf:update]
+				/expinf/delete.action* = authc,perms[expinf:delete]
+				/expinf/query.action* = authc,perms[expinf:query]
+				/expinf/queryByIndex.action* = authc,perms[expinf:queryByIndex]
+				/expinf/uploadImg.action* = authc,perms[expinf:upload]
+				/expinf/download.action* = authc,perms[expinf:download]
+				
+				
+				/pages/assign/AddExpinf.jsp = authc,perms[expinf:insert]
+				/pages/assign/UpdateDept.jsp = authc,perms[expinf:update]
+				/pages/assign/QueryExpinf.jsp = authc,perms[expinf:query]
+				/pages/assign/AddExpinfDoc.jsp = authc,perms[expinf:upload]
+				/pages/assign/ExpinfDetails.jsp = authc,perms[expinf:query]
+				/pages/assign/QueryExpinfByIndex.jsp = authc,perms[expinf:queryByIndex]
+				
+				
+				
+				
+				<!-- 外派公司管理-外派公司信息-->
+				/assigncom/insert.action* = authc,perms[assigncom:insert]
+				/assigncom/toUpdate.action* = authc,perms[assigncom:update]
+				/assigncom/update.action* = authc,perms[assigncom:update]
+				/assigncom/delete.action* = authc,perms[assigncom:delete]
+				/assigncom/query.action* = authc,perms[assigncom:query]
+				
+
+				/pages/assign/QueryAssigncom.jsp = authc,perms[assigncom:query]
+				
+				
+				
+				
+				<!-- 外派人才派遣历史记录-->
+				
+				/exphistory/insert.action* = authc,perms[exphistory:insert]
+				/exphistory/toUpdate.action* = authc,perms[exphistory:update]
+				/exphistory/update.action* = authc,perms[exphistory:update]
+				/exphistory/delete.action* = authc,perms[exphistory:delete]
+				/exphistory/query.action* = authc,perms[exphistory:query]
+
+				/pages/assign/ExphistoryDetails.jsp = authc,perms[exphistory:update]
+								
+				
+				/logout = authc,logout
+								
+				/** = authc
+			</value>
+		</property>
+	</bean>
+
+	<!-- ##########shiro框架配置########## 结束 -->
+
+</beans>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#dropbox {
+			width: 300px;
+			height: 300px;
+			background: #fff;
+			border:5px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="dropbox">
+		请把文件拖放到此区域
+	</div>
+	<div id="div1"></div>
+
+	<script type="text/javascript">
+		// 获得dom对象
+		var dropbox = document.getElementById('dropbox');
+		var div1 = document.getElementById('div1');
+
+		// 拖放进入
+		dropbox.addEventListener('dragenter',function(e){
+			console.log('dropbox dragenter');
+
+			e.stopPropagation();
+			e.preventDefault();
+
+			//区域高亮
+			this.style.background = 'yellow';
+			this.style.borderColor = 'red';
+		},false);
+
+		// 拖离区域
+		dropbox.addEventListener('dragleave',function(e){
+			console.log('dropbox dragleave');
+
+			e.stopPropagation();
+			e.preventDefault();
+
+			//区域失去高亮
+			this.style.background = '#fff';
+			this.style.borderColor = '#000';
+		},false);
+
+		// 拖动的对象悬停在当前区域（会多次触发）
+		dropbox.addEventListener('dragover',function(e){
+			console.log('dropbox dragover');
+
+			e.stopPropagation();
+			e.preventDefault();
+		},false);
+
+		// 在区域中释放对象
+		dropbox.addEventListener('drop',function(e){
+			console.log('dropbox drop');
+
+			e.stopPropagation();
+			e.preventDefault();
+
+			// 从e.dataTransfer中获得文件列表集合
+			var files = e.dataTransfer.files;
+
+			var html = [];
+
+			// 遍历文件集合
+			for (var i = 0;i < files.length;i ++) {
+				// 获得当前文件对象
+				var f = files[i];
+
+				// 文件信息拼接字符串加入到数组
+				html.push('<p>' + f.name + ',' + (f.type||'未知类型') + ',' + f.size + '字节' + '</p>');
+			}
+
+			// 显示文件信息到div中
+			div1.innerHTML = html.join('');
+		},false);
+	</script>
+</body>
+</html>

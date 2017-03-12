@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+</head>
+<body>
+	<div id="div1"></div>	
+
+	<script type="text/javascript">
+		
+		function $(_id) {
+			var obj = document.getElementById(_id);
+
+			if (obj == null)
+				throw new Error('传入对象的id不存在！');
+
+			return obj;
+		}
+
+		var obj = $('div1111');
+		obj.innerHTML = 'hello,world';
+		
+	</script>
+</body>
+</html>

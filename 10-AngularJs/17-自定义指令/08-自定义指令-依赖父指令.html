@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+	
+	<person-list></person-list>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		// 模块
+		var myApp = angular.module('myApp',[]);
+	
+		// 指令
+		myApp.directive('personList',[function(){
+			
+			return {
+					restrict:'ECMA',
+					template:'<div><ul><li ng-repeat="item in data">{{item.name}},{{item.age}}</li></ul><add-btn></add-btn></div>',
+					replace:true,																
+					link:function($scope,element,attr,controller) {
+						
+					},	
+					controllerAs:'personController', //给控制器起别名				
+					controller:function($scope) {
+						// 数组数据
+						$scope.data = [
+							{
+								name:'tom',
+								age:27
+							},
+							{
+								name:'rose',
+								age:21
+							},
+							{
+								name:'jack',
+								age:28
+							}
+						];
+						
+						// 添加数据的方法
+						this.add = function() {
+							// 因为是用jq事件触发的，没有脏检查，所以手动执行脏检查
+							$scope.$apply(function(){
+								$scope.data.push({name:'angular',age:27});
+							});
+						}
+					}
+			}
+
+		}]);
+
+		// 子指令
+		myApp.directive('addBtn',[function() {
+
+			return {
+					restrict:'ECMA',
+					template:'<input type="button" value="添加">',
+					replace:true,
+					require:'^personList',  //^表示找父指令
+					link:function($scope,element,attr,controller) {
+						element.on('click', function(event) {
+							controller.add();
+						});
+					}
+			}
+
+		}]);
+
+	</script>
+</body>
+</html>

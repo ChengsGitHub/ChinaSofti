@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/* 高亮样式 */
+		.bg {
+			background: #0cc;
+			color: red;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>	
+	<script type="text/javascript">
+
+		/*
+			1.选择当前行的单选按钮，当前行高亮样式
+			2.单击行的任何位置，单选按钮选中，当前行高亮样式
+			3.单击其他行，原来高亮行失去高亮
+			4.高亮行的内容自动填充表单
+			5.鼠标悬停行，行高亮，离开，高亮丢失
+			6.单击重置按钮，所有行失去高亮，表单清空，单选取消
+		*/
+
+		$(document).ready(function(){
+
+			// 鼠标移上事件
+			$('#table1 tr:gt(1)').mouseover(function(event) {
+
+				// tr中所有的td应用bg样式
+				$(this).children('td').addClass('bg');
+
+			});
+			
+			// 鼠标离开事件
+			$('#table1 tr:gt(1)').mouseout(function(event) {
+
+				// 如果不是选中行
+				if ( $(this).find(':radio[name=ids]:checked').length == 0 ) {
+					// 删除样式
+					$(this).children('td').removeClass('bg');
+				}									
+
+			});
+
+			// 所有文本框对象
+			var texts = $('input[type=text]');
+			
+			// 行点击事件
+			$('#table1 tr:gt(1)').click(function(event) {
+
+				// 点击tr，对应的单选按钮选中
+				$(this).find('input:radio[name=ids]').prop('checked', true);				
+
+				// 所有行失去高亮
+				$('input:radio[name=ids]').parents('tr').find('td').removeClass('bg');
+
+				// 选中行高亮
+				$(this).children('td').addClass('bg');
+				
+				// 选中行中除按钮外的td标签
+				var infos = $('input:radio:checked').parent('td').siblings('td');
+							
+				// jq写法
+				$.each(texts,function(index, el) {
+					$(el).val( infos.eq(index).text() );
+				});
+
+			});
+
+			/*重置*/
+			$('#resetBtn').click(function(event) {
+				
+				// 所有行失去高亮
+				$('#table1 td').removeClass('bg');				
+				// 取消选中按钮
+				$('#table1 input:radio:checked').prop('checked',false);
+				// 清空所有文本框内容
+				texts.val('');
+
+			});
+
+
+		});	
+
+	</script>
+</head>
+<body>
+	<table id="table1" width="95%" border="0" align="center" cellpadding="4" cellspacing="1" bgcolor="#426199">
+		<tr>
+			<td height="24" colspan="8" align="center" bgcolor="#6699CC" class="title1">项目列表</td>
+		</tr>
+		<tr>
+			<td width="4%" height="24" align="center" bgcolor="#EEF4FF">&nbsp;</td>
+			<td width="9%" height="24" align="center" bgcolor="#EEF4FF">项目编号</td>
+			<td width="21%" height="24" align="center" bgcolor="#EEF4FF">项目名称</td>
+			<td width="14%" height="24" align="center" bgcolor="#EEF4FF">项目承担部门</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">责任人</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">项目预算</td>
+			<td width="11%" height="24" align="center" bgcolor="#EEF4FF">开始日期</td>
+			<td width="15%" height="24" align="center" bgcolor="#EEF4FF">备注</td>
+		</tr>
+
+		<tr>
+			<td width="4%" height="24" align="center" bgcolor="#EEF4FF">
+				<input type="radio" name="ids"></td>
+			<td width="9%" height="24" align="center" bgcolor="#EEF4FF">1</td>
+			<td width="21%" height="24" align="center" bgcolor="#EEF4FF">食堂改造项目1</td>
+			<td width="14%" height="24" align="center" bgcolor="#EEF4FF">工程部</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">张三</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">1000000</td>
+			<td width="11%" height="24" align="center" bgcolor="#EEF4FF">2013-05-14</td>
+			<td width="15%" height="24" align="center" bgcolor="#EEF4FF">无</td>
+		</tr>
+
+		<tr>
+			<td width="4%" height="24" align="center" bgcolor="#EEF4FF">
+				<input type="radio" name="ids" ></td>
+			<td width="9%" height="24" align="center" bgcolor="#EEF4FF">21</td>
+			<td width="21%" height="24" align="center" bgcolor="#EEF4FF">家装项目</td>
+			<td width="14%" height="24" align="center" bgcolor="#EEF4FF">装修部</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">李四</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">65000</td>
+			<td width="11%" height="24" align="center" bgcolor="#EEF4FF">2005-06-09</td>
+			<td width="15%" height="24" align="center" bgcolor="#EEF4FF">无</td>
+		</tr>
+
+		<tr>
+			<td width="4%" height="24" align="center" bgcolor="#EEF4FF">
+				<input type="radio" name="ids" ></td>
+			<td width="9%" height="24" align="center" bgcolor="#EEF4FF">61</td>
+			<td width="21%" height="24" align="center" bgcolor="#EEF4FF">机房改造项目77</td>
+			<td width="14%" height="24" align="center" bgcolor="#EEF4FF">电脑部</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">王五</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">50000</td>
+			<td width="11%" height="24" align="center" bgcolor="#EEF4FF">2006-09-06</td>
+			<td width="15%" height="24" align="center" bgcolor="#EEF4FF">无</td>
+		</tr>
+
+		<tr>
+			<td width="4%" height="24" align="center" bgcolor="#EEF4FF">
+				<input type="radio" name="ids" ></td>
+			<td width="9%" height="24" align="center" bgcolor="#EEF4FF">41</td>
+			<td width="21%" height="24" align="center" bgcolor="#EEF4FF">软件升级改造项目</td>
+			<td width="14%" height="24" align="center" bgcolor="#EEF4FF">电脑部</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">王五</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">8700</td>
+			<td width="11%" height="24" align="center" bgcolor="#EEF4FF">2013-05-14</td>
+			<td width="15%" height="24" align="center" bgcolor="#EEF4FF">无</td>
+		</tr>
+
+		<tr>
+			<td width="4%" height="24" align="center" bgcolor="#EEF4FF">
+				<input type="radio" name="ids" ></td>
+			<td width="9%" height="24" align="center" bgcolor="#EEF4FF">2</td>
+			<td width="21%" height="24" align="center" bgcolor="#EEF4FF">食堂改造项目</td>
+			<td width="14%" height="24" align="center" bgcolor="#EEF4FF">工程部</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">张三</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">1000000</td>
+			<td width="11%" height="24" align="center" bgcolor="#EEF4FF">2013-05-14</td>
+			<td width="15%" height="24" align="center" bgcolor="#EEF4FF">无</td>
+		</tr>
+
+		<tr>
+			<td width="4%" height="24" align="center" bgcolor="#EEF4FF">
+				<input type="radio" name="ids" ></td>
+			<td width="9%" height="24" align="center" bgcolor="#EEF4FF">26</td>
+			<td width="21%" height="24" align="center" bgcolor="#EEF4FF">机房改造项目</td>
+			<td width="14%" height="24" align="center" bgcolor="#EEF4FF">电脑部</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">王五</td>
+			<td width="13%" height="24" align="center" bgcolor="#EEF4FF">50000</td>
+			<td width="11%" height="24" align="center" bgcolor="#EEF4FF">2006-09-06</td>
+			<td width="15%" height="24" align="center" bgcolor="#EEF4FF">无</td>
+		</tr>
+
+	</table>
+
+	<br><br>
+
+	<form id="" method="post" action="">
+		编号<input type="text" id="projectId">		
+		名称<input type="text" id="projectName">	
+		部门<input type="text" id="dept">	
+		主管<input type="text" id="leader">		
+		预算<input type="text" id="budget">
+		开始日期<input type="text" id="beginDate">
+
+		<input type="button" value="重置" id="resetBtn">
+	</form>
+</body>
+</html>

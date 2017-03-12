@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+	<div ng-controller="firstController">
+		用户名：{{username}}
+		<br>
+		年龄：{{age}}
+	</div>
+
+	<div ng-controller="secondController">
+		用户名：{{username}}
+		<br>
+		年龄：{{age}}
+	</div>
+
+	<script src="angular.min.js"></script>
+	<script>
+//		创建一个模块，模块名称myApp,依赖的其他模块没有，返回模块对象
+		var myApp = angular.module("myApp",[ ]);
+
+//		通过模块创建控制器，名称为firstController
+		myApp.controller('firstController',function($scope,$http) {
+			// 在控制器的作用域对象中设置数据模型
+			$scope.username = 'jack';
+			$scope.age = 27;
+		});
+
+//		防止代码压缩，参数和变量被改名，注入对象的第二种方式
+		myApp.controller('secondController', ['$scope','$http', function(a,b){
+			a.username = '李四';
+			a.age = 29;			
+		}]);
+	</script>
+</body>
+</html>

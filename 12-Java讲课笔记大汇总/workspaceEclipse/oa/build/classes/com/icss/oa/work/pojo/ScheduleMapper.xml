@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SCHEDULE" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.work.pojo.Schedule" >
+
+    <result column="SCHEDULE_ID" property="scheduleId" jdbcType="DECIMAL" />
+    <result column="SCHEDULE_EMPID" property="scheduleEmpid" jdbcType="DECIMAL" />
+    <result column="SCHEDULE_EMPNAME" property="scheduleEmpname" jdbcType="VARCHAR" />
+    <result column="SCHEDULE_SCH" property="scheduleSch" jdbcType="VARCHAR" />
+    <result column="SCHEDULE_BEDATE" property="scheduleBedate" jdbcType="DATE" />
+    <result column="SCHEDULE_ENDATE" property="scheduleEndate" jdbcType="DATE" />
+    <result column="SCHEDULE_REM" property="scheduleRem" jdbcType="VARCHAR" />
+  </resultMap>
+    
+	  <insert id="insert" parameterType="com.icss.oa.work.pojo.Schedule" >
+	      insert into SCHEDULE (SCHEDULE_ID, SCHEDULE_EMPID, SCHEDULE_EMPNAME, 
+	      SCHEDULE_SCH, SCHEDULE_BEDATE, SCHEDULE_ENDATE, 
+	      SCHEDULE_REM)
+	      values (schedule_seq.nextval, #{scheduleEmpid,jdbcType=DECIMAL}, #{scheduleEmpname,jdbcType=VARCHAR}, 
+	      #{scheduleSch,jdbcType=VARCHAR}, #{scheduleBedate,jdbcType=DATE}, #{scheduleEndate,jdbcType=DATE}, 
+	      #{scheduleRem,jdbcType=VARCHAR})
+	  </insert>
+	  
+	  <update id="update" parameterType="com.icss.oa.work.pojo.Schedule" >
+	      update SCHEDULE
+	      set SCHEDULE_EMPID = #{scheduleEmpid,jdbcType=DECIMAL},
+	      SCHEDULE_EMPNAME = #{scheduleEmpname,jdbcType=VARCHAR},
+	      SCHEDULE_SCH = #{scheduleSch,jdbcType=VARCHAR},
+	      SCHEDULE_BEDATE = #{scheduleBedate,jdbcType=DATE},
+	      SCHEDULE_ENDATE = #{scheduleEndate,jdbcType=DATE},
+	      SCHEDULE_REM = #{scheduleRem,jdbcType=VARCHAR}
+	      where SCHEDULE_ID = #{scheduleId,jdbcType=DECIMAL}
+	  </update>
+	  
+	  <delete id="delete" parameterType="java.lang.Integer" >
+    	  delete from SCHEDULE
+    	  where SCHEDULE_ID = #{scheduleId,jdbcType=DECIMAL}
+      </delete>
+      
+	  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		  select
+		  *
+		  from SCHEDULE
+		  where SCHEDULE_ID = #{scheduleId,jdbcType=DECIMAL}
+	  </select>
+	
+  	  <select id="query" resultMap="BaseResultMap" parameterType="java.util.Map">
+		  select * from (select rownum
+		  rnum,e.* from schedule e where SCHEDULE_EMPID=#{schedule_Empid,jdbcType=DECIMAL}
+		  order by schedule_id desc) where rnum between
+		  #{start} and #{end} 
+	  </select>
+
+	  <select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		  select
+		  count(*)
+		  from schedule
+		  where SCHEDULE_EMPID=#{schedule_Empid,jdbcType=DECIMAL}
+	  </select>
+	  
+	  <select id="queryByCondition" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * from (select rownum
+		rnum,e.* from schedule e where e.SCHEDULE_SCH like '%'||#{scheduleSch}||'%'
+		order by schedule_id desc) where rnum between
+		#{start} and #{end}
+	</select>
+	
+	<select id="getConditionCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+	    select
+		count(*)
+		from schedule
+		where SCHEDULE_SCH like '%'||#{scheduleSch}||'%'
+	</select>
+	  
+	  <select id="getPrimaryKey" resultType="java.lang.Integer">
+	      select schedule_seq.currval from dual 	    
+	  </select>
+  	
+</mapper>

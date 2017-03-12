@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		<p id="p1">hello,world</p>
+		<input type="button" value="click" ng-click="m1();">
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope) {
+
+			$scope.m1 = function() {
+
+				// 纯jquery写法
+				//$('#p1').html('你好，世界');
+
+				var p1 = document.getElementById('p1');
+				
+				//angular.element(p1)把原生js对象转换为jq对象
+				angular.element(p1).html('你好，世界');
+			}
+			
+		}]);
+
+	</script>
+</body>
+</html>

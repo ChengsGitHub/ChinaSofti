@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<fieldset>
+		<legend>新增表单元素</legend>
+		<form id="" method="post" action="">
+			搜索框
+			<input type="search" placeholder="请输入搜索关键字" autofocus>
+
+			<br>
+
+			列表提示
+			<input type="text" list="datalist1">	
+			<datalist id="datalist1">
+				<option value="beijing" label="北京"></option>
+				<option value="shanghai" label="上海"></option>
+				<option value="nanjing" label="南京"></option>
+				<option value="nanchang" label="南昌"></option>
+			</datalist>
+
+			<br>
+
+			数字框
+			<input id="number1" type="number" min="1" max="10" step="2" value="6">
+
+			<br>
+
+			滑动条
+			<input type="range" min="1" max="10" step="1" value="6" onchange="m1(this);">
+			<script type="text/javascript">
+				function m1(obj) {
+					document.getElementById('number1').value = obj.value;
+				}
+			</script>
+
+			<br>
+
+			颜色框
+			<input type="color">
+
+			<br>
+
+			电话框
+			<input type="tel">
+
+			<br>
+
+			网址输入
+			<input type="url">
+
+			<br>
+
+			日期框
+			<input type="date" value="2016-10-13" min="2015-10-13" max="2017-10-13">
+
+			<br>
+
+			时间框
+			<input type="time" value="15:59:48">
+
+			<br>
+
+			日期时间框
+			<input type="datetime-local">
+
+		</form>		
+	</fieldset>
+</body>
+</html>

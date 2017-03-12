@@ -1,0 +1,86 @@
+  <!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+	
+	<div class="container" ng-controller="firstController">
+
+		<form name="myForm" class="form-horizontal">
+
+			<div class="form-group" ng-class="{'has-error':myForm.num.$dirty && myForm.num.$invalid}">
+				<label for="" class="col-md-2 control-label">输入偶数</label>
+				<div class="col-md-10">
+					<input name="num" ng-model="data.num" type="number" class="form-control" placeholder="请输入一个偶数" even required>
+					{{data.num}}
+					<div class="alert alert-danger help-block" ng-show="myForm.num.$dirty && myForm.num.$error.even">
+						请输入一个偶数
+					</div>	
+					<div class="alert alert-danger help-block" ng-show="myForm.num.$dirty && myForm.num.$error.required">
+						数据不能为空
+					</div>				
+				</div>				
+			</div>											
+		</form>		
+
+		error：{{myForm.num.$error}}
+	</div>
+
+	
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope) {
+
+			$scope.data = {
+				// num:1010
+			}
+			
+		}]);
+
+		// 自定义指令，名称叫做even
+		myApp.directive('even',[function() {
+
+			return {
+				restrict:'ECMA',
+				require:'ngModel', //依赖ngModel指令，因为要从这里获得数据做表单验证
+				link:function(scope,ele,attrs,controller) {
+					
+					// 向$parsers（view到model）对象中加入一个函数，viewValue代表视图传给模型的数据
+					controller.$parsers.push(function(viewValue) {
+						// console.log(viewValue);
+						
+						// 判断是否是偶数
+						if (viewValue % 2 == 0) {
+							// 验证成功，通过$setValidity方法设置even键值对为true
+							controller.$setValidity('even',true);
+						} else {
+							// 验证失败，通过$setValidity方法even键值对为false
+							controller.$setValidity('even',false);
+						}
+
+						// 必须返回传递的数据，否则会失去双向绑定功能（值穿不出去）
+						return viewValue; 
+					});
+
+					// $formatters（model到view）对象中加入函数，modelValue代表模型传给视图的数据
+					controller.$formatters.push(function(modelValue) {
+
+						// console.log(modelValue);
+						
+						// 必须返回传递的数据，否则会失去双向绑定功能（值穿不出去）
+						return modelValue;						
+					});
+				}
+			}
+
+		}]);
+	</script>
+</body>
+</html>

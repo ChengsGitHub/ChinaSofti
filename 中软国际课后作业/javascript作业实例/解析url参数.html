@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		//任意带参数的url
+		var url = "http://www.baidu.com?username=tom&userpwd=123456&id=&code&city=dalian";
+
+		//空对象
+		var obj = {};
+
+		// 得到问号之后的字符串
+		url = url.substring( url.indexOf('?') + 1 );
+
+		
+		// 按照&符号分解字符串为数组
+		var params = url.split('&');
+
+		//遍历数组元素
+		for (var i = 0;i < params.length;i ++) {			
+			// 按照等号分解成键值对
+			var str = params[i].split('=');
+
+			// 当做属性添加到对象中
+			obj[str[0]] = str[1];
+		}
+
+		console.log(obj);		
+	</script>
+</head>
+<body>	
+</body>
+</html>

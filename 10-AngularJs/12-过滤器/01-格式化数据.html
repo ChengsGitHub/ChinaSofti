@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		
+		<!-- 数字格式化 -->
+		数字格式化：{{123456789 | number}}
+		<br>
+		数字格式化：{{12345.6789 | number:2}}
+		<!-- 货币格式化 -->
+		<br>
+		货币格式化：{{123456789|currency}}
+		<br>
+		货币格式化：{{12345.6789|currency:'rmb'}}
+		<!-- 日期格式化 -->
+		<br>
+		日期格式化：{{today}}
+		<br>
+		日期格式化：{{today | date}}
+		<br>
+		日期格式化：{{today | date:'medium'}}
+		<br>
+		日期格式化：{{today | date:'short'}}
+		<br>
+		日期格式化：{{today | date:'fullDate'}}
+		<br>
+		日期格式化：{{today | date:'longDate'}}
+		<br>
+		日期格式化：{{today | date:'mediumDate'}}
+		<br>
+		日期格式化：{{today | date:'shortDate'}}
+		<br>
+		日期格式化：{{today | date:'mediumTime'}}
+		<br>
+		日期格式化：{{today | date:'shortTime'}}
+		<br>
+		日期格式化：{{today | date:'yy'}}
+		<br>
+		日期格式化：{{today | date:'yyyy'}}
+		<br>
+		日期格式化：{{today | date:'yyyy-MM-dd HH:mm:ss'}}
+		<br>
+		<!-- 毫秒 -->
+		日期格式化：{{today | date:'yyyy-MM-dd HH:mm:ss.sss'}}
+		<br>
+		日期格式化：{{today | date:'yyyy-MM-dd HH:mm:ss EEEE'}}
+		<br>
+		日期格式化：{{today | date:'yyyy-MM-dd HH:mm:ss EEE'}}
+		<br>
+		<!-- 大小写格式 -->
+		大小写格式:{{'Hello,World' | lowercase}}
+		<br>
+		大小写格式:{{'Hello,World' | uppercase}}
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope) {
+
+			$scope.today = new Date();
+			
+		}]);
+
+	</script>
+</body>
+</html>

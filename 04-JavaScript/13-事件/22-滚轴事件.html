@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			滚轴事件：
+			非火狐浏览器：事件onmousewheel，通过wheelDelta属性获得滚轴状态，向上滚轴值为正数，向下滚轴，值为负数
+			火狐浏览器：必须使用2级事件注册，事件名DOMMouseScroll，通过detail属性获得滚轴状态，向上滚轴值为负数，向下滚轴，值为正数
+		*/
+		
+		// 非火狐浏览器
+		document.onmousewheel = function(e) {
+			e = e || window.event;
+			console.log(e);
+		}
+
+		// 火狐浏览器
+		document.addEventListener('DOMMouseScroll',function(e){
+			e = e || window.event;
+			console.log(e);
+		});
+
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		for (var i = 1;i <= 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>bar</title>    
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 900px;height:600px;"></div>
+
+
+
+<!-- 引入jquery环境 -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- 引入 echarts.js -->
+<script src="js/echarts/echarts.min.js"></script>
+<!-- 引入layer -->
+<script type="text/javascript" src="js/layer/layer.js"></script>
+
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+
+// 指定图表的配置项和数据
+var option = {
+    // 标题
+    title: {
+        text: 'ECharts 入门示例'
+    },
+    // 工具箱
+    toolbox: {
+        // 是否显示
+        show: true,
+        feature: {
+            // 数据视图
+            dataView:{
+                show:true
+            },
+            // 还原
+            restore:{
+                show:true
+            },
+            // 缩放视图
+            dataZoom:{
+                show:true
+            },
+            // 是否保存图片
+            saveAsImage: {
+                show: true
+            },
+            // 动态类型切换
+            magicType: {
+                type: ['line', 'bar']
+            }
+        }
+    },
+    // 鼠标悬停提示框
+    tooltip: {
+        // axis就是x轴触发
+        trigger: 'axis'
+    },
+    // 图例
+    legend: {
+        data: ['销量']
+    },
+    // x轴
+    xAxis: {
+        data: []
+    },
+    yAxis: {},
+    // 数据
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: []
+    }]
+};
+
+$(document).ready(function() {
+
+    // 加载中
+    layer.load(2);
+    
+    $.getJSON('data.json',  function(json, textStatus) {
+         
+         // 生成name数组
+         var nameArr = [];
+         // 生成sale数组
+         var saleArr = [];
+
+         // 遍历数组
+         $.each(json, function(index, val) {
+            nameArr.push(val.name);
+            saleArr.push(val.sale);              
+         });
+
+        // 设置数据
+        option.xAxis.data = nameArr;
+        option.series[0].data = saleArr;
+
+        // 模拟网路延迟
+        setTimeout(function() {
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+
+            // 关闭加载层
+            layer.closeAll();
+        },2000);         
+    });
+
+});
+</script>
+</body>
+</html>

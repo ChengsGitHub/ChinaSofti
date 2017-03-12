@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function m1() {
+			// 获得文本框对象
+			var t1Obj = document.getElementById('t1');
+
+			// 设置属性值
+			// t1Obj.value = 'hello,world';
+			
+			// 返回属性值
+			alert('您输入的是：' + t1Obj.value);
+		}
+
+	</script>
+</head>
+<body>
+	<input type="text" id="t1">
+	<input type="button" value="OK" onclick="m1();">
+</body>
+</html>

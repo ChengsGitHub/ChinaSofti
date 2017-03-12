@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 视口设置 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<!-- IE优化 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 引入bootstrap的css文件 -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+	<!-- 判断，如果是IE9以下，引入兼容h5标签的js文件，注意空格的位置 -->
+	
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/html5shiv.min.js"></script>
+	<script type="text/javascript" src="js/respond.min.js"></script>
+	<![end if] -->
+
+	<!-- 引入jquery的js文件 -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!-- 引入bootstrap的js文件 -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>	
+</head>
+<body>
+	<div class="container">		
+		<form>
+			<fieldset>
+				<legend>用户信息</legend>
+				<label for="">用户名称</label>
+				<input type="text" placeholder="请输入用户名称">
+				<span class="help-block">请填写用户名称，提交之后不可修改</span>
+
+				<label for="" class="checkbox">
+					<input type="checkbox">选项1
+				</label>
+				<label for="" class="checkbox">
+					<input type="checkbox">选项2
+				</label>
+
+				<input type="button" value="提交" class="btn">
+			</fieldset>
+		</form>
+	</div>	
+</body>
+</html>

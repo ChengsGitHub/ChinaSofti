@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>日历框</title>
+
+<link rel="stylesheet" type="text/css"	href="js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script>
+	/*  
+	 将Date/String类型,解析为String类型.  
+	 传入String类型,则先解析为Date类型  
+	 不正确的Date,返回 ''  
+	 如果时间部分为0,则忽略,只返回日期部分.  
+	 */
+	function formatDate(v) {
+		if (v instanceof Date) {
+			var y = v.getFullYear();
+			var m = v.getMonth() + 1;
+			var d = v.getDate();
+			var h = v.getHours();
+			var i = v.getMinutes();
+			var s = v.getSeconds();
+			var ms = v.getMilliseconds();
+			if (ms > 0)
+				return y + '-' + m + '-' + d + ' ' + h + ':' + i + ':' + s
+						+ '.' + ms;
+			if (h > 0 || i > 0 || s > 0)
+				return y + '-' + m + '-' + d + ' ' + h + ':' + i + ':' + s;
+			return y + '-' + m + '-' + d;
+		}
+		return '';
+	}
+
+	$( function() {
+		$('#dd').datebox( {
+			currentText : '今天',
+			closeText : '关闭',
+			disabled : false,
+			required : false,
+			missingMessage : '必填',
+			formatter : formatDate
+		});
+	});
+</script>
+
+
+</head>
+
+<body>
+
+<input id="dd" type="text"></input>
+
+</body>
+</html>

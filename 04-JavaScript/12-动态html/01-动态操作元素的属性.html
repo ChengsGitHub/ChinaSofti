@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		.bg {
+			background: #0cc;
+		}
+	</style>
+
+	<script type="text/javascript">		
+		
+		function m1() {
+			var p1 = document.getElementById('p1');
+
+			p1.align = 'center';//设置对齐方式
+			p1.title = "这是一个文字的title";//设置提示文字
+			p1.className = 'bg';
+		}
+
+		function m2() {			
+			var p1 = document.getElementById('p1');
+
+			// 读取html属性值
+			alert(p1.align);
+			alert(p1.title);
+			alert(p1.className);
+		}
+
+	</script>
+</head>
+<body>
+	<p id="p1">这是一个普通的段落文字</p>
+
+	<input type="button" value="设置属性" onclick="m1();">
+	<input type="button" value="读取属性" onclick="m2();">
+</body>
+</html>

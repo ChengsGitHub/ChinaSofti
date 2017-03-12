@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">
+	$log 日志服务，专门用来操作日志
+	<br>
+	<input type="button" value="log" ng-click="$log.log('log...');">
+	<input type="button" value="warn" ng-click="$log.warn('warn...');">
+	<input type="button" value="info" ng-click="$log.info('info...');">
+	<input type="button" value="debug" ng-click="$log.debug('debug...');">
+	<input type="button" value="error" ng-click="$log.error('error...');">
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		// 注入$log日志服务
+		myApp.controller('firstController', ['$scope','$log', function($scope,$log) {
+			
+			// 将$log服务设置到作用域中 
+			$scope.$log = $log;
+
+		}]);
+	</script>
+</body>
+</html>

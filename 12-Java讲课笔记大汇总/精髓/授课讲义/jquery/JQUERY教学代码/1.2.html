@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">
+	.color1 {color:#09F;font-size:24px}
+</style>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+
+	//当页面被加载完毕时
+	$(document).ready(function(e) {
+		
+		$('#btn1').click(function(){
+		
+			$('#p1').addClass('color1');
+			
+		});	
+		
+	});	
+	
+</script>
+
+</head>
+
+<body>
+<p id="p1">你好，世界</p>
+<input type="button" name="button" id="btn1" value="OK">
+</body>
+</html>

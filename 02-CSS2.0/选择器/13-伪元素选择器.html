@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*伪元素选择器*/
+		p:before {
+			content: 'hello';
+			color: red;
+			background-color: #0cc;
+		}
+
+		p:after {
+			content: 'world';
+			border:1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<p>这是一个普通的文字段落</p>
+</body>
+</html>

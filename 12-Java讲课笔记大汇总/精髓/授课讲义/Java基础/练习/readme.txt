@@ -1,0 +1,14 @@
+Account:
+1.balance的属性为protected
+
+SavingsAccount:
+1.SavingsAccount类必须扩展Account类
+2.该类必须包含一个类型为double的interestRate属性
+3.该类必须包括带有两个参数（balance和interest_rate）的公有构造器，该构造器必须通过调用super(balance)将balance参数传递给父类构造器
+
+CheckingAccount:
+1.CheckingAccount类必须扩展Account类
+2.该类必须包含一个类型为double的overdraftProtection属性
+3.该类必须包括带有一个参数(balance)的公有构造器，该构造器必须通过调用super(balance)将balance参数传递给父类构造器
+4.该类必须包含另一个带有两个参数(balance和protect)的公有构造器，该构造器必须通过调用super(balance)并设置overdraftProtection属性，将balance参数传递给父类构造器
+5.CheckingAccount类必须覆盖withdraw方法，此方法必须执行下列检查：如果当前余额足够弥补取款amount，则正常进行，否则存在透支保护，尝试用overdraftProtection来弥补该差值。如果弥补该透支所需要的金额大于当前的保护级别，则整个交易失败，但余额未受影响。

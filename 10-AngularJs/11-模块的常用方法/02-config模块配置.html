@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+
+		// 利用创建模块的第三个参数，来做config配置
+		var myApp = angular.module('myApp',[],[function(){
+
+			console.log('config配置...');
+
+		}]);
+
+		// 可以直接调用模块对象的config方法，来做config配置
+		myApp.config([function() {
+			
+			console.log('config配置！！！');
+
+		}]);
+		
+	</script>
+</body>
+</html>

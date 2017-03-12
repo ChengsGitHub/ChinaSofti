@@ -1,0 +1,8 @@
+如何在XP和win7系统下 添加Sublime到鼠标右键菜单，右键单击文件生效
+ 
+1、在注册表中【HKEY_CLASSES_ROOT\*\shell】下面新建一个项：Sublime(&Q)       （注：Q 表示鼠标右键一个文件后，再按键盘“Q”可以直接打开Sublime），然后在该项的默认值里面输入“ Sublime(&Q)”
+
+2、在新建的项目中，再新建一个项：command
+ 
+3、之后在【HKEY_CLASSES_ROOT\*\shell\Sublime\command\】的默认值中，写入Sublime的绝对路径，并添加%1
+   比如输入："D:\soft\SublimeText3\sublime_text.exe" "%1"

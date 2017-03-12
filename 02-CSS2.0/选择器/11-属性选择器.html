@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*属性选择器*/
+
+		input[size] {
+			background-color: #0cc;
+		}
+
+		input[type=text] {
+			color: red;
+		}
+
+		input[type=button] {
+			width: 150px;
+			height: 50px;
+			font-size: 30px;
+		}
+
+		input[type][value] {
+			border:1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	文本框<input type="text" size="20" value="tom">
+	<br>
+	密码框<input type="password" size="20">
+	<br>
+	<input type="button" value="OK">
+	<button>按钮</button>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth0" value="151"/>
+	<item key="org.eclipse.jdt.debug.ui.jre_preference_page_context.sortColumn" value="1"/>
+	<item key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth1" value="204"/>
+	<item key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth2" value="78"/>
+	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=javase/src&amp;lt;chapter6{A.java[A&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=javase/src&amp;lt;chapter7{TestFinal.java[TestFinal&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=javase/src&amp;lt;{Demo06.java[Demo06&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=javase/src&amp;lt;{Demo07.java[Demo07&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=javase/src&amp;lt;{Demo07.java[Child1&lt;/infoNode&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;"/>
+		<item key="ShowStatusLine" value="true"/>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_X_ORIGIN" value="424"/>
+			<item key="DIALOG_FONT_NAME" value="1|宋体|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|宋体"/>
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_Y_ORIGIN" value="106"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+		</section>
+	</section>
+</section>

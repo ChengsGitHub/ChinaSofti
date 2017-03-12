@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MEETINGROOM" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.meeting.pojo.Meetingroom" >
+    <id column="ROOM_ID" property="roomId" jdbcType="DECIMAL" />
+    <result column="ROOM_NAME" property="roomName" jdbcType="VARCHAR" />
+    <result column="ROOM_ADDR" property="roomAddr" jdbcType="VARCHAR" />
+    <result column="ROOM_AMOUNT" property="roomAmount" jdbcType="DECIMAL" />
+    <result column="ROOM_AIR" property="roomAir" jdbcType="DECIMAL" />
+    <result column="ROOM_STATE" property="roomState" jdbcType="DECIMAL" />
+  </resultMap>
+  
+  
+ 
+   <insert id="insert" parameterType="com.icss.oa.meeting.pojo.Meetingroom" >
+	    insert into MEETINGROOM (ROOM_ID, ROOM_NAME, ROOM_ADDR, 
+	      ROOM_AMOUNT, ROOM_AIR, ROOM_STATE
+	      )
+	    values (room_seq.nextval, #{roomName,jdbcType=VARCHAR}, #{roomAddr,jdbcType=VARCHAR}, 
+	      #{roomAmount,jdbcType=DECIMAL}, #{roomAir,jdbcType=DECIMAL}, #{roomState,jdbcType=DECIMAL}
+	      )
+  	</insert>
+
+	
+	<update id="update" parameterType="com.icss.oa.meeting.pojo.Meetingroom" >
+	    update MEETINGROOM
+	    set ROOM_NAME = #{roomName,jdbcType=VARCHAR},
+	      ROOM_ADDR = #{roomAddr,jdbcType=VARCHAR},
+	      ROOM_AMOUNT = #{roomAmount,jdbcType=DECIMAL},
+	      ROOM_AIR = #{roomAir,jdbcType=DECIMAL},
+	      ROOM_STATE = #{roomState,jdbcType=DECIMAL}
+	    where ROOM_ID = #{roomId,jdbcType=DECIMAL}
+  	</update>
+  
+	<delete id="delete" parameterType="java.lang.Integer" >
+	    delete from MEETINGROOM
+	    where ROOM_ID = #{roomId,jdbcType=DECIMAL}
+	</delete>
+	
+	
+	<select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select *
+		from MEETINGROOM
+		where ROOM_ID = #{roomId,jdbcType=DECIMAL}
+	</select>
+
+	<select id="query" resultMap="BaseResultMap">
+		select * from (select rownum
+		rnum,m.* from meetingroom m
+		order by room_id desc)
+		where rnum between #{start} and #{end}
+	</select>
+
+	<select id="queryByRoomName" resultMap="BaseResultMap" parameterType="java.lang.String">
+	    select * from meetingroom m where m.ROOM_NAME=#{roomName}    
+	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from MEETINGROOM
+	</select>
+	
+	<select id="queryByCondition" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * from (select rownum
+		rnum,m.* from meetingroom m
+		<where> 
+			<if test="roomName != null and roomName != ''">    
+				and room_name like '%'||#{roomName}||'%'
+			</if>
+		</where>
+		) where rnum between
+		#{start} and #{end}
+	</select>
+
+
+	
+	<select id="getConditionCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+		select
+		count(*)
+		from meetingroom
+		<where> 
+			<if test="roomName != null and roomName != ''">    
+				and room_name like '%'||#{roomName}||'%'
+			</if>
+		</where>
+	</select>
+	<select id="getPrimaryKey" resultType="java.lang.Integer">
+	    select room_seq.currval from dual
+	</select>
+		
+ 
+</mapper>

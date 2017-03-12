@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			// 通过css选择器选择对象（只返回第一个）
+			var ps = document.querySelector('#div1 > p');
+
+			alert(ps.outerHTML);
+		}
+
+		function m2() {
+			// 通过css选择器选择对象（返回所有匹配的元素）
+			var ps = document.querySelectorAll('#div1 > p');
+		
+			for (var i = 0;i < ps.length;i ++) {
+				alert(ps[i].outerHTML);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<p class="item">段落文字1</p>
+		<p class="item">段落文字2</p>
+		<p class="item">段落文字3</p>
+	</div>
+	<input type="button" value="querySelector" onclick="m1();">
+	<input type="button" value="querySelectorAll" onclick="m2();">
+</body>
+</html>

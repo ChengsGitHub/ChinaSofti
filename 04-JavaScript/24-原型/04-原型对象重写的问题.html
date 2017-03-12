@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		/*人类*/
+		function Person() {
+
+		}
+
+		/*在原型中定义属性和方法*/
+		Person.prototype = {
+			name:'tom',
+			age:27,
+			friends:['jack','rose']
+		}
+
+		var p1 = new Person();
+		var p2 = new Person();
+
+		p1.age = 37;
+		// alert(p2.age); //27
+
+		p1.friends.push('john');
+		alert(p2.friends);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

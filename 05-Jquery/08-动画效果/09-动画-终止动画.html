@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;			
+		}
+
+		#div1 {
+			width: 10px;
+			height: 10px;
+			background: #0cc;
+			position: absolute;
+			left: 0;
+			top:100px;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {
+				$('#div1').animate({width:200}, 3000);
+				$('#div1').animate({left:200}, 3000);
+				$('#div1').animate({top:200}, 3000);
+			});
+
+			$('#btn2').click(function(event) {
+				//仅停止当前动画，不会阻止下个动画执行
+				$('#div1').stop();
+			});
+
+			$('#btn3').click(function(event) {
+				//停止当前动画，同时清除队列中的其他动画
+				$('#div1').stop(true);
+			});
+
+			$('#btn4').click(function(event) {
+				//停止当前动画，直接过渡到当前动画的最后状态，同时清除队列中的其他动画
+				$('#div1').stop(true,true);
+			});
+
+			$('#btn5').click(function(event) {
+				//停止当前动画，直接过渡到最后一个动画的最后状态，同时清除队列中的其他动画
+				$('#div1').finish();
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<input type="button" value="运动" id="btn1">
+	<input type="button" value="停止动画1" id="btn2">
+	<input type="button" value="停止动画2" id="btn3">
+	<input type="button" value="停止动画3" id="btn4">
+	<input type="button" value="停止动画4" id="btn5">
+	<div id="div1">		
+	</div>
+</body>
+</html>

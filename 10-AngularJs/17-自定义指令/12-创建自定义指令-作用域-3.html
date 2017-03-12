@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div ng-controller="firstController">		
+		父作用域的数据：{{parentData}}
+		<hr>
+		<custom-tag get-parent="{{parentData}}"></custom-tag>		
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope) {
+			
+			$scope.parentData = '这是父控制器的数据';
+
+		}]);
+
+		myApp.directive('customTag', [function(){			
+			return {
+				restrict:'ECMA',
+				replace:true,
+				scope:{
+					data:'@getParent'  //对应指令里的get-parent，单向数据绑定
+				},
+				template:'<div><input type="text" ng-model="data">{{data}}</div>'
+			};
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+
+		/*
+			callee是arguments对象的一个对象，通过callee可以调用本身的函数，简单的说，callee代表当前函数本身
+		*/
+
+
+		/*
+			递归求某个数字的阶乘
+		*/	
+		function m1(num) {
+			if (num <= 1)
+				return 1;
+
+			// return num * m1(num - 1); //函数m1写死调用，形成高耦合
+			return num * arguments.callee(num - 1); //callee永远代表当前函数对象
+		}
+
+		var fn = m1; //fn是引用了m1的对象
+
+		m1 = null; //m1设置为空，如果递归中使用m1的名称，就要出问题
+
+		alert( fn(5) );
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

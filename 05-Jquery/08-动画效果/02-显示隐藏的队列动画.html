@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+			border:1px solid #ccc;
+			font-size: 80px;
+			text-align: center;
+			line-height: 100px;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			/*利用回调函数，执行队列动画*/
+			$('#btn1').click(function(event) {
+				
+				$('#div1').show(1000,function() {
+					$('#div2').show(1000,function(){
+						$('#div3').show(1000);
+					});				
+				});				
+
+			});
+
+			/*利用arguments.callee做队列动画*/
+			$('#btn2').click(function(event) {
+				
+				$('#div1').show(1000,function(){					
+					$(this).next('div').show(1000,arguments.callee); //递归调用当前函数
+				});
+
+			});
+
+			$('#btn3').click(function(event) {
+				
+				$('#div6').hide('1000', function() {
+					$(this).prev('div').hide(1000,arguments.callee); //递归调用当前函数
+				});
+
+			});
+
+		});	
+	</script>
+</head>
+<body>	
+	<div id="div1">中</div>
+	<div id="div2">软</div>
+	<div id="div3">国</div>
+	<div id="div4">际</div>
+	<div id="div5">公</div>
+	<div id="div6">司</div>
+	<input type="button" value="队列动画方式1" id="btn1">
+	<input type="button" value="队列动画方式2-显示" id="btn2">
+	<input type="button" value="队列动画方式3-隐藏" id="btn3">
+</body>
+</html>

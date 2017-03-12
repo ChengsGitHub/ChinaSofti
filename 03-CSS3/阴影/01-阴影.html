@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			margin: 100px;
+			height: 200px;
+			width: 200px;
+			background: #0cc;
+		}
+
+		#left-top {
+			/*第一个值代表水平偏移 第二个值代表垂直偏移*/
+
+			/*谷歌私有前缀*/
+			-webkit-box-shadow: -10px -10px;
+
+			/*火狐私有前缀*/
+			-moz-box-shadow: -10px -10px;
+			
+			/*欧朋私有前缀*/
+			-o-box-shadow:-10px -10px;
+
+			/*IE9以上私有前缀*/
+			-ms-box-shadow:-10px -10px;
+
+			/*w3c标准写法*/
+			box-shadow: -10px -10px;
+		}
+
+		#right-top {
+			box-shadow: 10px -10px;
+		}
+
+		#left-bottom {
+			box-shadow: -10px 10px;
+		}
+
+		#right-bottom {
+			box-shadow: 10px 10px;
+		}
+
+		#mohu {
+			box-shadow: 10px 10px 10px;
+		}
+
+		#color {
+			box-shadow: 10px 10px 10px #abcdef;
+		}
+
+		#yanshen {
+			/*参数：水平偏移 垂直偏移 模糊度 延伸 阴影颜色*/
+			box-shadow: 10px 10px 10px 5px #abcdef;
+		}
+	</style>
+</head>
+<body>
+	<div id="left-top">
+		
+	</div>
+
+	<div id="right-top">
+		
+	</div>
+
+	<div id="left-bottom">
+		
+	</div>
+
+	<div id="right-bottom">
+		
+	</div>
+
+	<div id="mohu">
+		
+	</div>
+
+	<div id="color">
+		
+	</div>
+
+	<div id="yanshen">
+		
+	</div>
+</body>
+</html>

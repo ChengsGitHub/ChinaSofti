@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		/*
+			不使用弹性盒子布局，元素变化需要重新设置元素的宽度比
+		*/
+		.item {
+			display: block;
+			width: 33.33%;
+			float: left;
+			border:1px solid #ccc;
+			box-sizing:border-box;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<nav id="main-nav">
+		<span class="item">导航1</span>
+		<span class="item">导航2</span>
+		<span class="item">导航3</span>		
+	</nav>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		当前数字：{{i}}
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		angular.module('myApp',[])
+			.controller('firstController', ['$scope', function($scope){
+				
+				// 计数变量
+				$scope.i = 0;
+
+				// 每隔1000毫秒递增+1，视图不会被更新
+				setInterval(function(){
+					
+					// 手动执行$apply方法，触发脏检查
+					$scope.$apply(function(){
+						$scope.i ++;
+					});
+
+				},1000);
+				
+			}]);
+
+	</script>
+</body>
+</html>

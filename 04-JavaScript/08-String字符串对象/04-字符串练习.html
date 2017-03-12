@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+			
+		/*传入任意一个字符串，返回这个字符串的后三位 例如 abcdefg返回efg*/
+		function getLastThree(str) {
+
+			if (str == null || str == undefined)
+				return str;
+
+			if (str.length < 3)
+				return str;
+			
+			return str.substr(str.length - 3);		
+		}
+
+		/*传入任意一个字符串，返回倒写字符串，例如abcd返回dcba*/
+		function getReverse(str) {				
+			if (str == null || str == undefined)
+				return str;
+
+			//方法链式调用		
+			var reverseStr = str.split("").reverse().join("");		
+			return reverseStr;
+		}
+
+		function getReverse(str) {	
+			if (str == null || str == undefined)
+				return str;
+
+			var s = '';
+
+			for (i = str.length - 1;i >= 0;i --) {				
+				s += str.charAt(i);
+			}
+
+			return s;
+		}
+
+		/*传入一个任意的ip地址，返回隐藏第四部分的ip，例如 202.96.64.103 返回 202.96.64.* */
+		function getIP(ip) {		
+
+			var s = ip.split('\.');
+
+			s[3] = '*';
+			
+			return s.join('.');
+		}
+
+		function getIP(ip) {
+
+			var lastPoint = ip.lastIndexOf('.');
+
+			var partip = ip.substr(0,lastPoint + 1);
+
+			ip = partip.concat('*');
+			return ip;
+		}
+
+
+		/*	
+			用户名判断，传入一个用户名，判断用户名是否合法
+			小写字母开头，后面可以是小写字母，数字，下划线，6-8位
+		*/
+		function checkUserName(username) {
+			
+			// 判断如果数据为空或者未定义，直接返回false
+			if (username == null || username == undefined)
+				return false;
+			
+			//判断长度
+			if (username.length < 6 || username.length > 8)
+				return false;
+			
+			// 判断第一个字符是否小写字母
+			var c = username.charAt(0);
+
+			if (c < 'a' || c > 'z') 
+				return false;	
+
+			// 判断从第二位开始的字符是否合法
+			for (var i = 1;i < username.length;i ++) {
+
+				c = username.charAt(i);
+
+				if ( (c < 'a' || c > 'z')  &&  (c < '0' || c > '9')  &&  c != '_' ) 
+					return false;
+			} 
+
+			return true;
+		}
+
+		// 正则表达式验证用户名
+		function checkUserName(username) {
+			
+			var r = /^[a-z][a-z0-9_]{5,7}$/;
+
+			return r.test(username);
+		}
+	</script>
+</head>
+<body>	
+</body>
+</html>

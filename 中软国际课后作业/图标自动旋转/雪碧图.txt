@@ -1,0 +1,6 @@
+background-position: 16px -197px;
+background-position: -80px -197px;
+background-position: -174px -197px;
+background-position: -269px -197px;
+background-position: -364px -197px;
+background-position: -459px -197px;

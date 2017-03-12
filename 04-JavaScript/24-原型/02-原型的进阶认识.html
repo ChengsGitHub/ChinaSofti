@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">	
+		/*
+			人类
+		*/
+		function Person(){
+
+		}
+
+		/*
+			在原型对象中添加属性和方法
+		*/
+		Person.prototype.name = 'tom';
+		Person.prototype.age = 27;
+
+		Person.prototype.show = function() {
+			alert(this.name + ',' + this.age);
+		}
+
+		/*创建对象实例*/
+		var p1 = new Person();
+		var p2 = new Person();
+
+		p1.name = 'jack'; //这是在p1本身的对象中增加了一个name属性，不是改变原型中的属性值
+		p1.phone = '10086';
+
+		// p1.show();//jack,27
+		// p2.show();//tom,27
+
+		// alert( 'name' in p1 );//true
+		// alert( 'age' in p1 ); //true 
+		// alert('show' in p2);//true
+		// alert('aaa' in p2);//false
+
+		// alert(p1.hasOwnProperty('name'));//true
+		// alert(p2.hasOwnProperty('name'));//false
+
+		// alert( hasProtoProperty(p1,'name') );//false
+		alert( hasProtoProperty(p2,'name') );//true
+
+		/**
+			自定义函数：传入对象，成员名称，判断成员是否只在原型中存在
+		*/
+		function hasProtoProperty(obj,prop) {
+
+			return (prop in obj) && !obj.hasOwnProperty(prop);
+		}
+	</script>
+</head>
+<body>	
+</body>
+</html>

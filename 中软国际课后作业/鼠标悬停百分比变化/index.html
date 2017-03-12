@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0
+		}
+	
+		.item {
+			width: 50%;
+			height: 300px;
+			float: left;
+			overflow: hidden;
+		}
+
+		.item a {
+			position: relative;
+			height: 100%;
+			display: block;
+			transition:all 0.5s;					
+		}
+
+		.item a img {
+			display: block;			
+			height: 100%;
+			min-width: 100%;
+		}
+		
+		/*左侧图片*/
+		.item a.p40 {
+			width: 40%;
+			float: left;
+		}
+
+		/*右侧图片*/
+		.item a.p60 {
+			width: 60%;
+			float: right;
+		}
+
+		/*鼠标悬停宽度比例变化*/
+		.item a.p40:hover {
+			width: 60%;
+		}
+
+		.item a.p40:hover+.p60 {
+			width: 40%;
+		}
+		
+		/*鼠标悬停提示*/
+		.item a .tips {			
+			width: 100%;		
+			height: 30%;
+			color: #fff;
+			text-align: center;
+			background: rgba(0,0,0,0.7);
+			position: absolute;
+			top:100%;
+			transition:all 0.5s;
+		}
+
+		.item a:hover .tips {
+			top:70%;
+		}
+	</style>
+</head>
+<body>
+	<div class="item">
+		<a href="#" class="p40">
+			<img src="images/p11_600x400.jpg" alt="">
+			<div class="tips">
+				鼠标移上提示
+			</div>
+		</a>
+		<a href="#" class="p60">
+			<img src="images/p12_600x400.jpg" alt="">
+			<div class="tips">
+				鼠标移上提示
+			</div>
+		</a>
+	</div>
+	<div class="item">
+		<a href="#" class="p40">
+			<img src="images/p21_600x400.jpg" alt="">
+			<div class="tips">
+				鼠标移上提示
+			</div>
+		</a>
+		<a href="#" class="p60">
+			<img src="images/p22_600x400.jpg" alt="">
+			<div class="tips">
+				鼠标移上提示
+			</div>
+		</a>
+	</div>
+	<div class="item">
+		<a href="#" class="p40">
+			<img src="images/p31_600x400.jpg" alt="">
+			<div class="tips">
+				鼠标移上提示
+			</div>
+		</a>
+		<a href="#" class="p60">
+			<img src="images/p32_600x400.jpg" alt="">
+			<div class="tips">
+				鼠标移上提示
+			</div>
+		</a>
+	</div>
+	<div class="item">
+		<a href="#" class="p40">
+			<img src="images/p41_600x400.jpg" alt="">
+			<div class="tips">
+				鼠标移上提示
+			</div>
+		</a>
+		<a href="#" class="p60">
+			<img src="images/p42_600x400.jpg" alt="">
+			<div class="tips">
+				鼠标移上提示
+			</div>
+		</a>
+	</div>
+</body>
+</html>

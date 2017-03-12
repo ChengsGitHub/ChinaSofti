@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#main-nav {
+			/*父容器设置为弹性盒子模型*/
+			display: box;
+			display:-webkit-box;
+		    display: -moz-box;
+		    display: -ms-flexbox;
+		    display: -webkit-flex;
+		    display: flex;
+
+			overflow: hidden;
+			padding: 5px;
+		}
+
+		.item {
+			display: block;			
+			float: left;
+			border:1px solid #ccc;			
+			text-align: center;			
+
+			/*设置子元素的比重*/
+			flex:1;
+			-webkit-flex:1;
+
+			-moz-box-flex: 1; 
+		    -webkit-box-flex: 1; 
+		    box-flex: 1;
+		}
+	</style>
+</head>
+<body>
+	<nav id="main-nav">
+		<span class="item">导航1</span>
+		<span class="item">导航2</span>
+		<span class="item">导航3</span>	
+	</nav>
+</body>
+</html>

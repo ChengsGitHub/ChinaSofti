@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-controller="firstController">
+	<!-- 用{{}}直接输出表达式的值-->
+	<div>
+		<input type="text" ng-model="username"/>
+	</div>
+	<div>
+		用户名：{{username}}
+	</div>
+
+	<div>
+		<input type="text" ng-model="age"/>
+	</div>
+	<div>
+		年龄：{{age}}
+	</div>
+	
+	<input type="button" value="查看数据" ng-click="showData();">
+
+	<script src="angular.min.js"></script>
+	<script type="text/javascript">
+
+		angular.module('myApp',[])
+
+		.controller('firstController', ['$scope','$rootScope', function($scope,$rootScope) {
+			// 全局根作用域
+			$rootScope.username = 'jack';
+			// 当前控制器作用域
+			$scope.age = 27;
+		}]);
+	</script>
+</body>
+</html>

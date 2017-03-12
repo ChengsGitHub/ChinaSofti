@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>学生管理系统</title>
+</head>
+<body>
+	<div ng-controller="stuController">
+		<!-- 数据列表开始-->
+		<table width="700" border="1">
+			<tr>
+				<th>选择</th>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>
+			<!-- ng-repeat指令遍历data数组，循环生成tr -->
+			<tr ng-repeat="item in data">
+				<td>
+					<input type="radio" name="ids" ng-click="get($index);">					
+				</td>
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.age}}</td>
+				<td>
+					<input type="button" value="删除" ng-click="del($index);">
+				</td>
+			</tr>			
+		</table>
+		<!-- 数据列表结束 -->
+
+		<!-- 表单开始 -->
+		<table width="700" border="1">
+			<tr>
+				<td>
+					学号<input type="text" ng-model="id">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					姓名<input type="text" ng-model="name">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					年龄<input type="text" ng-model="age">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="添加" ng-click="add();">
+					<input type="button" value="修改" ng-click="update();" ng-disabled="!currIndex && currIndex!=0">
+				</td>
+			</tr>
+		</table>
+		<!-- 表单结束 -->
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

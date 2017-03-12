@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			width: 300px;
+			height: 200px;
+			background: #0cc;
+			margin-top: 100px;
+			margin-left: 200px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+
+			var div1 = document.getElementById('div1');
+
+			div1.onmousedown = function(e) {
+
+				e = e || window.event;
+
+				document.title = e.offsetX + ',' + e.offsetY;
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		点击我
+	</div>
+</body>
+</html>

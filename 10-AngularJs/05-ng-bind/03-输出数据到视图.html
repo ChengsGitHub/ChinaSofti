@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">
+
+	<p ng-init="username='jack'">
+		用户名：{{username}}
+	</p>
+
+	<p>
+		年龄：{{ age + 10 }}
+	</p>
+
+	<p>
+		信息：{{ sex + ',' + age }}
+	</p>
+
+	<p>
+		当前城市：{{data[1]}}
+	</p>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope){
+			
+			$scope.sex = 'boy';
+			$scope.age = 27;
+			$scope.data = ['dlaian','beijing','shanghai'];
+
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+
+		/*选中状态*/
+		input:checked+label {
+			color: red;
+			background: #0cc;
+		}
+
+		/*可用状态*/
+		input:enabled {
+			background: #0cc;
+			color: green;
+		}
+
+		/*禁用状态*/
+		input:disabled {
+			background: orange;
+			color: red;
+		}
+
+		/*选中状态*/
+		p::selection {
+			background: #0cc;
+			color: red;
+		}
+		
+		/*火狐兼容*/
+		p::-moz-selection {
+			background: #0cc;
+			color: red;
+		}
+	</style>
+</head>
+<body>	
+	<input type="radio" name="sex" id="boy">
+	<label for="boy">男</label>
+
+	<input type="radio" name="sex" id="girl">
+	<label for="girl">女</label>
+
+	<br>
+
+	<input type="text" value="请输入用户名">
+	<input type="text" value="请输入密码" disabled>
+
+	<p>这是一个文字辈选中的状态</p>
+</body>
+</html>

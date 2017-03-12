@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			// 获得复选按钮组对象
+			var skill = document.getElementsByName('skill');
+
+			var str = '';
+
+			// 遍历复选按钮
+			for (var i = 0;i < skill.length;i ++) {
+				if (skill[i].checked) {
+					str += skill[i].value + ' ';
+				}
+			}
+
+			alert('你选择的技能有：' + str);
+		}
+
+		/*
+			全选/取消全选
+		*/
+		function m2(btn) {
+
+			// 获得复选按钮组对象
+			var skill = document.getElementsByName('skill');
+
+			// 遍历复选按钮
+			for (var i = 0;i < skill.length;i ++) {
+				skill[i].checked = btn.checked;
+			}
+		}
+	</script>
+</head>
+<body>
+	<form id="form1" method="post" action="">
+		选择技能：
+		<label for="java">
+			<input type="checkbox" value="java" name="skill" id="java">java
+		</label>
+		<label for="html">
+			<input type="checkbox" value="html" name="skill" id="html" checked>html
+		</label>
+		<label for="css">
+			<input type="checkbox" value="css" name="skill" id="css">css
+		</label>
+		<label for="js">
+			<input type="checkbox" value="js" name="skill" id="js">js
+		</label>
+		<input type="button" value="测试" onclick="m1();">
+
+		<label for="selectBtn">
+			<input type="checkbox" id="selectBtn" onclick="m2(this);">全选/取消全选
+		</label>
+	</form>
+</body>
+</html>

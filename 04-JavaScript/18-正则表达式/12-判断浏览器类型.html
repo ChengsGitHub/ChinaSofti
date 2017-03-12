@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">				
+		function getBrowserType() {
+
+			var obj = {
+				bwName:'其他浏览器',
+				bwVersion:'未知'
+			};
+
+			var ua = navigator.userAgent;//获得客户端的信息
+
+			var str;
+
+			// 判断谷歌浏览器
+			if ( ua.match(/Chrome\/\d+/) ) {
+				str = ua.match(/Chrome\/\d+/)[0].split('/');
+				obj.bwName = str[0];
+				obj.bwVersion = str[1];
+			}
+
+			// 判断火狐浏览器
+			if ( ua.match(/Firefox\/\d+/) ) {
+				str = ua.match(/Firefox\/\d+/)[0].split('/');
+				obj.bwName = str[0];
+				obj.bwVersion = str[1];
+			}
+
+			// 判断欧朋浏览器
+			if ( ua.match(/OPR\/\d+/) ) {
+				str = ua.match(/OPR\/\d+/)[0].split('/');
+				obj.bwName = 'Opera';
+				obj.bwVersion = str[1];
+			}
+
+			// 判断edge浏览器
+			if ( ua.match(/edge\/\d+/) ) {
+				str = ua.match(/edge\/\d+/)[0].split('/');
+				obj.bwName = str[0];
+				obj.bwVersion = str[1];
+			}			
+
+			// 判断IE浏览器
+			if ( ua.match(/MSIE \d+/) ) {
+				str = ua.match(/MSIE \d+/)[0].split(' ');
+				obj.bwName = str[0];
+				obj.bwVersion = str[1];
+			}
+
+			return obj;
+		}
+
+
+		var obj = getBrowserType();
+		alert('当前浏览器的类型是：' + obj.bwName + ',版本是：' + obj.bwVersion);
+
+	</script>	
+</head>
+<body>
+	
+</body>
+</html>

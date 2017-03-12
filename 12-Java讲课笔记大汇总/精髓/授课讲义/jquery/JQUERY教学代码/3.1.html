@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">	
+	.bg1 {background-color:#FF6}
+</style>
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(e) {
+       
+	   $('#btn1').click(function(){
+			var val = $('#p1').attr("align");   
+			alert(val);
+	   });
+	   
+	   $('#btn2').click(function(){
+			$('#p1').attr("align","center");   			
+	   });
+	  
+	   $('#btn3').click(function(){
+			$('#p1').removeAttr("align");   			
+	   });
+	   
+	   $('#btn4').click(function(){
+			var flag = $('#radio1').prop("checked");  			
+			alert(flag);
+	   });
+    });
+
+</script>
+</head>
+
+<body>
+
+<p id="p1">
+	你好，世界
+</p>
+
+<input type="radio" name="sex" id="radio1" checked>
+<input type="radio" name="sex" id="radio2">
+
+<input type="button" value="读取属性" id="btn1">
+<input type="button" value="设置属性" id="btn2">
+<input type="button" value="删除属性" id="btn3">
+<input type="button" value="布尔值属性" id="btn4">
+
+</body>
+</html>
+

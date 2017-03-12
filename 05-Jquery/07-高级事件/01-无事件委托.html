@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.item {
+			width: 100px;
+			height: 100px;
+			float: left;
+			background: #0cc;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 100px;
+			margin-right: 20px;
+			margin-top: 20px;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var i = 4;
+			
+			// 单击追加span
+			$('#addBtn').click(function(event) {
+				
+				$('#container').append('<span class="item">span' + i + '</span>');
+				i ++;
+
+			});
+			
+			// 单击span显示内容
+			$('.item').click(function(event) {
+				alert( $(this).text() );
+			});
+
+			
+		});
+	</script>
+</head>
+<body>
+	<div id="container">
+		<input type="button" value="增加新元素" id="addBtn">
+		<hr>
+		<span class="item">span1</span>
+		<span class="item">span2</span>
+		<span class="item">span3</span>
+	</div>
+</body>
+</html>

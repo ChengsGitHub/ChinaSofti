@@ -1,0 +1,13 @@
+package com.icss.hb.test;
+
+public class TestInsert {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

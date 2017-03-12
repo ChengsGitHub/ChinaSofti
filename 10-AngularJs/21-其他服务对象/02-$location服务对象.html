@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		.section {
+			height:500px;
+			background: #00cccc;
+			border:1px solid #000;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body ng-controller="firstController">
+	<ul>
+		<li ng-repeat="item in data" ng-click="changeDiv('div' + item);">
+			链接{{item}}
+		</li>
+	</ul>
+
+	<div class="section" ng-repeat="item in data" ng-attr-id="div{{item}}">
+		div{{item}}
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		// 注入$location服务
+		myApp.controller('firstController', ['$scope','$location', '$anchorScroll',function($scope,$location,$anchorScroll) {
+			
+			$scope.data = [1,2,3,4,5];
+
+			$scope.changeDiv = function(divId) {
+
+//				手动设置url地址（有前进后退）
+				$location.path('/my' + divId);
+
+//				手动设置url地址（没有前进后退）
+//				$location.path('/my' + divId).replace();
+
+//				锚点链接跳转（带有路由特点，可以前进后退，需要注入$anchorScroll才好用）
+				$location.hash(divId);
+
+//				设置搜索字符串
+				$location.search({username:'tom'});
+
+//				返回当前的绝对路径
+				console.log( $location.absUrl() );
+			}
+
+		}]);
+	</script>
+</body>
+</html>

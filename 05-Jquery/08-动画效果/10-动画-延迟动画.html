@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;			
+		}
+
+		#div1 {
+			width: 10px;
+			height: 10px;
+			background: #0cc;
+			position: absolute;
+			left: 0;
+			top:100px;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {
+				$('#div1').delay(500).animate({width:200}, 3000);
+				$('#div1').delay(1000).animate({left:200}, 3000);
+				$('#div1').delay(2000).animate({top:200}, 3000);
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<input type="button" value="运动" id="btn1">
+
+	<div id="div1">		
+	</div>
+</body>
+</html>

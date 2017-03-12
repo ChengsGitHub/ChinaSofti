@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">	
+</head>
+<body>	
+	<div class="container" ng-controller="cartController">		
+		<table class="table" ng-show="data.length">
+			<thead>
+				<tr>
+					<th>产品编号</th>
+					<th>产品名称</th>
+					<th>购买数量</th>
+					<th>产品单价</th>
+					<th>产品总价</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in data">
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>
+						<input type="button" value="-" class="btn btn-danger btn-font" 
+							ng-click="updateQty($index,-1);">
+						<input type="text" size="4" ng-model="item.quantity" ng-model-options="{updateOn:'blur'}">
+						<input type="button" value="+" class="btn btn-danger btn-font" 
+							ng-click="updateQty($index,1);">
+					</td>
+					<td>
+						{{item.price | currency:'￥'}}
+					</td>
+					<td>
+						{{item.quantity * item.price | currency:'￥'}}
+					</td>
+					<td>
+						<input type="button" value="移除" class="btn btn-danger" ng-click="del($index);">
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<td></td>
+				<td></td>
+				<td>总数量：{{getQty()}}</td>
+				<td></td>
+				<td>总价格：￥{{getTotalPrice()}}</td>
+				<td>
+					<input type="button" value="清空购物车" class="btn btn-danger" ng-click="data = [];">
+				</td>
+			</tfoot>
+		</table>
+
+		<!-- 空购物车提示 -->
+		<div class="alert alert-info" ng-hide="data.length">
+			<p>您的购物车中没有任何商品</p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>	
+	<script type="text/javascript" src="cart.js"></script>
+</body>
+</html>

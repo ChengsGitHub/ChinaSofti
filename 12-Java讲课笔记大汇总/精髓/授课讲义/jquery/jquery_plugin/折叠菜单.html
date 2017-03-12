@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>折叠菜单1</title>
+
+<link rel="stylesheet" type="text/css"	href="js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+	$( function() {
+		$('#div1').accordion( {
+			width : 400,
+			height : 200,
+			fit : false
+		});
+	});
+</script>
+
+</head>
+
+<body>
+
+<div id="div1" border="true" >
+	<div title="Title1" icon="icon-save">
+		内容1，title="Title1"是标题文字，icon="icon-save"是图标
+	</div>
+	<div title="Title2" icon="icon-reload" selected="true">
+		内容2
+	</div>
+	<div title="Title3" selected="true">内容3</div>
+</div>
+
+</body>
+</html>

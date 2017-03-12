@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#nav {
+			width: 1200px;
+			height: 90px;
+			/*background-color: #aaaaaa;*/
+			margin: 0 auto;
+		}
+		#nav ul {
+			width: 700px;
+			list-style: none;
+			overflow: hidden;
+			margin:0 auto;
+			position: relative;
+
+		}
+		#nav ul li {
+			display: block;
+			float: left;
+			width: 90px;
+			height: 90px;
+			/*background-color: green;*/
+			margin-left:20px;
+			position: relative;
+			transition:all 3s;
+
+		}
+		#nav ul li:nth-child(1){
+			background-image: url(icons.png);
+			background-position: 16px -197px;
+		}
+		#nav ul li:nth-child(2){
+			background-image: url(icons.png);
+			background-position: -80px -197px;
+
+
+		}
+		#nav ul li:nth-child(3){
+			background-image: url(icons.png);
+			background-position: -174px -197px;
+
+
+		}
+		#nav ul li:nth-child(4){
+			background-image: url(icons.png);
+			background-position: -269px -197px;
+
+
+		}
+		#nav ul li:nth-child(5){
+			background-image: url(icons.png);
+			background-position: -364px -197px;
+
+
+		}
+		#nav ul li:nth-child(6){
+			background-image: url(icons.png);
+			background-position: -459px -197px;
+
+
+		}
+
+		#nav ul li a {
+			display: block;
+			text-decoration: none;
+			color: #000;
+			line-height: 45px;
+			position: absolute;
+			top: 50px;
+			left: 14px;
+		}
+		#nav ul li:nth-child(2) a{
+			position: absolute;
+			top: 50px;
+			left: 17px;
+		}
+		#nav ul li:hover {
+			transform:rotateY(180deg);
+		}
+
+	
+	</style>	
+</head>
+<body>
+	<div id="nav">
+		<ul>
+			<li><a href="#">论文提交</a></li>
+			<li><a href="#">VPN服务</a></li>
+			<li><a href="#">研修室预约</a></li>
+			<li><a href="#">馆长信箱</a></li>
+			<li><a href="#">失物招领</a></li>
+			<li><a href="#">入馆指南</a></li>
+		</ul>
+	</div>
+	
+</body>
+</html>

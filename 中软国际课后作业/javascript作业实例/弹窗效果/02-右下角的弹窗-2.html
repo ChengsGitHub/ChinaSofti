@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body{
+			overflow-x:hidden; 
+		}
+
+		#div1 {
+			width: 300px;
+			height: 200px;
+			background: #0cc;
+			position: absolute;
+			right: -300px;
+			bottom: 0;
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.onload = function() {			
+
+			var div1 = document.getElementById('div1'); //弹窗div
+			var i = -div1.offsetWidth; //计数变量，初始值div宽度
+
+			var timer = 1000;//动画过渡事件
+			var speed = 2;//每次移动的像素数
+			var interval = timer / (300 / speed);//时间间隔
+
+			// 运动函数
+			function move() {				
+				
+				i += speed;//每次递增
+
+				div1.style.right = i + 'px';
+
+				if (i >= 0) 
+					clearInterval(timerId);
+				
+			}
+			
+			// 定时器
+			var timerId = setInterval(move,interval);
+		}		
+	</script>
+</head>
+<body>
+	<div id="div1">
+		右下角弹窗
+	</div>
+</body>
+</html>

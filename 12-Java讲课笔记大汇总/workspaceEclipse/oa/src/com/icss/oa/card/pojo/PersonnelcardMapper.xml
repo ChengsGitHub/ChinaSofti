@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="PERSONNELCARD" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.card.pojo.Personnelcard" >
+    <id column="CARD_ID" property="cardId" jdbcType="DECIMAL" />
+    <result column="CARD_NAME" property="cardName" jdbcType="VARCHAR" />
+    <result column="GROUP_ID" property="groupId" jdbcType="DECIMAL" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="DEPTNAME" property="deptname" jdbcType="VARCHAR" />
+    <result column="POSITION" property="position" jdbcType="VARCHAR" />
+    <result column="MOBILEPHONE" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="MAILADDR" property="mailaddr" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="EMP_ID" property="empId" jdbcType="DECIMAL" />
+    <result column="JOB_ID" property="jobId" jdbcType="DECIMAL" />
+    <result column="DEPT_ID" property="deptId" jdbcType="DECIMAL" />
+  </resultMap>
+	<insert id="insert" parameterType="com.icss.oa.card.pojo.Personnelcard">
+		insert into Personnelcard (CARD_ID, CARD_NAME, GROUP_ID, SEX, DEPTNAME, POSITION, MOBILEPHONE,
+		TELEPHONE, MAILADDR, ADDR, EMP_ID, JOB_ID, DEPT_ID)
+		values (Per_seq.nextval,
+		#{cardName,jdbcType=VARCHAR},
+		#{groupId,jdbcType=DECIMAL},
+		#{sex,jdbcType=VARCHAR},
+		#{deptname,jdbcType=VARCHAR},
+		#{position,jdbcType=VARCHAR},
+		#{mobilephone,jdbcType=VARCHAR},
+		#{telephone,jdbcType=VARCHAR},
+		#{mailaddr,jdbcType=VARCHAR},
+		#{addr,jdbcType=VARCHAR},
+		#{empId,jdbcType=DECIMAL},
+		#{jobId,jdbcType=DECIMAL},
+		#{deptId,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.icss.oa.card.pojo.Personnelcard">
+		update Personnelcard
+		set
+		card_Name =#{cardName,jdbcType=VARCHAR},
+		group_Id =#{groupId,jdbcType=DECIMAL},
+		sex =#{sex,jdbcType=VARCHAR},
+		deptname =#{deptname,jdbcType=VARCHAR},
+		position =#{position,jdbcType=VARCHAR},
+		mobilephone =#{mobilephone,jdbcType=VARCHAR},
+		telephone =#{telephone,jdbcType=VARCHAR},
+		mailaddr =#{mailaddr,jdbcType=VARCHAR},
+		addr =#{addr,jdbcType=VARCHAR},
+		emp_Id =#{empId,jdbcType=DECIMAL},
+		job_Id =#{jobId,jdbcType=DECIMAL},
+		dept_Id =#{deptId,jdbcType=DECIMAL}
+		where card_Id = #{cardId,jdbcType=DECIMAL}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from Personnelcard
+		where card_Id
+		= #{cardId,jdbcType=DECIMAL}
+	</delete>
+
+	<select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select *
+		from PersonnelCard
+		where card_Id = #{cardId,jdbcType=DECIMAL}
+	</select>
+
+	<select id="query" resultType="java.util.Map" parameterType="java.util.Map">
+		select * 
+		from (select rownum rnum,p.*
+		from Personnelcard p
+		where p.group_id=#{groupId}
+		order by p.card_id desc)
+		where rnum between #{start} and #{end}
+	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from personnelCard p
+		where  p.group_id=#{groupId}
+	</select>
+	
+	<select id="queryByEmpId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	    select *
+	    from PersonnelCard
+	    where emp_Id = #{empId}
+	</select>
+	
+	<select id="queryByCondition" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * 
+		from (select rownum rnum,e.* 
+		from Personnelcard e
+		where e.emp_Id=#{empId}
+		and card_name like '%'||#{cardName}||'%'
+		) where rnum between
+		#{start} and #{end}
+	</select>
+	
+	<select id="getConditionCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+		select
+		count(*)
+		from Personnelcard
+		where emp_id=#{empId}
+			<if test="cardName != null and cardName != ''">    
+				and card_name like '%'||#{cardName}||'%'
+			</if>
+
+	</select>
+</mapper>

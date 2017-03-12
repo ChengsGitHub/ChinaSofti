@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.bg1 {
+			background: #0cc;
+		}
+
+		.bg2 {
+			background: #ccc;
+		}
+	</style>
+</head>
+<body ng-controller="firstController">
+
+	<!-- 设置奇数偶数样式不同 -->
+	<ul ng-init="data = ['tom','jack','rose','zhangsan','lisi']">
+		<li ng-repeat="item in data" ng-class-odd="'bg1'" ng-class-even="'bg2'">
+			{{item}}
+		</li>
+	</ul>
+
+	<!-- 类似于程序中的if语句 -->
+	<div ng-if="true">
+		这是if为真执行的内容
+	</div>
+
+	<!-- 类似于switch语句 -->
+	<div ng-switch="number">
+		<span ng-switch-when="1">高级</span>
+		<span ng-switch-when="2">中级</span>
+		<span ng-switch-when="3">初级</span>
+		<span ng-switch-default>入门级 </span>
+	</div>
+		
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		// 创建模块
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope){
+
+			$scope.number = 4;
+			
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		var i = 2;
+
+		function add() {
+			// 获得div1的对象
+			var div1 = document.getElementById('div1');
+
+			// 创建input节点
+			var input = document.createElement('input');
+			var br = document.createElement('br');
+
+			// 设置节点属性
+			input.setAttribute('type','text');
+			input.setAttribute('placeholder','请输入电话号码' + i++);
+
+			// 添加节点
+			div1.appendChild(br);
+			div1.appendChild(input);
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input type="button" value="添加电话" onclick="add();">
+		<br>
+		<input type="text" placeholder="请输入电话号码1">
+	</div>	
+</body>
+</html>

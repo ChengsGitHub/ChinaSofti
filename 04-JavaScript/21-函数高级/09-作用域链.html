@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		/*
+			一个function中使用一个变量数据，如果当前作用域没有，就会向外层作用域查找，直至查找到全局作用域，要尽量减少对外层作用域的查找，比较耗费资源，尽量用传参来代替作用域查找。
+		*/
+
+		var a = 10;
+
+		function m1() {
+
+			var b = 20;
+
+			function m2() {
+
+				var c = a + b;
+				window.alert(c);
+
+			}
+
+			m2();
+		}
+
+		m1();
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		window.onload = function() {			
+
+			// 获得元素对象
+			var dataTable = document.getElementById('dataTable');
+			var addBtn = document.getElementById('addBtn');
+
+			var sid = document.getElementById('sid');
+			var sname = document.getElementById('sname');
+			var sage = document.getElementById('sage');
+
+			// 增加按钮单击事件
+			addBtn.onclick = function(e) {
+
+				// 创建行对象
+				var tr = document.createElement('tr');
+				
+				// 创建单元格对象，并把文本框的值赋给单元格内容
+				var sidTd = document.createElement('td');
+				sidTd.innerHTML = sid.value;
+
+				var snameTd = document.createElement('td');
+				snameTd.innerHTML = sname.value;
+
+				var sageTd = document.createElement('td');
+				sageTd.innerHTML = sage.value;
+
+				var oprTd = document.createElement('td');
+				var delBtn = document.createElement('input');
+				
+				delBtn.type = 'button';
+				delBtn.value = '删除';
+				oprTd.appendChild(delBtn);
+
+				// 在tr中追加td
+				tr.appendChild(sidTd);
+				tr.appendChild(snameTd);
+				tr.appendChild(sageTd);
+				tr.appendChild(oprTd);
+
+				// 在table中追加tr
+				dataTable.appendChild(tr);
+
+				// 清空表单
+				sid.value = '';
+				sname.value = '';
+				sage.value = '';
+
+				// 成功提示
+				alert('增加学生成功！');
+			}
+
+			// 表格对象单击事件委托
+			dataTable.onclick = function(e) {
+
+				e = e || window.event;
+
+				var currObj = e.target || e.srcElement;//当前事件源对象
+
+				if (currObj.nodeName == 'INPUT') {
+					// 得到要删除的行的对象
+					var tr = currObj.parentNode.parentNode;
+					// 删除行
+					dataTable.removeChild(tr);
+				}
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<table border="1" width="500" id="dataTable">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>
+		</thead>		
+		<tr>
+			<td>100</td>
+			<td>tom</td>
+			<td>27</td>
+			<td>
+				<input type="button" value="删除">
+			</td>
+		</tr>
+	</table>
+	<form id="" method="post" action="">
+		<table>
+			<tr>
+				<td>编号</td>
+				<td>
+					<input type="text" id="sid">
+				</td>
+			</tr>
+			<tr>
+				<td>姓名</td>
+				<td>
+					<input type="text" id="sname">
+				</td>
+			</tr>
+			<tr>
+				<td>年龄</td>
+				<td>
+					<input type="text" id="sage">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="增加学生" id="addBtn">
+				</td>				
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

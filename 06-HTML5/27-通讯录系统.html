@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table width="500" border="1">
+		<tr height="24">
+			<td colspan="2" bgcolor="yellow" align="center">
+				通讯录
+			</td>
+		</tr>
+		<tr height="24">
+			<td width="120" align="center">姓名</td>
+			<td><input type="text" id="username"></td>
+		</tr>
+		<tr height="24">
+			<td width="120" align="center">手机</td>
+			<td><input type="text" id="mobile"></td>
+		</tr>
+		<tr height="24">
+			<td width="120" align="center">QQ</td>
+			<td><input type="text" id="qq"></td>
+		</tr>
+		<tr height="24">
+			<td colspan="2" align="center">
+				<input type="button" value="增加" onclick="add();">
+				<input type="button" value="查询" onclick="query();">
+				<input type="button" value="修改" onclick="update();">
+				<input type="button" value="删除" onclick="del();">
+				<input type="button" value="清空" onclick="clr();">
+			</td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		// 文本框对象
+		var username = document.getElementById('username');
+		var mobile = document.getElementById('mobile');
+		var qq = document.getElementById('qq');
+
+		/*
+			人员信息类
+		*/
+		function Person(username,mobile,qq) {
+			this.username = username;
+			this.mobile = mobile;
+			this.qq = qq;
+		}
+
+		/*
+			增加人员信息
+		*/
+		function add() {
+
+			// 表单验证
+			if (username.value == '' || username.value.length > 10) {
+				alert('姓名不能为空且最多10个字符');
+				return;
+			}
+
+			var r = /^1[345678]\d{9}$/;
+
+			if ( !r.test(mobile.value) ) {
+				alert('电话号码格式不正确');
+				return;
+			}
+
+			r = /[1-9][0-9]{4,}/;
+
+			if ( !r.test(qq.value) ) {
+				alert('qq号码格式不正确！');
+				return;
+			}
+
+			if ( queryPersonByName(username.value) != null) {
+				alert('姓名已经存在！');
+				return;
+			}
+			
+			// 创建对象
+			var p = new Person(username.value,mobile.value,qq.value);
+
+			// 对象转换为字符串
+			var pStr = JSON.stringify(p);
+
+			//存储到本地
+			localStorage.setItem(username.value,pStr);
+
+			alert('存储成功！');
+		}
+
+		/*
+			查询人员信息
+		*/
+		function query() {
+
+			// 表单验证
+			if (username.value == '' || username.value.length > 10) {
+				alert('姓名不能为空且最多10个字符');
+				return;
+			}
+
+			var obj = queryPersonByName(username.value);
+
+			if (obj == null) {
+				alert('查找的人员不存在！');
+				return;
+			}
+
+			// 显示内容到文本框
+			mobile.value = obj.mobile;
+			qq.value = obj.qq;
+		}	
+
+		/*
+			修改人员信息
+		*/
+		function update() {
+
+			// 表单验证
+			if (username.value == '' || username.value.length > 10) {
+				alert('姓名不能为空且最多10个字符');
+				return;
+			}
+
+			var r = /^1[345678]\d{9}$/;
+
+			if ( !r.test(mobile.value) ) {
+				alert('电话号码格式不正确');
+				return;
+			}
+
+			r = /[1-9][0-9]{4,}/;
+
+			if ( !r.test(qq.value) ) {
+				alert('qq号码格式不正确！');
+				return;
+			}
+			
+			var obj = queryPersonByName(username.value);
+
+			if (obj == null) {
+				alert('修改的人员不存在！');
+				return;
+			}
+			
+			// 修改属性值			
+			obj.mobile = mobile.value;
+			obj.qq = qq.value;
+
+			var objStr = JSON.stringify(obj); //转换为json字符串
+			localStorage.setItem(username.value,objStr);//重新存储
+
+			alert('修改人员成功！');
+		}
+
+		/*
+			删除人员信息
+		*/
+		function del() {
+
+			// 表单验证
+			if (username.value == '' || username.value.length > 10) {
+				alert('姓名不能为空且最多10个字符');
+				return;
+			}
+			
+			var obj = queryPersonByName(username.value);
+
+			if (obj == null) {
+				alert('删除的人员不存在！');
+				return;
+			}
+
+			localStorage.removeItem(username.value);
+
+			alert('删除人员成功！');
+		}
+
+		/*
+			清空表单内容
+		*/
+		function clr() {
+			username.value = '';
+			mobile.value = '';
+			qq.value = '';			
+		}
+
+		/*
+			传入一个姓名，返回这个人的数据对象
+			如果人员不存在，返回null
+		*/
+		function queryPersonByName(username) {
+
+			var obj = null; //创建空对象
+			
+			// 遍历存储的数据
+			for (var i = 0;i < localStorage.length;i ++) {
+
+				var key = localStorage.key(i);	//键	
+				
+				// 如果找到匹配的名称
+				if (key == username) {
+
+					var val = localStorage.getItem(key); //值
+
+					try {
+						obj = JSON.parse(val); //转换为json对象
+					} catch (e) {
+						return null;
+					}
+
+					return obj;					
+				}
+
+			}
+
+			return obj;
+		}
+
+	</script>
+</body>
+</html>

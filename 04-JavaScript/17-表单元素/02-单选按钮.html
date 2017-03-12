@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			
+			// 获得单选按钮组对象
+			var sex = document.getElementsByName('sex');
+
+			var str = '';
+			
+			// 遍历单选按钮组
+			for (var i = 0;i < sex.length;i ++) {
+				if (sex[i].checked) {
+					str = sex[i].value;
+					break;
+				}
+			}
+
+			if (str == '')
+				alert('请选择一个性别');
+			else
+				alert('您选择了：' + str);
+		}
+	</script>
+</head>
+<body>
+	<form id="form1" method="post" action="">
+		性别：
+		<label for="boy">
+			<input type="radio" value="先生" id="boy" name="sex">男
+		</label>
+		<label for="girl">
+			<input type="radio" value="女士" id="girl" name="sex">女
+		</label>		
+		<input type="button" value="测试" onclick="m1();">
+	</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+MYSQL完全卸载方法 
+2011-03-23 08:44
+   第一次安装mysql输入密码后，如果你想卸载重装，便会出现要求输入原来设定的密码，否则安装不成功。遇到这样的问题，是你没有完全卸载mysql数据库。
+
+MysqlQ完全卸载方法：
+1.清除MYSQL的安装目录,默认是C:\Program Files
+
+ 
+
+2.清除MYSQL数据存放目录，一般在C：\programData目录下（win7）或者C:\Documents and Settings\All Users.windows\Application Data（XP）目录下删除MySQL文件夹。
+
+（需要注意的时Application Data这个文件夹默认是隐藏的，要通过 工具->文件夹选项->查看->显示所有文件与文件夹来设置隐藏文件可见）。
+
+ 
+
+3.这步很重要，之前不管我怎么卸载MYSQL清空残余文件都还是要输入原始密码，后来试试找了下注册表，清空后果然有效。
+
+ 
+
+删除注册表数据，通过regedit，删除以下几个文件：
+HKEY_LOCAL_MACHINE/SYSTEM/ControlSet001/Services/Eventlog/Applications/MySQL
+
+ 
+
+HKEY_LOCAL_MACHINE/SYSTEM/ControlSet002/Services/Eventlog/Applications/MySQL
+
+ 
+
+HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services/Eventlog/Applications/MySQL
+
+至此Mysql数据库便完全卸载了，然后重新安装即可。
+ 
+

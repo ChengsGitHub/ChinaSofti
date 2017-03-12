@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		<input type="button" value="调用服务1" ng-click="add1();"/>
+		<input type="button" value="调用服务2" ng-click="add2();"/>
+		<input type="button" value="调用服务3" ng-click="add3();"/>
+	</div>
+
+	<script src="angular.js"></script>
+	<script>
+//		创建模块
+		var myApp = angular.module('myApp',[]);
+
+//		factory的快捷写法
+		myApp.factory('service1',[function(){
+
+			return {
+				add:function() {
+					alert('插入表1的数据');
+				}
+			}
+
+		}]);
+
+//		service的快捷写法
+		myApp.service('service2',[function(){
+
+			return  {
+				add:function() {
+					alert('插入表2的数据');
+				}
+			}
+		}]);
+
+//              provider的快捷写法
+		myApp.provider('service3',[function(){
+
+			this.$get = function() {
+				return {
+					add:function(){
+						alert('插入表3的数据');
+					}
+				}
+			}
+
+		}])
+
+//		控制器
+		myApp.controller('firstController',['$scope','service1','service2','service3',function($scope,service1,service2,service3){
+
+			$scope.add1 = function() {
+				service1.add();
+			}
+
+			$scope.add2 = function(){
+				service2.add();
+			}
+
+			$scope.add3 = function() {
+				service3.add();
+			}
+
+		}]);
+	</script>
+</body>
+</html>

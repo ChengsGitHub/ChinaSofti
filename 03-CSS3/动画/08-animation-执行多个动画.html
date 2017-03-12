@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 100px;
+			height: 100px;
+			background: #0cc;
+			border-radius: 50%;
+			position: absolute;
+			top:0;
+			left: 0;
+
+			animation:move 5s forwards,move2 5s 5s forwards;
+			-webkit-animation:move 5s forwards,move2 5s 5s forwards;
+		}
+
+		/*动画1*/
+		@keyframes move {			
+			100% {				
+				left: 400px;
+				background: red;
+			}
+		}
+
+		@-webkit-keyframes move {
+			100% {				
+				left: 400px;
+				background: red;
+			}
+		}
+
+		/*动画2*/
+		@keyframes move2 {
+
+			100% {
+				top:400px;
+				background: green;			
+			}
+
+		}
+
+		@-webkit-keyframes move2 {
+
+			100% {
+				top:400px;
+				background: green;			
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">		
+	</div>
+</body>
+</html>

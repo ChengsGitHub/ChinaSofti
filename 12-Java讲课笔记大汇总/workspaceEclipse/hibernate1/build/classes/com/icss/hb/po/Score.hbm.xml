@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-12 16:38:32 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.icss.hb.po.Score" table="SCORE">
+        <composite-id name="id" class="com.icss.hb.po.ScoreId">
+            <key-property name="sid" type="int">
+                <column name="SID" precision="6" scale="0" />
+            </key-property>
+            <key-property name="cid" type="int">
+                <column name="CID" precision="6" scale="0" />
+            </key-property>
+        </composite-id>
+        <property name="result" type="java.lang.Integer">
+            <column name="RESULT" precision="3" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

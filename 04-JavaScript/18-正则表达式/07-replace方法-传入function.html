@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	
+		// 隐藏手机号码后两位
+		var str = "张三的手机号是13312345678，李四的手机号是16911111118，王五的手机号是17822222222";
+		
+		var r = /\d{11}/g;
+
+		//传入一个function，word参数表示每次匹配的内容，返回值代表替换的内容
+		str = str.replace(r,function(word){
+			
+			return word.substr(0,9) + '**';
+		});
+
+		console.log(str);
+	</script>
+</head>
+<body>	
+</body>
+</html>

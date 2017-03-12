@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			width: 200px;
+			padding: 50px;
+			margin: 20px;
+			border:5px solid #ccc;
+		}
+
+		#div2 {
+			background: #0cc;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$(document).click(function(event) {
+				
+				//相对于网页原点的偏移量
+				var top = $('#div1').offset().top;
+				var left = $('#div1').offset().left;
+				alert(top + ',' + left);
+
+				top = $('#div2').offset().top;
+				left = $('#div2').offset().left;
+				alert(top + ',' + left);
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+
+	<div id="div1">
+		<p>段落内容1</p>
+		<p>段落内容2</p>
+		<p>段落内容3</p>
+		<p>段落内容4</p>
+		<p>段落内容5</p>
+		<p>段落内容6</p>
+		<div id="div2">www.baidu.com</div>
+	</div>
+</body>
+</html>

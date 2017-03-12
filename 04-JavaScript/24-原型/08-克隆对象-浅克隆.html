@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		/*在Object类的原型中添加一个克隆方法，能够克隆任何对象*/
+		Object.prototype.clone = function() {
+			
+			// 根据情况创建数组对象或者普通Object对象
+			// var obj = this instanceof Array ? [] : {};
+			var obj = this.constructor == Array ? [] : {};
+			
+			// 遍历当前对象的成员，赋给新对象
+			for (var prop in this) {
+				obj[prop] = this[prop];
+			}
+
+			return obj;
+		}
+		
+		/*人类*/
+		function Person(name,age) {
+			this.name = name;
+			this.age = age;
+
+			this.show = function() {
+				alert(this.name + ',' + this.age);
+			}
+		}
+
+		/*创建对象*/
+		var p1 = new Person('tom',27);
+		var p2 = p1.clone();
+
+		p1.name = 'jack';
+		p2.show();
+
+		var a1 = [1,2,3,4,5];		
+		var a2 = a1.clone();
+		a1[0] = 1000;
+		console.log(a2);
+		console.log(a1);
+
+	</script>
+</head>
+<body>
+</body>
+</html>

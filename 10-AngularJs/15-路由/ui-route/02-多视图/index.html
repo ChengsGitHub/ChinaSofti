@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!--主导航链接-->
+	<a ui-sref="tiyu">体育</a>
+	<a ui-sref="yule">娱乐</a>
+
+	<!-- 显示路由页面的容器开始-->
+	<div ui-view></div>
+	<!-- 显示路由页面的容器结束-->
+
+	<script src="../../js/angular.js"></script>
+	<!-- 引入第三方路由-->
+	<script src="../../js/angular-ui-router.js"></script>
+	<script>
+
+		//创建模块，依赖ui.router模块
+		var myApp = angular.module('myApp',['ui.router']);
+
+		//在config中配置路由，注入$stateProvider,$urlRouterProvider两个服务
+		myApp.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+
+//			配置路由对应的页面url地址
+			$stateProvider
+				.state('home',{
+					url:'/', //默认页
+					templateUrl:'tpls/home.html'
+				})
+				.state('tiyu',{
+					url:'/tiyu',
+					templateUrl:'tpls/tiyu.html'
+				})
+				.state('tiyu.zuqiu',{
+					url:'/zuqiu',
+					templateUrl:'tpls/tiyu.zuqiu.html'
+				})
+				.state('tiyu.lanqiu',{
+					url:'/lanqiu',
+					templateUrl:'tpls/tiyu.lanqiu.html'
+				})
+				.state('tiyu.paiqiu',{
+					url:'/paiqiu',
+					template:'<p>这是排球版块的相关内容</p>'  //直接写死内容，不引用外部的网页
+				})
+				.state('yule',{
+					url:'/yule',
+					views : {  //多个view视图
+						'':{
+							templateUrl:'tpls/yule.html'
+						},
+						'yingshi@yule':{
+							templateUrl:'tpls/yule.yingshi.html'
+						},
+						'dianshi@yule':{
+							templateUrl:'tpls/yule.dianshi.html'
+						}
+					}
+				})
+
+//			配置默认路由跳转地址（如果路由url不存在）
+			$urlRouterProvider.otherwise('/');
+
+		}]);
+	</script>
+</body>
+</html>

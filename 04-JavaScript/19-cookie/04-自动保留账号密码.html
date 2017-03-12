@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="util.js"></script>
+	<script type="text/javascript">
+		//保存按钮事件
+		function saveAccount() {
+
+			//获得所需各项
+			var timer = document.getElementById('timer');			
+			var username = document.getElementById('username');
+			var password = document.getElementById('userpwd');
+
+			//一天 / 一周 / 一月的判断
+			if(timer.selectedIndex == 0) {				
+				cookie.add("username",username.value,24);
+				cookie.add("password",password.value,24);
+			} else if(timer.selectedIndex == 1) {
+				cookie.add("username",username.value,24 * 7);
+				cookie.add("password",password.value,24 * 7);
+			} else if(timer.selectedIndex == 2) {
+				cookie.add("username",username.value,24 * 30);
+				cookie.add("password",password.value,24 * 30);
+			}
+			
+		}
+
+		//读取按钮事件
+ 		function readAccount() {
+
+			var username = document.getElementById('username');
+			var password = document.getElementById('userpwd');
+
+ 			username.value = cookie.get('username');
+ 			password.value = cookie.get('password');
+ 		}
+
+	</script>
+</head>
+<body>
+	<form id="form" method="post" action="">
+		账号<input type="text" id="username">
+		<br>
+		密码<input type="password" id="userpwd">
+		<br>
+		保存账号密码
+		<select id="timer">
+			<option value="">1天</option>
+			<option value="">1周</option>
+			<option value="">1月</option>
+		</select>
+		<input id='btn1' type="button" value="保存" onclick='saveAccount();'>
+		<input id='btn2' type="button" value="读取" onclick='readAccount();'>
+	</form>
+</body>
+</html>

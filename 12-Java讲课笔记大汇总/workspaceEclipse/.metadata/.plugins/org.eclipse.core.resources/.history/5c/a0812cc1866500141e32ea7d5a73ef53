@@ -1,0 +1,53 @@
+package upload;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+/**
+ * 文件上传
+ */
+public class UploadServlet extends HttpServlet {
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		// 设置编码
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		// 获得Servlet上下文对象
+		ServletContext context = this.getServletContext();
+
+		// 磁盘文件列表工厂对象
+		DiskFileItemFactory fact = new DiskFileItemFactory();
+
+		// Servlet文件上传对象
+		ServletFileUpload upload = new ServletFileUpload(fact);
+
+		try {
+			// 设置最大上传文件大小为10M，超出大小会发生异常
+			upload.setSizeMax(1024 * 1024 * 10);
+
+			// 获得所有上传文件对象集合
+			List<FileItem> list = upload.parseRequest(request);
+			
+			
+
+		} catch (Exception e) {
+
+		}
+	}
+
+}

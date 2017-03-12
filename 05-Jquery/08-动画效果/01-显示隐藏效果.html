@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			width: 200px;
+			background: #0cc;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			// 基本显示
+			$('#btn1').click(function(event) {
+				$('#div1').show();
+			});
+
+			// 基本隐藏
+			$('#btn2').click(function(event) {
+				$('#div1').hide();
+			});
+
+			// 基本显示-过渡 slow慢 normal中 fast快
+			$('#btn3').click(function(event) {
+				$('#div1').show('fast');
+			});
+
+			// 基本隐藏-过渡
+			$('#btn4').click(function(event) {
+				$('#div1').hide('slow');
+			});
+
+			// 基本显示-自定义时间
+			$('#btn5').click(function(event) {
+				$('#div1').show(3000);
+			});
+
+			// 基本隐藏-自定义时间
+			$('#btn6').click(function(event) {
+				$('#div1').hide(2000);
+			});
+
+			// 基本显示-回调函数
+			$('#btn7').click(function(event) {
+				$('#div1').show(3000,function(){
+					alert('显示完毕！');
+				});
+			});
+
+			// 基本隐藏-回调函数
+			$('#btn8').click(function(event) {
+				$('#div1').hide(2000,function(){
+					alert('隐藏完毕！');
+				});
+			});
+
+			// 开关操作
+			$('#btn9').click(function(event) {
+				$('#div1').toggle(2000);
+			});
+
+			// 显示-滑动
+			$('#btn10').click(function(event) {
+				$('#div1').slideDown(2000);
+			});
+
+			// 隐藏-滑动
+			$('#btn11').click(function(event) {
+				$('#div1').slideUp(2000);
+			});
+
+			// 开关操作
+			$('#btn12').click(function(event) {
+				
+				$('#div1').slideToggle(2000);
+
+			});
+
+			// 显示-淡入淡出
+			$('#btn13').click(function(event) {
+				$('#div1').fadeIn(2000);
+			});
+
+			// 隐藏-淡入淡出
+			$('#btn14').click(function(event) {
+				$('#div1').fadeOut(2000);
+			});
+
+			// 指定透明度
+			$('#btn15').click(function(event) {
+				$('#div1').fadeTo(2000,0.5);
+			});
+
+			// 开关
+			$('#btn16').click(function(event) {
+				$('#div1').fadeToggle(2000);
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<input type="button" value="显示" id="btn1">
+	<input type="button" value="隐藏" id="btn2">
+
+	<input type="button" value="显示-过渡" id="btn3">
+	<input type="button" value="隐藏-过渡" id="btn4">
+
+	<input type="button" value="显示-自定义时间" id="btn5">
+	<input type="button" value="隐藏-自定义时间" id="btn6">
+
+	<input type="button" value="显示-回调函数" id="btn7">
+	<input type="button" value="隐藏-回调函数" id="btn8">
+
+	<input type="button" value="显示/隐藏" id="btn9">
+
+	<input type="button" value="显示-滑动" id="btn10">
+	<input type="button" value="隐藏-滑动" id="btn11">
+
+	<input type="button" value="显示/隐藏" id="btn12">
+
+	<input type="button" value="显示-淡入淡出" id="btn13">
+	<input type="button" value="隐藏-淡入淡出" id="btn14">
+
+	<input type="button" value="指定透明度" id="btn15">
+
+	<input type="button" value="显示/隐藏" id="btn16">
+
+	<div id="div1">
+		<p>段落内容1</p>
+		<p>段落内容2</p>
+		<p>段落内容3</p>
+		<p>段落内容4</p>
+		<p>段落内容5</p>
+		<p>段落内容6</p>
+	</div>
+</body>
+</html>

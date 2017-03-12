@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+	<div id="div1" ng-controller="firstController">
+		用户名：{{username}}，年龄：{{age}}
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">	
+
+		var myApp = angular.module('myApp',[]);
+		
+		myApp.controller('firstController', ['$scope', function($scope){
+			
+			$scope.username = 'jack';
+			$scope.age = 27;
+		}]);
+
+		var div1 = document.getElementById('div1');
+		
+		document.onclick = function() {
+			// 动态应用模块，参数1：应用模块的容器，参数2，应用模块的名称
+			angular.bootstrap(div1,['myApp']);
+		}		
+	</script>
+</body>
+</html>

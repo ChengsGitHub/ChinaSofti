@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="library.js"></script>
+	<script type="text/javascript">
+		
+		/*使用类库简化开发*/
+		window.onload = function() {
+
+			$('btn1').onclick = function() {
+				
+				$('div1').innerHTML = 'hello,world';
+
+				var ps = $tag('p');
+
+				for (var i = 0;i < ps.length;i ++) {
+					alert(ps[i].innerHTML);
+				}
+
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1"></div>	
+	<p>段落内容1</p>
+	<p>段落内容2</p>
+	<p>段落内容3</p>
+	<p>段落内容4</p>
+	<input type="button" id="btn1" value="测试">
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 300px;
+			height: 300px;
+			background: #0cc;
+
+			/*设置边框图片的来源*/
+			border-image-source: url(../images/border.png);
+
+			/*边框宽度，边框默认只会出现在四个角*/
+			border-image-width: 27px;
+
+			/*图片分割的方式，图片会被当成一个九宫格，值的顺序是上右下左，值不要写px， fill设置显示中间的格，默认不显示，*/
+			/*border-image-slice: 27 27 27 27 fill;*/
+
+			/*合并写法*/
+			border-image-slice: 27;
+
+			/*边框图片的平铺模式：stretch默认拉伸 repeat平铺 round环绕，有兼容问题*/
+			border-image-repeat: repeat;
+			/*border-image-repeat: round;*/
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+</body>
+</html>

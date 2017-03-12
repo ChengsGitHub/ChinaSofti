@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*
+			人类
+		*/
+		function Person() {
+
+		}
+
+		/*
+			一个一个属性方法添加到原型中比较麻烦
+			可以直接将原型重写
+			让原型对象指向一个新的对象
+			由于原型被重写，不会有constructor属性指向类本身
+			如果constructor比较重要，可以在对象中自己添加constructor属性指向本身
+		*/
+		Person.prototype = {
+			constructor:Person,
+			name:'tom',
+			age:27,
+			show:function(){
+				alert(this.name + ',' + this.age)
+			}
+		}
+		
+		/*创建对象*/
+		var p1 = new Person();
+		alert(p1.name);
+		p1.show();
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

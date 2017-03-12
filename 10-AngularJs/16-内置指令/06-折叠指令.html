@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<!-- ng-open折叠指令，需要配合details标签使用 -->
+	<input type="checkbox" ng-model="open"> {{open}}
+	<details ng-open="open">
+		<p>这是一个折叠的内容</p>
+	</details>
+
+	<script type="text/javascript" src="angular.js"></script>
+	
+</body>
+</html>

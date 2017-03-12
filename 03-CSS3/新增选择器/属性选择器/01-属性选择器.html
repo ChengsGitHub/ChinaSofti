@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		
+		/*只要有id属性*/
+		p[id] {background: orange}
+
+		/*必须id=greeen*/
+		p[id=green] {background: green}
+
+		/*必须包含某单词*/
+		p[class~=yellow] {background: yellow}
+
+		/*以xx开头的*/
+		a[href^="http://"] {color: red;text-decoration: none;}
+
+		/*包含xxx字符的*/
+		a[href*=dex] {color: gray}
+
+		/*必须以xx连字符开头的*/
+		p[class|=a] {background: blue}
+
+		/*必须以xxx字符结尾*/
+		a[href$=rar]:after {
+			content: url(images/rar.jpg);
+		}
+
+		a[href$=ppt]:after {
+			content: url(images/ppt.jpg);
+		}
+
+		a[href$=txt]:after {
+			content: url(images/txt.jpg);
+		}
+
+		a[href$=xls]:after {
+			content: url(images/excel.jpg);
+		}
+
+		a[href$=rmvb]:after {
+			content: url(images/qvod.jpg);
+		}
+
+		a[href$=doc]:after {
+			content: url(images/word.jpg);
+		}
+	</style>
+</head>
+<body>
+	<p>小绿</p>
+	<p id="red">小红</p>
+	<p id="green">小绿毛龟</p>
+	<p class="like yellow too much">我最喜欢黄色了</p>	
+	<p class="a-bcdefg">小兰兰</p>
+
+	<hr>
+
+	<a href="http://www.baidu.com">百度一下，你就知道</a>
+	<a href="index.html">返回首页</a>
+
+	<hr>
+
+	<a href="xxx.rar">下载压缩文件</a>	
+	<a href="xxx.ppt">下载ppt</a>
+	<a href="xxx.txt">下载文本文件</a>
+	<a href="xxx.xls">下载报表</a>
+	<a href="xxx.rmvb">下载视频</a>
+	<a href="xxx.doc">下载word文件</a>
+	<a href="xxx.ppt">下载ppt</a>
+</body>
+</html>

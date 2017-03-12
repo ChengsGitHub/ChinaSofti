@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 混合结构
+		var citys = [
+			{
+				state:'辽宁',
+				city:['大连','沈阳','鞍山','抚顺']
+			},
+			{
+				state:'吉林',
+				city:['长春','通化','四平']
+			},
+			{
+				state:'黑龙江',
+				city:['哈尔滨','齐齐哈尔','牡丹江','大庆','伊春']
+			}
+		];
+
+		//遍历二维数组
+		for (var i = 0;i < citys.length;i ++) {
+
+			document.write('<h3>' + citys[i].state + '</h3>');
+
+			document.write('<ul>');
+
+			for (var j = 0;j < citys[i].city.length;j ++) {
+				document.write('<li>' + citys[i].city[j] + '</li>');
+			}
+
+			document.write('</ul>');
+
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

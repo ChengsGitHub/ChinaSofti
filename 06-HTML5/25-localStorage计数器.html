@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		
+		var pageCount = localStorage.getItem('pageCount'); //读取原来的计数
+		pageCount ++; //计数+1
+		localStorage.setItem('pageCount',pageCount);//重新设置计数
+		document.write('访问的次数是：' + pageCount);
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

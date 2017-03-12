@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抖动的下箭头</title>
+	<style type="text/css">
+		#arrow {
+			width: 44px;
+			height: 44px;
+			position: fixed;
+			left: 50%;
+			bottom: 100px;
+			background-image: url(arrow.png);
+			-webkit-animation:arrow-down 1.5s infinite;
+		}
+
+		@-webkit-keyframes arrow-down{
+			from{
+				left: 50%;
+				bottom: 100px
+			}
+			to {
+				left: 50%;
+				bottom: 80px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="arrow">
+		
+	</div>
+	
+</body>
+</html>

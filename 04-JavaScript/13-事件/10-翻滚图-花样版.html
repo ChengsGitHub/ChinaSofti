@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#p1 {
+			transition:all 0.5s;
+			backface-visibility:hidden;
+		}
+
+		#p2 {
+			position: absolute;
+			transform:rotateY(180deg);
+			top: 0;
+			left: 0;
+			backface-visibility:hidden;
+			transition:all 0.5s;
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.onload = function() {
+			
+			// 获得图片对象
+			var p1 = document.getElementById('p1');
+			var p2 = document.getElementById('p2'); 			
+						
+			p1.onmouseover = function(){				
+				this.style.transform = 'rotateY(180deg)';				
+				p2.style.transform = 'rotateY(360deg)';				
+			}
+			
+			p2.onmouseout = function(){
+				this.style.transform = 'rotateY(180deg)';
+				p1.style.transform = 'rotateY(360deg)';
+			}			
+		}
+	</script>
+</head>
+<body>
+	<!-- 鼠标移上变成另一幅图片，鼠标离开还原 -->	
+	<img src="1.jpg" alt="" id="p1">
+	<img src="4.jpg" alt="" id="p2">
+</body>
+</html>

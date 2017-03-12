@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="job" namespace="/job" extends="struts-default">
+	
+		<global-results>
+			<result name="success" type="redirectAction">query</result>
+		</global-results>
+	
+		<action name="add" class="jobAction" method="add">			
+		</action>
+		
+		<action name="delete" class="jobAction" method="delete">			
+		</action>
+		
+		<action name="toUpdate" class="jobAction" method="toUpdate">
+			<result name="success">/UpdateJob.jsp</result>			
+		</action>
+		
+		<action name="update" class="jobAction" method="update">			
+		</action>	
+	
+		<action name="query" class="jobAction" method="query">
+			<result name="success">/QueryJob.jsp</result>			
+		</action>
+	</package>
+	
+</struts>

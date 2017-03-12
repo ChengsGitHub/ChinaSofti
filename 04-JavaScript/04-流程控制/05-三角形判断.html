@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			// 三条边
+			var a = parseInt(prompt('第一条边的长度'));
+			var b = parseInt(prompt('第二条边的长度'));
+			var c = parseInt(prompt('第三条边的长度'));
+			
+			// 判断用户是否取消
+			if ((a == null) || (b == null) || (c == null)) {
+				alert('操作取消');
+				return;
+			}
+
+			// 判断文本框是否为空
+			if ((a == '') || (b == '') || (c == '')) {
+				alert('不能为空！');
+				return;
+			}
+			
+
+			if (isNaN(a) || isNaN(b) || isNaN(c)) {//判断是否是数字
+				alert('请输入正确长度');
+			} else {
+				// 判断是否是三角形
+				if (a + b <= c || c + b <= a || a + c <= b) {
+					alert('不是三角形');
+				} else if (a * a + b * b == c * c || a * a + c * c == b * b || c * c + b * b == a * a) {				
+					alert('直角三角形');
+				} else if (a == b && a == c && c == b) {
+					alert('等边三角形');
+				} else if (a == b || b == c || a == c) {
+					alert('等腰三角形');
+				} else {												
+					alert('普通三角形');													
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	用户输入三条边的长度，然后判断
+	1.是否是三角形，如果不是提示“不是三角形”
+	2.是否是等边三角形
+	3.是否是等腰三角形
+	4.是否是直角三角形
+	5.以上都不是，普通三角形
+	<input type="button" value="测试三角形" onclick="m1();">
+</body>
+</html>

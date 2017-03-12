@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		function createTable() {
+
+			var table = document.createElement('table');
+
+			table.setAttribute('border',1);
+			table.setAttribute('align','center');
+			table.setAttribute('width',600);
+
+			for (var i = 0;i < 5;i ++) {
+				var tr = document.createElement('tr');	
+
+				for (var j = 0;j < 6;j ++) {
+					var td = document.createElement('td');
+					td.innerHTML = '第' + i + '行,第' + j + '列';
+					tr.appendChild(td);
+				}
+
+				table.appendChild(tr);
+			}
+
+			document.body.appendChild(table);
+		}
+		
+	</script>
+</head>
+<body>
+	<input type="button" value="生成表格" onclick="createTable();">
+</body>
+</html>

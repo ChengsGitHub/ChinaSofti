@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul li {
+			list-style: none;
+		}
+
+		#nav {
+			width: 100%;
+			height: 40px;
+			position: fixed;
+			top:0;
+			background: rgb(0,0,0);
+			background: rgba(0,0,0,0.7);
+		}
+
+		#nav li {
+			float: left;
+			height: 40px;
+			line-height: 40px;
+			margin-left: 20px;
+		}
+
+		#nav li a{
+			color: #fff;
+			text-decoration: none;
+		}
+
+		#section1 {
+			height: 600px;
+			background: #0cc;			
+		}
+
+		#section2 {
+			height: 900px;
+			background: #ccc;
+		}
+
+		#section3 {
+			height: 900px;
+			background: #c0c;
+		}
+
+		#top {
+			position: fixed;
+			right: 20px;
+			bottom: 20px;
+			cursor: pointer;
+			display: none;
+		}
+
+		/*banner*/
+		#banner {
+			height: 400px;
+			background: blue;
+			margin-top: 40px;
+		}
+
+		/* 导航高亮样式 */
+		.highlight {
+			color: orange!important;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+
+			// 导航条的高度
+			var navH = $('#nav').outerHeight();
+
+			// 滚动条事件
+			$(window).scroll(function(event) {
+				
+				// 获得滚动条卷去的大小
+				var sTop = $(window).scrollTop();
+
+				//滚动条超过200，显示回到顶部的按钮
+				if (sTop >= 200) {
+					$('#top').fadeIn(500);
+				} else {
+					$('#top').fadeOut(500);
+				}
+
+				/*滚动监听高亮导航*/
+
+				// 高亮函数
+				function highLight(target) {					
+					// 删除所有导航高亮
+					$('#nav a').removeClass('highlight');	
+
+					// 给目标链接加高亮					
+					$(target).addClass('highlight');
+				}
+
+				// 区块1的位置
+				var section1 = $('#section1');
+
+				var section1Pos = {
+					start:section1.offset().top - navH,
+					end:section1.offset().top + section1.outerHeight() - navH
+				}
+
+				// 区块2的位置
+				var section2 = $('#section2');
+
+				var section2Pos = {
+					start:section2.offset().top - navH,
+					end:section2.offset().top + section2.outerHeight() - navH
+				}
+
+				// 区块3的位置
+				var section3 = $('#section3');
+
+				var section3Pos = {
+					start:section3.offset().top - navH,
+					end:section3.offset().top + section3.outerHeight() - navH
+				}
+				
+				//判断滚动条位置，做对应的区域的导航高亮
+				if (sTop >= section1Pos.start && sTop < section1Pos.end) {
+					highLight('.link1');
+				} else if (sTop >= section2Pos.start && sTop < section2Pos.end) {
+					highLight('.link2');
+				} else if (sTop >= section3Pos.start && sTop < section3Pos.end) {
+					highLight('.link3');
+				} else {
+					$('#nav a').removeClass('highlight');
+				}			
+
+			});
+
+			// 单击回到顶部按钮，回到顶部
+			$('#top').click(function(event) {
+				$('html,body').animate({scrollTop:0},1000);
+			});
+
+			
+			// 导航链接单击，滑动到目标锚点
+			$('#nav a').click(function(event) {
+
+				// 获得目标距离网页原点的偏移量
+				var top = $(this.hash).offset().top;
+
+				//滚动条滑动到目标锚点
+				$('html,body').animate({scrollTop:top - navH},1000);
+
+				return false;
+			});
+		
+		});	
+	</script>
+</head>
+<body>	
+	<div id="banner">
+		广告条
+	</div>
+
+	<!-- 顶部导航 -->
+	<ul id="nav">
+		<li><a href="#section1" class="link1">链接1</a></li>
+		<li><a href="#section2" class="link2">链接2</a></li>
+		<li><a href="#section3" class="link3">链接3</a></li>
+	</ul>
+
+	<div id="section1">区块1</div>
+	<div id="section2">区块2</div>
+	<div id="section3">区块3</div>
+
+	<div id="top">
+		<img src="top.jpg" alt="">
+	</div>
+</body>
+</html>

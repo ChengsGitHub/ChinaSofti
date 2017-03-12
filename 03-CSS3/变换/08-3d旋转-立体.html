@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+
+		#container {
+			/*远近度，一定要加在产生立体3d效果的元素的父元素上*/
+			perspective:400px;
+			-webkit-perspective:400px;
+			-moz-perspective:400px;
+		}
+
+		#div1 {
+			width: 236px;
+			height:236px;
+			background: #0cc;
+			border:1px solid #000;
+			margin: 200px;
+
+			/*3d立体效果*/
+			transform-style:preserve-3d;
+			-webkit-transform-style:preserve-3d;
+			-moz-transform-style:preserve-3d;
+
+			transition:all 2s;
+		}
+
+		#div1 img {
+			display: block;
+		}
+
+		#div1:hover {
+			/*transform:rotateY(180deg);*/
+			transform:rotateX(-180deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="div1">
+			<img src="../images/1.jpg" alt="">
+		</div>
+	</div>	
+</body>
+</html>

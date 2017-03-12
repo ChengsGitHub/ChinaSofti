@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function m1() {
+			var div1 = document.getElementById('div1');
+			var p1 = document.getElementById('p1');
+			var p2 = document.getElementById('p2');
+
+			// 获得p1对象的父节点
+			var parentObj = p1.parentNode;
+			alert(parentObj.outerHTML);
+
+			// 获得div1的父节点
+			alert(div1.parentNode.outerHTML);
+		}
+
+		function m2() {
+
+			var div1 = document.getElementById('div1');
+			var p1 = document.getElementById('p1');
+			var p2 = document.getElementById('p2');
+			
+			// 返回div1的所有子节点（文本节点也算子节点）
+			var childs = div1.childNodes;
+			alert(childs.length);
+
+			for (var i = 0;i < childs.length;i ++) {
+				console.log(childs[i]);
+			}
+
+		}
+
+		function m3() {
+
+			var div1 = document.getElementById('div1');
+			var p1 = document.getElementById('p1');
+			var p2 = document.getElementById('p2');
+
+			// 子元素节点的个数
+			alert(div1.childElementCount);
+
+			// 第一个元素节点
+			console.log(div1.firstElementChild);
+			// 最后一个元素节点
+			console.log(div1.lastElementChild);
+
+			// 下一个兄弟元素节点
+			console.log(p1.nextElementSibling);
+			
+			// 上一个兄弟元素节点
+			console.log(p2.previousElementSibling);
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<!-- 这是一个注释 -->
+		<p id="p1">段落文字1</p>		
+		<p id="p2">段落文字2</p>				
+	</div>
+	<input type="button" value="查看父节点" onclick="m1();">
+	<input type="button" value="查看子节点" onclick="m2();">
+	<input type="button" value="查看其他节点" onclick="m3();">
+	<input type="button" value="删除本身节点（有兼容问题）" onclick="this.remove();">
+</body>
+</html>

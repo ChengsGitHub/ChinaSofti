@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="hibernate_mysql">
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <property name="context-root" value="hibernate_mysql"/>
+        <property name="java-output-path" value="/hibernate_mysql/build/classes"/>
+    </wb-module>
+</project-modules>

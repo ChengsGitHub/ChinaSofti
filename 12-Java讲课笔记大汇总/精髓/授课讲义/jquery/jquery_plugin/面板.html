@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css"	href="js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+
+<script>
+		function open1(){
+			$('#p').panel('open');
+		}
+		
+		function close1(){
+			$('#p').panel('close');
+		}
+		
+		function load1(){
+			$('#p').panel({
+				href:'1.html',
+				onLoad:function(){   
+					alert('loaded successfully');   
+				}   
+			});
+			$('#p').panel('open');
+		}
+</script>
+
+</head>
+
+<body>
+
+<div style="margin-bottom: 10px;">
+	<a href="#" onclick="open1()">open</a>
+	<a href="#" onclick="close1()">close</a>
+	<a href="#" onclick="load1()">load</a>
+</div>
+<div style="width: 600px; height: 300px; border: 1px solid red; padding: 5px;">
+
+	<div id="p" class="easyui-panel" title="My Title" icon="icon-save"
+		collapsible="true" minimizable="true" maximizable=true closable="true" closed="true"
+		style="width: 500px; height: 150px; padding: 10px; background: #fafafa;">
+		<p>面板内容</p>
+		<p>closed="true"属性表示网页加载面板默认是关闭的，否则就是默认打开</p>
+		<p>panel</p>
+		<p>panel</p>
+		<p>panel</p>
+		<p>panel</p>
+		<p>panel</p>
+		<p>panel</p>
+		<p>panel</p>
+		<p>panel</p>
+		<p>panel</p>
+		<p>panel</p>
+	</div>
+	
+</div>
+
+</body>
+</html>

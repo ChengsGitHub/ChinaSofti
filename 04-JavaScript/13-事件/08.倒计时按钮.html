@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 严格模式
+		'use strict';
+
+		(function(){
+
+			// 计数变量
+			var t = 10;
+
+			function daojishi() {
+				
+				// 获得按钮对象
+				var btn1 = document.getElementById('btn1');
+
+				if (t != 0 ) {
+					t --;
+					btn1.value= t + '秒';	
+				} else {
+					clearInterval(time);//清理定时器
+					btn1.disabled = false;//按钮可用
+					btn1.value = '请注册'; //按钮文字改变
+				}
+
+			}				
+					
+			var time = setInterval(daojishi,1000);
+		})();
+
+	</script>
+</head>
+<body>
+	<!-- 网页打开按钮文字倒计时，到0按钮可用，文字改为立即注册 -->
+	<input type="button" id="btn1" value="10秒" disabled>
+</body>
+</html>

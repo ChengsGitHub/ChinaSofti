@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>对话框</title>
+
+<link rel="stylesheet" type="text/css"	href="js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script>
+		$(function(){
+			$('#dd').dialog({
+				title:'对话框',
+				collapsible:false,
+				minimizable:false,
+				maximizable:false,
+				resizable:true,				
+
+				toolbar:[{
+					text:'Add',
+					iconCls:'icon-add',
+					handler:function(){
+						alert('add');
+					}
+				},{
+					text:'Save',
+					iconCls:'icon-save',
+					handler:function(){
+						alert('save');
+					}
+				}],
+				buttons:[{
+					text:'需要',
+					iconCls:'icon-ok',
+					handler:function(){
+						alert('需要');
+					}
+				},{
+					text:'以后再说',
+					handler:function(){
+						$('#dd').dialog('close');
+					}
+				}]
+			});
+		});
+		
+		function open1(){
+			$('#dd').dialog('open');
+		}
+		
+		function close1(){
+			$('#dd').dialog('close');
+		}
+</script>
+
+
+</head>
+
+<body>
+<div style="margin-bottom: 10px;">
+	<a href="#" onclick="open1();">open1</a>
+	<a href="#" onclick="close1();">close1</a>
+</div>
+<div id="dd" icon="icon-save"
+	style="padding: 5px; width: 400px; height: 200px;">
+	<p>先生，需要服务吗？</p>
+	<p>dialog content.</p>
+	<p>dialog content.</p>
+	<p>dialog content.</p>
+	<p>dialog content.</p>
+	<p>dialog content.</p>
+	<p>dialog content.</p>
+	<p>dialog content.</p>
+</div>
+</body>
+</html>

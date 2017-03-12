@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="js/jquery-1.7.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(e) {
+        
+		$('#btn1').click(function(){
+			
+			alert($('form').eq(0).prop('action'));		
+			$('form').eq(0).submit();
+			
+			//$('form').get(0).submit();//返回javascript对象			
+		});
+		
+		$('#btn2').click(function(){			
+			alert($('#username').val());
+			$('#username').val("jack");		
+		});
+		
+		$('#btn3').click(function(){			
+			alert($('#city').val());
+			var index = $('#city').get(0).selectedIndex;
+			alert($('#city option').eq(index).text());
+		});
+		
+		$('#btn4').click(function(){	
+				
+			var sex = $('#form1 input[name=sex]');
+			
+			$.each(sex,function(index){
+				if($(this).prop("checked")) {
+					alert("你选择了" + $(this).val());	
+				}
+			});
+			
+		});
+		
+			
+		$('#btn5').click(function(){	
+				
+			var skill = $('#form1 input[name=skill]');
+			
+			skill.each(function(index, element) {
+                if($(element).prop("checked")) {
+					alert("你选择了" + $(element).val());	
+				}
+            });
+			
+		});
+		
+		$('#btn6').toggle(function(){
+			var skill = $('#form1 input[name=skill]');
+			
+			skill.each(function(index, element) {
+                $(element).prop("checked",true);
+            });
+		},function(){
+			var skill = $('#form1 input[name=skill]');
+			
+			skill.each(function(index, element) {
+                $(element).prop("checked",false);
+            });
+		});
+		
+		$('#btn7').click(function(){	
+				
+			$('#submitBtn').prop('disabled',true);		
+			
+		});
+		
+    });
+
+</script>
+</head>
+
+<body>
+
+<form name="form1" method="post" action="xxx.jsp" id="form1">
+  <table width="600" border="0" align="center" cellspacing="1" bgcolor="#CCCCCC">
+    <tr>
+      <td height="24" colspan="2" align="center" bgcolor="#FF9900">注册新用户</td>
+    </tr>
+    <tr>
+      <td width="150" height="24" bgcolor="#FFFFFF">用户名</td>
+      <td width="443" height="24" bgcolor="#FFFFFF"><input name="username" type="text" id="username" value="tom" size="15" maxlength="6"></td>
+    </tr>
+    <tr>
+      <td height="24" bgcolor="#FFFFFF">密码</td>
+      <td height="24" bgcolor="#FFFFFF"><input name="userpwd" type="password" id="userpwd" size="15"></td>
+    </tr>
+    <tr>
+      <td height="24" bgcolor="#FFFFFF">自我介绍</td>
+      <td height="24" bgcolor="#FFFFFF"><textarea name="myinfo" cols="50" rows="7" id="myinfo">这家伙很懒，没有写任何东西。</textarea></td>
+    </tr>
+    <tr>
+      <td height="24" bgcolor="#FFFFFF">性别</td>
+      <td height="24" bgcolor="#FFFFFF">男
+        <input type="radio" name="sex" value="先生"> 
+      女 
+      <input name="sex" type="radio" value="女士" checked></td>
+    </tr>
+    <tr>
+      <td height="24" bgcolor="#FFFFFF">技能</td>
+      <td height="24" bgcolor="#FFFFFF">JAVA
+        <input name="skill" type="checkbox" value="JAVA" checked> 
+      ORACLE
+      <input name="skill" type="checkbox" value="ORACLE" checked> 
+      C++ 
+      <input name="skill" type="checkbox" value="C++">
+      VB 
+      <input name="skill" type="checkbox"  value="VB"></td>
+    </tr>
+    <tr>
+      <td height="24" bgcolor="#FFFFFF">所在城市</td>
+      <td height="24" bgcolor="#FFFFFF">
+	  <select name="city" id="city">
+	    <option value="SHANGHAI">上海</option>
+	    <option value="BEIJING">北京</option>
+	    <option value="NANJING" selected>南京</option>
+	    <option value="SHENZHEN">深圳</option>
+	    <option value="GUANGZHOU">广州</option>
+      </select>      
+      </td>
+    </tr>
+    <tr>
+      <td height="24" bgcolor="#FFFFFF">隐藏域</td>
+      <td height="24" bgcolor="#FFFFFF"><input name="userId" type="hidden" id="userId" value="101"></td>
+    </tr>
+    <tr>
+      <td height="24" colspan="2" align="center" bgcolor="#FFFFFF">
+	  <input type="submit" name="Submit" value="注册" id="submitBtn">
+      <input type="reset" name="Submit2" value="重置">
+      <input type="button" name="Submit3" value="按钮" onClick="alert('hello,world');">
+	  </td>
+    </tr>
+    <tr>
+      <td height="24" colspan="2" align="center" bgcolor="#FFFFFF">
+      	<input type="button" name="btn1" id="btn1" value="表单提交">
+        <input type="button" name="btn2" id="btn2" value="文本框值">
+        <input type="button" name="btn3" id="btn3" value="列表框值">
+        <input type="button" name="btn4" id="btn4" value="单选值">
+        <input type="button" name="btn5" id="btn5" value="复选值">
+        <input type="checkbox" name="btn6" id="btn6">全选/取消全选
+        <input type="button" name="btn7" id="btn7" value="失效">
+      </td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

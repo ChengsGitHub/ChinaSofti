@@ -1,0 +1,15 @@
+package com.icss.test;
+
+public class Test2 {
+	
+	public static void main(String[] args) {
+		boolean m=false;
+		if( m == false)
+			System.out.println("False"); 
+			else 
+			System.out.println("True");
+	}
+	
+
+
+}

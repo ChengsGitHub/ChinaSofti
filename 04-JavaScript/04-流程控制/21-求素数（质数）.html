@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		for (var i = 2;i <= 100;i ++) {
+
+			// 是否为素数 true是 false不是
+			var flag = true;
+			
+			// 从2到i之前进行穷举遍历
+			for (var j = 2;j < i;j ++) {
+				
+				// 判断如果能被整除，就把标识设置为false
+				if (i % j == 0) {
+					flag = false;
+					break;
+				}
+
+			}
+			
+			// 如果flag还为true，表示没有2~i之前没有任何值能整除
+			if (flag) 
+				document.write(i + '<br>');
+			}
+
+	
+
+	</script>
+</head>
+<body>
+	素数：除了1和本身之外不能被任何值整除 例如 7 11 13 
+	求2~100之间的所有素数
+</body>
+</html>

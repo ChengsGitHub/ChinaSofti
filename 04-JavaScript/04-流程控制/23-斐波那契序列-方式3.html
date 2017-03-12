@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 算法1
+		var j = 0;
+		var k = 1;
+
+		for (i = 1; i <= 10;i ++) {
+
+			j = j + k; 	
+			k = j - k;
+
+			document.write(j + ',');   
+		} 
+
+		document.write('<hr>');
+
+		// 算法2
+		document.write('<br>');
+
+		var arr = [1,1];
+
+		for(var i = 0;i <= 10;i ++){
+			arr[i+2] = arr[i] + arr[i+1];
+		}
+		
+		document.write(arr+'<br>');		
+
+	</script>
+</head>
+<body>
+	<!-- 斐波那契是一个数字序列1 1 2 3 5 8 13 21 ......
+	用循环动态输出n个斐波那契序列值 -->
+</body>
+</html>

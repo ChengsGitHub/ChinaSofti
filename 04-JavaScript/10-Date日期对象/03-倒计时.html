@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		/*倒计时，距离2016-9-15日的中秋节*/
+		function daojishi() {
+
+			var d1 = new Date();//现在的日期时间
+			var d2 = new Date('2016-9-15');//中秋节的时间
+
+			var times = d2.getTime() - d1.getTime();//获得两个日期的毫秒差
+
+			var days = parseInt(times / (1000 * 60 * 60 * 24)); //换算为天
+
+			times = times % (1000 * 60 * 60 * 24); //整除天后得到剩余的毫秒数
+
+			var hours = parseInt(times / (1000 * 60 * 60)); // 换算为小时
+
+			times = times % (1000 * 60 * 60); //整除小时后得到剩余的毫秒数
+
+			var minutes = parseInt(times / (1000 * 60)); //换算为分钟
+
+			times = times % (1000 * 60); //整除分钟后得到剩余的毫秒数
+
+			var seconds = parseInt(times / 1000); //换算为妙
+
+			var div1 = document.getElementById('div1');//获得div元素对象
+
+			div1.innerHTML = '距离中秋节还有' + days + '天' + hours + '小时' 
+							+ minutes + '分钟' + seconds + '秒';
+
+			if (days == 0 && hours == 0 && minutes == 0 && seconds == 0 ) {
+				debugger;//
+				clearInterval(timerId);//终止定时器
+				alert('中秋节到了！！');
+			}
+		}
+
+		// 定时器
+		var timerId = setInterval(daojishi,1000);
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

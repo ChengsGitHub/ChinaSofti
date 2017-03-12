@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		for (var i = 1;i <= 5;i ++) {
+
+			// 输出*前面的空格
+			for (var k = 1;k <= 5 - i;k ++) {
+				document.write('&nbsp;');
+			}
+			
+			// 输出当前行的*
+			for (var j = 1;j <= i * 2 - 1;j ++) {
+				document.write('*');
+			}
+
+			document.write('<br>');
+
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			// 1.7以后可以用on语句代替bind语句
+			$('#btn1').on('click',function(e){
+				alert('btn1被单击！');
+			});
+
+			// 一次性事件，只有第一次触发好用
+			$('#btn2').one('click', function(event) {
+				alert('btn2被单击！');
+			});
+
+		});			
+	</script>
+</head>
+<body>
+	<input type="button" value="click" id="btn1">
+	<input type="button" value="one注册事件" id="btn2">
+</body>
+</html>

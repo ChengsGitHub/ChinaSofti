@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		window.onload = function() {
+
+			var btn1 = document.getElementById('btn1');
+
+			// 参数e就是当前的事件对象
+			btn1.onclick = function(e) {				
+
+				e = e || window.event;//兼容事件对象
+				
+				// alert(e.type); //显示事件类型
+
+				var currObj = e.target || e.srcElement; //事件源对象兼容写法
+				currObj.value = 'hello,world';
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" value="单击我" id="btn1">
+</body>
+</html>

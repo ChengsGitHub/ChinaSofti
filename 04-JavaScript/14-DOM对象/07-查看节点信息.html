@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+
+			var div1 = document.getElementById('div1');
+			var p1 = document.getElementById('p1');
+			var p2 = document.getElementById('p2');
+		
+
+			console.log(div1.nodeType);//1
+			console.log(div1.nodeName);//DIV
+
+			console.log(p1.childNodes[0].nodeType);//3	
+			console.log(p1.childNodes[0].nodeValue);//段落文字1		
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1">段落文字1</p>
+		<h1 id="h1">标题文字</h1>
+		<p id="p2">段落文字2</p>		
+	</div>
+	<input type="button" value="查看节点信息" onclick="m1();">
+</body>
+</html>

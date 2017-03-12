@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*
+			声明类
+		*/
+		function Person(name,age) {
+			// 声明属性
+			this.name = name;
+			this.age = age;	
+
+			//声明方法
+			this.run = function() {
+				alert(this.name + '在跑步');
+			}
+
+			this.eat = function(food) {
+				alert(this.name + '吃' + food);
+			}		
+		}
+
+		var p1 = new Person('tom',27);
+		var p2 = new Person('jack',29);
+		
+		// 给p1对象动态增加属性
+		p1.phone = "10086";
+
+		//给p1对象动态添加方法
+		p1.cry = function() {
+			alert('大哭一场');
+		}
+		
+		// 删除对象的属性
+		delete p1.age;
+
+		// 删除对象的方法
+		delete p1.eat;
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

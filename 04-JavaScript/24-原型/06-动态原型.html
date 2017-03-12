@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		/*以下为动态原型写法，把原型定义放到类代码块中，但是个人意见，没有这个必要*/
+		function Person(name,age) {
+
+			this.name = name;
+			this.age = age;
+
+			/*为了防止每次创建对象，重复执行原型添加成员的语句*/
+			if (!Person.prototype.show) {
+				Person.prototype.show = function() {
+					alert(this.name + ',' + this.age);
+				}
+			}
+
+		}
+
+		var p1 = new Person('tom'.27);
+		var p2 = new Person('jack',25);
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

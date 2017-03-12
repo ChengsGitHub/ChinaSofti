@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">		
+		.item {
+			width: 100px;
+			height: 100px;
+			background: #0cc;
+			border-radius: 50%;
+			display: inline-block;
+			text-align: center;
+			line-height: 100px;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			
+			var container = document.getElementById('container');
+
+			container.onclick = function(e) {
+				// 获得事件源
+				var currObj = e.target || e.srcElement;
+
+				if (currObj.className == 'item')
+					alert("你单击了：" + currObj.innerHTML);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div class="item">div1</div>
+		<div class="item">div2</div>
+		<div class="item">div3</div>
+		<div class="item">div4</div>
+		<div class="item">div5</div>
+		<div class="item">div6</div>
+		<div class="item">div7</div>
+		<div class="item">div8</div>
+		<div class="item">div9</div>
+		<div class="item">div10</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			滚轴事件：
+			非火狐浏览器：事件onmousewheel，通过wheelDelta属性获得滚轴状态，向上滚轴值为正数，向下滚轴，值为负数
+			火狐浏览器：必须使用2级事件注册，事件名DOMMouseScroll，通过detail属性获得滚轴状态，向上滚轴值为负数，向下滚轴，值为正数
+		*/
+
+		
+		/*滚轮事件回调函数*/
+		function scrollFun(e) {
+			e = e || window.event;
+			
+			// 兼容滚轮的状态值
+			var i = e.wheelDelta ? e.wheelDelta : -e.detail;
+
+			if (i >= 0) 
+				alert('滚轮向上');
+			else
+				alert('滚轮向下');
+		}
+
+		// 非火狐
+		document.onmousewheel = scrollFun;
+
+		// 火狐
+		if (document.addEventListener)
+			document.addEventListener('DOMMouseScroll',scrollFun);
+
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		for (var i = 1;i <= 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+</body>
+</html>

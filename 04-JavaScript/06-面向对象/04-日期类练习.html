@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			日期类
+		*/
+		function MyDate(year,month,day) {
+		
+			//判断如果日期不合法，不给属性赋值
+			if (month >= 1 && month <= 12) {
+				if (day >= 1 && day <= getLastDay(year,month) ) {
+					this.year = year;//年
+					this.month = month;//月
+					this.day = day;//日
+				}				
+			}			
+
+			// 传入一个年份，返回是否闰年
+			function isLeap(year) {
+				if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+					return true;
+				
+				return false;
+			}
+			
+			// 传入一个年份和月份，返回这个年份的这个月的最后一天
+			function getLastDay(year,month) {
+				
+				var days = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+				if ( isLeap(year) )
+					days[1] = 29;
+
+				return days[month - 1];
+			}
+
+			//返回当前日期的字符串表示yyyy-mm-dd格式 例如2016-5-17
+			this.getDate = function() {
+				
+				//如果日期非法，直接返回空
+				if (this.year == undefined || !this.month || !this.day) 
+					return null;
+
+				var dateStr = this.year + '-' + this.month + '-' + this.day;
+
+				return dateStr;
+			}
+
+			// 返回当前日期的下一天日期的,字符串表示yyyy-mm-dd格式
+			this.getNextDate = function() {
+
+				//如果日期非法，直接返回空
+				if (this.year == undefined || !this.month || !this.day) 
+					return null;
+				
+				// 把属性值赋给局部变量
+				var day = this.day;
+				var month = this.month;
+				var year = this.year;
+
+				day ++; //天数+1
+				
+				//获得当前年的月的最后一天
+				var lastDay = getLastDay(year,month);
+				
+				// 如果天数+1之和超过这个月的最后一天
+				if (day > lastDay) {
+					//day设置为下个月的1号
+					day = 1;					
+					//月+1
+					month ++;
+					
+					//如果月+1超过12
+					if (month > 12) {						
+						//月设置为下一年的1月
+						month = 1;						
+						// 年份+1
+						year ++;
+					}
+				}
+
+				var dateStr = year + '-' + month + '-' + day;
+
+				return dateStr;
+			}
+
+			// 返回当前日期的上一天日期的,字符串表示yyyy-mm-dd格式
+			this.getPrevDate = function() {
+
+				//如果日期非法，直接返回空
+				if (this.year == undefined || !this.month || !this.day) 
+					return null;
+
+				// 把属性值赋给局部变量
+				var day = this.day;
+				var month = this.month;
+				var year = this.year;
+
+				day --;//天数-1
+
+				// 如果天数-1之和小于1
+				if (day < 1) {
+					//月份-1
+					month --;
+					
+					// 如果月份-1小于1
+					if (month < 1) {
+						// 设置月份为上一年的12月
+						month = 12;
+						// 设置年份为上一年
+						year --;
+					}
+					
+					// 设置day为上个月的最后一天
+					day = getLastDay(year,month);
+				}
+
+				var dateStr = year + '-' + month + '-' + day;
+
+				return dateStr;	
+			}
+		}
+
+		// 创建日期对象
+		var m = new MyDate(2015,5,7);	
+		alert(m.getDate());
+		alert(m.getNextDate());
+		alert(m.getPrevDate());
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

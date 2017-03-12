@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function init(str) {
+			alert(str + '被加载完毕');
+		}
+	</script>
+
+	<script type="text/javascript" src="a.js" async onload="init('a.js');"></script>
+	<script type="text/javascript" src="b.js" onload="init('b.js');"></script>
+</head>
+<body>
+	async 脚本在script文件下载完成后会立即执行,并且其执行时间一定在window的load事件触发之前。这意味着多个async脚本很可能不会按其在页面中的出现次序顺序执行。
+	与此相对，浏览器确保多个 defer本按其在HTML页面中的出现顺序依次执行,且执行时机为DOM解析完成后，document的DOMContentLoaded 事件触发之前。
+</body>
+</html>

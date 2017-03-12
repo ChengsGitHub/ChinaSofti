@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		@keyframes dong {
+			100%{
+				transform:rotateY(360deg);
+			}
+		}
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.nav {
+			width: 540px;
+			height: 95px;
+			margin: 0 auto;
+			/*background-color: green;*/
+		}
+		.icon {
+			float: left;
+			width: 90px;
+			height: 95px;
+		}
+		.icon1 {
+			background-image: url(icons.png);
+			background-position: 16px -197px;
+			background-repeat: no-repeat;
+			animation:dong 1s forwards;
+		}
+		.icon2 {
+			background-image: url(icons.png);
+			background-position: -80px -197px;
+			background-repeat: no-repeat;
+			animation:dong 1s 0.5s forwards;
+		}
+		.icon3 {
+			background-image: url(icons.png);
+			background-position: -174px -197px;
+			background-repeat: no-repeat;
+			animation:dong 1s 1.5s forwards;
+		}
+		.icon4 {
+			background-image: url(icons.png);
+			background-position: -269px -197px;
+			background-repeat: no-repeat;
+			animation:dong 1s 2s forwards;
+		}
+		.icon5 {
+			background-image: url(icons.png);
+			background-position: -364px -197px;
+			background-repeat: no-repeat;
+			animation:dong 1s 2.5s forwards;
+		}
+		.icon6 {
+			background-image: url(icons.png);
+			background-position: -459px -197px;
+			background-repeat: no-repeat;
+			animation:dong 1s 3s forwards;
+		}
+
+		p {
+			display: block;
+			text-align: center;
+			position: relative;
+			top: 70px;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<div class="icon1 icon"><p>1</p></div>
+		<div class="icon2 icon"><p>2</p></div>
+		<div class="icon3 icon"><p>3</p></div>
+		<div class="icon4 icon"><p>4</p></div>
+		<div class="icon5 icon"><p>5</p></div>
+		<div class="icon6 icon"><p>6</p></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/**
+			在String原型中，添加一个trim方法，实现返回去掉两边空格的字符串
+		*/
+		String.prototype.trim = function() {
+
+			return this.replace(/^\s+|\s+$/g,'');
+
+		}
+
+		var s = '  ab cd   ';
+
+		alert(111 + s.trim() + 222);
+
+	</script>
+</head>
+<body>
+	<!-- 在String原型中，添加一个trim方法，实现返回去掉两边空格的字符串	 -->
+</body>
+</html>

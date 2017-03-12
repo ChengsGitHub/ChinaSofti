@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var a = '99' + 5; //995  5转string
+		a = 'hello' + true; //hellotrue  true转string
+		a = 'hello' + undefined;//helloundefined  undefined转string
+		a = 'hello' + null;//hellonull null转string
+		
+		a = 10 + true; //11  true转为数字1
+		a = 10 + false;//10  false转为数字0
+		a = 10 + undefined; //NaN 计算结果非数字
+		a = 'hello' - 100; //NaN
+		a = 10 + null; //10  null转为0
+		a = 10 + ""; //'10' 字符串拼接
+		a = 10 - ""; //10  空字符串转换0
+		
+		a = true + true; //2  true转为1
+
+		alert(a);
+	</script>
+</head>
+<body>
+	<input type="text">
+</body>
+</html>

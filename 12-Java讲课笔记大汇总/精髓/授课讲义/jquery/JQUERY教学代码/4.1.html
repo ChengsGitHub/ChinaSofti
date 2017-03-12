@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">
+
+	#div1 {background-color:#0CF}
+
+</style>
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(e) {
+       
+	   $('#btn1').click(function(e) {
+       		$('#div1').append('<div>div3..</div>'); 
+       });
+	   
+	   $('#btn2').click(function(e) {
+       		$('<div>div3..</div>').appendTo('#div1'); 
+       });
+	   
+	   $('#btn3').click(function(e) {
+       		$('#div1').prepend('<div>div3..</div>'); 
+       });
+	   
+	   $('#btn4').click(function(e) {
+       		$('<div>div3..</div>').prependTo('#div1'); 
+       });
+	   
+	   $('#btn5').click(function(e) {
+       		$('#div1').after('<div>div3..</div>'); 
+       });
+	   
+	   $('#btn6').click(function(e) {
+       		$('#div1').before('<div>div3..</div>'); 
+       });
+	   
+	   $('#btn7').click(function(e) {
+       		$('#div1').wrap('<div>div3..</div>'); 
+       });
+	   
+	   $('#btn8').click(function(e) {
+       		$('#div2').unwrap(); 
+       });
+	   
+	   $('#btn9').click(function(e) {
+       		$('#div1').wrapInner('<div>div3..</div>'); 
+       });
+	   
+	   $('#btn10').click(function(e) {
+       		$('#div2').remove();
+       });
+	   
+	   $('#btn11').click(function(e) {
+       		$('#div1').empty();
+       });
+	   
+	   $('#btn12').click(function(e) {
+       		$('<span>sss</span>').replaceAll('p');
+       });
+	   
+	   $('#btn13').click(function(e) {
+       		$('p').replaceWith('<span>sss</span>');
+       });
+	   
+    });
+
+</script>
+</head>
+
+<body>
+
+<div id="div1">	
+
+    div1...    
+    <div id="div2">
+    	div2...    
+    	<p>ppppp</p>
+    </div>
+</div>
+
+<input type="button" value="append" id="btn1">
+<input type="button" value="appendTo" id="btn2">
+
+<input type="button" value="prepend" id="btn3">
+<input type="button" value="prependTo" id="btn4">
+
+<input type="button" value="after" id="btn5">
+<input type="button" value="before" id="btn6">
+
+<input type="button" value="wrap" id="btn7">
+<input type="button" value="unwrap" id="btn8">
+<input type="button" value="wrapInner" id="btn9">
+
+<input type="button" value="remove" id="btn10">
+<input type="button" value="empty" id="btn11">
+<input type="button" value="replaceAll" id="btn12">
+<input type="button" value="replaceWith" id="btn13">
+
+</body>
+</html>

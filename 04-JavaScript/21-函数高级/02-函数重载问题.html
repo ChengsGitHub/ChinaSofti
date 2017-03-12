@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		function sum(num1,num2) {
+			return num1 + num2;
+		}
+		
+		function sum(num) {
+			return num + 100;
+		}
+
+		// 在JS中没有重载这一说，重复的函数或者方法声明，以最后声明的为准
+		alert( sum(1,2) ); //101
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

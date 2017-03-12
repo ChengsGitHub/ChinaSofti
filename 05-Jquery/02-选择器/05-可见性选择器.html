@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		/**
+			:hidden 符合选择器的比如 display:none 表单type=hidden
+		*/
+
+		$(document).ready(function(){
+			
+			$('div:visible').css('color','green');
+			$('div:hidden').css('color','red').show();
+			$('input:hidden').val(1001);
+
+		});
+
+
+	</script>
+</head>
+<body>
+	<div style="display:none;">我们的新域名为：sina.com</div>	
+	<div>我们的旧域名为：sohu.com</div>
+	<input type="hidden">
+</body>
+</html>

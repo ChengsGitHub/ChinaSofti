@@ -1,0 +1,157 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+/*整体网页背景图片*/
+body {
+	background-image:url(main_bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+#main {
+	width: 350px;
+	height: 600px;
+	background-color: #fff;
+	margin: 40px auto;
+	border-radius: 5px;
+	border-top: 8px solid #0cc;
+	position: relative;
+}
+/*头像区*/
+#header-border {
+	width: 198px;
+	height: 198px;
+	border-radius: 50%;
+	margin: 50px auto;
+	box-shadow: 0px 0px 20px #ccc;
+	position: relative;
+
+}
+/*头像区内部*/
+#header-pic {
+	width: 184px;
+	height: 184px;
+	border-radius: 50%;
+	background-color: #0cc;
+	position: absolute;
+	left: 7px;
+	top: 7px;
+	background-image: url(liudehua.jpg);
+	background-size: cover;
+}
+/*登陆输入样式*/
+#login {
+	width: 75%;
+	min-height:101px;
+	margin: 0 auto;
+	border-radius: 8px;
+	box-shadow: 0 0 5px 1px #bbb;
+	position: relative;
+	overflow: hidden;
+}
+#login .account p {
+	float: left;
+	width: 40%;
+	text-align: left;
+	color: #bbb;
+	letter-spacing: 0.1em;
+	line-height: 50px;
+	border-bottom:1px solid #bbb;
+	text-indent:1em; 
+}
+#login .psd p {
+	float: left;
+	width: 40%;
+	text-align: left;
+	color: #bbb;
+	letter-spacing: 0.1em;
+	line-height: 50px;
+	text-indent:1em; 
+}
+
+
+#login .account input{
+	display: block;
+	width: 60%;
+	float: right;
+	border:none;
+	outline: none;
+	height: 50px;
+	font-size: 18px;
+	border-bottom:1px solid #bbb;
+	color: #0cc;
+}
+#login .psd input{
+	display: block;
+	width: 60%;
+	float: right;
+	border:none;
+	outline: none;
+	height: 50px;
+	font-size: 18px;
+	color: #0cc;
+}
+.login-btn {
+	display: block;
+	height: 40px;
+	width: 75%;
+	margin: 0 auto;
+	margin-top: 30px;
+	border:none;
+	outline:none;
+	background: -webkit-linear-gradient(top,#00cccc,#00b0b0);
+	border-radius: 5px;
+	color: #fff;
+	box-shadow: 1px 1px 2px 1px #bbb;
+	cursor: pointer;
+
+}
+.login-btn:active{
+	position: relative;
+	top: 2px;
+}
+#footer {
+	line-height: 50px;
+	border-top:1px solid lightgray;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	font-size: 14px;
+}
+#footer a {
+	text-decoration: none;
+	color: gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

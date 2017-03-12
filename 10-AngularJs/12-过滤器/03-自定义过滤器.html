@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">	
+
+		<ul>
+			<!-- 应用自定义过滤器 -->
+			<li ng-repeat="item in city | filterCity:'京'">
+				{{item.name}} , {{item.py}}
+			</li>
+		</ul>	
+		
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		// 模块
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope','$filter', function($scope,$filter) {
+
+			// 假数据
+			$scope.city = [
+				{
+					name:'上海',
+					py:'shanghai'
+				},
+				{
+					name:'北京',
+					py:'beijing'
+				},
+				{
+					name:'南京',
+					py:'nanjing'
+				},
+				{
+					name:'大连',
+					py:'dalian'
+				}
+			];			
+			
+		}]);
+
+		// 过滤器，参数1：过滤器名称，参数2：过滤器代码
+		myApp.filter('filterCity',function() {
+
+			return function(obj,val) {
+				
+				// 这就是需要过滤的数据
+				console.log(obj);
+				// 过滤器的参数
+				console.log(val);
+				
+				// 临时数组，存放满足条件的数据
+				var newObj = [];
+				
+				// 遍历数据
+				angular.forEach(obj,function(item) {
+					
+					// 自定义过滤条件，满足条件的放到新数组中 
+					if (item.name.indexOf(val) != -1) {
+						newObj.push(item);
+					}
+
+				});
+				
+				// 返回过滤之后的结果数组
+				return newObj;
+			}
+
+		});
+	</script>
+</body>
+</html>

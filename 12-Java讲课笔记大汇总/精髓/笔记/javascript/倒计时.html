@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+
+     var i = 9;//计时变量
+	 
+     function m1(){
+		 //获得表单元素
+		 var btn1=document.getElementById("btn1");
+		 var span1=document.getElementById("span1");
+		 
+		 //设置span的内容
+		 span1.innerHTML = i;
+		 
+	     i--;
+		 	
+		 if(i <= -1){
+			 btn1.disabled = false;//按钮可用
+			 window.clearInterval(intervalId);//停止计时器
+		 } 		 
+     }
+	 
+	 var intervalId = window.setInterval('m1();',1000);
+	 
+</script>
+</head>
+
+<body>
+距离按钮可用还有<span id="span1">10</span>秒
+<input id="btn1" type="button" value="下一步" disabled>
+</body>
+</html>

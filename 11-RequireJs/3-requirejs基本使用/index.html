@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="require.js"></script>
+	<script type="text/javascript">
+		/*
+			使用require加载a.js，这次没有阻塞（注意a其实就是a.js，相对路径以当前html文件位置为基准）
+			来加载该模块(注意require中的依赖是一个数组，即使只有一个依赖，你也必须使用数组来定义)，requir API的第二个参数是callback，一个function，是用来处理加载完毕后的逻辑
+		*/
+
+        //require(["a"]); //没有回调函数
+
+		//有回调函数
+        require(["a"],function() {
+        	alert('a.js被加载...');
+        });
+    </script>
+</head>
+<body>	
+	网页的内容
+</body>
+</html>

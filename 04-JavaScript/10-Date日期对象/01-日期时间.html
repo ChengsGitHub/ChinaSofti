@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			输出当前系统时间
+		*/
+		function showDate() {
+			// 创建一个日期对象，默认当前系统时间（客户端时间）
+			var d = new Date();
+
+			var y = d.getFullYear();
+			var m = d.getMonth() + 1;
+			var dd = d.getDate();
+			var h = d.getHours();
+			var mi = d.getMinutes();
+			var s = d.getSeconds();
+			var w = d.getDay();
+
+			var weeks = ['日','一','二','三','四','五','六'];
+
+			var dateStr = y + '年' + m + '月' + dd + '日 星期' + weeks[w] + ' ' + h + ':' + mi + ':' + s;
+			
+			// 获得div对象
+			var div1 = document.getElementById('div1');
+			// 设置div的内容
+			div1.innerHTML = dateStr;
+		}
+
+		setInterval(showDate,1000);
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

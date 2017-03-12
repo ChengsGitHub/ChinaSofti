@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+	选择多个文件
+	<input type="file" id="myFile1" multiple accept="*/*">
+	<br>
+	选择单个文件
+	<input type="file" id="myFile2" accept="*/*">
+
+	<div id="div1"></div>
+
+	<!-- 
+	操作文件：最常见的方式用表单中的文件域选取文件，
+	默认只能选择一个文件，如果需要多选，要增加multiple属性，
+	如果要控制选取文件的类型，需要增加accept属性，设置MIME类型，
+	通过onchange事件来检测是否选择完毕
+	-->
+
+	<script type="text/javascript">
+
+		// 获得dom对象
+		var myFile1 = document.getElementById('myFile1');
+		var myFile2 = document.getElementById('myFile2');
+		var div1 = document.getElementById('div1');
+
+		// 选择文件触发事件
+		myFile1.onchange = function() {
+			// 获得文件列表集合
+			var files = this.files;
+
+			var html = [];
+
+			// 遍历文件集合
+			for (var i = 0;i < files.length;i ++) {
+				// 获得当前文件对象
+				var f = files[i];
+
+				// 文件信息拼接字符串加入到数组
+				html.push('<p>' + f.name + ',' + (f.type||'未知类型') + ',' + f.size + '字节' + '</p>');
+			}
+
+			// 显示文件信息到div中
+			div1.innerHTML = html.join('');
+		}
+
+		// 选择文件触发事件
+		myFile2.onchange = function() {
+			// 获得文件列表中的第一个文件
+			var f = this.files[0];
+
+			// 显示文件信息到div中
+			div1.innerHTML = '<p>' + f.name + ',' + (f.type||'未知类型') + ',' + f.size + '字节' + '</p>';
+		}
+	</script>
+</body>
+</html>

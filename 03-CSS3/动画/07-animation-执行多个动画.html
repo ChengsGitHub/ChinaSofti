@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 100px;
+			height: 100px;
+			background: #0cc;
+			border-radius: 50%;
+			position: absolute;
+			top:0;
+			left: 0;
+
+			animation:move 5s,move2 5s 5s;
+			-webkit-animation:move 5s,move2 5s 5s;
+		}
+
+		/*动画1*/
+		@keyframes move {
+			0% {
+				top:0;
+				left: 0;
+			}
+
+			100% {
+				top:0;
+				left: 400px;
+			}
+		}
+
+		@-webkit-keyframes move {
+			0% {
+				top:0;
+				left: 0;
+			}
+
+			100% {
+				top:0;
+				left: 400px;
+			}
+		}
+
+		/*动画2*/
+		@keyframes move2 {
+			0% {
+				top:0;
+				left: 400px;
+			}
+
+			100% {
+				top:400px;
+				left: 400px;
+			}
+		}
+
+		@-webkit-keyframes move2 {
+			0% {
+				top:0;
+				left: 400px;
+			}
+
+			100% {
+				top:400px;
+				left: 400px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">		
+	</div>
+</body>
+</html>

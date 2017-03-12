@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+	function query() {
+		var city = document.form1.city;
+		//alert(city.length);//元素个数
+		//alert(city.selectedIndex);//选中元素的下标	
+		//alert(city.options[3].value);//options代表所有的option集合
+		alert(city.value);//选择的value值
+	}	
+	//增加元素
+	function add() {
+		var city = document.form1.city;
+		var opt = new Option('南京','nanjing');	
+		city.options[city.length] = opt;
+	}
+	//修改元素
+	function update() {
+		var city = document.form1.city;
+		var opt = new Option('南京','nanjing');	
+		city.options[2] = opt;
+	}
+	//删除元素
+	function del(){
+		var city = document.form1.city;
+		city.options[1] = null;
+	}
+	//删除所有元素
+	function delAll() {
+		var city = document.form1.city;
+		city.options.length = 0;	
+	}
+</script>
+</head>
+
+<body>
+
+<form name="form1" method="post" action="xxx.jsp">
+	选择城市
+    <select name="city" id="city">
+    	<option value="beijing">北京</option>
+        <option value="shanghai" selected>上海</option>
+        <option value="guangzhou">广州</option>
+        <option value="shenzhen">深圳</option>
+    </select>
+    <input type="button" value="查看" onClick="query();">
+    <input type="button" value="增加" onClick="add();">
+    <input type="button" value="修改" onClick="update();">
+    <input type="button" value="删除" onClick="del();">
+    <input type="button" value="删除全部" onClick="delAll();">
+</form>
+
+</body>
+</html>

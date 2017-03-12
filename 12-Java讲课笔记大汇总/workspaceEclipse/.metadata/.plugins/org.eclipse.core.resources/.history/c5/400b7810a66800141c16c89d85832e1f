@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>主页</title>
+<link href="jquery-mobile/jquery.mobile-1.3.2.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="jquery-mobile/jquery-1.8.3.min.js"></script>
+
+<script type="text/javascript">
+	
+	/*填充表格数据*/
+	function showData(jsonDataStr) {
+		//获得json数据字符串
+		var jsonData = eval(jsonDataStr);
+		
+		var table = document.getElementById('personTable');
+	
+		for (var i = 0 ;i < jsonData.length;i ++) {
+			//增加一行
+			var tr = table.insertRow(table.rows.length);
+			//增加三列
+			var td1 = tr.insertCell(0);
+			td1.bgColor='#ffffff';
+			var td2 = tr.insertCell(1);
+			td2.bgColor='#ffffff';
+			var td3 = tr.insertCell(2);
+			td3.bgColor='#ffffff';
+			//设置单元格数据
+			td1.innerHTML = jsonData[i].id;
+			td2.innerHTML = jsonData[i].name;
+			td3.innerHTML = '<a href="javascript:contact.call(' + jsonData[i].mobile+ ')">' + jsonData[i].mobile + '</a>';
+		}
+	}
+	
+	$(document).ready(function(){
+		
+		//当indexPage页面初始化的时候，加载第一页数据
+		$("#indexPage").bind('pageinit', function () {	
+			
+			$('#btn1').on('click',function(){
+				contact.getContacts();
+			});
+			
+	    });			
+		
+	});
+	
+</script>
+
+<script type="text/javascript" src="jquery-mobile/jquery.mobile-1.3.2.js"></script>
+
+</head>
+
+<body>
+<!--主体页面-->
+<div data-role="page" id="indexPage">
+	<table id="personTable" width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#CCCCCC">
+	  <tr>
+	    <td align="center" bgcolor="#FFFFFF">编号</td>
+	    <td align="center" bgcolor="#FFFFFF">姓名</td>
+	    <td align="center" bgcolor="#FFFFFF">电话</td>
+	  </tr>
+	</table>
+	<p>
+		<img src="image/f2.png" width="48" height="48">
+		<a href="javascript:window.location.refresh();">刷新</a>
+		<img src="image/f1.png" width="50" height="50">
+	</p>
+
+	<a href="11.html" target="_blank">打开另一个网页</a>
+	<input type="button" id="btn1" value="OK">
+</div>
+</body>
+</html>

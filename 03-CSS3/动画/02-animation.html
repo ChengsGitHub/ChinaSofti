@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		
+		/*自定义动画，名称为donghua*/
+		@keyframes donghua {
+			/*初始样式*/
+			form {
+				width: 50px;
+			}
+
+			/*终止样式*/
+			to {
+				width: 1000px;
+				background: red;
+			}
+		}
+
+		@-webkit-keyframes donghua {
+			/*初始样式*/
+			form {
+				width: 50px;
+			}
+
+			/*终止样式*/
+			to {
+				width: 1000px;
+				background: red;
+			}
+		}
+
+		#div1 {
+			width: 50px;
+			height: 100px;
+			background: #0cc;
+
+			/*调用的动画的名称*/
+			animation-name:donghua;
+			/*动画执行的时间*/
+			animation-duration:5s;
+			/*动画执行的类型*/
+			animation-timing-function:ease-in;
+			/*动画延迟时间*/
+			animation-delay:1s;
+			/*动画执行次数,infinite无限次*/
+			/*animation-iteration-count:infinite;*/
+			/*是否有反向动画 alternate有反向动画*/
+			/*animation-direction:alternate;*/
+			/*动画结束后的状态 forwards表示结束后停留在最终样式*/
+			animation-fill-mode:forwards;
+			
+			-webkit-animation-name:donghua;			
+			-webkit-animation-duration:5s;
+			-webkit-animation-timing-function:ease-in;
+			-webkit-animation-delay:1s;
+			/*-webkit-animation-iteration-count:infinite;*/
+			/*-webkit-animation-direction:alternate;*/
+			-webkit-animation-fill-mode:forwards;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		动画效果
+	</div>
+</body>
+</html>

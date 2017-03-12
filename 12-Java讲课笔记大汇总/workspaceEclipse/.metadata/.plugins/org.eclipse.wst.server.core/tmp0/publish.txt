@@ -1,0 +1,6 @@
+#Tomcat publish data
+#Wed Nov 12 14:58:49 CST 2014
+org.eclipse.jst.jee.server\:javaee=D\:\\apache-tomcat-7.0.23\\webapps\\javaee
+org.eclipse.jst.jee.server\:hr=D\:\\apache-tomcat-7.0.23\\webapps\\hr
+org.eclipse.jst.jee.server\:ajax=D\:\\apache-tomcat-7.0.23\\webapps\\ajax
+org.eclipse.jst.jee.server\:myhr=D\:\\apache-tomcat-7.0.23\\webapps\\myhr

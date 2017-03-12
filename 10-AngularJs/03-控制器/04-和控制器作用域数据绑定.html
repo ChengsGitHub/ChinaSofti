@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		<input type="text" ng-model="username">
+		用户名：{{username}}
+		<br>
+		<input type="text" ng-model="age">
+		年龄：{{age}}
+		<br>
+		<input type="button" value="查看数据" ng-click="showData();">
+	</div>
+
+	<script src="angular.min.js"></script>
+	<script>
+
+//		创建一个模块，模块名称myApp,依赖的其他模块没有，返回模块对象
+		var myApp = angular.module("myApp",[ ]);
+
+//		通过模块创建控制器，名称为firstController
+		myApp.controller('firstController',function($scope) {
+
+			// 在控制器的作用域对象中设置数据模型
+			$scope.username = 'rose';
+			$scope.age = 27;
+
+			// 在作用域对象中定义方法
+			$scope.showData = function() {
+				alert($scope.username + ',' + $scope.age);
+			}
+
+			// console.log($scope);			
+		});
+	</script>
+</body>
+</html>

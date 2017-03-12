@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CARD" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.card.pojo.Card" >
+    <id column="GROUP_ID" property="groupId" jdbcType="DECIMAL" />
+    <result column="GROU_NAME" property="grouName" jdbcType="VARCHAR" />
+    <result column="EMP_ID" property="empId" jdbcType="DECIMAL" />
+  </resultMap>
+	<insert id="insert" parameterType="com.icss.oa.card.pojo.Card">
+		insert into CARD (GROUP_ID, GROU_NAME, EMP_ID
+		)
+		values (CARD_seq.nextval,
+		
+		#{grouName,jdbcType=VARCHAR},
+		#{empId}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.icss.oa.card.pojo.Card">
+		update CARD
+		set grou_Name =
+		#{grouName,jdbcType=VARCHAR}
+		where group_id = #{groupId,jdbcType=DECIMAL}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from CARD
+		where group_Id
+		= #{groupId,jdbcType=DECIMAL}
+	</delete>
+
+	<select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select *
+		from CARD
+		where group_Id = #{groupId,jdbcType=DECIMAL}
+	</select>
+
+	<select id="query" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * 
+		from (select rownum rnum,d.* 
+		from CARD d
+		where d.emp_Id=#{empId}
+		order by d.group_id desc) 
+		where rnum between #{start} and #{end}
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from CARD c
+		where c.emp_Id=#{empId}
+	</select>
+</mapper>

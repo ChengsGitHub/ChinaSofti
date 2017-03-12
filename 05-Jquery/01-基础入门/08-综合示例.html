@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.bg {
+			background: #ccc;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		// js实现
+		/*
+		window.onload = function() {
+
+			var content = document.getElementById('content');
+			var table = content.getElementsByTagName('table')[0];
+			var trs = table.getElementsByTagName('tr');
+
+			for (var i = 0;i < trs.length;i ++) {
+				
+				trs[i].onmouseover = function() {
+					this.className = 'bg';
+				}
+
+				trs[i].onmouseout = function() {
+					this.className = '';
+				}
+
+			}
+		}
+		*/
+
+		//jq实现
+		$(document).ready(function(){
+
+			//防止选择器多次使用，查找对象浪费资源，赋值给本地变量
+			var trs = $('#content table:first tr');
+			
+			trs.mouseover(function(event) {
+				$(this).addClass('bg');
+			});
+
+			trs.mouseout(function(event) {
+				$(this).removeClass('bg');
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div id="content">
+		<table width="500" border="1">
+			<tr>
+				<td>文字1</td>
+				<td>文字2</td>
+			</tr>
+			<tr>
+				<td>文字1</td>
+				<td>文字2</td>
+			</tr>
+			<tr>
+				<td>文字1</td>
+				<td>文字2</td>
+			</tr>
+		</table>
+	</div>	
+</body>
+</html>

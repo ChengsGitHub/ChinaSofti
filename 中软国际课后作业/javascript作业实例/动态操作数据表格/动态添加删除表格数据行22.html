@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#information input {
+			width: 100%;
+			height: 100%;
+			border:0;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var sid = document.getElementById('sid');
+			var sname = document.getElementById('sname');
+			var sage = document.getElementById('sage');
+			var addBtn = document.getElementById('addBtn');
+			var information = document.getElementById('information');	
+
+			var x = 1;
+
+			addBtn.onclick = function() {
+
+				var tr = information.insertRow();
+
+				tr.id = 'item' + x;
+
+				for (var i = 0;i < 4;i ++) {
+
+					var td = tr.insertCell();
+
+					if(i == 0)
+						td.innerHTML = sid.value ;
+					if(i == 1)
+						td.innerHTML = sname.value ;
+					if(i == 2)
+						td.innerHTML = sage.value ;
+					if(i == 3)
+						td.innerHTML = '<input type="button" value="鍒犻櫎" id="del' + x + '" />';
+				}
+
+				sid.value = '';
+				sname.value = '';
+				sage.value = '';
+
+				var item = document.getElementById('item' + x);
+				var del = document.getElementById('del' + x);
+				
+				del.onclick = function () {					
+					var parents = item.parentNode;					
+					parents.removeChild(item);					
+				}		
+
+				x ++;
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<table border="1" width="500" id="information">
+		<thead id="a">
+			<tr>
+				<th>缂栧彿</th>
+				<th>濮撳悕</th>
+				<th>骞撮緞</th>
+				<th>鎿嶄綔</th>
+			</tr>
+		</thead>
+	</table>
+	<form id="" method="post" action="">
+		<table>
+			<tr>
+				<td>缂栧彿</td>
+				<td>
+					<input type="text" id="sid">
+				</td>
+			</tr>
+			<tr>
+				<td>濮撳悕</td>
+				<td>
+					<input type="text" id="sname">
+				</td>
+			</tr>
+			<tr>
+				<td>骞撮緞</td>
+				<td>
+					<input type="text" id="sage">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="澧炲姞瀛︾敓" id="addBtn">
+				</td>				
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

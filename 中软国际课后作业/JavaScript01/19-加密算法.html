@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function encrypt() {
+			// 获得文本框对象
+			var code  	= parseInt(document.getElementById('t1'));
+			// alert(typeof code);
+			// 判断是否是四位数字
+			if (code < 9999 && code > 1000) {
+
+				var a = code / 1000 % 10;
+				var b = code / 100 % 10;
+				var c = code / 10 % 10;
+				var d = code  % 10;
+				alert('请输入正确的四位数字')
+			}
+		}
+	
+	</script>
+</head>
+<body>
+	<pre>
+		某公司的分机号码需要加密，四位数字，加密规则如下：<br>
+		1.每一位数字加5<br>
+		2.之后用模10的余数代替该数字<br>
+		3.第1位和第4位交换，第2位和第4位交换<br>
+		例如：4567=9 10 11 12=9 0 1 2=2109<br>
+	</pre>
+	<input type="text" id="t1" placeholder="请输入要加密的四位数字">
+	<input type="button" value="加密" onclick="encrypt();">
+	<input type="button" value="解密">
+</body>
+</html>

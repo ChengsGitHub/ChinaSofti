@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		/*滚动条事件*/
+		$(window).scroll(function(event) {
+			
+			// 获得滚动条位置
+			document.title = $(window).scrollTop();
+
+		});
+
+		$(document).click(function(event) {
+			
+			// 设置滚动条位置
+			$(window).scrollTop(0);
+
+		});
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+
+	</script>
+</body>
+</html>

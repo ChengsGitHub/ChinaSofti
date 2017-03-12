@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var a = 5;
+		var b = 3;
+		
+		function sum() {
+			alert(this.a + this.b);
+		}	
+
+		var obj = {
+			a:10,
+			b:20
+		}
+
+		var obj2 = {
+			a:5,
+			b:3
+		}
+
+		// sum(); 
+		sum.call(obj); //相当于obj.sum();
+		sum.apply(obj2); //相当于obj2.sum();
+	</script>
+</head>
+<body>	
+</body>
+</html>

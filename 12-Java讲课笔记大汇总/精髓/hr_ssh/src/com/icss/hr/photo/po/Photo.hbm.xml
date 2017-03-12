@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-3-17 12:42:41 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+    <class name="com.icss.hr.photo.po.Photo" table="PHOTO">
+        <id name="photoId" type="integer">
+            <column name="PHOTO_ID" precision="6" scale="0" />
+            <generator class="sequence">
+            	<param name="sequence">photo_seq</param>
+            </generator>
+        </id>
+        <property name="photoPath" type="string">
+            <column name="PHOTO_PATH" length="100" />
+        </property>
+       
+       	<many-to-one name="emp" class="com.icss.hr.emp.po.Emp">
+       		<column name="photo_emp_id"/>
+       	</many-to-one>
+       
+    </class>
+    
+</hibernate-mapping>

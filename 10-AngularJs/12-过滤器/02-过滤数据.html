@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		
+		<!-- 显示数组的多少个 -->
+		数组显示limitTo：{{ [1,2,3,4,5,6,7,8,9] | limitTo:5}}
+		<br>
+		数组显示limitTo：{{ [1,2,3,4,5,6,7,8,9] | limitTo:-5}}
+		<br>
+		<!-- 关键字过滤，默认查找所有的属性 -->
+		城市列表：{{city | filter:'上海'}}
+		<br>
+		城市列表：{{city | filter:'京'}}
+		<br>
+		城市列表：{{city | filter:'an'}}
+		<!-- 指定查找的属性名称 -->
+		<br>
+		城市列表：{{city | filter:{py:'an'} }}
+		<br>
+		<!-- 排序，默认升序，降序属性名前面加负号 -->
+		城市列表排序：{{city | orderBy:'py' }}
+		<br>
+		城市列表排序：{{city | orderBy:'-py' }}
+		<!-- 使用自定义的过滤器 -->
+		<br>
+		城市列表：{{city | filter:checkPy }}
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope','$filter', function($scope,$filter) {
+
+			// 假数据
+			$scope.city = [
+				{
+					name:'上海',
+					py:'shanghai'
+				},
+				{
+					name:'北京',
+					py:'beijing'
+				},
+				{
+					name:'南京',
+					py:'nanjing'
+				},
+				{
+					name:'大连',
+					py:'dalian'
+				}
+			];
+
+			// 自定义过滤器function，返回true表示满足条件，返回false表示不满足条件，参数代码遍历的数据
+			$scope.checkPy = function(item) {
+
+				console.log(item);
+				
+				// 城市拼音长度超过6个字符返回，其他的过滤掉
+				if (item.py.length > 6)
+					return true;
+
+				return false;
+			}
+
+			// 直接使用内置过滤器			
+			var number = $filter('number')(123456789);
+			console.log(number);
+			
+		}]);
+	</script>
+</body>
+</html>

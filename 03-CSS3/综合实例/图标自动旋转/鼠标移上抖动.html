@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">		
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul,li {
+			list-style-type: none;
+		}
+
+		.service-icon {
+			width: 540px;
+			height: 95px;
+			text-align: center;			
+			margin: 0 auto;
+		}
+
+		.service-icon li {
+			width: 90px;
+			height: inherit;
+			float: left;
+		}
+
+		@keyframes dh{
+			from{transform:rotateZ(0deg);}
+			25%{transform:rotateZ(-5deg);}
+			50%{transform:rotateZ(0deg);}
+			75%{transform:rotateZ(5deg);}
+		}
+
+		@-webkit-keyframes dh{
+			from{transform:rotateZ(0deg);}
+			25%{transform:rotateZ(-5deg);}
+			50%{transform:rotateZ(0deg);}
+			75%{transform:rotateZ(5deg);}
+		}
+
+		.service-icon li a {
+			height: 35px;
+			line-height: 35px;
+			padding-top: 60px;		
+			display: block;
+			color: #666;
+			text-decoration: none;
+			font-size: 14px;
+			background: url(icons.png) no-repeat;	
+		}
+
+		.service-icon li a:hover {
+			animation:dh 0.2s 4;
+			-webkit-animation:dh 0.2s 4;
+
+			box-shadow: rgba(0, 0, 0, 0.8) 0px 1px 3px 0px;
+	     	-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 1px 3px 0px;
+	     	-moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 1px 3px 0px;
+		}
+
+		.service-icon li .icon1 {
+			background-position: 16px -197px;
+		}
+
+		.service-icon li .icon2 {
+			background-position: -80px -197px;
+		}
+
+		.service-icon li .icon3 {
+			background-position: -174px -197px;
+		}
+
+		.service-icon li .icon4 {
+			background-position: -269px -197px;
+		}
+
+		.service-icon li .icon5 {
+			background-position: -364px -197px;
+		}
+
+		.service-icon li .icon6 {
+			background-position: -459px -197px;
+		}
+	
+	</style>
+</head>
+<body>
+	<ul class="service-icon">
+		<li><a href="#" class="icon1">论文提交</a></li>
+		<li><a href="#" class="icon2">vpn服务</a></li>
+		<li><a href="#" class="icon3">研修室预约</a></li>
+		<li><a href="#" class="icon4">馆长信箱</a></li>
+		<li><a href="#" class="icon5">失物招领</a></li>
+		<li><a href="#" class="icon6">入馆指南</a></li>
+	</ul>
+</body>
+</html>

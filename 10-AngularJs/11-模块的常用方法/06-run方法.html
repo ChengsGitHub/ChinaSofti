@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">		
+		var myApp = angular.module('myApp',[]);
+		
+		// config配置注入服务对象，必须加上Provider后缀，provider是唯一能注入到config中的服务
+		myApp.config(['service1Provider',function(service1) {
+			
+			// 调用服务的功能
+			alert(service1.username);
+			service1.query();	
+			
+		}]);
+
+		// run方法，以注入provider，factory，service注册的服务和注入value,constant设置的常量
+		myApp.run(['service1', function(service1){
+			// 调用服务的功能
+			service1.update();
+		}]);
+
+		// provide注册服务
+		myApp.provider('service1',[function() {
+			
+			// 需要在this中定义属性和方法，可以被config调用
+			this.username = 'jack';
+
+			this.query = function() {
+				alert('查询数据库');
+			}
+			
+			this.$get = function() {
+				return  {
+					update:function() {
+						alert('修改数据库');
+					}
+				}
+			}
+		}]);
+		
+	</script>
+</body>
+</html>

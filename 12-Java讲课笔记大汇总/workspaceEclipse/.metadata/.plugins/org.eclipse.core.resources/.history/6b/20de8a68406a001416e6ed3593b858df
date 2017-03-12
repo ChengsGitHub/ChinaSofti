@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-12 15:20:13 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.icss.hb.po.Product" table="PRODUCT">
+        <id name="prodId" type="java.lang.Integer">
+            <column name="PROD_ID" precision="6" scale="0" />
+            <generator class="increment" />
+        </id>
+        <property name="prodName" type="string">
+            <column name="PROD_NAME" length="50" />
+        </property>
+        <property name="prodPrice" type="java.lang.Double">
+            <column name="PROD_PRICE" precision="6" />
+        </property>
+    </class>
+</hibernate-mapping>

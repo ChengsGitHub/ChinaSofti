@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 求阶乘 例如5的阶乘=5*4*3*2*1
+		function jiecheng(n) {
+			
+			if (n == 1) {
+				return 1;
+			}
+
+			return n * jiecheng(n-1); //此处产生递归调用
+		}
+
+		var result = jiecheng(3);
+		alert('阶乘是：' + result);
+	</script>
+</head>
+<body>	
+<pre>
+	function jiecheng(3) {
+			
+		if (n == 1) {
+			return 1;
+		}
+
+		return 3 * jiecheng(2);
+	}
+
+	function jiecheng(2) {
+			
+		if (n == 1) {
+			return 1;
+		}
+
+		return 2 * jiecheng(1);
+	}
+
+	function jiecheng(1) {
+			
+		if (n == 1) {
+			return 1;
+		}
+		
+	}
+</pre>
+</body>
+</html>

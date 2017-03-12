@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		var result = 5 && 3; //3 同真返回最后那个
+		result = 'tom' && 'jack';//jack
+		result = 5 && 0; //0
+		result = '' && 'jack';//''
+
+		result = 5 || 0; //5
+		result = 0 || 5; //5
+		result = 0 || null;//null
+
+		result = 'tom' || ''; //tom
+		result = undefined || 'tom';//tom
+		result = 'tom' || 'jack'; //tom
+
+		alert(result);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

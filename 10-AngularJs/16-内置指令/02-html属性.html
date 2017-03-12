@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">
+	
+	<!-- 几乎所有的html属性都可以写成ng写法 -->
+	<div style="color:red">hello,world</div>
+	<div ng-style="{color:'red'}">hello,world</div>
+
+	<img src="{{src}}">
+	<img ng-src="{{src}}">
+
+	<br>
+
+	<a href="{{href}}" title="{{title}}">百度</a>
+	<a ng-href="{{href}}" ng-attr-title="{{title}}">百度</a>
+
+	<input type="text" value="{{value}}">
+	<input type="text" ng-attr-value="{{value}}">
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		// 创建模块
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope){
+
+			$scope.src = "logo.png";
+			$scope.title = "点击跳转到百度";
+			$scope.href = "http://www.baidu.com";
+			$scope.value = "hello,world";
+			
+		}])
+	</script>
+</body>
+</html>

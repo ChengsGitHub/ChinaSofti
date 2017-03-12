@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/require.js"></script>
+	<script type="text/javascript">
+		/*
+		之前的例子中加载模块都是本地js，但是大部分情况下网页需要加载的JS可能来自本地服务器、其他网站或CDN，
+		这样就不能通过这种方式来加载了，我们以加载一个jquery库为例：
+		这边涉及了require.config，require.config是用来配置模块加载位置，简单点说就是给模块起一个更短更好记的名字，
+		比如将百度的jquery库地址标记为jquery，
+		这样在require时只需要写["jquery"]就可以加载该js，其实本地的js我们也可以这样配置
+		通过paths的配置会使我们的模块名字更精炼，paths还有一个重要的功能，就是可以配置多个路径，如果远程cdn库没有加载成功，可以加载本地的库，例如"js/jquery.1.9"就是备用
+		这样配置后，当百度的jquery没有加载成功后，会加载本地js目录下的jquery
+		在使用requirejs时，加载模块时不用写.js后缀的，当然也是不能写后缀
+		上面例子中的callback函数中发现有$参数，这个就是依赖的jquery模块的输出变量，如果你依赖多个模块，可以依次写入多个参数来使用
+		如果某个模块不输出变量值，则没有，所以尽量将输出的模块写在前面，防止位置错乱引发误解
+		jQuery从1.7后开始支持AMD规范，即如果jQuery作为一个AMD模块运行时，它的模块名是“jquery”。注意“jquery”是固定的，不能写“jQuery”或其它
+		jQuery中的支持AMD代码如下
+			if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
+			    define( "jquery", [], function () { return jQuery; } );
+			}
+		*/
+		require.config({
+		    paths : {
+		        "jquery" : ["http://libs.baidu.com/jquery/2.0.3/jquery","js/jquery.1.9"],
+		        "a" : "js/a"   
+		    }
+		});
+
+		//引用上面的jquery.js和本地的a.js,b.js
+		require(["jquery","a","js/b"],function($,a){
+			
+			$(document).ready(function($) {
+				alert('加载完毕,' + a);	
+			});
+
+		});
+	</script>
+</head>
+<body>	
+	网页的内容
+</body>
+</html>

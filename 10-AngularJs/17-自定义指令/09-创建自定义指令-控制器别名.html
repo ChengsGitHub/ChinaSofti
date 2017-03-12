@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<custom-tag></custom-tag>	
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">		
+		var myApp = angular.module('myApp',[]);
+		
+		myApp.directive('customTag',[function(){
+			
+			return {
+					restrict:'ECMA',
+					template:'<div>你好，世界,<input type="button" value="click" ng-click="c.m1();"></div>',
+					replace:true,
+					controllerAs:'c', //给控制器起个别名，在视图中用别名调用this定义的属性方法
+					controller:function() {
+						this.m1 = function() {
+							alert('控制器的方法');
+						}
+					}
+			}
+
+		}]);
+	</script>
+</body>
+</html>

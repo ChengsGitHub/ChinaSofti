@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		// 学校
+		var school = ["清华大学","北京大学","北京邮电"];
+
+		// 学校中的专业
+		var xi = [
+			["物理系","自动化系","计算机系","软件工程系"],
+			["天文系","新闻系","地理系"],
+			["通迅系","无线电系","无线转播系"]
+		];
+
+		// 专业中的班级
+		var classes = [
+			[
+				["物理1班","物理2班","物理3班"],
+				["自动化系1班","自动化系2班"],
+				["计算机系1班","计算机系2班","计算机系3班","计算机系4班"],
+				["软件工程1班","软件工程2班","软件工程3班","软件工程4班"]
+			],
+			[
+				["天文系1班","天文系2班","天文系3班"],
+				["新闻系1班","新闻系2班"],
+				["地理系1班","地理系2班","地理系3班","地理系4班"]
+			],
+			[
+				["通迅系1班","通迅系2班","通迅系3班"],
+				["无线电系1班","无线电系2班"],
+				["无线转播系1班","无线转播系2班","无线转播系3班","无线转播系4班"]
+			]
+		];
+
+
+		window.onload = function() {
+
+			// 获得学校对象
+			var schools = document.getElementById('school');
+			// 获得系对象
+			var xis = document.getElementById('xi');
+			// 获得班级对象
+			var classes1 = document.getElementById('classes');
+
+			// 添加学校到列表
+			for (var i = 0; i < school.length; i++) {
+
+				schools.options[schools.length] = new Option(school[i], school[i]);
+
+			}
+
+			// 添加专业到列表
+			schools.onchange = function() {
+
+				if (schools.selectedIndex == 0) {
+					// 清空专业列表和班级列表
+					xis.options.length = 1;
+					classes1.options.length = 1;
+				} else {
+					xis.length = 1;
+					
+					// 获得对应的下标
+					var index = schools.selectedIndex - 1;
+
+					// 添加对应的专业
+					for (var j = 0; j < xi[index].length; j++) {
+						xis.options[xis.length] = new Option(xi[index][j], xi[index][j]);
+					}					
+				}
+			}
+
+			// 添加班级到列表
+			xis.onchange = function() {
+
+				// 获得学校对应的下标
+				var index = schools.selectedIndex - 1;
+
+				if (xis.selectedIndex == 0) {
+					// 清空列表
+					classes1.options.length = 1;
+				} else {
+					classes1.options.length = 1;
+					
+					// 获得专业对应的下标
+					var b = xis.selectedIndex - 1;
+
+					for (var k = 0; k < classes[index][b].length; k++) {
+
+						classes1.options[classes1.length] = new Option(classes[index][b][k], classes[index][b][k]);
+					}
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<form id="" method="post" action="">
+		<select id="school">
+			<option value="">请选择学校</option>
+		</select>
+		<select id="xi">
+			<option value="">请选择专业</option>
+		</select>
+		<select id="classes">
+			<option value="">请选择班级</option>
+		</select>
+	</form>
+</body>
+</html>

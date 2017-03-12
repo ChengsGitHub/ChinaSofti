@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+/* 导入其他css文件，需要些扩展名 */
+@import "global.css";
+
+// 导入头部样式，不需要写扩展名
+@import "header";
+
+// 定义默认变量，如果没有定义过$bgColor则使用default变量，如果有定义其他的$bgColor，就使用其他的$bgColor
+$bgColor:#0cc!default;
+
+#content {
+	background: $bgColor;
+	width: 960px;
+	
+	// 在样式内部导入
+	@import "div";	
+}
+
+// 导入底部样式
+@import "footer";

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+			width: 200px;
+			height: 200px;
+			background: #0cc;
+			/*别忘写过渡*/
+			transition:2s all;
+		}
+
+		/* CSS实现方式，需要自己写对应的样式代码来实现动画 ng-if 对应以下样式，是dom添加删除节点操作*/
+
+		/* 进入开始 */
+		.box.ng-enter{
+		     opacity: 0;
+		}
+		
+		/* 进入结束 */
+		.box.ng-enter-active{			
+		    opacity: 1;
+		}
+
+		/* 离开开始 */
+		.box.ng-leave{
+		    opacity: 1;
+		}
+
+		/* 离开结束 */
+		.box.ng-leave-active{
+		    opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller="firstController">
+		<input type="checkbox" ng-model="bBtn">显示隐藏div {{bBtn}}
+		<div class="box" ng-if="bBtn"></div>		
+	</div>
+
+	<!-- 此效果需要用另一版angularjs环境 -->
+	<script type="text/javascript" src="angular.min.js"></script>	
+	<script type="text/javascript" src="angular-animate.min.js"></script>
+	<script type="text/javascript">
+		
+		// 定义模块，依赖动画模块
+		var myApp = angular.module('myApp',['ngAnimate']);
+
+		// 定义控制器
+		myApp.controller('firstController', ['$scope', function($scope) {
+			
+			$scope.bBtn = true;
+
+		}]);
+
+	</script>
+</body>
+</html>

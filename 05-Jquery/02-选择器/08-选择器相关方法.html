@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function() {
+			
+			// alert( $('#div1').children().length ); //默认返回所有直接子元素
+			// $('#div1').children('p').css('color','red'); //通过选择器过滤直接子元素
+			// $('#div1').find('p').css('color','red'); //通过选择器查找子元素，包括后代间接子元素
+
+			//console.log( $('#p1').parent() );//默认返回直接父元素 div2
+			// console.log( $('#p1').parent('.1') ); //通过选择器过滤不满足条件的父元素
+			// console.log( $('p').parent() ); //也可以选择不同的多个元素的父元素集合
+
+			// console.log( $('#p1').parents() ); //默认返回所有的父元素，包括间接父元素，直至html元素
+			// console.log( $('#p1').parents('.dd') ); //通过选择器过滤间接父元素
+			// console.log( $('#p1').parents('div') ); 
+			// console.log( $('#p1').parentsUntil('.dd') ); //过滤查找到选择器匹配的元素之前的元素
+
+			// console.log( $('#div2').next() );//当前元素的下一个元素	
+			// console.log( $('#div2').nextAll() );//当前元素的后面所有的平级元素
+			// console.log( $('#div2').nextAll('div') ); //通过选择器过滤后面的元素	
+
+			// console.log( $('#div4').prev() );//当前元素的上一个元素
+			// console.log( $('#div4').prevAll() );//当前元素的前面所有的平级元素
+			// console.log( $('#div4').prevAll('.1') ); //通过选择器过滤前面的元素
+
+			console.log( $('#div3').siblings() );//选择所有的同辈平级元素
+			// console.log( $('#div3').siblings('div') );//通过选择器过滤同辈平级元素
+
+			// console.log( $('#p1').add('#p2') ); //把选择的元素追加到当前的集合中
+
+			//end就是返回上一个选择器的JQ对象
+			// $('#p1').parent().css('color','red').end().css('color','green');
+
+			// index返回当前元素是父元素的第几个子元素
+			alert( $('#div4').index() )
+
+		});	
+
+	</script>
+</head>
+<body>
+	<div class="dd">
+		<div id="div1">
+			<div id="div2" class="1">
+				aaaa
+				<p id="p1">cccccc</p>
+				<p>dddddd</p>
+			</div>
+
+			<div id="div3" class="1">
+				bbbb
+			</div>
+
+			<div id="div4">
+				eeee
+				<p id="p2"></p>
+			</div>
+
+			<p>ffffff</p>
+			<p>hhhhhh</p>
+		</div>
+	</div>	
+</body>
+</html>

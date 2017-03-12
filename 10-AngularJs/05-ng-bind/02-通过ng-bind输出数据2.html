@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div ng-controller="firstController">
+		<!-- 用ng-bind指令代替{{}}，避免绑定数据之前用户看到{{}}语法 -->
+		用户名：
+		<input type="text" ng-model="username">
+		<span ng-bind="username"></span>
+		<br>
+		年龄：
+		<input type="text" ng-model="age">
+		<span ng-bind="age"></span>
+	</div>
+	
+	<script src="angular.js"></script>
+	<script>
+//		创建一个模块，模块名称myApp,依赖的其他模块没有，返回模块对象
+		var myApp = angular.module("myApp",[ ]);
+
+//		通过模块创建控制器，名称为firstController
+		myApp.controller('firstController',function($scope) {
+			// 在控制器的作用域对象中设置数据模型
+			$scope.username = 'jack';
+			$scope.age = 27;
+		});
+	</script>
+</body>
+</html>

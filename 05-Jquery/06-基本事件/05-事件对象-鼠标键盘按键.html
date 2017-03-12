@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).mousedown(function(e) {
+			
+			/*获得鼠标按键  1左键 2中键 3右键*/
+			alert(e.which);
+
+		});
+
+		$(document).keydown(function(e) {
+			
+			/*获得键盘按键 整合了e.keyCode*/
+			console.log(e.which);
+
+			/*ctrl alt shift按键判断*/
+			console.log('alt=' + e.altKey);
+			console.log('shift=' + e.shiftKey);
+			console.log('ctrlKey=' + e.ctrlKey);
+		});
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

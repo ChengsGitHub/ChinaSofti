@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// m1();//调用没有问题
+		// m2();//调用出错
+
+		function m1() {
+			alert('m1...');
+		}
+
+		var m2 = function() {
+			alert('m2...');
+		}
+
+		// m1();//调用没有问题
+		m2();//调用没有问题
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			var obj1 = document.getElementById('t1');
+			var shu = parseInt(obj1.value * 100)/100;
+			alert('你输出的是: ' + shu);
+		}
+	</script>
+</head>
+<body>
+	<!-- 用户输入一个任意的小数，保留两位小数取出 -->
+	<input type="text" id='t1' placeholder='请输出一个小数'>
+	<input type="button" value='输出值' onclick='m1();'>
+</body>
+</html>

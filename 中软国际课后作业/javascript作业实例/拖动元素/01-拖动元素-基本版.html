@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#dialog {
+			width: 300px;
+			height: 200px;
+			background: #0cc;
+			position: absolute;
+			top:200px;
+			left: 300px;
+			cursor: move;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+
+			// div对象
+			var dialog = document.getElementById('dialog');
+
+			// div对象鼠标按下事件
+			dialog.onmousedown = function(e) {
+				
+				e = window.event || e;
+				
+				//获得鼠标按下的相对于div的位置
+				var offsetX = e.offsetX;
+				var offsetY = e.offsetY;
+
+				// document鼠标移动事件
+				document.onmousemove = function(e) {					
+					e = window.event || e;
+
+					//计算位置
+					var vLeft = e.clientX - offsetX;
+					var vTop = e.clientY - offsetY;
+
+					// 判断div是否超出视口范围
+					if (vTop < 0)
+						vTop = 0;
+					else if (vTop + dialog.offsetHeight > document.documentElement.clientHeight)
+						vTop = document.documentElement.clientHeight - dialog.offsetHeight;
+
+					if (vLeft < 0)
+						vLeft = 0;
+					else if (vLeft + dialog.offsetWidth > document.documentElement.clientWidth)
+						vLeft = document.documentElement.clientWidth - dialog.offsetWidth;
+					
+					//动态设置div的位置
+					dialog.style.left = vLeft + 'px';
+					dialog.style.top = vTop + 'px';
+				}
+
+				// document鼠标抬起事件
+				document.onmouseup = function() {
+					// 删除事件注册
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="dialog">
+		拖动我
+	</div>
+</body>
+</html>

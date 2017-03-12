@@ -1,0 +1,23 @@
+package chapter4;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+/**
+ * 连接池类
+ * @author Administrator
+ *
+ */
+public class ConnPool {
+	
+	private static ComboPooledDataSource dataSource;
+	
+	/**
+	 * 初始化连接池
+	 */
+	static {
+		dataSource = new ComboPooledDataSource();
+		
+		
+	}
+
+}

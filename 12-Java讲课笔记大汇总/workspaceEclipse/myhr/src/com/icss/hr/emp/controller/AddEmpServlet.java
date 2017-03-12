@@ -1,0 +1,52 @@
+package com.icss.hr.emp.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.icss.hr.emp.service.impl.EmpServieImpl;
+import com.icss.hr.emp.vo.EmpVo;
+
+@WebServlet("/AddEmpServlet")
+public class AddEmpServlet extends HttpServlet {
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		PrintWriter out = response.getWriter();
+
+		// 获得表单数据
+		String empName = request.getParameter("empName");
+		String empEmail = request.getParameter("empEmail");
+		String empPhone = request.getParameter("empPhone");
+		String empHiredate = request.getParameter("empHiredate");
+		String jobId = request.getParameter("jobId");
+		String empSalary = request.getParameter("empSalary");
+		String deptId = request.getParameter("deptId");
+
+		// 封装为VO对象
+		EmpVo vo = new EmpVo(empName, empEmail, empPhone,
+				Date.valueOf(empHiredate), jobId, Integer.parseInt(empSalary),
+				Integer.parseInt(deptId));
+		
+		//业务对象
+		EmpServieImpl service = new EmpServieImpl();
+		
+		try {
+			//插入数据
+			service.insert(vo);
+			//成功提示
+			out.println("<script>alert('增加新员工成功');location.href='QueryEmpServlet';</script>");
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+
+	}
+	
+}

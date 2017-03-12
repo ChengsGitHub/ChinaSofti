@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">
+	.bg1 {background-color:#FC0}
+	.color1 {background-color:#9C0}
+	.color2 {background-color:#0CF}
+	.color3 {background-color:#FFC}
+	.color4 {color:#F39;font-size:24px}
+</style>
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript">
+
+	//当页面被加载完毕时
+	$(document).ready(function(e) {
+		
+		//第一个元素
+		//$('#table1 tr:first').addClass('color1');		
+		//$('#table1 tr').first().addClass('color1');
+		
+		//最后一个元素
+		//$('#table1 tr:last').addClass('color2');
+		//$('#table1 tr').last().addClass('color2');
+		
+		//不是标题行的第一个元素		
+		//$('#table1 tr :not(th)').first().addClass('color3');
+		
+		//这一组中的所有下标为偶数元素
+		$('#table1 tr :not(th):even').addClass('color2');
+		
+		//这一组中的所有下标为奇数元素
+		$('#table1 tr :not(th):odd').addClass('color1');
+		
+		///这一组中的所有下标为4元素
+		$('#table1 tr').eq(4).addClass('color4');
+		
+	});	
+	
+</script>
+</head>
+
+<body>
+<table width="500" border="1" id="table1">
+  <tr>
+    <th align="center">车型</th>
+  </tr>
+  <tr>
+    <td align="center">丰田</td>
+  </tr>
+  <tr>
+    <td align="center">日产</td>
+  </tr>
+  <tr>
+    <td align="center">本田</td>
+  </tr>
+  <tr>
+    <td align="center">福特</td>
+  </tr>
+  <tr>
+    <td align="center">奥迪</td>
+  </tr>
+  <tr>
+    <td align="center">夏利</td>
+  </tr>
+  <tr>
+    <td align="center">大众</td>
+  </tr>
+</table>
+</body>
+</html>

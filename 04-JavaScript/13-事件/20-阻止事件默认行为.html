@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		// 阻止网页右键
+		document.oncontextmenu = function(e) {
+			e = e || window.event;
+			// 阻止事件的默认行为兼容写法
+			e.preventDefault?e.preventDefault():e.returnValue=false;
+
+			alert('本网页禁止右键！');
+		}
+		
+		window.onload = function() {
+
+			var a1 = document.getElementById('a1');
+
+			a1.onclick = function(e) {
+				e = e || window.event;
+				alert('链接被单击...');
+
+				// 阻止事件的默认行为兼容写法
+				e.preventDefault?e.preventDefault():e.returnValue=false;
+			}
+
+		}
+
+		function m1() {
+			alert('链接被单击...');			
+		}
+	</script>
+</head>
+<body>
+	<a href="http://192.168.1.254" id="a1">链接1</a>
+	<a href="http://192.168.1.254" onclick="m1();return false;">链接2</a>
+</body>
+</html>

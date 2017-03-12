@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="js/datepicker/jquery.datetimepicker.css">
+</head>
+<body>
+	<input type="text" id="date">
+
+	<script type="text/javascript" src="js/require.js"></script>
+	<!-- 如果使用data-main，会出现当前页面代码先执行，而main.js后执行的情况，paths里的东西定义没有用 -->
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript">
+		require(["datepicker"],function(){
+			
+			//日历框
+			$('#date').datetimepicker();
+
+		});
+	</script>
+</body>
+</html>

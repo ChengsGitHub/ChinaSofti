@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*
+			父类
+		*/
+		function Parent() {
+			this.pv = 'this is parent';
+		}
+
+		/*父类原型中定义方法*/
+		Parent.prototype.showParentValue = function() {
+			alert(this.pv);
+		}
+
+		/*
+			子类
+		*/
+		function Child() {
+			this.cv = 'this is child';
+		}
+	
+
+		/*
+			继承的实现：改变Child子类的原型链，指向Parent父类的一个对象
+		*/
+		Child.prototype = new Parent();
+		Child.prototype.constructor = Child;
+
+		/*在子类的原型中定义方法，必须要在改变原型之后定义*/
+		Child.prototype.showChildValue = function() {
+			alert(this.cv);
+		}
+		
+		// Child.prototype.showParentValue = function() {
+		// 	alert('重写覆盖父类的方法');
+		// }
+
+		// 创建子类的对象
+		var c = new Child();
+		
+		// 调用对象的成员
+		console.log(c.cv);
+		console.log(c.pv);
+
+		c.showChildValue();
+		c.showParentValue();
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<input type="button" value="获得服务器推送数据" onclick="push();">
+	<div id="div1"></div>
+
+	<script type="text/javascript">
+		
+		/*
+			发出请求，获得服务器端推送数据
+		*/
+		function push() {
+
+			// 发出连接请求http://localhost:7777/push/client.html
+			var source = new EventSource('ServerSentServlet');	
+
+			// 连接成功事件回调
+			source.onopen = function(e) {
+				alert('连接服务器成功！');
+			} 
+
+			// 连接失败事件回调
+			source.onerror = function(e) {
+				alert('连接失败！');
+			}
+
+			// 消息事件回调，e.data就是响应的消息数据
+			source.onmessage = function(e) {
+				
+				document.getElementById('div1').innerHTML = e.data;
+			}
+
+		}
+
+	</script>
+</body>
+</html>

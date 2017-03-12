@@ -1,0 +1,109 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="com.icss.hr.dept.pojo.*" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>无标题文档</title>
+		
+		<link rel="stylesheet" target="text/css" href="css/style.css">
+		
+		<script type="text/javascript">
+
+			var s = null;
+			
+			function checkForm() {
+			
+				//部门编号
+				var s = /^\d{1,4}$/;
+				var deptId = document.form1.deptId;
+				if (!s.test(deptId.value)) {
+					alert("部门编号格式错误，请重新输入！");
+					deptId.select();
+					return false;
+				}
+							
+				//部门名称
+				var s = /^.{1,16}$/;
+				var deptName = document.form1.deptName;
+				if (!s.test(deptName.value)) {
+					alert("部门名称格式错误，请重新输入！");
+					deptId.select();
+					return false;
+				}
+			
+				//部门地址
+				var s = /^.{1,32}$/;
+				var deptLoc = document.form1.deptLoc;
+				if (!s.test(deptLoc.value)) {
+					alert("部门地址格式错误，请重新输入！");
+					deptId.select();
+					return false;
+				}
+			
+				return true;
+			
+			}
+		</script>
+
+	</head>
+
+	<body>
+		
+		<div id="main">
+	
+		<form name="form1" method="post" action="UpdateDeptServlet"
+			onSubmit="return checkForm();">
+			<table width="500" border="0" align="center" cellpadding="4"
+				cellspacing="1" bgcolor="#CCCCCC">
+				<tr>
+					<td height="24" colspan="2" align="center" valign="middle"
+						bgcolor="#FFCC00">
+						请修改部门信息
+					</td>
+				</tr>
+				<tr>
+					<td width="137" height="24" align="center" valign="middle"
+						bgcolor="#FFFFFF">
+						部门编号
+					</td>
+					<td width="460" height="24" align="left" valign="middle"
+						bgcolor="#FFFFFF">
+						<input name="deptId" type="text" id="deptId" readonly="readonly" value="${dept.deptId}">
+						*
+					</td>
+				</tr>
+				<tr>
+					<td width="137" height="24" align="center" valign="middle"
+						bgcolor="#FFFFFF">
+						部门名称
+					</td>
+					<td height="24" valign="middle" bgcolor="#FFFFFF">
+						<input name="deptName" type="text"  id="deptName" value="${dept.deptName}">
+						*
+					</td>
+				</tr>
+				<tr>
+					<td width="137" height="24" align="center" valign="middle"
+						bgcolor="#FFFFFF">
+						部门地址
+					</td>
+					<td height="24" valign="middle" bgcolor="#FFFFFF">
+						<input name="deptLoc" type="text" id="deptLoc" value="${dept.deptLoc}">
+						*
+					</td>
+				</tr>
+				<tr>
+					<td height="24" colspan="2" align="center" valign="middle"
+						bgcolor="#FFFFFF">
+						<input type="submit" name="button" id="button" value="提交">
+						<input type="button" name="button2" id="button2" value="取消" onclick="history.back();">
+					</td>
+				</tr>
+			</table>
+		</form>
+		
+		</div>
+		
+	</body>
+</html>

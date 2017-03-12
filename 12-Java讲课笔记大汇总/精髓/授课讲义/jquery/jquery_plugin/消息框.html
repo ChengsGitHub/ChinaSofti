@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>信息框</title>
+<link rel="stylesheet" type="text/css"	href="js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+
+<script>
+		function show1(){
+			$.messager.show({
+				title:'My Title',
+				msg:'Message will be closed after 4 seconds.',
+				showType:'show'
+			});
+		}
+		
+		function show2(){
+			$.messager.show({
+				title:'My Title',
+				msg:'Message will be closed after 10 seconds.',
+				timeout:10000,
+				showType:'slide'
+			});
+		}
+		
+		function show3(){
+			$.messager.show({
+				title:'My Title',
+				msg:'Message never be closed.',
+				timeout:0,
+				showType:'fade'
+			});
+		}
+		
+		function alert1(){
+			$.messager.alert('My Title','Here is a message!');
+		}
+		
+		function alert2(){
+			$.messager.alert('My Title','Here is a error message!','error');
+		}
+		
+		function alert3(){
+			$.messager.alert('My Title','Here is a info message!','info');
+		}
+		
+		function alert4(){
+			$.messager.alert('My Title','Here is a question message!','question');
+		}
+		
+		function alert5(){
+			$.messager.alert('My Title','Here is a warning message!','warning');
+		}
+		
+		function confirm1(){
+			$.messager.confirm('My Title', 'Are you confirm this?', function(r){
+				if (r){
+					alert('confirmed:'+r);
+					location.href = 'http://www.google.com';
+				}
+			});
+		}
+		
+		function prompt1(){
+			$.messager.prompt('My Title', 'Please type something', function(r){
+				if (r){
+					alert('you type:'+r);
+				}
+			});
+		}
+		
+		//改变默认确定和取消的文字
+		$(function(){
+			$.messager.defaults={ok:"确定",cancel:"取消"};   
+		});
+</script>
+
+</head>
+
+<body>
+
+<div>
+<a href="javascript:void(0)" onclick="show1()">show</a> | 
+<a href="#" onclick="show2()">slide</a> | 
+<a href="#" onclick="show3()">fade</a>
+|</div>
+
+<div>
+<a href="#" onclick="alert1()">alert</a> | 
+<a href="#"	onclick="alert2()">alert(error)</a> | 
+<a href="#" onclick="alert3()">alert(info)</a> | 
+<a href="#" onclick="alert4()">alert(question)</a> | 
+<a href="#"	onclick="alert5()">alert(warning)</a>
+</div>
+
+<div><a href="#" onclick="confirm1();">confirm</a></div>
+<div><a href="#" onclick="prompt1()">prompt</a></div>
+<div style="height: 600px;"></div>
+
+</body>
+</html>

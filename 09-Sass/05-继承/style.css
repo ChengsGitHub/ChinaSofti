@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* 默认按钮样式 */
+.btn-default, .btn-primary, .btn-warning {
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 3px;
+}
+
+.btn-primary {
+  background: #0cc;
+}
+
+.btn-warning {
+  background: orange;
+}
+
+/*# sourceMappingURL=style.css.map */

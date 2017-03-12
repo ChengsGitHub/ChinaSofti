@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*
+			横屏竖屏媒体查询的原理，就是宽度是否大于或者小于高度
+			查询属性：orientation
+				portrait：竖屏
+				landscape：横屏
+		*/
+
+		@media only screen and (orientation:portrait) {
+			body {
+				background: blue;
+			}
+		}
+
+		@media only screen and (orientation:landscape) {
+			body {
+				background: green;
+			}
+		}
+	</style>
+</head>
+<body>	
+</body>
+</html>

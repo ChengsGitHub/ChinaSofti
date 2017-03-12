@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var recordCount = prompt('请输入总记录数');//总记录数
+		var pageSize = prompt('请输入每页多少条');;//每页多少条
+		var pageCount;//共几页
+		var pageNum = prompt('请输入页码');//当前页码
+
+		// 计算共几页
+		pageCount = parseInt(recordCount / pageSize);
+		if (recordCount % pageSize != 0) 
+			pageCount ++;
+
+		// 计算页码
+		if (!pageNum)
+			pageNum = 1;
+
+		if (isNaN(pageNum))
+			pageNum = 1;
+
+		pageNum = parseInt(pageNum);
+
+		if (pageNum < 1)
+			pageNum = 1;
+
+		if (pageNum > pageCount)
+			pageNum = pageCount;
+
+		// 计算起始终止位置
+		var start = (pageNum - 1) * pageSize + 1;
+		var end = pageNum * pageSize;
+		
+		// 最后一页特殊处理
+		if (pageNum == pageCount)
+			end = recordCount;
+
+		alert('共' + recordCount + '条数据，每页' + pageSize + '条，共' + pageCount + '页，当前是第' + pageNum + '页，从第' + start + '条数据到第' + end + '条数据');
+	</script>
+</head>
+<body>		
+</body>
+</html>

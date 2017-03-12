@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.item {
+			width: 200px;
+			height: 200px;
+			background: #0cc;
+			line-height: 200px;
+			text-align: center;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			
+			// 获得对象
+			var btns = document.getElementsByTagName('a');
+			var contents = document.getElementsByTagName('div');
+						
+			for (var i = 0;i < btns.length;i ++) {
+
+				//利用匿名函数实现闭包
+				(function(index) {
+
+					//循环注册事件
+					btns[i].onclick = function() {
+						
+						// 隐藏所有div内容 
+						for (var j = 0;j < contents.length;j ++) {
+							contents[j].style.display = 'none';
+						}				
+
+						//显示对应的div
+						contents[index].style.display = 'block';	
+
+						alert(index);				
+					}
+
+				})(i);
+				
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<a href="javascript:;">内容1</a>
+	<a href="javascript:;">内容2</a>
+	<a href="javascript:;">内容3</a>
+
+	<div class="item">这是内容1</div>
+	<div class="item">这是内容2</div>
+	<div class="item">这是内容3</div>
+</body>
+</html>

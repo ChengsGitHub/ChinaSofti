@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+
+	<!-- 编码过滤器 -->
+	<filter>
+		<filter-name>EncodeFilter</filter-name>
+		<filter-class>com.icss.hr.common.EncodeFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>EncodeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 登陆验证过滤器 -->
+	<filter>
+		<filter-name>CheckLoginFilter</filter-name>
+		<filter-class>com.icss.hr.common.CheckLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CheckLoginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+
+	<servlet>
+		<servlet-name>InsertDeptServlet</servlet-name>
+		<servlet-class>com.icss.hr.dept.controller.InsertDeptServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>QueryDeptServlet</servlet-name>
+		<servlet-class>com.icss.hr.dept.controller.QueryDeptServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteDeptServlet</servlet-name>
+		<servlet-class>com.icss.hr.dept.controller.DeleteDeptServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ToUpdateDeptServlet</servlet-name>
+		<servlet-class>com.icss.hr.dept.controller.ToUpdateDeptServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateDeptServlet</servlet-name>
+		<servlet-class>com.icss.hr.dept.controller.UpdateDeptServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.icss.hr.admin.controller.LoginServlet</servlet-class>
+	</servlet>
+  <servlet>
+    <servlet-name>InsertJobServlet</servlet-name>
+    <servlet-class>com.icss.hr.job.controller.InsertJobServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryJobServlet</servlet-name>
+    <servlet-class>com.icss.hr.job.controller.QueryJobServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteJobServlet</servlet-name>
+    <servlet-class>com.icss.hr.job.controller.DeleteJobServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ToUpdateJobServlet</servlet-name>
+    <servlet-class>com.icss.hr.job.controller.ToUpdateJobServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateJobServlet</servlet-name>
+    <servlet-class>com.icss.hr.job.controller.UpdateJobServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ToInsertEmpServlet</servlet-name>
+    <servlet-class>com.icss.hr.emp.controller.ToInsertEmpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InsertEmpServlet</servlet-name>
+    <servlet-class>com.icss.hr.emp.controller.InsertEmpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryEmpServlet</servlet-name>
+    <servlet-class>com.icss.hr.emp.controller.QueryEmpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteEmpServlet</servlet-name>
+    <servlet-class>com.icss.hr.emp.controller.DeleteEmpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ToUpdateEmpServlet</servlet-name>
+    <servlet-class>com.icss.hr.emp.controller.ToUpdateEmpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateEmpServlet</servlet-name>
+    <servlet-class>com.icss.hr.emp.controller.UpdateEmpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InsertPhotoServlet</servlet-name>
+    <servlet-class>com.icss.hr.photo.controller.InsertPhotoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryPhotoServlet</servlet-name>
+    <servlet-class>com.icss.hr.photo.controller.QueryPhotoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeletePhotoServlet</servlet-name>
+    <servlet-class>com.icss.hr.photo.controller.DeletePhotoServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<servlet-mapping>
+		<servlet-name>InsertDeptServlet</servlet-name>
+		<url-pattern>/InsertDeptServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>QueryDeptServlet</servlet-name>
+		<url-pattern>/QueryDeptServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteDeptServlet</servlet-name>
+		<url-pattern>/DeleteDeptServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ToUpdateDeptServlet</servlet-name>
+		<url-pattern>/ToUpdateDeptServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateDeptServlet</servlet-name>
+		<url-pattern>/UpdateDeptServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InsertJobServlet</servlet-name>
+    <url-pattern>/InsertJobServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryJobServlet</servlet-name>
+    <url-pattern>/QueryJobServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteJobServlet</servlet-name>
+    <url-pattern>/DeleteJobServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ToUpdateJobServlet</servlet-name>
+    <url-pattern>/ToUpdateJobServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateJobServlet</servlet-name>
+    <url-pattern>/UpdateJobServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ToInsertEmpServlet</servlet-name>
+    <url-pattern>/ToInsertEmpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InsertEmpServlet</servlet-name>
+    <url-pattern>/InsertEmpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryEmpServlet</servlet-name>
+    <url-pattern>/QueryEmpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteEmpServlet</servlet-name>
+    <url-pattern>/DeleteEmpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ToUpdateEmpServlet</servlet-name>
+    <url-pattern>/ToUpdateEmpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateEmpServlet</servlet-name>
+    <url-pattern>/UpdateEmpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InsertPhotoServlet</servlet-name>
+    <url-pattern>/InsertPhotoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryPhotoServlet</servlet-name>
+    <url-pattern>/QueryPhotoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeletePhotoServlet</servlet-name>
+    <url-pattern>/DeletePhotoServlet</url-pattern>
+  </servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>Login.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

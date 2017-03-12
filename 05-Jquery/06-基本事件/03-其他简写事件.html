@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 200px;
+			height: 100px;
+			background: #0cc;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			// focusin focusout可以让父元素捕获子元素的焦点事件
+			$('#div1').focusin(function(event) {
+				
+				$(this).css('background','red');
+
+			});
+
+			$('#div1').focusout(function(event) {
+				
+				$(this).css('background','#0cc');
+
+			});
+
+		});	
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input type="text" id="t1">
+	</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 300px;
+			height: 300px;
+			background: #0cc;
+			position:relative;
+		}
+
+		#div2 {
+			width: 150px;
+			height: 150px;
+			background: #ccc;			
+			position: absolute;
+			top:50%;
+			left: 50%;
+			margin-top: -75px;
+			margin-left: -75px;
+		}
+	</style>
+	<script type="text/javascript">
+		function m1() {
+			console.log('鼠标移上...');
+		}
+
+		function m2() {
+			console.log('鼠标离开...');
+		}
+	</script>
+</head>
+<body>
+	<!-- 
+	<div id="div1" onmouseover="m1();" onmouseout="m2();">
+		<div id="div2">
+			
+		</div>		
+	</div> 
+	-->
+	<div id="div1" onmouseenter="m1();" onmouseleave="m2();">
+		<div id="div2">			
+
+		</div>
+	</div>
+</body>
+</html>

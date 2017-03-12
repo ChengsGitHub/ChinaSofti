@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			arguments对象：在function内部可以获得一个arguments对象，通过这个对象就可以获得所有的实参数据，这个对象是一个类数组
+		*/		
+		function m1(a,b) {
+			// console.log('a=' + a);
+			// console.log('b=' + b);
+			
+			console.log('形参的个数：' + m1.length);
+			console.log('实参的个数：' + arguments.length);
+
+			for (var i = 0;i < arguments.length;i ++) {
+				console.log(arguments[i]);
+			}
+		}
+
+		m1(5,3,16,27,41,26);
+	</script>
+</head>
+<body>	
+</body>
+</html>

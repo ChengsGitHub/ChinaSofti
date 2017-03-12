@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div ng-controller="firstController">		
+		<input type="button" value="发出jsopn请求" ng-click="getData();">
+		<p>
+			用户名:{{data.name}}，年龄：{{data.age}}
+		</p>		
+	</div>
+
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript">
+		// 创建模块
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope','$http',function($scope,$http) {
+
+			// 定义方法
+			$scope.getData = function() {
+
+				// jsonp跨域请求,?callback=JSON_CALLBACK是固定写法
+				var promise = $http.jsonp('http://127.0.0.1:7777/ngajax/server.jsp?callback=JSON_CALLBACK');
+
+				promise.success(function(data) {
+					alert('请求成功');
+					console.log(data);
+					$scope.data = data;					
+				});
+
+				promise.error(function() {
+					alert('请求失败');
+				});
+
+			}
+			
+		}]);
+	</script>
+</body>
+</html>

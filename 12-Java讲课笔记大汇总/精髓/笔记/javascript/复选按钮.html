@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+	function m1() {
+		var skill = document.form1.skill;
+		
+		var txt = "";
+		
+		for (var i = 0;i < skill.length;i ++) {
+			if (skill[i].checked) {
+				txt += skill[i].value + ' ';	
+			}
+		}
+		
+		alert('你选择了：' + txt);
+	}
+	
+	//全选功能
+	function m2() {
+		var skill = document.form1.skill;
+		var selectBtn = document.getElementById('selectBtn');
+		
+		for (var i = 0;i < skill.length;i ++) {
+			skill[i].checked = selectBtn.checked;
+		}
+	}
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+          <input name="skill" type="checkbox" id="skill" value="java" checked>
+          java
+          <input name="skill" type="checkbox" id="skill" value="oracle">
+          oracle
+          <input name="skill" type="checkbox" id="skill" value="html">
+          html
+          <input name="skill" type="checkbox" id="skill" value="mysql">
+          mysql
+          <input type="button" name="button" id="button" value="OK" onClick="m1();">
+          
+          <input type="checkbox" id="selectBtn" onClick="m2();">全选/取消
+</form>
+</body>
+</html>

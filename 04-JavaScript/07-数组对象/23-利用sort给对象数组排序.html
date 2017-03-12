@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		// 商品数据
+		var data = [
+			{
+				id:1001,
+				name:'iphone5',
+				quantity:4,
+				price:5687
+			},
+			{
+				id:1002,
+				name:'iphone5s',
+				quantity:6,
+				price:4566
+			},
+			{
+				id:1003,
+				name:'iphone6',
+				quantity:9,
+				price:4566
+			},
+			{
+				id:1004,
+				name:'iphone6s',
+				quantity:7,
+				price:3756
+			}
+		];
+		
+		// 按照排序规则函数来排序
+		data.sort(sortRule);
+
+		// 排序规则函数
+		function sortRule(a, b) {
+			if (a.price == b.price) {
+				return b.quantity - a.quantity;
+			} else {
+				return a.price - b.price;
+			}
+		}		
+
+		for(var i = 0;i < data.length;i ++){
+			document.write('<ul>');
+			document.write('<li>' + data[i].id + '</li>');
+			document.write('<li>' + data[i].name + '</li>');
+			document.write('<li>' + data[i].quantity + '</li>');
+			document.write('<li>￥' + data[i].price + '</li>');
+			document.write('</ul>')
+		}
+
+	//按照商品的单价升序排列，按照数量降序，输出
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

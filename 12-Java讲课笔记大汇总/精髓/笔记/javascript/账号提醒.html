@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+
+	/*文本框内容同步*/
+	function m1(){
+		var obj = document.getElementById('t1');
+		var obj2 = document.getElementById('t2');
+		obj2.value = obj.value;
+	}
+	
+	
+	window.onload = function(){
+		document.getElementById('t1').onkeyup=m1;
+		document.getElementById('t1').onkeydown=m1;
+	}
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action=""> 
+  <input type="text" name="t1" id="t1" maxlength="18px">
+  <br>
+  <input type="text" name="t2" id="t2" style="width:600px; height:60px; font-size:50px; color:red; border:none;" disabled>
+</form>
+</body>
+</html>

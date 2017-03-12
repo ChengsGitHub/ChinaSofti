@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>	
+	<script type="text/javascript">		
+		var area = [
+			{
+				state:'辽宁省',
+				city:['沈阳','大连','鞍山','营口']
+			},
+			{
+				state:'吉林省',
+				city:['长春','吉林','四平','图门']
+			},
+			{
+				state:'黑龙江省',
+				city:['哈尔滨','齐齐哈尔','牡丹江','大庆']
+			},
+			{
+				state:'北京市',
+				city:['北京市']
+			}
+		];
+
+		$(document).ready(function(){
+
+			// 遍历数组
+			$.each(area, function(index, val) {
+
+				// 动态添加省份，value为对应的数组下标
+	       		$('#state').append('<option value="' + index + '">' + area[index].state + '</option>');	
+
+	   		});
+
+	   		// 省份改变事件
+       		$('#state').change(function(event) {
+
+				// 清空城市列表
+				$('#city').find('option:gt(0)').remove();
+
+				// 获得选中省的下标
+				var value = $(this).val();
+
+				// 动态添加城市option
+				var citys = area[value].city;
+
+				for(var i = 0;i < citys.length;i++) {
+   					$('#city').append('<option>' + citys[i] + '</option>');					
+				}			
+
+			});
+			
+			// 查看按钮功能
+	   		$('#lookBtn').click(function(event) {
+	   			alert($('#state').find("option:checked").text() 
+	   				+ $('#city').find("option:checked").text());
+	   		});
+		});
+
+		
+
+	</script>
+</head>
+<body>
+	<!-- onchange事件 -->
+	<form id="" method="post" action="">
+		<select id="state">
+			<option value="">请选择省</option>
+		</select>
+		<select id="city">
+			<option value="">请选择城市</option>
+		</select>
+		<input type="button" value="查看" id="lookBtn">
+	</form>
+</body>
+</html>

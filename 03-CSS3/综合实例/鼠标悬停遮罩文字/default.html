@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.div1 {
+			width: 600px;
+			height: 400px;
+			background: url(g3.jpg);			
+			position: relative;
+		}
+
+		.div2 {
+			width: 600px;
+			height: 0px;
+			background: rgba(0,0,0,0.5);			
+			color:rgba(0,0,0,0);
+			text-align: center;
+			line-height: 0px;
+			position: absolute;
+			bottom: 0;
+
+			transition:all 1s;
+		}
+
+		.div1:hover .div2 {			
+			height: 400px;
+			color: rgba(0,0,0,1);
+			line-height: 400px;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<div class="div2">这是提示的文字</div>
+	</div>
+</body>
+</html>

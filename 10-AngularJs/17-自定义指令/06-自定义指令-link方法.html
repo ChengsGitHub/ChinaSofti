@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">	
+	
+	<custom-tag ng-repeat="item in data" my-attr="我的属性"></custom-tag>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		// 模块
+		var myApp = angular.module('myApp',[]);
+	
+		// 指令
+		myApp.directive('customTag',[function(){
+			
+			return {
+					restrict:'ECMA',
+					template:'<div>你好:{{item}}</div>',
+					replace:true,						
+					//参数1：$scope当前作用域 参数2：当前元素的JQ对象 参数3：attr当前元素的属性，参数4：controller 当前控制器对象					
+					link:function($scope,element,attr,controller) {
+						
+						// 利用jqlite给每个元素添加单击事件
+						element.on('click', function(event) {
+							alert($scope.item);
+						});
+
+					}
+			}
+
+		}]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope){
+
+			$scope.data = ['tom','jack','rose','zhangsan'];
+			
+		}])
+
+		
+	</script>
+</body>
+</html>

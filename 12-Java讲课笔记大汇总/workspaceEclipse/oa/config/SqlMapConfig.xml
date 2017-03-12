@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+        
+	<!-- 实体类的别名 -->
+	<typeAliases>				
+	</typeAliases>
+	
+	<!--映射文件路径，可能会有多个mapper映射 -->
+	<mappers>
+		<mapper resource="com/icss/oa/system/pojo/DeptMapper.xml"/>		
+		<mapper resource="com/icss/oa/system/pojo/JobMapper.xml"/>	
+		<mapper resource="com/icss/oa/system/pojo/EmpMapper.xml"/>
+		<mapper resource="com/icss/oa/system/pojo/BbsMapper.xml" />
+		<mapper resource="com/icss/oa/system/pojo/RoleMapper.xml"/>
+		<mapper resource="com/icss/oa/emp1/pojo/Emp1Mapper.xml"/>
+		<mapper resource="com/icss/oa/asserts/pojo/WarehouseMapper.xml"/>
+		<mapper resource="com/icss/oa/folder/pojo/FolderMapper.xml"/>
+		<mapper resource="com/icss/oa/folder/pojo/DocumentMapper.xml"/>
+		<mapper resource="com/icss/oa/emp1/pojo/PermMapper.xml"/>	
+		<mapper resource="com/icss/oa/message/pojo/MessageMapper.xml"/>	
+		<mapper resource="com/icss/oa/meeting/pojo/MeetingroomMapper.xml"/>
+		<mapper resource="com/icss/oa/meeting/pojo/DeviceMapper.xml"/>
+		<mapper resource="com/icss/oa/meeting/pojo/MeetingorderMapper.xml"/>
+		<mapper resource="com/icss/oa/meeting/pojo/MeetingrecordMapper.xml"/>
+		<mapper resource="com/icss/oa/card/pojo/CardMapper.xml"/>	
+		<mapper resource="com/icss/oa/card/pojo/PersonnelcardMapper.xml"/>
+		<mapper resource="com/icss/oa/asserts/pojo/OffsupMapper.xml"/>
+		<mapper resource="com/icss/oa/asserts/pojo/WarehouseMapper.xml"/>
+		<mapper resource="com/icss/oa/assign/pojo/ExpinfMapper.xml"/>	
+		<mapper resource="com/icss/oa/assign/pojo/AssigncomMapper.xml"/>	
+		<mapper resource="com/icss/oa/assign/pojo/ExphistoryMapper.xml"/>
+		<mapper resource="com/icss/oa/assign/pojo/ImageMapper.xml"/>
+		<mapper resource="com/icss/oa/work/pojo/ScheduleMapper.xml"/>
+		<mapper resource="com/icss/oa/work/pojo/ReadschMapper.xml"/>	
+		<mapper resource="com/icss/oa/bus/pojo/BusMapper.xml"/>
+		<mapper resource="com/icss/oa/bus/pojo/BusorderMapper.xml"/>
+		<mapper resource="com/icss/oa/bus/pojo/BusrecordMapper.xml"/>		
+	</mappers>
+	
+</configuration>

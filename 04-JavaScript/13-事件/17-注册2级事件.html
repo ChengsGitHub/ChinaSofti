@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		window.onload = function() {
+
+			function m1() {
+				alert('hello,world');
+			}
+
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+
+			// 注册2级事件的兼容写法
+			if (btn1.addEventListener)
+				btn1.addEventListener('click',m1,false); //w3c标准写法
+			else
+				btn1.attachEvent('onclick',m1);//IE专用写法
+			
+			// 移除2级事件
+			btn2.onclick = function() {
+				if (btn1.removeEventListener)
+					btn1.removeEventListener('click',m1);//w3c标准写法
+				else
+					btn1.detachEvent('onclick',m1);//IE专用写法
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="注册2级事件" id="btn1">	
+	<input type="button" value="移除2级事件" id="btn2">
+</body>
+</html>

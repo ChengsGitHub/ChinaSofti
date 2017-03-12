@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*
+			父类
+		*/
+		function Parent(name) {
+			this.name = name;
+			this.friends = ['tom','jack'];
+		}	
+
+		Parent.prototype.showParent = function() {
+			alert(this.name);
+		}
+
+		/*
+			子类
+		*/
+		function Child(name,age) {			
+			this.age = age;
+
+			/*
+				使用call，让当前对象调用父类构造函数，初始化属性值
+				思路相当于java中的super方法
+				但是仅仅用这种方法，无法继承父类的方法，只能继承属性
+				所以我们也不会单纯的使用call实现继承
+			*/
+			Parent.call(this,name); //this.Parent(name);
+		}	
+
+		var c1 = new Child('zhangsan',27);
+		var c2 = new Child('lisi',29);
+
+		c1.friends.push('john');
+		console.log(c2.friends);
+
+		alert(c1.name + ',' + c1.age);
+		alert(c2.name + ',' + c2.age);
+		
+		// c1.showParent();//无法调用
+	</script>
+</head>
+<body>	
+</body>
+</html>

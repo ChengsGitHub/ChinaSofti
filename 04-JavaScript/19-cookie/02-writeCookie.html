@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function m1() {
+
+			var d1 = new Date();
+			var d2 = new Date();
+
+			var ms1 = 1000 * 60 * 60 * 2;//2小时
+			var ms2 = 1000 * 60 * 60 * 4;//4小时
+
+			d1.setTime( d1.getTime() + ms1 ); //设置2小时以后的时间
+			d2.setTime( d2.getTime() + ms2 ); //设置4小时以后的时间
+
+			var username = encodeURI('张三');
+
+			// 写入cookie键值对，设置失效时间必须是GMT时间格式（不设置失效时间默认就是会话级cookie）
+			document.cookie = 'username=' + username + ';expires=' + d1.toGMTString();
+			document.cookie = 'password=123456;expires=' + d2.toGMTString();
+
+			alert('cookie已经写入！');
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" value="写入cookie" onclick="m1();">
+</body>
+</html>

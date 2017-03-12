@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script type="text/javascript">
+	
+	var sum = 0;
+	
+	function m1(){
+		sum = document.getElementById('t1').value.length;
+		
+		if(sum <= 120){			
+			document.getElementById('td1').innerHTML = '还可以输入' + (120 - sum) + '字';
+			document.getElementById('t1').style.color = 'black';
+			document.getElementById('td1').style.color = 'black';
+		}else{
+			document.getElementById('td1').innerHTML = '已经超过' + (sum - 120) + '字';
+			document.getElementById('td1').style.color = '#60F';
+			document.getElementById('t1').style.color = 'red';				
+		}
+	}
+		
+	window.onload = function (){
+			document.getElementById('t1').onkeyup = m1;
+			document.getElementById('t1').onkeydown = m1;			
+	}
+	
+</script>
+<style type="text/css">
+body {
+	font-size: 12px;
+}
+
+.table1 {
+	border-collapse:collapse;/*合并相邻的边框线*/
+}
+
+.table1 td {
+	border:1px #ccc solid;
+}
+</style>
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+  <table align="center" class="table1">
+    <tr>
+      <td id="td1" height="24">还可以输入120字</td>
+    </tr>
+    <tr>
+      <td id="td2" height="24"><textarea name="t1" id="t1" cols="60" rows="10" ></textarea></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

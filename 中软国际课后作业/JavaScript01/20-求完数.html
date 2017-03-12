@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		for(var i = 1; i <= 1000; i ++){
+			var sum = 0 ;//因子之和
+
+			//从1到当前数字的一半进行穷举
+			for(var j = 1 ; j <= parseInt(i / 2); j ++){
+				//判断是否是因子
+				if(i % j == 0){
+					sum += j;
+				}
+
+			}
+
+			//判断因子之和是否等于当前数字
+			if(sum == i){
+				document.write(i + '<br>');
+			}
+		}
+	</script>
+</head>
+<body>
+	<!-- 完数（因子之和等于本身，因子不包括本身），例如6=1+2+3	
+	输出1~1000之间的所有完数 -->
+</body>
+</html>

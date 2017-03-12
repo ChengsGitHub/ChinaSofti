@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*body的默认文字大小16像素，设置14px的基本字号*/
+		body {
+			font-size: 14px;
+			
+			/*也可以通过百分比设置，16px的87.5%*/
+			/*font-size: 87.5%;*/
+		}
+
+		/*em单位是根据body的基本字号大小乘以倍数*/
+		.span1 {
+			font-size: 1em;
+		}
+
+		.span2 {
+			font-size: 2em;
+		}
+
+		.span3 {
+			font-size: 2em;
+		}
+
+		.span4 {
+			font-size: 2em;
+		}
+
+		h1 {
+			font-size: 2em;
+		}
+	</style>
+</head>
+<body>
+	<span class="span1">你好，世界1</span>
+	<span class="span2">你好，世界2</span>
+	<span class="span3">
+		你好，世界3
+		<!-- span4是根据span3父容器的字号大小乘以倍数，而不是按照body默认字号大小 -->
+		<span class="span4">
+			你好，世界4
+		</span>
+	</span>
+	<h1>
+		标题文字
+	</h1>
+</body>
+</html>

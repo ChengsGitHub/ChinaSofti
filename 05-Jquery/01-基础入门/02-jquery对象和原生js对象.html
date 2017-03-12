@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">		
+		$(document).ready(function() {
+			
+			var div1 = document.getElementById('box');//原生对象
+			var div2 = $('#box');//Jquery对象
+
+			// alert(div1 == div2);//false
+
+			// div1.innerHTML = 'hello,world'; //可以调用原生的js的属性和方法
+			// div2.innerHTML = 'hello,jquery'; //jquery对象不能调用原生的js的属性和方法
+
+			// div2.html('hello,jquery');//jquery对象只能调用jquery的api的功能
+
+			var div3 = $(div1); //js对象转换为jq对象
+			div3.html('hello,javascript');
+
+			// var div4 = div2.get(0); //jq对象转换为原生js对象 get
+			// div4.innerHTML = 'hello,$';
+		});
+
+	</script>
+</head>
+<body>
+	<div id="box">jquery</div>
+</body>
+</html>

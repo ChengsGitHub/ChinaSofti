@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		function m1() {
+			/*获得表单元素对象*/
+			// var frm = document.f1;
+			// var frm = document.forms[0];
+			var frm = document.getElementById('form1');
+
+			// frm.method = 'get';
+
+			// 通过elements操作表单元素
+			frm.elements[0].value = 'hello,world';
+
+			alert('表单元素的个数：' + frm.length);
+		}
+
+		function m2() {
+			var frm = document.getElementById('form1');
+			frm.submit();//提交表单
+		}
+	</script>
+</head>
+<body>
+	<form id="form1" name="f1" method="post" action="xxx.jsp">
+		<input type="text" name="t1">
+		<input type="button" value="测试" onclick="m1();">
+		<input type="button" value="提交" onclick="m2();">
+	</form>
+</body>
+</html>

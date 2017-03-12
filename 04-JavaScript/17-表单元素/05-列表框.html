@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			var city = document.getElementById('city');
+			 alert(city.value); //当前选择的value值
+			alert(city.selectedIndex);//当前选择的下标
+			 alert(city.length);//当前option的数量
+			alert(city.options[1].value); //通过options对象访问option
+		}
+
+		function m2() {
+			var city = document.getElementById('city');
+			city.value = 'shenzhen'; //默认选中某个option
+		}
+
+		/*增加option*/
+		function add() {
+			var city = document.getElementById('city');
+			//创建一个option对象（dhtml语法）
+			var opt = new Option('大连','dalian');
+			// 添加option方法1
+			// city.add(opt);
+			// 添加option方法2
+			city.options[city.length] = opt;
+		}
+
+		/*修改option*/
+		function update() {
+			var city = document.getElementById('city');
+			city.options[1] = new Option('东京','dongjing');
+		}
+
+		/*删除option*/
+		function del() {
+			var city = document.getElementById('city');
+			//删除方法1
+			// city.remove(city.length - 1);
+			// 删除方法2
+			city.options[city.length - 1] = null;
+		}
+		
+		/*清空option*/
+		function delAll() {
+			var city = document.getElementById('city');
+			// city.options.length = 1;
+			city.options.length = 0;
+		}
+
+		/*显示option内容*/
+		function show() {
+			var city = document.getElementById('city');
+			// 获得选中的option对象
+			var opt = city.options[city.selectedIndex];
+			alert(opt.value + ',' + opt.text);
+		}
+	</script>
+</head>
+<body>
+	<form id="" method="post" action="">
+		请选择城市
+		<select id="city">			
+			<option value="beijing">北京</option>
+			<option value="shanghai">上海</option>
+			<option value="shenzhen">深圳</option>
+			<option value="guangzhou">广州</option>
+		</select>
+		<input type="button" value="测试" onclick="m1();">
+		<input type="button" value="设置默认选中" onclick="m2();">
+		<input type="button" value="增加" onclick="add();">
+		<input type="button" value="修改" onclick="update();">
+		<input type="button" value="删除" onclick="del();">
+		<input type="button" value="清空" onclick="delAll();">
+		<input type="button" value="查看" onclick="show();">
+	</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="BUSRECORD" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.bus.pojo.Busrecord" >
+    <id column="BRECORD_ID" property="brecordId" jdbcType="DECIMAL" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="DRIVER" property="driver" jdbcType="VARCHAR" />
+    <result column="USE_REASON" property="useReason" jdbcType="VARCHAR" />
+    <result column="PATH" property="path" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    
+    select 
+    *
+    from BUSRECORD
+    where BRECORD_ID = #{brecordId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="query" resultMap="BaseResultMap">
+    select 
+    *
+    from(	select rownum rnum,
+    		br.* from busrecord br
+    	order by brecord_id desc) 
+    where rnum between #{start} and #{end}
+  </select>
+  
+  <delete id="delete" parameterType="java.lang.Integer" >
+    delete from BUSRECORD
+    where BRECORD_ID = #{brecordId,jdbcType=DECIMAL}
+  </delete>
+  
+  <insert id="insert" parameterType="com.icss.oa.bus.pojo.Busrecord" >
+    insert into BUSRECORD (BRECORD_ID, USER_NAME, DRIVER, 
+      USE_REASON, PATH, START_TIME,END_TIME
+      )
+    values (brecord_seq.nextval, #{userName,jdbcType=VARCHAR}, #{driver,jdbcType=VARCHAR}, 
+      #{useReason,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  
+  <select id="getCount" parameterType="com.icss.oa.bus.pojo.Busrecord" resultType="java.lang.Integer" >
+    select count(*) from BUSRECORD
+  </select>
+  
+  
+  <update id="update" parameterType="com.icss.oa.bus.pojo.Busrecord" >
+    update BUSRECORD
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      DRIVER = #{driver,jdbcType=VARCHAR},
+      USE_REASON = #{useReason,jdbcType=VARCHAR},
+      PATH = #{path,jdbcType=VARCHAR},
+       start_Time=#{startTime,jdbcType=TIMESTAMP},
+       end_Time=#{endTime,jdbcType=TIMESTAMP}
+    where BRECORD_ID = #{brecordId,jdbcType=DECIMAL}
+  </update>
+</mapper>

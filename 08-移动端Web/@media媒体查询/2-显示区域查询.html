@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.outerDiv {
+			width: 600px;
+			height: 500px;
+			background: #0cc;
+		}
+
+		/*判断视口的显示宽度如果0~699之间，单独设置一个样式*/
+		@media only screen and (min-width: 0px) and (max-width: 699px) {
+			.firstDiv {
+				width: 90%;
+				display: block;
+				background: green;
+				margin: 0 auto;
+			}
+
+			.secondDiv {
+				width: 90%;
+				display: block;
+				background: gray;
+				margin: 0 auto;
+			}
+		}
+
+		/*判断视口的显示宽度如果700~1600之间，单独设置一个样式*/
+		@media only screen and (min-width: 700px) and (max-width: 1600px) {
+			.firstDiv {
+				width: 60%;
+				display: block;
+				background: green;
+				float: left;
+			}
+
+			.secondDiv {
+				width: 40%;
+				display: block;
+				background: gray;
+				float: left;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="outerDiv">
+		<div class="firstDiv">
+			firstDiv的内容
+		</div>
+		<div class="secondDiv">
+			secondDiv的内容
+		</div>
+	</div>
+</body>
+</html>

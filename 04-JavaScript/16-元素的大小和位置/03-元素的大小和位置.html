@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		#div1 {
+			width: 200px;
+			padding: 50px;
+			border:20px solid #ccc;
+			top:200px;
+			left: 100px;
+			background: #0cc;
+			position: fixed;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+
+			document.onclick = function() {
+				var div1 = document.getElementById('div1');	
+
+				// 获得元素宽度和高度（内容+padding）
+				// alert(div1.clientWidth + ',' + div1.clientHeight);
+
+				// 获得元素宽度和高度（内容+padding+border）
+				// alert(div1.offsetWidth + ',' + div1.offsetHeight);
+
+				//获得元素和父元素的距离
+				alert(div1.offsetLeft + ',' + div1.offsetTop);
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+
+	<div id="div1">
+		<p>这是段落文字1</p>
+		<p>这是段落文字2</p>
+		<p>这是段落文字3</p>
+		<p>这是段落文字4</p>
+		<p>这是段落文字5</p>
+		<p>这是段落文字6</p>
+	</div>
+
+</body>
+</html>

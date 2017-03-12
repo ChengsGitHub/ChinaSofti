@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {
+				//动态设置行内样式，样式名称既可以是css样式名称，也可以是驼峰写法
+				$('#div1').css('color','red').css('background-color','#0cc');
+
+				$('#div2').css('color','green');
+				$('#div2').css('backgroundColor','#cc0');
+				$('#div2').css('width',500); //可以不加px单位，默认就是px
+			});
+
+			$('#btn2').click(function(event) {
+				//返回样式属性值
+				alert( $('#div2').css('color') );
+				alert( $('#div2').css('backgroundColor') );
+				alert( $('#div2').css('width') );
+			});
+
+			$('#btn3').click(function(event) {
+				// 设置多个css样式，用字面量对象
+				$('#div1').css({
+					color: 'red',
+					backgroundColor: '#0cc',
+					width:400
+				});
+
+			});
+
+			$('#btn4').click(function(event) {				
+				//返回多个css样式的值，返回的是一个对象
+				var obj = $('#div1').css(['color','backgroundColor','width']);
+				console.log(obj);
+			});
+
+			$('#btn5').click(function(event) {
+				
+				// index代表下标，value表示原始的值，返回值代表设置的属性值
+				$('div').css('width',function(index,value) {
+
+					// alert(index + ',' + value);
+
+					return parseInt(value) - 50;
+				});
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div id="div1">这是div1的内容</div>
+	<div id="div2">这是div2的内容</div>
+
+	<input type="button" value="设置css" id="btn1">
+	<input type="button" value="读取css" id="btn2">
+	<input type="button" value="设置多个css" id="btn3">
+	<input type="button" value="返回多个css" id="btn4">
+	<input type="button" value="特殊设置css" id="btn5">
+</body>
+</html>

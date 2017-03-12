@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	input[type=button] {
+		width:90px;
+		height:24px;
+	}
+</style>
+<script type="text/javascript">
+
+	function moveRight() {
+		var s1 = document.form1.s1;
+		var s2 = document.form1.s2;
+		
+		if (s1.selectedIndex == -1) {
+			alert('请先选择一项');	
+			return;
+		}
+		
+		var opt = new Option(s1.value,s1.value);
+		s2.options[s2.length] = opt;
+		
+		s1.options[s1.selectedIndex] = null;
+	}
+	
+	function moveRightAll() {
+		var s1 = document.form1.s1;
+		var s2 = document.form1.s2;
+		
+		for (var i = 0;i < s1.length; i++) {
+			var opt = new Option(s1.options[i].value,s1.options[i].value);
+			s2.options[s2.length] = opt;	
+		}		
+	
+		s1.options.length = 0;	
+	}
+	
+	function moveLeft() {
+		var s1 = document.form1.s1;
+		var s2 = document.form1.s2;
+		
+		if (s2.selectedIndex == -1) {
+			alert('请先选择一项');	
+			return;
+		}
+		
+		var opt = new Option(s2.value,s2.value);
+		s1.options[s1.length] = opt;
+		
+		s2.options[s2.selectedIndex] = null;
+	}
+
+	function moveLeftAll() {
+		var s1 = document.form1.s1;
+		var s2 = document.form1.s2;
+		
+		for (var i = 0;i < s2.length; i++) {
+			var opt = new Option(s2.options[i].value,s2.options[i].value);
+			s1.options[s1.length] = opt;	
+		}		
+	
+		s2.options.length = 0;	
+	}
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+  <table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="150">
+      <select name="s1" id="s1" size="10" style="width:150px;" multiple>
+        <option value="JAVA">JAVA</option>
+        <option value="VB">VB</option>
+        <option value="C++">C++</option>
+        <option value="ORACLE">ORACLE</option>
+        <option value="MYSQL">MYSQL</option>
+      </select>
+      </td>
+      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="24" align="center"><input type="button" name="button" id="button" value="&gt;" onClick="moveRight();"></td>
+        </tr>
+        <tr>
+          <td height="24" align="center"><input type="button" name="button2" id="button2" value="&gt;&gt;" onClick="moveRightAll();"></td>
+        </tr>
+        <tr>
+          <td height="24" align="center"><input type="button" name="button3" id="button3" value="&lt;" onClick="moveLeft();"></td>
+        </tr>
+        <tr>
+          <td height="24" align="center"><input type="button" name="button4" id="button4" value="&lt;&lt;" onClick="moveLeftAll();"></td>
+        </tr>
+      </table></td>
+      <td width="150">
+      <select name="s2" id="s2" size="10" style="width:150px;">
+      </select>
+      </td>
+    </tr>
+  </table>  
+</form>
+</body>
+</html>

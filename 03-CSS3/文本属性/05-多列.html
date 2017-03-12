@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		#div1 {
+			width: 600px;
+			border:1px solid #ccc;
+
+			/*分栏*/
+			column-count:3;
+			-webkit-column-count:3;
+			-moz-column-count:3;
+			
+			/*栏间距*/
+			column-gap:30px;
+			-webkit-column-gap:30px;
+			-moz-column-gap:30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		定位相关的样式：
+		display：决定元素显示的特征  none不显示 inline内联元素特征 inline-block内联块特征 block块元素特征
+
+		显示隐藏元素
+		display属性:none隐藏 其他值是显示，不占位隐藏
+		visibility属性：visible显示 hidden隐藏，占位隐藏
+
+		排版定位的原则：从上到下，从左到右，从外到内
+
+		float：浮动元素，none不浮动 left左浮动 right右浮动 
+		浮动元素会脱离正常文档输出流，float设计的初衷是文字环绕图片，内联元素应用了float，默认就是块级元素特征
+
+		clear：清除浮动 left不允许上边有左浮动元素  right不允许上边有右浮动元素 both不允许上边有左或右浮动元素
+
+		浮动元素会导致父元素高度塌陷，解决的方法：
+		1.	父容器设置固定高度
+		2.	最后一个浮动子元素的后面，加上一个任意块级元素应用clear清除浮动样式
+		3.	父元素应用overflow:hidden样式，在IE6下需要用zoom:1样式做兼容
+		4.	用伪元素动态的在父元素的最后输出一个空内容，在空内容上应用清除浮动样式
+
+		position：设置元素的定位方式，取值：
+		static：正常的文档输出流，无法使用left top right bottom属性（默认）
+		absolute：绝对定位，可以使用left top right bottom进行定位，脱离文档输出流，absolute元素在设置left top right bottom之前位置不会相对于原来的位置有任何变化（位置跟随）
+		如果有父元素，且父元素设置了position:fixed 或 absolute 或 relative，相对于父元素的原点定位，如果不是，则相对于网页原点定位
+		fixed：永远相对于视口定位，脱离文档输出流
+		relative：相对定位，正常文档输出流，利用left top right bottom相对于原理的位置进行偏移
+
+		盒子的叠放次序问题：
+		1.	相同的定位下，默认就是下面叠放次序比上面高
+		2.	设置position叠放次序（非static）比默认高
+		3.	设置z-index值越大，叠放次序越高，z-index设置为负数，叠放次序要低于正常文档输出流
+		4.	设置position叠放次序比float浮动高
+
+		背景的相关样式：
+		background-color：背景颜色
+		background-image：背景图片
+		background-repeat：平铺的方式 repeat默认平铺 no-repeat不平铺 repeat-x横向平铺 repeat-y纵向平铺
+		background-attachment：背景是否固定 fixed为固定
+		background-position：设置背景图片的位置，
+			百分比：偏移量=（容器的宽度-图片的宽度）*百分比  高度也是同样道理 可以为负数
+			像素：直接设置偏移量，也可以为负数
+			固定位置：center left right top bottom
+		background：背景多个样式的合并写法
+
+		雪碧图（CssSprite）：把多个图片图标合成一个图片，利用css的背景图片位置偏移单独显示某一个图标，主要好处就是减少网络连接的请求次数，提高效率，网站优化。
+
+		代码重构：重新组织html和css，减少冗余代码，让代码结构更加健壮。
+
+		border-collapse：相邻边框是否合并 collapse合并
+
+		样式的继承：子元素直接应用父元素的样式设置，有一些样式默认就可以被子元素继承，例如 font-size color line-height 
+		显式继承：inherit
+
+		引用外联样式表的第二种的方式
+
+		clip：裁剪，必须是postion:absolute元素才可以应用
+
+		网站结构：html画面 images（图片文件） css（样式文件）  js（程序脚本）
+
+		reset.css文件：统一重写浏览器的默认元素样式
+	</div>
+</body>
+</html>

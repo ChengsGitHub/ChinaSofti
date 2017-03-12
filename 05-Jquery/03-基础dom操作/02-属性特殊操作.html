@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			$('#btn1').click(function(event) {
+				
+				// index参数表示下标，value表示原始属性值，返回值代表设置的新属性值
+				$('p').attr('align', function(index,value) {
+
+					alert(index + ',' + value);
+
+					return 'left';
+				});
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<p align="center">段落文字1</p>
+	<p align="center">段落文字2</p>
+	<p align="center">段落文字3</p>
+	<p align="center">段落文字4</p>
+	<p align="center">段落文字5</p>
+	<input type="button" value="设置属性特殊用法" id="btn1">
+</body>
+</html>

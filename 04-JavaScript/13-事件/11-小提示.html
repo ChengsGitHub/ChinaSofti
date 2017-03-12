@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-size: 12px;
+			line-height: 22px;
+		}
+
+		#div1 {
+			width: 200px;
+			margin: 0 auto;
+		}
+
+		input[type=checkbox] {
+			vertical-align: middle;
+		}
+
+		#tips {
+			background: #ffefa4;
+			border: 1px solid #f90;
+			padding: 5px;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			// 获得元素对象
+			var c1 = document.getElementById('c1');
+			var tips = document.getElementById('tips');
+
+			/*思路1：根据复选框是否选中来动态显示隐藏tips*/
+			/*
+			// c1单击事件
+			c1.onclick = function() {
+				if(c1.checked) {
+					tips.style.display = 'block';
+				} else {
+					tips.style.display = 'none';
+				}
+			}
+			*/
+
+			/*思路2：根据tips当前的显示隐藏来动态设置*/
+			/*
+			c1.onclick = function() {
+				if (tips.style.display == 'block') {
+					tips.style.display = 'none';
+				} else {
+					tips.style.display = 'block';
+				}
+			}
+			*/
+
+			/*思路3：用一个计数变量递增判断奇数偶数来动态设置显示隐藏*/
+			var i = 0;
+
+			c1.onclick = function() {
+
+				i ++;
+
+				if (i % 2 == 0) {
+					tips.style.display = 'none';
+				} else {
+					tips.style.display = 'block';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<label for="c1">
+			<input type="checkbox" id="c1">	
+			两周内自动登录		
+		</label>
+		<div id="tips">
+			为了您的信息安全，请不要再网吧或公用电脑上使用此功能！
+		</div>
+	</div>
+</body>
+</html>

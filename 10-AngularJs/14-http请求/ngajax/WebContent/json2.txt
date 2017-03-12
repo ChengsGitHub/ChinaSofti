@@ -1,0 +1,26 @@
+[
+    {
+        "hiredate": "2005-09-08",
+        "empno": 100,
+        "ename": "李四",
+        "salary": 2400
+    },
+    {
+        "hiredate": "2005-04-07",
+        "empno": 120,
+        "ename": "王五",
+        "salary": 2700
+    },
+    {
+        "hiredate": "2006-04-01",
+        "empno": 103,
+        "ename": "tom",
+        "salary": 4400
+    },
+    {
+        "hiredate": "2012-07-07",
+        "empno": 108,
+        "ename": "jack",
+        "salary": 5200
+    }
+]

@@ -1,0 +1,12 @@
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		int i = 5;
+		boolean flag = 5 > i ++;
+		System.out.println(flag);
+		
+	}
+	
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+	
+	/*改变字号*/
+    function m1(tdSize){
+		var obj = document.getElementById('td1');
+		obj.style.fontSize = tdSize;
+	}
+	
+	/*改变颜色*/
+	function m2(tdColor){
+		var obj=document.getElementById('td1');
+		obj.style.color = tdColor;
+	}		
+</script>
+</head>
+
+<body>
+<table width="600" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>设置字号： <a href="javascript:m1('18px');">大</a> <a href="javascript:m1('14px');">中</a> <a href="javascript:m1('10px');">小</a></td>
+  </tr>
+  <tr>
+    <td>设置颜色：
+      <input type="button" name="button4" id="button4" value="黑色" onClick="m2('black');">
+      <input type="button" name="button5" id="button5" value="红色" style="color:#F00" onClick="m2('#F00');">
+      <input type="button" name="button6" id="button6" value="蓝色" style="color:#09F" onClick="m2('#09F');"></td>
+  </tr>
+  <tr>
+    <td id="td1" style="font-size:14px;">Internet Explorer 提供了多种功能保护您的隐私并使计算机和个人可识别信息更安全。<br>
+      <br>
+      隐私功能可以保护个人可识别信息，方式有：帮助您了解查看的网站如何使用个人可识别信息，以及指定隐私设置来决定是否允许网站将 Cookie 保存在计算机上。<br>
+      <br>
+      Internet Explorer 中的隐私功能包括：<br>
+      <br>
+      指定计算机如何处理 Cookie 的隐私设置。Cookie 是由网站创建的将信息存储在计算机上的文件，例如访问站点时的首选项。Cookie 也存储个人可识别信息，例如姓名或电子邮件地址。 <br>
+      试图访问不符合隐私设置条件的站点时会发出隐私警报。 <br>
+      查看网站的 P3P 隐私策略。 <br>
+      安全功能帮助您阻止别人访问您未授权访问的信息，例如在 Internet 上购买商品时输入的信用卡信息。安全功能也可以保护计算机不受危险软件的攻击。<br>
+      <br>
+      Internet Explorer 中的安全功能包括：<br>
+      <br>
+      证书，它验证个人身份或者网站的安全性。 <br>
+      使用安全网站的 128 位安全连接。 <br>
+      Microsoft Authenticode 技术，它验证下载程序的标识。 <br>
+      关于 Internet Explorer 中安全和隐私功能的详细信息，请单击&ldquo;相关主题&rdquo;。<br>
+      <br>
+      相关主题</td>
+  </tr>
+</table>
+</body>
+</html>

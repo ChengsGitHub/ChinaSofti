@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">
+
+	<input type="button" value="click" ng-click="m1($event);">
+
+	<input type="text" ng-focus="m1();">
+
+	<input type="button" value="mouseover" ng-mouseover="m1();">
+
+	<input type="text" value="hello,world" ng-copy="result='复制内容'">
+	<input type="text" value="hello,world" ng-cut="result='剪切内容'">
+	<input type="text" value="hello,world" ng-paste="result='粘贴内容'">
+	{{result}}
+		
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		// 创建模块
+		var myApp = angular.module('myApp',[]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope){
+
+			$scope.m1 = function(e) {
+				e.target.value = '已完成';
+				alert('hello,world');
+			}
+			
+		}]);
+	</script>
+</body>
+</html>

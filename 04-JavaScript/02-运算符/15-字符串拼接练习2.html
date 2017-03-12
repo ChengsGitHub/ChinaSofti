@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		var border = prompt('边框宽度：');
+		var bgColor = prompt('表格背景颜色：');
+		var width = prompt('表格宽度：');
+		var tdBgColor = prompt('单元格背景颜色：');
+		var tdHeight = prompt('单元格高度：');
+		var td1Str = prompt('单元格1内容：');
+		var td2Str = prompt('单元格2内容：');
+
+		var htmlStr = '';
+		htmlStr += '<table border="' + border + '" bgColor="' + bgColor + '" width="' + width + '">'
+		htmlStr += '	<tr height="' + tdHeight + '">';
+		htmlStr += '		<td bgColor="' + tdBgColor + '">' + td1Str + '</td>';
+		htmlStr += '		<td bgColor="' + tdBgColor + '">' + td2Str + '</td>';
+		htmlStr += '	</tr>';
+		htmlStr += '</table>';
+		
+		// 控制台查看拼接的结果
+		console.log(htmlStr);
+
+		// 动态输出到网页
+		document.write(htmlStr);
+	</script>
+
+</head>
+<body>
+</body>
+</html>

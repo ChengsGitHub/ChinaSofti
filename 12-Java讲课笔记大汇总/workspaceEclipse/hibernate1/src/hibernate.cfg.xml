@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="sessionFactory">
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.connection.password">hb</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:icss</property>
+        <property name="hibernate.connection.username">hb</property>
+        <property name="hibernate.default_schema">HB</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        
+        <!-- 显示控制台SQL语句 -->
+        <property name="show_sql">true</property>
+        
+        <!-- 配置映射文件路径 -->
+        <mapping resource="com/icss/hb/po/Emp.hbm.xml"/>
+        <mapping resource="com/icss/hb/po/Product.hbm.xml"/>
+        <mapping resource="com/icss/hb/po/Score.hbm.xml"/>        
+    </session-factory>
+</hibernate-configuration>

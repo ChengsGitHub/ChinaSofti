@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">	
+	
+	<person-list></person-list>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		// 模块
+		var myApp = angular.module('myApp',[]);
+	
+		// 指令
+		myApp.directive('personList',[function(){
+			
+			return {
+					restrict:'ECMA',
+					template:'<ul><li ng-repeat="item in data">{{item.name}},{{item.age}}</li></ul>',
+					replace:true,																
+					link:function($scope,element,attr,controller) {
+						// 单击任何元素，调用添加数据的方法
+						element.on('click', function(event) {
+							controller.add();
+						});
+					},					
+					controller:function($scope) {
+						// 数组数据
+						$scope.data = [
+							{
+								name:'tom',
+								age:27
+							},
+							{
+								name:'rose',
+								age:21
+							},
+							{
+								name:'jack',
+								age:28
+							}
+						];
+						
+						// 添加数据的方法
+						this.add = function() {
+							// 因为是用jq事件触发的，没有脏检查，所以手动执行脏检查
+							$scope.$apply(function(){
+								$scope.data.push({name:'angular',age:27});
+							});
+						}
+					}
+			}
+
+		}]);
+
+		// 控制器
+		myApp.controller('firstController', ['$scope', function($scope){
+						
+		}]);
+		
+	</script>
+</body>
+</html>

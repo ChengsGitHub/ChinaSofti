@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*
+			父类
+		*/
+		function Parent() {
+			this.pv = 'this is parent';
+			this.friends = ['tom','jack'];
+		}
+
+		/*父类原型中定义方法*/
+		Parent.prototype.showParentValue = function() {
+			alert(this.pv);
+		}
+
+		/*
+			子类
+		*/
+		function Child() {
+			this.cv = 'this is child';
+		}	
+
+		/*
+			继承的实现：改变Child子类的原型链，指向Parent父类的一个对象
+			如果父类的属性中有一个属性是引用类型的
+			子类创建了多个多个对象，对象中的属性会使用同一个对象实例
+			这个属性值改变，其他对象也会同时改变
+			所以，一般我们不会单纯使用原型链实现继承
+		*/
+		Child.prototype = new Parent();
+		Child.prototype.constructor = Child;
+
+		/*在子类的原型中定义方法，必须要在改变原型之后定义*/
+		Child.prototype.showChildValue = function() {
+			alert(this.cv);
+		}
+
+		// 创建子类的对象
+		var c1 = new Child();
+		var c2 = new Child();
+
+		c1.friends.push('john');
+
+		console.log(c1.friends);
+		console.log(c2.friends);
+	</script>
+</head>
+<body>	
+</body>
+</html>

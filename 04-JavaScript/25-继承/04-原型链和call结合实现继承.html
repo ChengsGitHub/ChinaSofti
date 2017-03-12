@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*人类*/
+		function Person(name,age) {
+			this.name = name;
+			this.age = age;
+		}
+
+		Person.prototype.run = function() {
+			alert('走路');
+		}
+
+		/*超人*/
+		function SuperMan(name,age,cloth) {
+			Person.call(this,name,age);//基于call初始化父类中的属性
+			this.cloth = cloth;
+		}
+
+		// 基于原型链的继承
+		SuperMan.prototype = new Person();
+		SuperMan.prototype.constructor = SuperMan;
+
+		SuperMan.prototype.fly = function() {
+			alert('飞行');
+		}
+
+		// 创建对象
+		var s = new SuperMan('克拉克',27,'内裤穿外边');
+
+		s.run();
+		s.fly();
+
+		// console.log(Person.prototype.isPrototypeOf(s)); //true
+	</script>
+</head>
+<body>	
+</body>
+</html>

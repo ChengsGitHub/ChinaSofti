@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		function replace() {
+
+			// 获得div1的对象
+			var div1 = document.getElementById('div1');
+			var p4 = document.getElementById('p4');
+			
+			var h1 = document.createElement('h1');
+			h1.innerHTML = '标题文字';
+
+			// 替换节点
+			div1.replaceChild(h1,p4);
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<p>这是文字1</p>
+		<p>这是文字2</p>
+		<p>这是文字3</p>
+		<p id="p4">这是文字4</p>
+	</div>
+	<input type="button" value="替换节点" onclick="replace();">
+</body>
+</html>

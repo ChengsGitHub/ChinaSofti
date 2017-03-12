@@ -1,0 +1,16 @@
+CACHE MANIFEST
+#v1.5
+
+# 离线文件列表
+1.html
+style.css
+script.js
+404.html
+
+# 必须不能离线访问的文件列表，*代表所有文件（排除掉已经配置过离线缓存的文件）
+NETWORK:
+*
+
+# 访问不到缓存页面的替代页
+FALLBACK:
+404.html

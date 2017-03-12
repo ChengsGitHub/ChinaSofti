@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">	
+	
+	.color2 {color:#F39}
+</style>
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript">
+
+	//当页面被加载完毕时
+	$(document).ready(function(e) {
+		
+		/*基于DOM节点的方式选择*/
+				
+		//$('#div1').children('.1').addClass('color2');
+		
+		//var txt = $('#p1').parent().text();
+		//alert(txt);
+		
+		//var txt = $('#div3').next().text();
+		//alert(txt);
+		
+		//var txt = $('#div3').nextAll().text();
+		//alert(txt);
+		
+		//var txt = $('#div4').prev().text();
+		//alert(txt);
+		
+		//var txt = $('#div4').prevAll().text();
+		//alert(txt);
+		
+		//var txt = $('#div4').siblings().text();
+		//alert(txt);
+		
+		var txt = $('#div1 div').find('p').text();
+		alert(txt);
+	});	
+	
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<div id="div2" class="1">
+    	   aaaa 
+           <p id="p1">cccccc</p>
+           <p>dddddd</p>
+    </div>
+    <div id="div3" class="1">
+    	   bbbb 
+    </div>
+    <div id="div4">
+    	   eeee 
+    </div>
+    <p>ffffff</p>
+    <p>hhhhhh</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		function m1() {
+			var div1 = document.getElementById('div1');
+
+			// 动态设置css
+			div1.style.fontSize = '12px';
+			div1.style.background = '#0cc';
+			div1.style.width = '200px';
+			div1.style.height = '200px';
+			div1.style.border = '1px solid #000';
+			
+			// 动态设置兼容css
+			div1.style.transform = 'translateX(100px)';
+			div1.style.webkitTransform = 'translateX(100px)';
+			div1.style.mozTransform = 'translateX(100px)';
+			div1.style.oTransform = 'translateX(100px)';
+			div1.style.msTransform = 'translateX(100px)';
+		}
+
+		function m2() {
+			var div1 = document.getElementById('div1');
+			
+			// 读取css样式的值
+			alert(div1.style.fontSize);
+			alert(div1.style.background);
+			alert(div1.style.width);
+			alert(div1.style.height);
+			alert(div1.style.border);
+			alert(div1.style.transform);
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		这是一个div的内容...
+	</div>
+	<input type="button" value="设置css" onclick="m1();">
+	<input type="button" value="读取css" onclick="m2();">
+</body>
+</html>

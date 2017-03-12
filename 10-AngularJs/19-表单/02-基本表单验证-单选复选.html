@@ -1,0 +1,104 @@
+  <!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+	
+	<div class="container" ng-controller="firstController">
+
+		<form name="myForm" class="form-horizontal" ng-submit="submitForm();">
+
+			<div class="form-group" ng-class="{'has-error':myForm.sex.$dirty && myForm.sex.$invalid}">
+				<label for="" class="col-md-2 control-label">性别</label>
+				<div class="col-md-10">
+					<label for="sex1" class="radio-inline">
+						<input id="sex1" type="radio" name="sex" ng-model="data.sex" value="boy">
+						男
+					</label>
+					<label for="sex2" class="radio-inline">
+						<input id="sex2" type="radio" name="sex" ng-model="data.sex" value="girl">
+						女
+					</label>
+				</div>				
+			</div>
+
+			<div class="form-group" ng-class="{'has-error':myForm.live.$dirty && myForm.live.$invalid}">
+				<label for="" class="col-md-2 control-label">爱好</label>
+				<div class="col-md-10">
+					<label class="checkbox-inline" ng-repeat="live in lives">
+						<input id="{{live.id}}" type="checkbox" ng-checked="selectedLives.indexOf(live.id) != -1" name="live" value="{{live.value}}" ng-click="toggleLive(live.id);">	
+						{{live.text}}				
+					</label>					
+				</div>				
+			</div>
+			
+			<div class="form-group">
+				<div class="col-md-10 col-md-offset-2">
+					<input type="submit" value="提交表单" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
+				</div>
+			</div>						
+		</form>
+
+		{{selectedLives}}	
+		
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope) {
+
+			// 复选框数据
+			$scope.lives = [
+				{
+					id:'live1',
+					value:'运动',
+					text:'运动'
+				},
+				{
+					id:'live2',
+					value:'音乐',
+					text:'音乐'
+				},
+				{
+					id:'live3',
+					value:'美食',
+					text:'美食'
+				},
+				{
+					id:'live4',
+					value:'编码',
+					text:'编码'
+				}
+			];
+
+			// 选中的复选框数据
+			$scope.selectedLives = ['live1','live3'];
+
+			// 添加，删除选中的复选框数据
+			$scope.toggleLive = function(id) {	
+
+				// 查找id对应的index
+				var index = $scope.selectedLives.indexOf(id);
+			
+				// 判断selectedLives有没有记录，没有就加上，有就删除			
+				if (index === -1) {
+					$scope.selectedLives.push(id);
+				} else {
+					$scope.selectedLives.splice(index, 1);
+				}
+			}
+
+			$scope.submitForm = function() {
+				
+				alert('提交表单' + ',' + $scope.data.sex + ',' + $scope.selectedLives) ;
+			}
+			
+		}]);
+	</script>
+</body>
+</html>

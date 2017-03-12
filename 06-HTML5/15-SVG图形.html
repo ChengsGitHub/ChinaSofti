@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<svg width="300" height="300" style="border:1px solid #ccc" id="svg1">
+		<rect x="10" y="10" width="60" height="30" stroke="#f00" stroke-width="5" fill="transparent"></rect>
+		<rect x="10" y="60" rx="10" ry="5" width="60" height="30" stroke="blue" stroke-width="5" fill="orange"></rect>
+		<circle cx="25" cy="120" r="20" stroke="red" stroke-width="2" fill="transparent"></circle>
+		<ellipse cx="25" cy="170" rx="20" ry="10" stroke="red" stroke-width="2" fill="transparent"></ellipse>
+		<line x1="100" y1="170" x2="50" y2="150" stroke="red" stroke-width="2"></line>
+	</svg>
+
+	<input type="button" value="设置圆形坐标" id="btn1" onclick="m1();">
+
+	<script type="text/javascript">
+		
+		var svg1 = document.getElementById('svg1');
+
+		var circle1 = svg1.getElementsByTagName('circle')[0];
+
+		// 动态设置svg元素
+		function m1() {			
+
+			circle1.setAttribute('cx',100);
+
+			console.log(circle1.cx);
+		}
+
+	</script>
+</body>
+</html>

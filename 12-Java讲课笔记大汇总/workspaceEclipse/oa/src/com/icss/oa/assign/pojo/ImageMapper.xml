@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="IMAGE">
+
+	<resultMap id="BaseResultMap" type="com.icss.oa.assign.pojo.Image">
+		<id column="IMAGE_ID" property="imageId" jdbcType="DECIMAL" />
+		<result column="IMAGE_TYPE" property="imageType" jdbcType="VARCHAR" />
+		<result column="IMAGE_REF_ID" property="imageRefId" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<resultMap id="ResultMapWithBLOBs" type="com.icss.oa.assign.pojo.Image"
+		extends="BaseResultMap">
+		<result column="IMAGE_DATA" property="imageData" jdbcType="BLOB" />
+	</resultMap>
+
+	<insert id="insert" parameterType="com.icss.oa.assign.pojo.Image">
+		insert into IMAGE (IMAGE_ID, IMAGE_TYPE, IMAGE_REF_ID,
+		IMAGE_DATA)
+		values (img_seq.nextval, #{imageType,jdbcType=VARCHAR},
+		#{imageRefId,jdbcType=DECIMAL},
+		#{imageData,jdbcType=BLOB})
+	</insert>
+
+	<select id="queryByEmpId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		*
+		from IMAGE
+		where IMAGE_TYPE='emp' AND IMAGE_REF_ID = #{empId,jdbcType=DECIMAL}
+	</select>
+	
+	<select id="queryById" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		*
+		from IMAGE
+		where IMAGE_ID = #{imageId,jdbcType=DECIMAL}
+	</select>
+
+</mapper>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+	<div ng-controller="firstController">
+		{{msg}}
+		<br/>
+		<input type="button" value="调用服务1功能" ng-click="m1();"/>
+		<input type="button" value="调用服务2功能" ng-click="m2();"/>
+	</div>
+
+	<script src="angular.js"></script>
+	<script>
+//		创建模块，第三个参数代表模块的配置
+		angular.module('myApp',[],function($provide){
+
+//			利用service方法注册一个服务,服务名service1
+			$provide.service('service1',function() {
+
+				//服务对象的属性方法定义在这个返回的对象中
+				return {
+					message:'自定义服务1...',
+					m1:function() {
+						alert('自定义服务1的功能');
+					}
+				}
+			});
+			
+			//利用service注册一个服务,服务名service2
+			$provide.service('service2',function() {
+
+				//服务对象的属性方法定义在这个返回的对象中
+				return {
+					message:'自定义服务2...',
+					m2:function() {
+						alert('自定义服务2的功能');
+					}
+				}
+			});
+		})
+//			控制器
+			.controller('firstController',['$scope','service1','service2',function($scope,service1,service2){
+
+//				使用service1的属性
+				$scope.msg = service1.message;
+
+//				控制器调用服务
+				$scope.m1 = function() {
+					service1.m1();
+				}
+
+				$scope.m2 = function(){
+					service2.m2();
+				}
+
+			}])
+	</script>
+</body>
+</html>

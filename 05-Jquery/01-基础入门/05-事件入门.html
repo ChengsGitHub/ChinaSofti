@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(e) {
+
+				alert( $('#t1').val() );
+
+				$(this).val('单击过了');
+				
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<input type="text" id="t1">
+	<input type="button" value="OK" id="btn1">
+</body>
+</html>

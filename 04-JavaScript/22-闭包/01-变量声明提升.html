@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		
+		var foo = 1;
+
+		function m1() {
+
+			console.log(foo);//undefined
+
+			var foo = 2;
+
+			console.log(foo);//2
+		}
+
+		/*
+		//真实运行的情况
+		function m1() {
+
+			var foo;
+
+			console.log(foo);
+
+			foo = 2;
+
+			console.log(foo);
+		}
+		*/
+
+		m1();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

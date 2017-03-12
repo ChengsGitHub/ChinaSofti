@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.red {
+			color: red;
+		}
+
+		.green {
+			color: green;
+		}
+
+		.bg {
+			background: #0cc;
+		}
+
+		.size {
+			font-size: 20px;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {				
+				// $('div').addClass('red');//添加一个
+				$('div').addClass('red bg size');//添加多个
+			});
+
+			$('#btn2').click(function(event) {
+				// $('div').removeClass('red');//删除一个
+				$('div').removeClass('red bg size');//删除多个
+			});
+
+			$('#btn3').click(function(event) {
+				// 开关样式
+				$('div').toggleClass('red');
+			});
+
+			$('#btn4').click(function(event) {
+				// 开关样式
+				$('div').toggleClass(function() {
+
+					return "red";
+				});
+			});
+
+			$('#btn5').click(function(event) {
+				
+				// red和green切换
+				if ( $('div').hasClass('red') ) {
+					 $('div').addClass('green');
+					 $('div').removeClass('red');
+				} else {
+					$('div').addClass('red');
+					 $('div').removeClass('green');
+				}
+
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div id="div1">div1的内容</div>
+	<div id="div2">div2的内容</div>
+
+	<input type="button" value="添加样式" id="btn1">
+	<input type="button" value="删除样式" id="btn2">
+	<input type="button" value="切换样式" id="btn3">
+	<input type="button" value="切换样式特殊用法" id="btn4">
+	<input type="button" value="切换两种样式" id="btn5">
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		/*
+			返回一个对象，包含三项数据，匹配的字符串，下标，原始字符串，找不到返回null，匹配的字符串是按数组返回，如果有子表达式，每个子表达式匹配的内容也会加到数组中
+		*/		
+		var str = "张三的手机号是13312345678，李四的手机号是16911111111，王五的手机号是17822222222";
+
+		var r = /13(\d)(\d{7})(\d)/g;
+
+		var result = r.exec(str);
+
+		for (var i = 0;i < result.length;i ++) {
+			console.log(result[i]);
+		}
+
+	</script>
+</head>
+<body>
+</body>
+</html>

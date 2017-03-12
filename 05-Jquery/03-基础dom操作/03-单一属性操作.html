@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {				
+				// 读取单一属性
+				var result = $('#check1').prop('checked');
+				alert(result);
+			});
+
+			$('#btn2').click(function(event) {				
+				// 设置单一属性
+				$('#check1').prop('checked',true);				
+			});
+
+			$('#btn3').click(function(event) {				
+				// 删除单一属性（删除属性之后无法重新设置，尽量不要用）
+				$('#check1').removeProp('checked');			
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<input type="checkbox" value="同意" id="check1">同意
+	<input type="button" value="读取属性" id="btn1">
+	<input type="button" value="设置属性" id="btn2">
+	<input type="button" value="删除属性" id="btn3">
+</body>
+</html>

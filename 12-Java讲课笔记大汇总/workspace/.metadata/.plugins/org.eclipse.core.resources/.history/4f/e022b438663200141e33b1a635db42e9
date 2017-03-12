@@ -1,0 +1,17 @@
+package chapter15;
+
+import java.net.ServerSocket;
+
+/**
+ * ·şÎñÆ÷¶Ë³ÌĞò 
+ *
+ */
+public class Server {
+
+	public static void main(String[] args) {
+		
+		ServerSocket serverSocket = new ServerSocket();
+
+	}
+
+}

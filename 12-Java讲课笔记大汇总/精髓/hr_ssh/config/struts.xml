@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<!-- 常量配置 -->
+
+	<!--指定默认编码集,作用于HttpServletRequest的setCharacterEncoding方法 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!--开发模式下使用,这样可以打印出更详细的错误信息 -->
+	<constant name="struts.devMode" value="false" />
+	<!-- 该属性设置Struts 2是否支持动态方法调用，该属性的默认值是true。如果需要关闭动态方法调用，则可设置该属性为false。 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!--上传文件的大小限制 -->
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	<!-- 资源文件路径 -->
+	<constant name="struts.custom.i18n.resources" value="applicationResource" />
+	<!--默认的视图主题-->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 把Action的控制权交给spring-->
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<!-- 包含其他配置文件 -->
+	<include file="struts-job.xml"/>
+	<include file="struts-dept.xml"/>
+	<include file="struts-emp.xml"/>
+	<include file="struts-photo.xml"/>
+	<include file="struts-admin.xml"/>
+</struts>

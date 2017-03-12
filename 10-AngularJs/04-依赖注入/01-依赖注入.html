@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+//		DAO类
+		function Dao() {
+			this.insert = function(){
+				alert('数据插入到数据库');
+			}
+		}
+
+//		Service类，依赖注入了dao对象
+		function Service(dao) {
+			this.dao = dao;
+
+			this.addData = function() {
+				this.dao.insert();
+			}
+		}
+
+//              创建Dao对象
+		var dao = new Dao();
+//		创建业务对象
+		var service = new Service(dao);
+//              调动业务功能
+		service.addData();
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

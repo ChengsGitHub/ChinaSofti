@@ -1,0 +1,39 @@
+@charset "UTF-8";
+body {
+  background: #ccc;
+}
+
+/* 网页头部 */
+.header {
+  width: 960px;
+  height: 180px;
+  background: orange;
+  margin: 0 auto;
+}
+
+/* 网页内容 */
+.content {
+  width: 960px;
+  height: 400px;
+  background: orange;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.content .wrapper {
+  width: 920px;
+  height: 300px;
+  background: green;
+  margin: 0 auto;
+}
+
+.footer {
+  width: 960px;
+  height: 180px;
+  background: #999;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: #353535;
+}
+
+/*# sourceMappingURL=style.css.map */

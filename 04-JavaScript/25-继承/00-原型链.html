@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*在Object的原型中定义属性*/
+		Object.prototype.n = 1000;
+
+		function Foo() {
+			this.k = 100;
+		}
+
+		Foo.prototype.z = 101;
+
+		var obj = new Foo();
+
+		obj.x = 1;
+		obj.y = 2;
+
+		var obj2 = new Foo();
+
+		obj2.z = 102;
+	</script>
+</head>
+<body>	
+</body>
+</html>

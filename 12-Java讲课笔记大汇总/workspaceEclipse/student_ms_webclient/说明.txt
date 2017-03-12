@@ -1,0 +1,4 @@
+学生管理安卓客户端
+UI采用HTML5+Jquery Mobile实现，界面相对比较美观
+通过JS调用原生程序
+注意Global类的IP要按照实际情况修改

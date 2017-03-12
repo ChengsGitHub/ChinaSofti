@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		
+		var a = 3;
+		var b = 5;
+
+		// 不使用第三个变量，交换a和b（假设a和b都是数字）
+		 a = a + b;//a = 8
+		 b = a - b;//这里的a = 8，b = 8-5=3;
+		 a = a - b;//这里的a=8，b=上层的赋值=3，所以新的a = 8 — 3 = 5
+
+		 alert('a=' + a + ',' + 'b=' + b);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

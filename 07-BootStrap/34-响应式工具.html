@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 视口设置 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<!-- IE优化 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 引入bootstrap的css文件 -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+	<!-- 判断，如果是IE9以下，引入兼容h5标签的js文件，注意空格的位置 -->
+	
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/html5shiv.min.js"></script>
+	<script type="text/javascript" src="js/respond.min.js"></script>
+	<![end if] -->
+
+	<!-- 引入jquery的js文件 -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!-- 引入bootstrap的js文件 -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>	
+</head>
+<body>
+	<div class="container">
+
+		<div class="bg-primary visible-lg-block">lg显示</div>
+		<div class="bg-info visible-md-block">md显示</div>
+		<div class="bg-warning visible-sm-block">sm显示</div>
+		<div class="bg-danger visible-xs-block">xs显示</div>
+
+		<div class="bg-primary hidden-lg">lg隐藏</div>
+		<div class="bg-info hidden-md">md隐藏</div>
+		<div class="bg-warning hidden-sm">sm隐藏</div>
+		<div class="bg-danger hidden-xs">xs隐藏</div>
+		
+	</div>
+</body>
+</html>

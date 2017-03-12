@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		/*小九九形状1*/
+		document.write('<table width="100%" border="0">');
+
+		for (var i = 1;i <= 9;i ++) {
+
+			document.write('<tr>');
+
+			for (var j = 1;j <= i;j ++) {
+				document.write('<td bgcolor="#0cc">' + j + '*' + i + '=' + (i*j) + '</td>');
+			}
+
+			document.write('</tr>');
+
+		}
+
+		document.write('</table>');
+
+		document.write('<br><br>');
+
+		/*小九九形状2*/
+		document.write('<table width="100%" border="0">');
+
+		for (var i = 9;i >= 1;i --) {
+
+			document.write('<tr>');
+
+			for (var j = 1;j <= i;j ++) {
+				document.write('<td bgcolor="#0cc">' + j + '*' + i + '=' + (i*j) + '</td>');
+			}
+
+			document.write('</tr>');
+
+		}
+
+		document.write('</table>');
+
+		document.write('<br><br>');
+		
+		/*小九九形状3*/
+		document.write('<table width="100%" border="0">');
+
+		for (var i = 1;i <= 9;i ++) {
+
+			document.write('<tr>');
+
+			// 生成空td
+			for (var k = 1;k <= 9 - i;k ++) {				
+				document.write('<td>&nbsp;</td>');
+			}
+
+			for (var j = 1;j <= i;j ++) {
+				document.write('<td bgcolor="#0cc">' + j + '*' + i + '=' + (i*j) + '</td>');
+			}
+
+			document.write('</tr>');
+
+		}
+
+		document.write('</table>');
+
+		document.write('<br><br>');
+
+		/*小九九形状4*/
+		document.write('<table width="100%" border="0">');
+
+		for (var i = 9;i >= 1;i --) {
+
+			document.write('<tr>');
+
+			// 生成空td
+			for (var k = 1;k <= 9 - i;k ++) {
+				document.write('<td>&nbsp;</td>');
+			}
+
+			for (var j = 1;j <= i;j ++) {
+				document.write('<td bgcolor="#0cc">' + j + '*' + i + '=' + (i*j) + '</td>');
+			}
+
+			document.write('</tr>');
+		}
+
+		document.write('</table>');
+	</script>
+</body>
+</html>

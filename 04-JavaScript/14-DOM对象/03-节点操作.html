@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		var i = 0;
+
+		function insert() {
+
+			// 获得div1的对象
+			var div1 = document.getElementById('div1');
+			var p4 = document.getElementById('p4');
+
+			var p = document.createElement('p');
+
+			p.innerHTML = 'hello,world' + i++;
+
+			// 在p4节点之前插入节点
+			div1.insertBefore(p,p4);
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<p>这是文字1</p>
+		<p>这是文字2</p>
+		<p>这是文字3</p>
+		<p id="p4">这是文字4</p>
+	</div>
+	<input type="button" value="插入节点" onclick="insert();">
+</body>
+</html>

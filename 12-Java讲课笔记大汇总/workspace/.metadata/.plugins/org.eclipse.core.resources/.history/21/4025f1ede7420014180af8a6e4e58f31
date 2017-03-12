@@ -1,0 +1,15 @@
+package chapter4;
+
+/**
+ * ÊÂÎñ
+ * @author Administrator
+ *
+ */
+public class TestTransaction {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

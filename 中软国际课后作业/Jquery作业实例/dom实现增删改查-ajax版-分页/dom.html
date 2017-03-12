@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body {
+			font-size: 14px;
+		}
+
+		table {
+			width: 960px;
+			margin: 0px auto;
+			border-collapse: collapse;
+			background: #999;
+		}
+		div {
+			width: 960px;
+			margin: 10px auto 15px;
+			text-align: center;
+		}
+		h3 {
+			margin: 10px auto;
+		}
+		table td {
+			border: 1px solid #382F27;
+			text-align: center;
+			padding: 3px 3px;
+		}
+
+		table input[type=text] {
+			width: 95%;
+		} 
+
+		/* 高亮样式 */
+		.hl {
+			background: #ccc;
+		}
+
+		h3 {
+			margin: 0px;
+			padding: 0px;
+			font-size: 18px;
+			font-weight: bold;
+			color: #fff;
+		}		
+
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function() {
+			/*
+				分页参数
+			*/
+			var recordCount = 0;//总记录数
+			var pageSize = 7;//每页多少条
+			var pageCount = 0;//共几页
+			var pageNum = 1;//当前页码
+
+			// 数据集合
+			var data;
+
+			// 发出同步请求，获得后台数据
+			$.ajax({
+				url: 'data.json',
+				type: 'GET',
+				dataType: 'json',
+				async:false //同步请求
+			})
+			.done(function(json) {
+				// 响应的数据赋值给本地变量
+				data = json;
+			})
+			.fail(function(xhr,status,errorText) { //执行失败
+				alert('请求失败:' + errorText);				
+			});	
+
+			// 计算总记录数
+			recordCount = data.length;
+
+			// 计算共几页
+			pageCount = parseInt(recordCount / pageSize);
+			if (recordCount % pageSize != 0)
+				pageCount ++;
+
+			/*
+				显示当前指定页码的数据
+			*/
+			function showData() {
+
+				// 清空当前表格数据
+				$('#table1 tr:gt(1)').not(':last').remove();
+			
+				// 计算当前页的数据的起始下标和终止下标
+				var start = (pageNum - 1) * pageSize;
+				var end = pageNum * pageSize;
+
+				// 得到当前页的数据
+				var newArray = data.slice(start,end);
+
+				// 遍历数据动态生成表格
+				$.each(newArray, function(index, val) {
+					 
+					// 动态生成dom表格
+					html = '';					 
+					html += '<tr>';
+					html += '	<td><input type="radio" name="check"></td>';
+					html += '	<td>' + val.num + '</td>';
+					html += '	<td>' + val.name + '</td>';
+					html += '	<td>' + val.department + '</td>';
+					html += '	<td>' + val.person + '</td>';
+					html += '	<td>' + val.budget + '</td>';
+					html += '	<td>' + val.date + '</td>';
+					html += '	<td>' + val.remark + '</td>';
+					html += '</tr>';
+
+					$(html).insertBefore('#table1 tr:last');
+
+				});
+
+				/*
+					动态显示隐藏分页按钮
+				*/
+				if (pageNum != 1) {
+					$('#firstBtn,#prevBtn').show();
+				} else {
+					$('#firstBtn,#prevBtn').hide();
+				}
+
+				if (pageNum != pageCount ) {
+					$('#lastBtn,#nextBtn').show();
+				} else {
+					$('#lastBtn,#nextBtn').hide();
+				}
+
+				// 显示分页信息
+				$('#pageInfo').html('共' + recordCount + '条记录，每页' + pageSize + '条，共' + pageCount + '页，当前第' + pageNum + '页');
+
+			}	
+			
+			// 默认加载第一页数据
+			showData();
+
+			// 首页按钮单击事件
+			$('#firstBtn').click(function(event) {				
+				pageNum = 1;
+				showData();
+			});
+
+			// 末页按钮单击事件
+			$('#lastBtn').click(function(event) {				
+				pageNum = pageCount;
+				showData();
+			});
+
+			// 上页按钮单击事件
+			$('#prevBtn').click(function(event) {				
+				pageNum --;
+				
+				if (pageNum < 1)
+					pageNum = 1;
+
+				showData();
+			});
+
+			// 下页按钮单击事件
+			$('#nextBtn').click(function(event) {				
+				pageNum ++;
+
+				if (pageNum > pageCount)
+					pageNum = pageCount;
+
+				showData();
+			});
+			
+			/*增加数据功能*/
+			$('#add').click(function(event) {
+				
+				var num = 0;//自动编号
+
+				if ( $('#table1 tr').length == 3 ) {
+					num = 1;
+				} else {
+					num = parseInt($('#table1 tr:last').prev('tr').find('td').eq(1).text()) + 1;
+				}
+
+				// td的数据封装为一个对象
+				var obj = {
+					radio:'<input type="radio" name="check">',
+					num:num,
+					name:$('#name').val(),
+					department:$('#department').val(),
+					person:$('#person').val(),
+					budget:$('#budget').val(),
+					date:$('#date').val(),
+					remark:$('#remark').val()
+				}
+
+				// 追加数据行到表格中
+				var tr = $('<tr></tr>').insertBefore('#table1 tr:last');
+
+				// 遍历obj对象
+				$.each(obj,function(index, el) {
+					tr.append('<td>' + el + '</td>');
+				});
+
+				clearAll();
+			});
+
+			/*利用事件委托处理单选按钮单击事件，显示表单数据*/
+			$('#table1').on('click', ':radio', function(event) {
+				
+				highLight(); //高亮当前行
+
+				// 设置表单数据
+				$('#name').val( $(this).parents('tr').children('td').eq(2).text() );
+				$('#department').val( $(this).parents('tr').children('td').eq(3).text() );
+				$('#person').val( $(this).parents('tr').children('td').eq(4).text() );
+				$('#budget').val( $(this).parents('tr').children('td').eq(5).text() );
+				$('#date').val( $(this).parents('tr').children('td').eq(6).text() );
+				$('#remark').val( $(this).parents('tr').children('td').eq(7).text() );
+
+				// 删除和修改按钮可用
+				$('#update,#del').prop('disabled',false);
+			});
+
+			/*删除数据行*/
+			$('#del').click(function(event) {
+
+				var flag = confirm('你确定要删除此行数据吗');
+
+				if (flag) {					
+					$('.hl').remove();
+				}
+
+				clearAll();				
+			});
+
+			/*修改数据行*/
+			$('#update').click(function(event) {
+				
+				$('.hl').children('td').eq(2).text( $('#name').val() );
+				$('.hl').children('td').eq(3).text( $('#department').val() );
+				$('.hl').children('td').eq(4).text( $('#person').val() );
+				$('.hl').children('td').eq(5).text( $('#budget').val() );
+				$('.hl').children('td').eq(6).text( $('#date').val() );
+				$('.hl').children('td').eq(7).text( $('#remark').val() );
+
+				clearAll();
+			});
+
+			/*清除重置*/
+			$('#clear').click(function(event) {
+				clearAll();
+			});
+
+			/*选中高亮函数*/
+			function highLight() {
+				// 取消所有高亮
+				$('.hl').removeClass('hl');
+				// 单独把选中行加高亮
+				$('#table1 :radio:checked').parents('tr').addClass('hl');
+			}
+
+			/*重置函数*/
+			function clearAll() {
+				// 取消单选选中
+				$('#table1 :radio:checked').prop('checked', false);
+				// 取消高亮
+				highLight();
+				// 清除表单数据
+				$('#table2 :text').val('');
+				// 修改，删除按钮不可用
+				$('#update,#del').prop('disabled',true);
+			}
+
+
+			/*双击数据单元格可编辑（事件委托）*/
+			$('#table1').on('dblclick', 'tr:gt(1):not(:last) td', function(event) {
+				// 判断是否是前2个单元格
+				if( $(this).index() <= 1)
+					return;
+				
+				// 当前td对象
+				var tdObj = $(this);
+
+				// 单元格宽度
+				var tdWidth = $(this).width();
+
+				// 当前单元格内容设置为文本框
+				$(this).html('<input type="text" id="editInput">');
+
+				// 把jquery选择器得到对象赋给本地变量，提高效率
+				var editInput = $('#editInput');
+				
+				// 保留原来宽度
+				editInput.width(tdWidth);	
+				$(this).width(tdWidth);
+
+				// 文本框获得焦点
+				editInput.focus();
+
+				/*阻止文本块双击事件冒泡*/
+				editInput.dblclick(function(event) {
+					return false;
+				});
+
+				/*文本块失去焦点*/
+				editInput.blur(function(event) {					
+					// 文本块内容设置到单元格
+					tdObj.text( $(this).val() );
+				});
+
+				/*文本块回车*/
+				editInput.keyup(function(e) {
+					if(e.which == 13){
+						// 文本块内容设置到单元格
+						tdObj.text( $(this).val() );
+					}
+				});
+			});			
+
+		});	
+
+	</script>
+</head>
+<body>
+	<table id="table1">
+		<tr>
+			<td colspan="8">
+				<h3>项目列表</h3>
+			</td>
+		</tr>
+		<tr>
+			<td>选择</td>
+			<td>编号</td>
+			<td>项目名称</td>
+			<td>项目承担部门</td>
+			<td>责任人</td>
+			<td>项目预算</td>
+			<td>开始日期</td>
+			<td>备注</td>
+		</tr>			
+		<tr>
+			<td colspan="8">
+				<span id="pageInfo"><!--共xxx条记录，每页xx条，共xxx页，当前第xx页--></span>
+				<a href="javascript:;" id="firstBtn">首页</a>
+				<a href="javascript:;" id="prevBtn">上页</a>
+				<a href="javascript:;" id="nextBtn">下页</a>
+				<a href="javascript:;" id="lastBtn">末页</a>
+			</td>
+		</tr>
+	</table>
+	<div><input type="button" id="btn" value="项目维护"></div>
+	<table id="table2">
+		<tr>
+			<td colspan="4">
+				<h3>项目信息维护</h3>
+			</td>
+		</tr>
+		<tr>
+			<td>项目名称</td>
+			<td><input type="text" id="name"></td>
+			<td>项目承担部门</td>
+			<td><input type="text" id="department"></td>
+		</tr>
+		<tr>
+			<td>责任人</td>
+			<td><input type="text" id="person"></td>
+			<td>项目预算</td>
+			<td><input type="text" id="budget"></td>
+		</tr>
+		<tr>
+			<td>开始日期</td>
+			<td><input type="text" id="date"></td>
+			<td>备注</td>
+			<td><input type="text" id="remark"></td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<input type="button" id="add" value="添加">
+				<input type="button" id="update" value="修改" disabled>
+				<input type="button" id="del" value="删除" disabled>
+				<input type="button" id="search" value="查询">
+				<input type="button" id="clear" value="清除">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+/*统一设置*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul,li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+/*高亮提示*/
+.active {
+	background: #eee;
+}
+
+/*最外层容器*/
+#container {
+	width: 960px;
+	margin: 50px auto;
+	position: relative;
+	text-align: center;
+}
+
+/*logo图片*/
+#container img {
+	width: 300px;
+	display: block;
+	margin: 0 auto;
+}
+
+/*搜索框容器*/
+#search_wrapper {
+	height: 38px;
+	line-height: 38px;
+	width: 637px;
+	margin: 0 auto;
+	position: relative;	
+}
+
+/*搜索框*/
+#search_wrapper input[type=text] {
+	width: 521px;
+	height: 20px;
+	padding: 8px 7px;
+	border:1px solid #ccc;
+	font-size: 16px;
+	display: block;
+	float: left;
+}
+
+#search_wrapper input[type=text]:hover {
+	border:1px solid #999;
+}
+
+#search_wrapper input[type=text]:focus {
+	background: #F3FAFF;
+}
+
+/*搜素按钮*/
+#search_wrapper input[type=button] {
+	border: none;
+	outline: none;
+	width: 100px;
+	height: 38px;
+	line-height: 38px;
+	background: #3385ff;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	display: block;
+	float: left;
+}
+
+#search_wrapper input[type=button]:hover {
+	background: #2D76E3;
+}
+
+/*搜索提示内容*/
+#searchTips {
+	position: absolute;
+	top:38px;
+	width: 535px;
+	border:1px solid #ccc;
+	font-size: 12px;
+	text-align: left;
+	background: #fff;
+	display: none;
+}
+
+#searchTips li {
+	padding-left: 5px;
+	color: #789;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+#searchTips li:hover {
+	background: #eee;
+}
+
+#searchTips li:hover > a {
+	display: block;
+}
+
+#searchTips li > a {
+	float: right;
+	margin-right: 5px;
+	display: none;
+}

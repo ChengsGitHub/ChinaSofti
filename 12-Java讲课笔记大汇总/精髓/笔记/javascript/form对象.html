@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+	function m1() {
+		//获得表单对象
+		//var frm = document.forms[0];
+		var frm = document.form1;
+		
+		//alert(frm.method);
+		//alert(frm.length);
+		alert(frm.elements[1].value);
+		frm.action = '123.jsp';
+	}
+	
+	function m2() {
+		//提交表单
+		document.form1.submit();	
+	}
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action="xxx.jsp">
+  <input type="text" name="t1" id="t1">
+  <input type="submit" name="button" id="button" value="提交">
+  <input type="button" name="button2" id="button2" value="查看信息" onClick="m1();">
+  <input type="button" name="button3" id="button3" value="OK" onClick="m2();">
+</form>
+</body>
+</html>

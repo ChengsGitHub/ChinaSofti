@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="jobDao" class="com.icss.hr.job.dao.impl.JobDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="jobService" class="com.icss.hr.job.service.impl.JobServiceImpl">
+		<property name="dao" ref="jobDao"/>
+	</bean>
+	
+	<bean id="jobAction" class="com.icss.hr.job.controller.JobAction" scope="prototype">
+		<property name="service" ref="jobService"/>
+	</bean>
+	
+</beans>

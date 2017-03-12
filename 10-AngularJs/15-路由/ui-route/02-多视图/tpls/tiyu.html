@@ -1,0 +1,16 @@
+
+	<h1>这是体育版本的内容</h1>
+	<hr/>
+	<!-- ui-sref必须要加上tiyu的前缀-->
+	<a ui-sref="tiyu.zuqiu">足球</a>
+	<a ui-sref="tiyu.lanqiu">篮球</a>
+	<a ui-sref="tiyu.paiqiu">排球</a>
+	<a ui-sref="yule">到娱乐版块</a>
+
+	<!--路由页面的容器-->
+	<div ui-view></div>
+
+	<!-- 使用控制器的数据-->
+	<ul>
+		<li ng-repeat="item in data">{{item}}</li>
+	</ul>

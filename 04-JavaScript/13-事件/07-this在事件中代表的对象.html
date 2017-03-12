@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		window.onload = function() {
+
+			var btn1 = document.getElementById('btn1');
+
+			btn1.onmouseover = function() {
+				// this代表当前事件源对象
+				this.style.color = 'red';
+			}
+
+			btn1.onmouseout = function() {
+				this.style.color = 'blue';
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" value="鼠标移上离开" id="btn1">
+</body>
+</html>

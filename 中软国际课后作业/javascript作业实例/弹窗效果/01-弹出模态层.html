@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html,body {
+			height: 100%;
+		}
+
+		#modal {
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.5);
+			position: fixed;
+		}
+
+		#container {
+			height: 200px;
+			width: 300px;
+			background: #0cc;
+			position: absolute;
+			top: calc(50% - 100px);
+			bottom: calc(50% - 100px); 
+			left: calc(50% - 150px);
+			right: calc(50% - 150px);
+		}
+
+		#closeBtn {
+			width: 15px;
+			height: 15px;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			background: #ccc;
+			cursor: pointer;
+		}		
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+
+			// 模态层
+			var modal = document.getElementById('modal');
+			// 内容区
+			var container = document.getElementById('container');
+			// 关闭按钮
+			var closeBtn = document.getElementById('closeBtn');
+			// 打开按钮
+			var btn = document.getElementById('btn');
+
+			// 点击遮罩区关闭模态层
+			modal.onclick = function() {
+
+				this.style.display = 'none';				
+			}
+
+			// 点击内容区阻止事件冒泡
+			container.onclick = function(e) {
+				e = e || window.event;
+				e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+			}
+
+			// ESC键盘事件关闭模态层
+			document.onkeyup = function(e) {				
+				e = e || window.event;
+
+				if(e.keyCode == 27)
+					modal.style.display = 'none'; 
+			}
+
+			// 打开模态层
+			btn.onclick = function() {	
+				modal.style.display = 'block';
+				
+				// 窗口不可滚动
+				// document.body.style.overflow = 'hidden';
+			}
+
+			//关闭模态层
+			closeBtn.onclick = function() {	
+				modal.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+
+	<div id="modal" style="display:none;">
+		<div id="container" >
+			<div id="closeBtn">
+				&times;
+			</div>
+		</div>
+	</div>
+
+	<input type="button" value="弹窗模态层" id="btn">
+
+	<script type="text/javascript">
+		for (var i = 0;i <= 100;i ++) {
+			document.write('<br>' + i);
+		}
+	</script>
+	
+</body>
+</html>

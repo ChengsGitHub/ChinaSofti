@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!-- 导航开始-->
+	<header>
+		<nav>
+			<a href="#">主页</a>
+			<a href="#about">关于我们</a>
+			<a href="#contact">联系我们</a>
+		</nav>
+	</header>
+	<hr/>
+	<!-- 导航结束-->
+
+	<div id="main">
+		<!-- ng-view包含路由的页面，类似于iframe效果-->
+		<div ng-view>
+		</div>
+	</div>
+
+	<!-- 底部开始-->
+	<hr/>
+	<footer>
+		页面底部
+	</footer>
+	<!-- 底部结束-->
+
+	<script src="../js/angular.js"></script>
+	<!-- angular.js本身不包含路由功能的，需要额外引入路由功能的js文件-->
+	<script src="../js/angular-route.min.js"></script>
+	<script>
+//		创建模块，依赖ngRoute路由模块
+		var myApp = angular.module('myApp',['ngRoute']);
+
+//		在config中配置路由，注入$routeProvider
+		myApp.config(['$routeProvider',function($routeProvider) {
+
+//			配置路由的对应的画面
+			$routeProvider
+				.when('/',{
+					templateUrl:'tpls/home.html'
+				})
+				.when('/about',{
+					templateUrl:'tpls/about.html',
+					controller:'secondController'  //指定页面的控制器
+				})
+				.when('/contact',{
+					templateUrl:'tpls/contact.html',
+					controller:'thirdController'  //指定页面的控制器
+				})
+//				如果没有匹配的路由，默认重定向地址
+				.otherwise({
+					redirectTo:'/'
+				});
+		}]);
+
+//		控制器
+		myApp.controller('firstController',['$scope',function($scope){
+
+			$scope.message = 'hello,home';
+
+		}]);
+
+		myApp.controller('secondController',['$scope',function($scope){
+
+			$scope.message = 'hello,about';
+
+		}]);
+
+		myApp.controller('thirdController',['$scope',function($scope){
+
+			$scope.message = 'hello,contact';
+
+		}]);
+	</script>
+</body>
+</html>

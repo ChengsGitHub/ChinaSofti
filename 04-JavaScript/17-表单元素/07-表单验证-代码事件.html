@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		window.onload = function() {
+			
+			var form1 = document.getElementById('form1');
+			var keyword = document.getElementById('keyword');
+			
+			/*
+				表单验证函数
+			*/
+			form1.onsubmit = function() {				
+
+				if (keyword.value == '') {
+					alert('请输入搜索关键字');
+					keyword.focus();
+					return false; //阻止提交行为
+				}
+
+				if (keyword.value.length > 10) {
+					alert('关键字不能超过10个字');
+					keyword.select();
+					return false;
+				}
+
+				// return true;
+			}
+
+		}		
+	</script>
+</head>
+<body>
+	<form id="form1" method="post" action="xxx.html">
+		<input type="text" placeholder="请输入搜索关键字" id="keyword">
+		<input type="submit" value="搜索">
+	</form>
+</body>
+</html>

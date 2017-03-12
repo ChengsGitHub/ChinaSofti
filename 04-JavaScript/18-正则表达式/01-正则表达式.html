@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			var t1 = document.getElementById('t1');
+
+			// 创建正则表达式对象
+			// var reg = new RegExp('ab','i');
+
+			// 字面量对象写法
+			var reg = /^([a-z]\d)$/i;
+
+			alert( reg.test(t1.value) );
+
+		}
+	</script>
+</head>
+<body>
+	<form id="form1" method="post" action="" name="form1">
+		<input type="text" id="t1" name="text1">
+		<input type="button" value="测试" onclick="m1();">
+	</form>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+	<div ng-controller="firstController">
+		<input type="text" ng-model="username">
+		用户名：{{username}}
+		<br>
+		<input type="text" ng-model="age">
+		年龄：{{age}}
+		<input type="text" ng-model="dept">
+		部门：{{dept}}
+	</div>
+
+	<hr>
+
+	<div ng-controller="secondController">
+		<input type="text" ng-model="username">
+		用户名：{{username}}
+		<br>
+		<input type="text" ng-model="age">
+		年龄：{{age}}
+		<input type="text" ng-model="dept">
+		部门：{{dept}}
+	</div>
+
+	<script src="angular.min.js"></script>
+	<script>
+//		创建一个模块，模块名称myApp,依赖的其他模块没有，返回模块对象
+		var myApp = angular.module("myApp",[ ]);
+
+		// 通过run方法初始化全局数据
+		myApp.run(['$rootScope', function($rootScope){
+			$rootScope.dept = '第二开发部';
+		}]);
+
+//		通过模块创建控制器，名称为firstController
+		myApp.controller('firstController',function($scope) {
+
+			// 在控制器的作用域对象中设置数据模型
+			$scope.username = 'tom';
+			$scope.age = 27	;
+
+		});
+
+		//通过模块创建控制器，名称为secondController
+		myApp.controller('secondController',function($scope) {
+
+			// 在控制器的作用域对象中设置数据模型
+			$scope.username = '张三';
+			$scope.age = 39;
+
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+/* 统一设置 */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul,li {
+	list-style: none;
+}
+
+/*整体容器*/
+#container {
+	text-align: center;
+}
+
+#container ul {
+	width: 240px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+#container ul li {
+	float:left;
+}
+
+#container img {
+	display: block;
+}
+
+#startBtn {
+	width: 240px;
+	height: 40px;
+	margin: 20px auto;
+	font-size: 14px;
+	font-weight: bold;
+}

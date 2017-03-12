@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var str = "中国&=?";
+		var str2 = escape(str); //编码
+		console.log(str2);
+
+		var str3 = '%u4E2D%u56FD%26%3D%3F';
+		var str4 = unescape(str3); //解码
+		console.log(str4);
+
+		var str5 = encodeURI(str);//url编码
+		console.log(str5);
+
+		var str6 = '%E4%B8%AD%E5%9B%BD&=?';
+		var str7 = decodeURI(str6);
+		console.log(str7);
+
+		var str8 = encodeURIComponent(str);
+		console.log(str8);
+
+		var str9 = '%E4%B8%AD%E5%9B%BD%26%3D%3F';
+		var str10 = decodeURIComponent(str9);
+		console.log(str10);
+	</script>
+</head>
+<body>
+</body>
+</html>

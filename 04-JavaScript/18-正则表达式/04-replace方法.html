@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	
+		var str = "张三的手机号是13312345678，李四的手机号是16911111111，王五的手机号是13822222222";
+		
+		// 默认只替换第一个
+		// str = str.replace('手机','mobile');
+		// console.log(str);	
+		
+		// 全局替换
+		// str = str.replace(/手机/g,'mobile');
+		// console.log(str);
+
+		// 正则替换
+		str = str.replace(/13\d{9}/g,'mobile');
+		console.log(str);
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

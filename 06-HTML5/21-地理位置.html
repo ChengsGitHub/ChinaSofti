@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		/*
+			进行地理定位
+		*/
+		function getLocation() {
+			
+			//判断浏览器是否支持html5地理定位
+			if (navigator.geolocation) {
+
+				/*三个参数：定位成功回调函数，定位失败回调函数 ，定位设置*/
+				navigator.geolocation.getCurrentPosition(showMap,handlerError,{
+					enableHighAccuracy:true, //是否高精度定位
+					maximumAge:1000 //每隔多少毫秒重新获得一次位置
+				});
+				
+			} else {
+				alert('您的浏览器不支持html5地理定位');
+			}
+
+		}
+
+		/*
+			地理定位成功回调函数
+		*/
+		function showMap(value) {		
+
+			var longitude = value.coords.longitude;//经度
+			var latitude = value.coords.latitude;//纬度
+
+			alert('定位成功，当前位置：' + longitude + ',' + latitude);
+		}
+
+		/*
+			地理定位失败回调函数
+		*/
+		function handlerError(value) {
+			
+			if (value.code == 1) {
+				alert('位置服务被拒绝');
+			} else if (value.code == 2) {
+				alert('无法获取用户位置');
+			} else if (value.code == 3) {
+				alert('获取信息超时');
+			} else if (value.code == 4) {
+				alert('未知错误无法定位');
+			}
+
+		}
+
+		// 调用地理定位函数
+		getLocation();
+
+	</script>
+</head>
+<body>
+	地理定位测试
+</body>
+</html>

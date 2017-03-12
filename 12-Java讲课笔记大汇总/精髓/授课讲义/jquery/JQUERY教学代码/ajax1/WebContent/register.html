@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	//返回ajax核心对象
+	function getXHR() {
+		
+		var xhr = null;
+		
+		//根据浏览器内核不同，用不同的方式创建核心对象
+		if( window.ActiveXObject ){
+			xhr = new ActiveXObject("Microsoft.XMLHttp");
+		}else {
+			xhr = new XMLHttpRequest();
+		}
+	
+		return xhr;
+	}
+
+	//验证用户名是否已存在
+	function checkUserName() {
+		
+		var username = document.form1.username;
+		var span1 = document.getElementById("span1");
+		
+		if (username.value == "") {
+			span1.innerHTML = "请输入用户名";	
+			span1.style.color="red";
+			return;
+		}
+		
+		//获得核心AJAX对象
+		var xhr = getXHR();
+		//核心对象状态事件
+		xhr.onreadystatechange = function() {
+			process(xhr);
+		};		
+		//设置请求方式和请求URL
+		xhr.open("GET","CheckUserNameServlet?username=" + username.value);
+		xhr.setRequestHeader("If-Modified-Since","0");//禁止缓存
+		xhr.setRequestHeader("Cache-Control","no-cache");//禁止缓存
+		//发出请求
+		xhr.send(null);	
+		
+		//出现正在加载中图片
+		span1.innerHTML="<img src=loading.gif width=20>";
+	}
+	
+	//处理函数
+	function process(xhr) {
+		//如果发送请求和接收响应成功
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			//获得响应的结果
+			var txt = xhr.responseText;
+			
+			var span1 = document.getElementById("span1");
+			
+			if (txt == "true") {
+				span1.innerHTML = "用户名可以使用";
+				span1.style.color="green";
+			} else {
+				span1.innerHTML = "用户名已经被占用";
+				span1.style.color="red";
+			}
+		}				
+	}
+</script>
+
+</head>
+<body>
+	<form name="form1" method="post" action="">
+		<table width="500" border="0" align="center" cellpadding="4"
+			cellspacing="1" bgcolor="#CCCCCC">
+			<tr>
+				<td height="24" colspan="2" align="center" bgcolor="#FFCC00">用户注册</td>
+			</tr>
+			<tr>
+				<td width="119" height="24" bgcolor="#FFFFFF">用户名</td>
+				<td width="362" height="24" bgcolor="#FFFFFF">
+					<input name="username" type="text" id="username" onblur="checkUserName();"> 
+					<span id="span1"></span>
+				</td>
+			</tr>
+			<tr>
+				<td height="24" bgcolor="#FFFFFF">密码</td>
+				<td height="24" bgcolor="#FFFFFF"><input name="userpwd"
+					type="text" id="userpwd"></td>
+			</tr>
+			<tr>
+				<td height="24" colspan="2" align="center" bgcolor="#FFFFFF"><input
+					type="submit" name="Submit" value="提交"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

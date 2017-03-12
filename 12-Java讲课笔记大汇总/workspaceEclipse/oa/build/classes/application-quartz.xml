@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 发送邮件的任务-->
+	<bean id="jobDetail_sendmail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="messageService" />
+		<property name="targetMethod" value="autoSendBirth" />
+	</bean>
+
+	<!-- 复杂触发器-->
+	<bean id="mailTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="jobDetail_sendmail" />
+		</property>
+		
+		<!-- 每天的早上9点整调度 -->
+		<property name="cronExpression">
+			<value>0 0 9 * * ?</value>
+		</property>
+	</bean>
+	
+
+	<!-- 计划调度 -->
+	<bean name="testScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		
+		<property name="triggers">
+			<list>				
+				<ref bean="mailTrigger" />
+			</list>
+		</property>
+		
+	</bean>
+
+</beans>

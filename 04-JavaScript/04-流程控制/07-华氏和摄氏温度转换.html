@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			// 获得文本框对象
+			var t10bj = document.getElementById('t1');
+			// 设置属性值
+			var she = (t10bj.value - 32) / 1.8;
+			// 返回输入值
+			alert('转换结果的是：' + she);
+
+		}
+
+		function m2() {
+			var t10bj = document.getElementById('t1');
+			// 设置属性值
+			var hua = t10bj.value * 1.8 + 32;
+			// 返回输入值
+			alert('转换结果的是：' + hua);
+		}			
+	</script>
+</head>
+<body>
+	<!-- 华氏度=摄氏度*1.8+32  摄氏度=（华氏度-32/1.8 -->
+	<input type="text" id="t1" placeholder="请输入一个温度">
+	<input type="button" value="转换为摄氏温度" onclick="m1();">
+	<input type="button" value="转换为华氏温度"	onclick="m2();">
+</body>
+</html>

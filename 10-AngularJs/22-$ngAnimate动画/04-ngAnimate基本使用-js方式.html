@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+			width: 200px;
+			height: 200px;
+			background: #0cc;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller="firstController">
+		<input type="checkbox" ng-model="bBtn">显示隐藏div
+		<div class="box" ng-show="bBtn"></div>		
+	</div>
+
+	<script type="text/javascript" src="jquery.js"></script>
+	<!-- 需注意版本问题，否则隐藏不过渡！ -->
+	<script type="text/javascript" src="angular.min.js"></script>	
+	<script type="text/javascript" src="angular-animate.min.js"></script>
+	<script type="text/javascript">
+		
+		// 定义模块
+		var myApp = angular.module('myApp',['ngAnimate']);
+
+		// 通过JS的animation方法实现动画效果，参数1：加动画元素选择器，参数2：动画方法
+		// ng-show对应的是addClass（leave）/removeClass（enter） 是相反的！
+		myApp.animation('.box',function() {
+
+			return  {
+				// element动画元素,sClass代表类名,done动画完成之后的回调函数
+				addClass:function(element,sClass,done) {
+					// console.log(element);
+					// console.log(sClass);
+					// console.log(done);
+					
+					$(element).animate({width:0,height:0},1000,done);
+				},
+				removeClass:function(element,sClass,done) {
+					$(element).css({width:0,height:0});				
+					$(element).animate({width:200,height:200},1000,done);
+				}
+			}
+
+		});
+
+		// 定义控制器
+		myApp.controller('firstController', ['$scope', function($scope) {
+			
+			$scope.bBtn = true;
+
+		}]);
+
+	</script>
+</body>
+</html>

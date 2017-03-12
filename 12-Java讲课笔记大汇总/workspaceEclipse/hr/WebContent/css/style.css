@@ -1,0 +1,33 @@
+body {
+	font-size:12px;	
+	margin: 0px;
+	padding: 0px;
+}
+
+table {
+	font-size:12px;	
+}
+
+.table_border1 {
+	border-collapse: collapse; /*相邻边框线合并*/
+}
+
+.table_border1 td {
+	border: 1px solid #cccccc;
+}	
+
+.table_border1 th {
+	border: 1px solid #cccccc;
+}
+
+a {
+	font-size:12px;
+	color:blue;
+	text-decoration: none;
+}
+
+#main {
+	margin-top:20px;
+	width: 800px;
+	height:300px;	
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 200px;
+			height: 200px;
+			background: #ccc;
+			margin: 100px;
+		}
+
+		#div2 {
+			width: 100px;
+			height: 100px;
+			background: #0cc;
+			margin: 50px;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			// 事件对象本身就是兼容的
+			$('#div1').click(function(e) {
+				
+				// console.log(e.target); //发生事件的元素
+				// console.log(this); //注册事件的元素
+				// console.log(e.currentTarget); //和this是等价的
+				// console.log(e.type); //事件类型
+				// console.log(e.timeStamp);//发生事件的时间戳
+
+				// console.log(e.screenX + ',' + e.screenY); //相对于屏幕
+				// console.log(e.clientX + ',' + e.clientY);//相对于视口
+				// console.log(e.pageX + ',' + e.pageY);//相对于网页原点
+				// console.log(e.offsetX + ',' + e.offsetY);//相对于事件源
+
+			});
+
+		});	
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+
+	<div id="div1">
+		div1...
+		<div id="div2">
+			div2...
+		</div>
+	</div>
+</body>
+</html>

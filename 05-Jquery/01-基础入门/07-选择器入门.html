@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<style type="text/css">
+		.color {
+			color: red;
+		}
+	</style>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			// alert( $('p').length );//6
+			// alert( $('p').size() );//6
+			// alert( $('h1').length ); // 没有选择任何元素，返回0
+
+			// $('p').addClass('color');//元素选择器
+			// $('.color1').addClass('color');//类选择器
+			// $('#p1').addClass('color');//id选择器
+
+			// $('#p1,span').addClass('color');//群组选择器
+			// $('#div1 p').addClass('color'); //后代选择器
+			// $('#div1 > p').addClass('color'); //父子选择器
+
+			// $('#div1 p.color1').addClass('color');
+			// $('#div1 p:not(.color1)').addClass('color'); //逻辑非选择器
+		});
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<p class="color1" id="p1">111111</p>
+		<p class="color1">222222</p>
+
+		<span class="color1">aaaaaa</span>
+		<span>bbbbbb</span>
+
+		<p>cccccc</p>
+		<p>dddddd</p>
+	</div>	
+
+	<p class="color1">333333</p>
+	<p class="color1">444444</p>
+</body>
+</html>

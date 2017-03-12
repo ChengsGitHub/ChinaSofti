@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;jquery-mobile&apos; to &apos;assets&apos;&#x0D;&#x0A;- Original project: &apos;student_ms_webclient&apos;&#x0D;&#x0A;- Destination element: &apos;assets&apos;&#x0D;&#x0A;- Original element: &apos;jquery-mobile&apos;" description="Copy folder" element1="assets/jquery-mobile" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1415600954203" target="/study_htmlui/assets" units="0" version="1.0"/>
+</session>

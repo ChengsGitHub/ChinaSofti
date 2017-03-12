@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;			
+		}
+
+		body {
+			font-size: 14px;
+		}
+
+		ul,li {
+			list-style-type: none;
+		}
+
+		#menu {
+			width: 200px;
+			margin: 20px auto;
+			border:1px solid #ccc;
+		}
+
+		#menu p {
+			background: #eee;
+			line-height: 26px;
+			padding-left: 10px;
+			font-weight: bold;
+			border-bottom: 1px solid #ccc;
+			cursor: pointer;
+		}
+
+		#menu ul {
+			display: none;
+		}
+
+		#menu ul li {
+			line-height: 24px;
+			padding-left: 5px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function() {
+
+			// 获得折叠菜单容器对象
+			var menuObj = document.getElementById('menu');
+
+			// 获得折叠菜单中的所有标题对象
+			var ps = menuObj.getElementsByTagName('p');
+
+			// 获得折叠菜单中的所有的ul对象
+			var uls = menuObj.getElementsByTagName('ul');
+
+			// 遍历标题元素
+			for (var i = 0;i < ps.length;i ++) {
+
+				// 设置p的自定义属性
+				ps[i].setAttribute('pid',i);
+				
+				//循环添加标题的单击事件
+				ps[i].onclick = function() {
+					
+					// 取出自定义属性值
+					var pid = this.getAttribute('pid');
+
+					var currUl = uls[pid];//获得对应ul对象	
+
+					//动态显示隐藏对应的ul
+					if (currUl.style.display == 'block')
+
+						currUl.style.display = 'none';
+
+					else {
+						//关闭所有的ul
+						for(var j = 0;j < uls.length;j++){
+							uls[j].style.display = 'none';
+						}
+
+						//显示ul
+						currUl.style.display = 'block';					
+					}
+				}
+
+			}
+
+		}
+	</script>
+</head>
+<body>
+	同一时刻，只能展开一个菜单
+
+	<div id="menu">
+		<div>
+			<p>Web前端</p>
+			<ul style="display:block;">
+				<li>html</li>
+				<li>css</li>
+				<li>javascript</li>
+				<li>less</li>
+				<li>sass</li>
+			</ul>
+		</div>
+		<div>
+			<p>后台开发</p>
+			<ul>
+				<li>java</li>
+				<li>php</li>
+				<li>ruby</li>
+				<li>asp</li>
+				<li>nodejs</li>
+			</ul>
+		</div>
+		<div>
+			<p>前端框架</p>
+			<ul>
+				<li>jquery</li>
+				<li>bootstrap</li>
+				<li>angularjs</li>
+				<li>yui</li>
+				<li>dojo</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

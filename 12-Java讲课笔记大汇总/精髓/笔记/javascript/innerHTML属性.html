@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script type="text/javascript">
+	function m1() {
+		var p1 = document.getElementById('p1');
+		alert(p1.innerHTML);
+	}
+	
+	function m2() {
+		var p1 = document.getElementById('p1');
+		p1.innerHTML = '<h1>hello,world</h1>';
+	}
+</script>
+
+</head>
+
+<body>
+
+<p id="p1">中国<font color="#FF0000"><b>人民</b></font>解放军</p>
+
+<input type="button" value="读取内容" onClick="m1();">
+<input type="button" value="设置内容" onClick="m2();">
+
+</body>
+</html>

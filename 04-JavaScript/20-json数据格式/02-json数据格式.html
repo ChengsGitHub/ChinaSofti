@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		// json对象
+		var json = {
+			"id":101,
+			"username":'jack',
+			"age":27,
+			"contact":{
+				"mobile":'13012345678',
+				"phone":'10086',
+				"qq":'12345678',
+				"email":['jack@163.com','jack@qq.com','jack@sina.com.cn']
+			}
+		}
+
+		console.log(json);
+
+		// alert(json.username);
+		// alert(json.contact.mobile);
+
+		var email = json.contact.email;
+
+		for (var i = 0;i < email.length;i ++) {
+			alert(email[i]);
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var str = '{"id":101,"name":"tom"}';
+
+		// 把json字符串转换为json对象
+		var json = JSON.parse(str); //IE8支持
+		// var json = eval('(' + str + ')'); //IE6支持
+
+		alert(json.id + ',' + json.name);
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

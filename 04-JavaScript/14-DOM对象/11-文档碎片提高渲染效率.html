@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+
+			var div1 = document.getElementById('div1');
+
+			// 创建文档碎片，相当于一个临时的容器，不会在dom产生任何标签
+			var wrap = document.createDocumentFragment();
+
+			for (var i = 1;i <= 10;i ++) {
+				var p = document.createElement('p');
+				p.innerHTML = '段落文字' + i;
+				wrap.appendChild(p);											
+			}
+
+			div1.appendChild(wrap);
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<input type="button" value="添加节点" onclick="m1();">
+</body>
+</html>

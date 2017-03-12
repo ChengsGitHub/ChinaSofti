@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*自定义字体*/
+		@font-face {
+			font-family: 'icomoon';
+			src:url('fonts/icomoon.eot?-sauy1z');
+			src:url('fonts/icomoon.eot?#iefix-sauy1z') format('embedded-opentype'),
+				url('fonts/icomoon.ttf?-sauy1z') format('truetype'),
+				url('fonts/icomoon.woff?-sauy1z') format('woff'),
+				url('fonts/icomoon.svg?-sauy1z#icomoon') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		.icon {
+			font-family: "icomoon";
+		}
+
+		.icon-home:before {
+			content:"\e600";
+		}
+
+		.icon-conn:before {
+			content: "\e61b";
+		}
+	</style>
+</head>
+<body>
+	<span class="icon icon-home" style="font-size:36px;"></span>
+	<span class="icon icon-conn" style="color:red;"></span>
+</body>
+</html>

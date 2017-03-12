@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.item {
+			width: 150px;
+			height: 150px;
+			background: #0cc;
+			float: left;
+			text-align: center;
+			line-height: 150px;
+			border-radius: 50%;
+		}
+	</style>
+	<script type="text/javascript">		
+		window.onload = function() {
+
+			function m1(){
+				alert('div被单击');
+			}
+
+			var i = 1;
+
+			var addBtn = document.getElementById('addBtn');
+			var div1 = document.getElementById('div1');
+
+			addBtn.onclick = function() {
+				var div = document.createElement('div');
+				div.className = 'item';
+				div.onclick = m1;
+				div.innerHTML = 'div' + i ++;
+				div1.appendChild(div);
+			}
+		}
+
+		
+	</script>
+</head>
+<body>
+	动态添加的元素注册事件方式：
+		方式1：每次添加元素后直接注册事件
+		方式2：采用事件委托机制
+	<input type="button" value="添加元素" id="addBtn">
+	<div id="div1">		
+	</div>
+</body>
+</html>

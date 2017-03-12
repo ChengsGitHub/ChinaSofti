@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.arrow {
+			width: 44px;
+			height: 44px;
+			background: url(arrow.png);
+			position: absolute;
+			left: 50%;
+			margin-left: -22px;
+			bottom: 30px;
+
+			animation:jump 0.7s linear infinite alternate;
+			-webkit-animation:jump 0.7s linear infinite alternate;
+		}
+
+		@keyframes jump {			
+			100%{
+				bottom:10px;
+			}
+		}
+
+		@-webkit-keyframes jump {			
+			100%{
+				bottom:10px;
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class="arrow"></div>
+</body>
+</html>

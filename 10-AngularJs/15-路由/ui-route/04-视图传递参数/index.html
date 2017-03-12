@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-controller="indexController">
+	<!-- 传递参数-->
+	<a ui-sref="tiyu({id:1001,username:'jack'})">体育</a>
+	<a ui-sref="yule({id:1002,username:'rose'})">娱乐</a>
+	<a ui-sref="caijing({id:1003,username:'tom'})">财经</a>
+	<a ui-sref="keji({id:104,username:'zhangsan'})">科技</a>
+	<!-- 直接用原始的超级链接传递参数-->
+	<a href="#/it?id=1005&username=lisi">IT</a>
+	<!-- 利用按钮调用方法跳转传递参数-->
+	<input type="button" value="游戏" ng-click="jump();"/>
+
+	<!-- 显示路由页面的容器开始-->
+	<div ui-view></div>
+	<!-- 显示路由页面的容器结束-->
+
+	<script src="../../js/angular.js"></script>
+	<!-- 引入第三方路由-->
+	<script src="../../js/angular-ui-router.js"></script>
+	<script>
+
+		//创建模块，依赖ui.router模块
+		var myApp = angular.module('myApp',['ui.router']);
+
+		//在config中配置路由，注入$stateProvider,$urlRouterProvider两个服务
+		myApp.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+
+//			配置路由对应的页面url地址
+			$stateProvider
+				.state('home',{
+					url:'/', //默认页
+					templateUrl:'tpls/home.html'
+				})
+				.state('tiyu',{
+					url:'/tiyu?id&username',  //必须要声明要传递的参数
+					templateUrl:'tpls/tiyu.html',
+					controller:'tiyuController'  //引用外部定义好的控制器
+				})
+				.state('yule',{
+					url:'/yule/:id/:username',  //也可以这样声明传递的参数 :xxx （rest风格）
+					templateUrl:'tpls/yule.html',
+					controller:function($scope,$stateParams) { //可以在路由中直接配置控制器
+						alert('传递的参数是：' + $stateParams.id + ',' +  $stateParams.username);
+					}
+				})
+				.state('caijing',{
+					url:'/caijing/{id}/{username}',  //也可以这样声明传递的参数 {xxx} （rest风格）
+					template:'<p>财经版块的内容</p>',
+					controller:function($scope,$stateParams) { //可以在路由中直接配置控制器
+						alert('传递的参数是：' + $stateParams.id + ',' +  $stateParams.username);
+					}
+				})
+				.state('keji',{
+					url:'/keji/{id:[0-9]{1,3}}/{username:.{3,}}',  //也可以用正则表达式来限制传参的数据内容，如果不满足条件，路由跳转失效
+					template:'<p>科技版块的内容</p>',
+					controller:function($scope,$stateParams) { //可以在路由中直接配置控制器
+						alert('传递的参数是：' + $stateParams.id + ',' +  $stateParams.username);
+					}
+				})
+				.state('it',{
+					url:'/it?id&username',  //必须使用这种方式声明接收参数
+					template:'<p>IT版块的内容</p>',
+					controller:function($scope,$stateParams) { //可以在路由中直接配置控制器
+						alert('传递的参数是：' + $stateParams.id + ',' +  $stateParams.username);
+					}
+				})
+				.state('youxi',{
+					url:'/youxi?id&username',  //必须使用这种方式声明接收参数
+					template:'<p>游戏版块的内容</p>',
+					controller:function($scope,$stateParams) { //可以在路由中直接配置控制器
+						alert('传递的参数是：' + $stateParams.id + ',' +  $stateParams.username);
+					}
+				})
+
+//			配置默认路由跳转地址（如果路由url不存在）
+			$urlRouterProvider.otherwise('/');
+
+		}]);
+
+//		控制器，$stateParams代表传递参数
+		myApp.controller('tiyuController',['$scope','$stateParams',function($scope,$stateParams){
+			alert('传递的参数是：' + $stateParams.id + ',' +  $stateParams.username);
+		}]);
+
+		myApp.controller('indexController',['$scope','$state',function($scope,$state){
+			$scope.jump = function() {
+//				利用代码跳转传递产生
+				$state.go('youxi',{id:1006,username:'wangwu'});
+			}
+		}]);
+	</script>
+</body>
+</html>

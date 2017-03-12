@@ -1,0 +1,11 @@
+package com.icss.array;
+/**
+ * 随即产生50-100的随机数：
+ * 从控制台猜数： 四次机会 猜中了 提示高了 低了
+ * 显示游戏结束 
+ * @author Administrator
+ *
+ */
+public class TestRandom2 {
+
+}

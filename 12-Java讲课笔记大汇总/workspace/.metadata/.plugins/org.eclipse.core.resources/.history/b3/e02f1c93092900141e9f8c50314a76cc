@@ -1,0 +1,10 @@
+package com.icss.test;
+
+
+	public class Scope{
+
+		static int arr[] = new int[10];
+
+		}
+
+

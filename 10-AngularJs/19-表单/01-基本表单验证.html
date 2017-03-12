@@ -1,0 +1,143 @@
+  <!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+	
+	<div class="container" ng-controller="firstController">
+
+		<form name="myForm" class="form-horizontal" ng-submit="submitForm();">
+
+			<div class="form-group" ng-class="{'has-error':myForm.username.$dirty && myForm.username.$invalid}">
+				<label for="" class="col-md-2 control-label">用户名</label>
+				<div class="col-md-10">
+					<input name="username" ng-model="data.username" type="text" class="form-control" placeholder="请输入用户名" required ng-minlength="5" ng-maxlength="10" ng-pattern="/^[a-z]/">
+
+					<div class="alert alert-danger help-block" ng-show="myForm.username.$dirty && myForm.username.$error.required">
+						用户名不能为空
+					</div>
+					<div class="alert alert-danger help-block" ng-show="myForm.username.$dirty && myForm.username.$error.minlength">
+						用户名不能长度不能少于5位字符
+					</div>
+					<div class="alert alert-danger help-block" ng-show="myForm.username.$dirty && myForm.username.$error.maxlength">
+						用户名不能长度不能超过10位字符
+					</div>					
+					<div class="alert alert-danger help-block" ng-show="myForm.username.$dirty && myForm.username.$error.pattern">
+						用户名必须是小写字母开头
+					</div>
+				</div>				
+			</div>
+			
+			<div class="form-group" ng-class="{'has-error':myForm.username.$dirty && myForm.userpwd.$invalid}">
+				<label for="" class="col-md-2 control-label">密码</label>
+				<div class="col-md-10">
+					<input name="userpwd" ng-model="data.userpwd" type="password" placeholder="请输入密码" class="form-control" required ng-minlength="5" ng-maxlength="8">
+					<div class="alert alert-danger help-block" ng-show="myForm.userpwd.$dirty && myForm.userpwd.$error.required">
+						密码不能为空
+					</div>
+					<div class="alert alert-danger help-block" ng-show="myForm.userpwd.$dirty && myForm.userpwd.$error.minlength">
+						密码不能长度不能少于5位字符
+					</div>
+					<div class="alert alert-danger help-block" ng-show="myForm.userpwd.$dirty && myForm.userpwd.$error.maxlength">
+						密码不能长度不能超过8位字符
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error':myForm.username.$dirty && myForm.userpwd2.$invalid}">
+				<label for="" class="col-md-2 control-label">确认密码</label>
+				<div class="col-md-10">
+					<input name="userpwd2" ng-model="data.userpwd2" type="password" placeholder="请输入密码" class="form-control" required>
+					<div class="alert alert-danger help-block" ng-show="myForm.userpwd2.$dirty && data.userpwd != data.userpwd2">
+						两次密码输入不一致
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error':myForm.email.$dirty && myForm.email.$invalid}">
+				<label for="" class="col-md-2 control-label">邮箱</label>
+				<div class="col-md-10">
+					<input name="email" ng-model="data.email" type="email" placeholder="请输入邮箱" class="form-control" required>
+					<div class="alert alert-danger help-block" ng-show="myForm.email.$dirty && myForm.email.$error.required">
+						邮箱不能为空
+					</div>
+					<div class="alert alert-danger help-block" ng-show="myForm.email.$dirty && myForm.email.$error.email">
+						邮箱不合法
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error':myForm.url.$dirty && myForm.url.$invalid}">
+				<label for="" class="col-md-2 control-label">网址</label>
+				<div class="col-md-10">
+					<input name="url" ng-model="data.url" type="url" placeholder="请输入网址" class="form-control" required>
+					<div class="alert alert-danger help-block" ng-show="myForm.url.$dirty && myForm.url.$error.required">
+						网址不能为空
+					</div>
+					<div class="alert alert-danger help-block" ng-show="myForm.url.$dirty && myForm.url.$error.url">
+						网址不合法
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-error':myForm.age.$dirty && myForm.age.$invalid}">
+				<label for="" class="col-md-2 control-label">年龄</label>
+				<div class="col-md-10">
+					<input name="age" ng-model="data.age" type="number" placeholder="请输入年龄" class="form-control" required min="18" max="60">
+					<div class="alert alert-danger help-block" ng-show="myForm.age.$dirty && myForm.age.$error.required">
+						年龄不能为空
+					</div>
+					<!-- number验证不好用  -->
+					<div class="alert alert-danger help-block" ng-show="myForm.age.$dirty && myForm.age.$error.min">
+						年龄必须大于等于18
+					</div>
+					<div class="alert alert-danger help-block" ng-show="myForm.age.$dirty && myForm.age.$error.max">
+						年龄必须小于等于60
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-10 col-md-offset-2">
+					<input type="submit" value="提交表单" class="btn btn-primary" ng-disabled="myForm.$invalid || myForm.$pristine">
+				</div>
+			</div>						
+		</form>
+
+		<!-- 表单验证相关的数据模型 -->
+		$dirty：{{myForm.$dirty}}
+		<br>
+		$pristine：{{myForm.$pristine}}
+		<br>
+		$valid：{{myForm.username.$valid}}
+		<br>
+		$invalid：{{myForm.username.$invalid}}
+		<br>
+		username $error：{{myForm.username.$error}}
+		<br>
+		userpwd $error：{{myForm.userpwd.$error}}
+		<br>
+		userpwd2 $error：{{myForm.userpwd2.$error}}
+		<br>
+		email $error：{{myForm.email.$error}}
+		<br>
+		age $error：{{myForm.age.$error}}
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope) {
+
+			$scope.submitForm = function() {
+				alert('提交表单');
+			}
+			
+		}]);
+	</script>
+</body>
+</html>

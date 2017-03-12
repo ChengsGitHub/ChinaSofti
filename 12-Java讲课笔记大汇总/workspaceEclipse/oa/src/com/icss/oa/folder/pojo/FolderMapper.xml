@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="FOLDER" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.folder.pojo.Folder" >
+    <id column="FOLDER_ID" property="folderId" jdbcType="DECIMAL" />
+    <result column="FOLDER_NAME" property="folderName" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="DECIMAL" />
+    <result column="EMP_ID" property="empId" jdbcType="DECIMAL" />
+    <result column="SHARING" property="sharing" jdbcType="DECIMAL" />
+  </resultMap>
+  
+	<insert id="insert" parameterType="com.icss.oa.folder.pojo.Folder">
+		insert into folder (folder_Id, folder_Name,parent_Id,emp_Id,
+		sharing)
+		values (folder_seq.nextval,
+		#{folderName,jdbcType=VARCHAR},
+		#{parentId,jdbcType=DECIMAL},
+		#{empId,jdbcType=DECIMAL},
+		#{sharing,jdbcType=DECIMAL})
+	</insert>
+  
+	
+	<update id="update" parameterType="com.icss.oa.folder.pojo.Folder">
+		update folder
+		set folder_Name = #{folderName,jdbcType=VARCHAR}
+		where folder_Id = #{folderId,jdbcType=DECIMAL}
+	</update>
+	
+	<update id="updateSharing" parameterType="com.icss.oa.folder.pojo.Folder">
+		update folder
+		set sharing = #{sharing,jdbcType=DECIMAL}
+		where folder_Id in (select t.folder_id from folder t
+		start with t.folder_id=#{folderId,jdbcType=DECIMAL}
+		CONNECT BY PRIOR t.folder_id=t.parent_id)
+	</update>
+	
+		<delete id="delete" parameterType="java.lang.Integer">
+		delete from folder
+		where folder_Id = #{folderId,jdbcType=DECIMAL}
+	</delete>
+	
+
+   <select id="queryByEmpId" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		*
+		from folder
+		where emp_Id = #{empId,jdbcType=DECIMAL}
+	</select>
+	
+	  <select id="queryBySharing" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		*
+		from folder
+		where sharing = 1
+		and  emp_Id = #{empId,jdbcType=DECIMAL}
+	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from folder
+	</select>
+	
+	</mapper>

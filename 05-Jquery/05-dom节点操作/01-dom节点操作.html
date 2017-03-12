@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			background: #0cc;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {
+				// 创建dom节点
+				// var div3 = $('<div id="div3">div3...</div>');
+				// 追加节点
+				// $('#div1').append(div3);
+
+				//直接添加dom节点
+				$('#div1').append('<div id="div3">div3...</div>');
+			});
+
+			$('#btn2').click(function(event) {
+				
+				//index代表下标，html代表原始内容，返回值代表新添加的节点
+				$('#div1').append(function(index,html){
+					alert(index + ',' + html);
+					return '<div4 id="div4">div4...</div4>';
+				});
+
+			});
+
+			$('#btn3').click(function(event) {
+				
+				// 把div3追加到div1中
+				$('<div id="div3">div3...</div>').appendTo('#div1');
+
+			});
+
+			$('#btn4').click(function(event) {
+				
+				// 在开始位置追加
+				$('#div1').prepend();
+
+			});
+
+			$('#btn5').click(function(event) {
+				
+				// 在开始位置追加
+				$('<div id="div3">div3...</div>').prependTo('#div1');
+
+			});
+
+			$('#btn6').click(function(event) {
+				
+				// 追加同辈元素到后面
+				$('#div1').after('<div id="div3">div3...</div>');
+
+			});
+
+			$('#btn7').click(function(event) {
+				
+				// 追加同辈元素到后面
+				$('<div id="div3">div3...</div>').insertAfter('#div1');
+
+			});
+
+			$('#btn8').click(function(event) {
+				
+				// 追加同辈元素到前面
+				$('#div1').before('<div id="div3">div3...</div>');
+
+			});
+
+			$('#btn9').click(function(event) {
+				
+				// 追加同辈元素到前面
+				$('<div id="div3">div3...</div>').insertBefore('#div1');
+
+			});
+
+			$('#btn10').click(function(event) {
+				
+				// 用div3包裹div1
+				$('#div1').wrap('<div id="div3"></div>');
+
+			});
+
+			$('#btn11').click(function(event) {
+				
+				//去掉div2的父元素
+				$('#div2').unwrap();
+
+			});
+
+			$('#btn12').click(function(event) {
+				
+				// 每个元素单独包裹
+				// $('span').wrap('<div id="div3"></div>');
+				
+				// 所有元素统一包裹
+				$('span').wrapAll('<div id="div3"></div>');
+
+			});
+
+			$('#btn13').click(function(event) {
+				
+				// 内层包裹
+				$('#div1').wrapInner('<div id="div3"></div>');
+
+			});
+
+			$('#btn14').click(function(event) {
+					
+				// 替换元素
+				$('span').replaceWith('<h1>hello,world</h1>');
+
+			});
+
+			$('#btn15').click(function(event) {
+				// 替换元素特殊用法,index代表下标,html代表原始内容，返回值代表替换的内容
+				$('span').replaceWith(function(index,html) {
+					// alert(index + ',' + html);
+					return '<h1>' + html + '</h1>';
+				});
+			});
+
+			$('#btn16').click(function(event) {
+				
+				// 替换元素
+				$('<h1>hello,world</h1>').replaceAll('p');
+
+			});
+
+			$('#btn17').click(function(event) {
+				// 清空内容
+				$('#div1').empty();
+			});
+
+			$('#btn18').click(function(event) {
+				// 删除元素
+				$('#div1').remove();
+			});
+
+			// p2对象
+			var p2 = $('#p2');
+
+			p2.click(function(event) {
+				alert('p2...');
+			});
+
+			$('#btn19').click(function(event) {
+				//删除元素，不保留原来事件
+				// p2.remove();
+
+				//删除元素，保留原来事件
+				p2.detach();
+			});
+
+			$('#btn20').click(function(event) {
+				
+				$('#div1').after(p2);
+
+			});
+
+			$('#btn21').click(function(event) {
+				
+				// 克隆p2元素,true表示事件也一起克隆
+				$('#div1').before( $('#p2').clone(true) ); 
+
+			});
+
+		});
+
+	</script>
+</head>
+<body>
+	<span>ssss1</span>
+	<span>ssss2</span>
+
+	<div id="div1">
+		div1...
+		<div id="div2">
+			div2...
+			<p>pppppp1</p>
+		</div>
+	</div>
+
+	<p id="p2">pppppp2</p>
+
+	<input type="button" value="append" id="btn1">
+	<input type="button" value="append特殊用法" id="btn2">
+	<input type="button" value="appendTo" id="btn3">
+	<input type="button" value="prepend" id="btn4">
+	<input type="button" value="prependTo" id="btn5">
+	<input type="button" value="after" id="btn6">
+	<input type="button" value="insertAfter" id="btn7">
+	<input type="button" value="before" id="btn8">
+	<input type="button" value="insertBefore" id="btn9">
+	<input type="button" value="wrap" id="btn10">
+	<input type="button" value="unwrap" id="btn11">
+	<input type="button" value="wrapAll" id="btn12">
+	<input type="button" value="wrapInner" id="btn13">
+	<input type="button" value="replaceWith" id="btn14">
+	<input type="button" value="replaceWith特殊用法" id="btn15">
+	<input type="button" value="replaceAll" id="btn16">
+	<input type="button" value="empty" id="btn17">
+	<input type="button" value="remove" id="btn18">
+	<input type="button" value="detach" id="btn19">
+	<input type="button" value="添加p2" id="btn20">
+	<input type="button" value="clone" id="btn21">
+</body>
+</html>

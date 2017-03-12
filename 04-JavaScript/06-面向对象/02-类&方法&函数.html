@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*
+			人类
+		*/
+		function Person(name,age) {
+			this.name = name;
+			this.age = age;
+
+			this.run = function() {								
+				alert(this.name + '在跑步');
+			}
+
+			console.log('function被执行...');
+		}
+
+		// Person('tom',27); //函数级调用
+
+		var p1 = new Person('tom',27);//构造函数调用
+		var p2 = new Person('jack',25);//构造函数调用
+
+		// alert(p1.name + ',' + p1.age);
+		// alert(p2.name + ',' + p2.age);
+
+		// p1.run(); //方法调用
+		// p2.run(); //方法调用
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

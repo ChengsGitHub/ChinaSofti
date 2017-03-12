@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var str = 'abcdefg';
+		
+		console.log(str.charAt(2));//c
+
+		console.log(str.charCodeAt(0)); //97
+
+		console.log(String.fromCharCode(97,98,99));//abc
+
+		console.log(str.concat(123));// abcdefg123
+
+		str = 'abcdefgabcd';
+
+		console.log( str.indexOf('cd') );//2
+		console.log( str.indexOf('cd',3) );//9 从下标3开始查找
+
+		console.log( str.lastIndexOf('cd') );//9
+
+		console.log(str.length);//11
+
+		console.log(str.substr(3));//defgabcd
+		console.log(str.substr(3,3));//def
+
+		console.log(str.substring(3,6));//def
+
+		str = 'abcdEFG';
+		console.log(str.toLowerCase());//abcdefg
+		console.log(str.toUpperCase());//ABCDEFG
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

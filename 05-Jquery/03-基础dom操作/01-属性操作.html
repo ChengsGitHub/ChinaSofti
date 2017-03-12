@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#btn1').click(function(event) {				
+				//返回属性值（包括自定义属性）
+				var result = $('#p1').attr('align');
+				// var result = $('#p1').attr('index');//自定义属性
+				alert(result);
+			});
+
+			$('#btn2').click(function(event) {				
+				// 设置属性值（包括自定义属性）
+				$('#p1').prop('align111','center');
+			});
+
+			$('#btn3').click(function(event) {
+				// 设置多个属性值
+				$('#p1').attr({
+					align: 'right',
+					index: '1002',
+					id:'p1111'
+				});
+			});
+
+			$('#btn4').click(function(event) {
+				// 删除属性
+				$('#p1').removeAttr('align');
+			});
+						
+		});	
+	</script>
+</head>
+<body>
+	<p id="p1" align="left" index="1001">你好，中国</p>
+	<input type="button" value="读取属性" id="btn1">
+	<input type="button" value="设置属性" id="btn2">
+	<input type="button" value="设置多个属性" id="btn3">
+	<input type="button" value="删除属性" id="btn4">
+</body>
+</html>

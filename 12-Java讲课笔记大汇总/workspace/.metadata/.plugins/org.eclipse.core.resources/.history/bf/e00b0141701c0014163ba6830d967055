@@ -1,0 +1,16 @@
+package com.icss.array;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class TestErFen {
+	public static void main(String[] args) {
+		int [] a = {3,56,23,77,5,90};
+		Arrays.sort(a);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请输入");
+		int num = sc.nextInt();
+		int index = -1;//返回找到的下标
+	}
+
+}

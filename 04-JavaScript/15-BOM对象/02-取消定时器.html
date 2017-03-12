@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		// 执行定时器，返回定时器id
+		var timerId = setInterval(function(){
+			alert('hello,world');
+		},3000);		
+
+		console.log(timerId);
+
+		function m1() {
+			// 取消定时器
+			clearInterval(timerId);
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" value="取消定时器" onclick="m1();">
+</body>
+</html>

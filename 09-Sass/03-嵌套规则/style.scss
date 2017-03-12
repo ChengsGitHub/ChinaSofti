@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+#header {
+	width: 960px;
+	height: 180px;
+
+	// 嵌套写法，生成后代选择器
+	.nav {
+		width: 90%;
+		height: 40px;
+
+		/* 生成父子选择器 */
+		>.logo {
+			position: absolute;
+		}
+
+		a {
+			text-decoration: none;
+			
+			// &表示外层选择器
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		// 也可以这么用
+		span & {
+			display: inline-block;
+		}
+
+	}
+}
+
+#content {
+	width: 960px;
+	height: 400px;
+
+	// 样式属性嵌套：写一次前缀就可以
+	border: {
+		top:1px solid red;
+		bottom:1px solid green;
+	}
+}
+
+#footer {
+	// 自动生成群组选择器
+	h1,h2,h3 {
+		color: #999;
+	}
+}

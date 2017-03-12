@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			声明类
+		*/
+		function Person(name,age) {
+			// 声明属性
+			this.name = name;
+			this.age = age;		
+
+			//声明方法
+			this.run = function() {
+				alert(this.name + '在跑步');
+			}
+
+			this.eat = function(food) {
+				alert(this.name + '吃' + food);
+			}
+
+			this.jump = function() {
+				this.run();
+				alert('跳跃');
+			}
+		}
+
+		// 创建对象实例（构造函数调用）
+		var p1 = new Person('tom',27);
+		var p2 = new Person('jack',25);
+		
+		// 访问对象的属性
+		// alert(p1.name + ',' + p1.age);
+		// alert(p2.name + ',' + p2.age);
+
+		// 调用对象的方法
+		// p1.run();
+		// p2.run();
+
+		// p1.eat('苹果');
+		// p2.eat('西瓜');
+		// p2.eat('面包');
+
+		// p1.jump();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

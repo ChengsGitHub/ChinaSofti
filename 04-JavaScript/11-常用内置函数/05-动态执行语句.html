@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		function m1() {
+			var t1 = document.getElementById('t1');
+			// 动态执行语句
+			eval(t1.value);
+		}
+	</script>
+</head>
+<body>
+	<textarea id="t1" cols="30" rows="10"></textarea>
+	<input type="button" value="执行" onclick="m1();">
+</body>
+</html>

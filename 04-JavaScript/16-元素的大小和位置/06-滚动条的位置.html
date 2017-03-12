@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		// 窗口滚动条滚动事件
+		window.onscroll = function() {
+			
+			// 获得滚动条卷去的距离
+			var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+			// 获得视口的高度
+			var clientH = document.documentElement.clientHeight;
+			
+			// 获得网页的实际高度
+			var pageH = document.body.scrollHeight;
+
+			if (sTop + clientH == pageH) {
+				alert('滚动条已经拖动到最底部！');
+			}		
+
+			document.title = sTop + '+' + clientH + '=' + pageH;
+					
+		}
+
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+</body>
+</html>

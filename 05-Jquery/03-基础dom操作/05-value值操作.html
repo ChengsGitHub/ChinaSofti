@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btn1').click(function(event) {
+				//返回value值
+				var result = $('#username').val();
+				alert(result);
+			});
+
+			$('#btn2').click(function(event) {
+				// 设置value值
+				$('#username').val('hello,world');
+			});
+
+			$('#btn3').click(function(event) {
+				//读取单选按钮选中的值				
+				var result = $(':radio[name=sex]:checked').val();
+				alert(result);
+			});
+
+			$('#btn4').click(function(event) {
+				// 设置单选默认选中
+				$(':radio[name=sex]').val(['girl']);				
+			});
+
+			$('#btn5').click(function(event) {
+				// 读取复选value值
+				var skills = $(':checkbox[name=skill]');
+
+				for (var i = 0;i < skills.length;i ++) {
+					if (skills[i].checked)
+						alert( skills[i].value );
+				}
+			});
+
+			$('#btn6').click(function(event) {
+				// 设置复选默认选中
+				$(':checkbox[name=skill]').val(['java','css']);
+			});
+
+			$('#btn7').click(function(event) {				
+				// 返回选中value值
+				var result = $('#city').val();
+				alert(result);
+			});
+			
+			$('#btn8').click(function(event) {
+				// 设置默认选中
+				$('#city').val('shanghai');
+			});
+
+		});
+	</script>
+</head>
+<body>
+	用户名
+	<input type="text" id="username" value="tom">
+
+	<br>
+
+	性别
+	<input type="radio" name="sex" value="boy" checked>男
+	<input type="radio" name="sex" value="girl">女
+	<br>
+
+	技能
+	<input type="checkbox" name="skill" value="java">java
+	<input type="checkbox" name="skill" value="html" checked>html
+	<input type="checkbox" name="skill" value="css">css
+	<input type="checkbox" name="skill" value="javascript" checked>javascript
+
+	<br>
+
+	城市
+	<select id="city">
+		<option value="beijing">北京</option>
+		<option value="shanghai">上海</option>
+		<option value="guangzhou">广州</option>
+		<option value="shenzhen">深圳</option>
+	</select>
+
+	<br>
+
+	<input type="button" value="读取文本框value值" id="btn1">
+	<input type="button" value="设置文本框value值" id="btn2">
+	<input type="button" value="读取单选value值" id="btn3">
+	<input type="button" value="设置单选默认选中" id="btn4">
+	<input type="button" value="读取复选value值" id="btn5">
+	<input type="button" value="设置复选默认选中" id="btn6">
+	<input type="button" value="读取列表框value值" id="btn7">
+	<input type="button" value="设置列表框value值" id="btn8">
+</body>
+</html>

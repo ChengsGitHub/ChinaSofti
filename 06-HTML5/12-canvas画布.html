@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 不要使用css设置画布高度和宽度 -->
+	<canvas id="canvas1" width="400" height="400" style="border:1px solid #ccc">
+		此浏览器不支持html5的画布
+	</canvas>
+
+	<script type="text/javascript">
+
+		window.onload = function() {
+
+			// 判断浏览器是否支持画布
+			try {
+				document.getElementById('canvas1').getContext('2d');
+				alert('此浏览器支持html5的画布');
+			} catch (e) {
+				alert('此浏览器不支持html5的画布');
+				return;
+			}
+
+			//获得画布对象		
+			var canvas1 = document.getElementById('canvas1');
+
+			//获得绘制对象（2d画笔对象）
+			var context = canvas1.getContext('2d');
+
+			// 开始绘制路径
+			context.beginPath();
+			// 画笔移动到第一个坐标点
+			context.moveTo(0,140);
+			// 添加一个新的点
+			context.lineTo(140,140);
+			// 设置线条颜色
+			context.strokeStyle = '#0cc';
+			// 创建线条
+			context.stroke();
+		}		
+
+	</script>
+</body>
+</html>

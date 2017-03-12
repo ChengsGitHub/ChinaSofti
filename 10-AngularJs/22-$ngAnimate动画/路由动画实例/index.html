@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="UTF-8">
+	<title>主画面</title>
+	<style type="text/css">
+		/* CSS实现方式，需要自己写对应的样式代码来实现动画 */
+
+		.box {
+			transition:all 2s;
+			/*脱离文档输出流，否则切换时会产生上下堆叠，而不是重叠*/
+			position: absolute;
+		}
+
+		/* 进入开始 */
+		.box.ng-enter{
+		     opacity: 0;
+		}
+		
+		/* 进入结束 */
+		.box.ng-enter-active{			
+		    opacity: 1;
+		}
+
+		/* 离开开始 */
+		.box.ng-leave{
+		    opacity: 1;
+		}
+
+		/* 离开结束 */
+		.box.ng-leave-active{
+		    opacity: 0;
+		}
+
+		footer {
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+		}
+	</style>	
+</head>
+<body>
+	<!-- 在页面超链接中，我们使用"#"。我们不希望浏览器认为我们实际上是链接到about.html和contact.html -->
+	<header>
+		<nav>
+			<a href="#">主页</a>
+			<a href="#about">关于</a>
+			<!-- 101和tom是传递的参数 -->
+			<a href="#contact/101/tom">联系我们</a>
+		</nav>
+	</header>
+	<hr/>
+
+	<div id="main">			
+		<!-- ng-view 是一个用来包含当前路由(/home, /about, or /contact)的模板的angular指令, 它会获得基于特定路由的文件并将其诸如到主布局中(index.html). -->
+		<div ng-view class="box"></div>
+	</div>
+
+	
+	<footer>
+		<hr/>
+		页面底部
+	</footer>
+
+	<script type="text/javascript" src="angular-1.3.0.js"></script>
+	<script type="text/javascript" src="angular-route.min.js"></script>
+	<script type="text/javascript" src="angular-animate.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

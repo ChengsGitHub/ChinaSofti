@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+// 混合宏mixin，重复使用样式，还可以传递参数
+@mixin border-default {
+	border:2px solid #ccc;
+	border-radius: 10px;
+}
+
+// 带参数的混合
+@mixin links($color,$size) {
+	text-decoration: none;
+	color: $color;
+	font-size: $size;
+}
+
+.header {
+	width: 960px;
+	height: 180px;
+	
+	// 调用混合宏
+	@include border-default;
+}
+
+.content {
+	// 重复使用混合宏
+	@include border-default;
+}
+
+a:link {
+	// 调用的时候传入值
+	@include links(blue,14px);
+}
+
+a:visited {
+	// 调用的时候传入值
+	@include links(gray,12px);
+}
+
+a:hover {
+	// 调用的时候传入值
+	@include links(red,14px);
+}

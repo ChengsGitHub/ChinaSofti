@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+		
+</head>
+<body>
+	网页的内容
+
+<script type="text/javascript" data-main="js/main" src="js/require.js"></script>
+<script type="text/javascript">
+	//引用上面的jquery.js和checkform.js
+	require(["checkform"],function(checkform){
+		
+		alert(checkform.isEqual('tom','jack'));
+
+	});
+</script>
+</body>
+</html>

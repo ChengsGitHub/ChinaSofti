@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+	<div id="container">
+		
+		<!-- 生成图片列表 -->
+		<script type="text/javascript">
+			document.write('<ul>');
+			
+			for (var i = 0;i <= 35;i ++) {
+				document.write('<li>');
+				document.write('<a href="javascript:showImage(' + i + ')">');
+				document.write('<img src="img0.gif" id="img' + i + '">');
+				document.write('</a>');
+				document.write('</li>');
+			}
+
+			document.write('</ul>');
+		</script>
+
+		<input type="button" value="单击开始" id="startBtn" onclick="init();">
+
+		<ul>
+			<li><img src="img1.gif" alt=""></li>
+			<li><img src="img2.gif" alt=""></li>
+			<li><img src="img3.gif" alt=""></li>
+			<li><img src="img4.gif" alt=""></li>
+			<li><img src="img5.gif" alt=""></li>
+			<li><img src="img6.gif" alt=""></li>
+			<li><img src="img7.gif" alt=""></li>
+			<li><img src="img8.gif" alt=""></li>
+			<li><img src="img9.gif" alt=""></li>
+			<li><img src="img10.gif" alt=""></li>
+			<li><img src="img11.gif" alt=""></li>
+			<li><img src="img12.gif" alt=""></li>
+			<li><img src="img13.gif" alt=""></li>
+			<li><img src="img14.gif" alt=""></li>
+			<li><img src="img15.gif" alt=""></li>
+			<li><img src="img16.gif" alt=""></li>
+			<li><img src="img17.gif" alt=""></li>
+			<li><img src="img18.gif" alt=""></li>
+		</ul>
+	</div>
+</body>
+</html>

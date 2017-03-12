@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 200px;
+			height: 200px;
+			background: #0cc;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+
+		function m1() {			
+			//css方法不是动画方法，无法和其他动画形成队列
+			$('#div1').slideUp(1000).slideDown(1000).css('background','red');
+		}
+
+		function m2() {			
+			//利用回调函数使css和其他动画形成队列
+			$('#div1').slideUp(1000).slideDown(1000,function(){
+				$(this).css('background','red');
+			});
+		}
+
+		function m3() {			
+			//利用queue使css和其他动画形成队列
+			$('#div1').slideUp(1000).slideDown(1000).queue(function(){
+				$(this).css('background','red');
+			});
+		}
+
+		function m4() {			
+			
+			$('#div1').slideUp(1000,function(){
+				$('#div1').clearQueue();//利用clearQueue，清除还没有执行的队列
+			})
+
+			$('#div1').queue(function() {				
+				$(this).css('background','red');
+				$(this).dequeue(); //清理队列，保证下面的队列能够执行
+			});
+
+			$('#div1').slideDown(1000);					
+
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="队列动画1" onclick="m1();">
+	<input type="button" value="队列动画2" onclick="m2();">
+	<input type="button" value="队列动画3" onclick="m3();">
+	<input type="button" value="队列动画4" onclick="m4();">
+	<div id="div1"></div>
+</body>
+</html>

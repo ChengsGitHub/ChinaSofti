@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#div1 {
+			width: 320px;
+			height: 568px;
+			background: #0cc;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		window.onload = function() {
+			console.log('可视视口：' + window.innerWidth);
+			console.log('布局视口：' + document.documentElement.clientWidth);
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		这是一个移动端的网页内容，请在开发者工具中打开手机模拟器查看
+	</div>
+</body>
+</html>

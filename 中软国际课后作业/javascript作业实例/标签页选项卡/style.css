@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/*标签页容器*/
+#notice {
+	width: 298px;
+	height: 98px;
+	border:1px solid #ccc;
+	margin: 5px;
+	overflow: hidden;
+}
+
+/*标题区*/
+#notice-title {
+	/*position: relative;*/
+	height: 27px;
+	background: #f7f7f7;
+}
+
+#notice-title ul {
+	width: 300px;	
+	height: 27px;	
+	position: absolute;
+	left: -1px;
+}
+
+#notice-title ul li {
+	float: left;
+	width: 58px;
+	height: 26px;
+	line-height: 26px;
+	border-bottom: 1px solid #ccc;
+	padding: 0 1px;
+	text-align: center;
+}
+
+#notice-title ul li a {
+	display: block;
+}
+
+#notice-title ul li a:hover {
+	color: orange;
+}
+
+/*标题高亮状态*/
+#notice-title ul li.select {
+	background: #fff;
+	border-bottom-color: #fff;
+	padding: 0;
+	border-left:1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+/*内容区*/
+#notice-content .content {
+	padding: 2px;
+	overflow: hidden;
+}
+
+#notice-content .content li {
+	float: left;
+	width: 139px;
+	padding: 0 4px;
+	line-height: 25px;
+	white-space: nowrap;
+	overflow-x:hidden;
+}

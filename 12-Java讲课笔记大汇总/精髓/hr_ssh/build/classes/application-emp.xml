@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="empDao" class="com.icss.hr.emp.dao.impl.EmpDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="empService" class="com.icss.hr.emp.service.impl.EmpServiceImpl">
+		<property name="dao" ref="empDao"/>
+	</bean>
+	
+	<bean id="empAction" class="com.icss.hr.emp.controller.EmpAction" scope="prototype">
+		<property name="jobService" ref="jobService"/>
+		<property name="deptService" ref="deptService"/>
+		<property name="empService" ref="empService"/>
+		<property name="photoService" ref="photoService"/>
+	</bean>
+
+</beans>

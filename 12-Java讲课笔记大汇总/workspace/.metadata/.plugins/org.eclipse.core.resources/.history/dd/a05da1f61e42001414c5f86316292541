@@ -1,0 +1,21 @@
+package chapter2;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import oracle.jdbc.OracleDriver;
+
+public class TestWriteJob {
+
+	public static void main(String[] args) {
+		
+		DriverManager.registerDriver(new OracleDriver());
+
+		String url = "jdbc:oracle:thin:@localhost:1521:icss";
+		String user = "scott";
+		String password = "tiger";
+		Connection conn = DriverManager.getConnection(url, user, password);
+
+	}
+
+}

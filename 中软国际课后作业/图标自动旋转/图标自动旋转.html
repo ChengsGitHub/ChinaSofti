@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>图标自动旋转</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#nav {
+			width: 1200px;
+			height: 90px;
+			/*background-color: #aaaaaa;*/
+			margin: 0 auto;
+		}
+		#nav ul {
+			width: 700px;
+			list-style: none;
+			overflow: hidden;
+			margin:0 auto;
+			position: relative;
+
+		}
+		#nav ul li {
+			display: block;
+			float: left;
+			width: 90px;
+			height: 90px;
+			margin-left:20px;
+			position: relative;
+
+		}
+		#nav ul li:nth-child(1){
+			background-image: url(icons.png);
+			background-position: 16px -197px;
+			-webkit-animation:donghua 1s ;
+		}
+		#nav ul li:nth-child(2){
+			background-image: url(icons.png);
+			background-position: -80px -197px;
+			-webkit-animation:donghua 1s 1s;
+
+
+		}
+		#nav ul li:nth-child(3){
+			background-image: url(icons.png);
+			background-position: -174px -197px;
+			-webkit-animation:donghua 1s 2s;
+
+
+		}
+		#nav ul li:nth-child(4){
+			background-image: url(icons.png);
+			background-position: -269px -197px;
+			-webkit-animation:donghua 1s 3s;
+
+
+		}
+		#nav ul li:nth-child(5){
+			background-image: url(icons.png);
+			background-position: -364px -197px;
+			-webkit-animation:donghua 1s 4s;
+
+
+		}
+		#nav ul li:nth-child(6){
+			background-image: url(icons.png);
+			background-position: -459px -197px;
+			-webkit-animation:donghua 1s 5s;
+
+
+		}
+		#nav ul li a {
+			display: block;
+			text-decoration: none;
+			color: #000;
+			line-height: 45px;
+			position: absolute;
+			top: 50px;
+			left: 14px;
+		}
+		#nav ul li:nth-child(2) a{
+			position: absolute;
+			top: 50px;
+			left: 17px;
+		}
+		@-webkit-keyframes donghua{
+			from{
+				transform:rotateY(0deg);
+			}
+			50%{
+				transform:rotateY(180deg);
+			}
+			to{
+				transform:rotateY(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="nav">
+		<ul>
+			<li><a href="#">论文提交</a></li>
+			<li><a href="#">VPN服务</a></li>
+			<li><a href="#">研修室预约</a></li>
+			<li><a href="#">馆长信箱</a></li>
+			<li><a href="#">失物招领</a></li>
+			<li><a href="#">入馆指南</a></li>
+		</ul>
+	</div>
+
+</body>
+</html>

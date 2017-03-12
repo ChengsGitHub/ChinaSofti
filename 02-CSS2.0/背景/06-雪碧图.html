@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*按钮统一设置*/
+		.btn-icon {
+			width: 70px;
+			height: 70px;
+			float: left;
+			margin-right: 20px;	
+			/*css3过渡动画*/
+			transition:all 0.5s;	
+			/*鼠标形状*/
+			cursor: pointer;
+		}
+
+		.btn1 {
+			background: url(../images/sprite.png) no-repeat 0px 0px;
+		}
+
+		.btn1:hover {
+			background: url(../images/sprite.png) no-repeat 0px -70px;
+		}
+
+		.btn2 {					
+			background: url(../images/sprite.png) no-repeat -70px 0px;			
+		}
+
+		.btn2:hover {					
+			background: url(../images/sprite.png) no-repeat -70px -70px;			
+		}
+
+		.btn3 {					
+			background: url(../images/sprite.png) no-repeat -140px 0px;			
+		}
+
+		.btn3:hover {					
+			background: url(../images/sprite.png) no-repeat -140px -70px;			
+		}
+	</style>
+</head>
+<body>
+	<div class="btn-icon btn1"></div>
+	<div class="btn-icon btn2"></div>
+	<div class="btn-icon btn3"></div>
+</body>
+</html>

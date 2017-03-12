@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script type="text/javascript">
+
+	function showTime() {
+		//当前时间对象
+		var d = new Date();
+		
+		//日期拼接字符串
+		var s = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+		s += ' ' + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+		
+		//设置日期显示到DIV中
+		var div1 = document.getElementById('div1');
+		div1.innerHTML = s;	
+	}
+	
+	window.setInterval('showTime();',1000);
+	window.onload = showTime;
+</script>
+
+</head>
+
+<body>
+
+<div id="div1" style="font-size:100px;color:#096"></div>
+
+</body>
+</html>

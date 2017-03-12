@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+	<script type="text/javascript">
+		
+		window.onload = function() {
+			alert('网页加载完毕');
+		}
+
+		// 当文档状态发生变化时触发
+		document.onreadystatechange = function() {
+
+			if(document.readyState == 'complete') {
+				alert('文档就绪完毕');
+			}
+
+		}
+		
+	</script>
+</head>
+<body>
+	<img src="image1.png" alt="" onload="alert('图片加载完毕');">
+</body>
+</html>

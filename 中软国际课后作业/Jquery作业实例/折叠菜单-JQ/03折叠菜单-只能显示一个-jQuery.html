@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;			
+		}
+
+		body {
+			font-size: 14px;
+		}
+
+		ul,li {
+			list-style-type: none;
+		}
+
+		#menu {
+			width: 200px;
+			margin: 20px auto;
+			border:1px solid #ccc;
+		}
+
+		#menu p {
+			background: #eee;
+			line-height: 26px;
+			padding-left: 10px;
+			font-weight: bold;
+			border-bottom: 1px solid #ccc;
+			cursor: pointer;
+		}
+
+		#menu ul {
+			display: none;
+		}
+
+		#menu ul li {
+			line-height: 24px;
+			padding-left: 5px;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>	
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			// p标签点击事件
+			$('#menu p').click(function(event) {
+
+				// 隐藏同级的ul
+				$(this).parent().siblings().find('ul').hide("slow");
+
+				//显示当前的ul				
+				$(this).next('ul').toggle("slow");
+				
+			});
+		});
+		
+	</script>
+</head>
+<body>
+	<!-- 同一时刻，只能展开一个菜单 -->
+
+	<div id="menu">
+		<div>
+			<p>Web前端</p>
+			<ul style="display:block;">
+				<li>html</li>
+				<li>css</li>
+				<li>javascript</li>
+				<li>less</li>
+				<li>sass</li>
+			</ul>
+		</div>
+		<div>
+			<p>后台开发</p>
+			<ul>
+				<li>java</li>
+				<li>php</li>
+				<li>ruby</li>
+				<li>asp</li>
+				<li>nodejs</li>
+			</ul>
+		</div>
+		<div>
+			<p>前端框架</p>
+			<ul>
+				<li>jquery</li>
+				<li>bootstrap</li>
+				<li>angularjs</li>
+				<li>yui</li>
+				<li>dojo</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		function m1(){
+			// 获得文本框对象
+			var t1Obj = document.getElementById('t1');
+			
+			// 判断是否是四位数字
+			if(parseInt(t1Obj.value) <= 9999 && parseInt(t1Obj.value) >= 1000){
+				
+				// 分解数字
+				var a = parseInt(t1Obj.value/ 1000);//千
+				var b = parseInt(t1Obj.value / 100 % 10); //百
+				var c = parseInt(t1Obj.value / 10 % 10 ); //十
+				var d = parseInt(t1Obj.value % 10);//个
+			
+				// 加密算法
+				var n1 = (a + 5) % 10;
+				var n2 = (b + 5) % 10;
+				var n3 = (c + 5) % 10;
+				var n4 = (d + 5) % 10;
+			
+				var n5 = n4 *1000 + n3 * 100 + n2 * 10 + n1;
+				// var n5 = '' + n4 + n3 + n2 + n1;
+				// var n5 = n4.toString() + n3 + n2 + n1;
+
+				alert('加密结果：' + n5);
+			  } else {
+			  	alert('格式不正确');
+			  }
+			
+		}	
+	</script>
+</head>
+<body>
+	某公司的分机号码需要加密，四位数字，加密规则如下：
+	1.每一位数字加5
+	2.之后用摸10的余数代替该数
+	3.第一位数和第四位数交换 第二位和第三位交换
+	例如：4567= 9 10 11 12=9 0 1 2 =2109
+	<input type="text" id="t1" placeholder="请输入要加密的四位数字">
+	<input type="button" value="加密" onclick="m1();">
+</body>
+</html>

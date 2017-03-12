@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var o = new Object();
+		var d = new Date();
+		var a = new Array();
+
+		//alert( Object.prototype.isPrototypeOf(o) ); //true
+		//alert( Object.prototype.isPrototypeOf(d) ); //true
+		//alert( Date.prototype.isPrototypeOf(a) );//false
+
+		function Person() {
+
+		}
+
+		var p = new Person();
+
+		p.name = 'tom';
+		p.age = 27;
+		p.run = function() {
+			alert('走路');
+		}
+
+		alert(p.propertyIsEnumerable('age'));//true 表示age属性是可被遍历的
+
+		// 遍历对象的成员
+		for (var item in p) {
+			alert(item);
+		}
+	</script>
+</head>
+<body>	
+</body>
+</html>

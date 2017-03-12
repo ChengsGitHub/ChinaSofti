@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*
+			媒体类型：screen所有显示器(包括手机) print打印机 handheld小型手持设备（PDA） all所有设备 
+			选择符：only 仅仅（默认值） not （不是）
+		*/
+
+		/*电话或手机屏幕应用样式*/
+		@media screen {
+			.screen {
+				color: red;
+			}
+		}
+
+		/*小型手持设备应用样式*/
+		@media handheld {
+			.handheld {
+				color: green;
+			}
+		}
+
+		/*所有设备应用样式*/
+		@media all {
+			.all {
+				color: blue;
+			}
+		}
+
+		/*仅仅是电脑屏幕应用样式*/
+		@media only screen {
+			.onlyscreen {
+				color: red;
+			}
+		}
+
+		/*不是小型手持设备应用样式*/
+		@media not handheld {
+			.nothand {
+				color: green;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h2>媒体类型查询</h2>
+	<ul>
+		<li class="screen">screen屏幕</li>
+		<li class="handheld">小型的手持设备</li>
+		<li class="all">全部设备</li>
+		<li class="onlyscreen">仅仅是电脑屏幕</li>
+		<li class="nothand">非小型手持设备</li>
+	</ul>
+</body>
+</html>

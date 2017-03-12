@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			因为函数本身就是一个对象，所以可以当做参数传递
+		*/
+		function callFun(fun,arg) {
+
+			return fun(arg);
+		}
+
+		/*函数1*/
+		function say(str) {
+			alert('hello,' + str);
+		}
+
+		/*函数2*/
+		function sum(num) {
+			return num + 100;
+		}
+
+		// 函数当做参数传递
+		// callFun(say,'jack');
+		// alert( callFun(sum,50) );
+
+		/*
+			返回值为函数对象
+		*/
+		function fn1(arg) {
+
+			var fn2 = function(num) {
+				return arg + num;
+			}
+
+			return fn2;
+		}	
+		
+		// 此处的f就是指向了fn2的函数对象
+		var f = fn1(20);
+		alert( f(1) );
+		alert( f(2) );
+	</script>
+</head>
+<body>	
+</body>
+</html>

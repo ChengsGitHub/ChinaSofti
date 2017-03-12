@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#main-nav {
+			/*父容器设置为弹性盒子模型*/
+			display: flex;
+			display: -webkit-flex;
+
+			overflow: hidden;
+			padding: 5px;
+		}
+
+		.item {
+			display: block;			
+			float: left;
+			border:1px solid #ccc;			
+			text-align: center;			
+
+			/*设置子元素的比重*/
+			flex:1;
+			-webkit-flex:1;
+		}
+
+		.item1 {
+			width: 100px;
+
+			flex:none;
+			-webkit-flex:none;
+		}
+	</style>
+</head>
+<body>
+	<nav id="main-nav">
+		<!-- 混合设置，同时设置固定宽度和弹性盒子的比重，会先排除掉固定的宽度，把剩下的宽度按照比重分配 -->
+		<span class="item item1">导航1</span>
+		<span class="item">导航2</span>
+		<span class="item">导航3</span>	
+	</nav>
+</body>
+</html>

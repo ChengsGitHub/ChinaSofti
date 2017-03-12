@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MESSAGE" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.message.pojo.Message" >
+    <id column="MESSAGE_ID" property="messageId" jdbcType="DECIMAL" />
+    <result column="SEND_ID" property="sendId" jdbcType="DECIMAL" />
+    <result column="RECEV_ID" property="recevId" jdbcType="DECIMAL" />
+    <result column="MESSAGE_CONT" property="messageCont" jdbcType="VARCHAR" />
+    <result column="SEND_TIME" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="M_SEND" property="mSend" jdbcType="DECIMAL" />
+    <result column="M_READ" property="mRead" jdbcType="DECIMAL" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.icss.oa.message.pojo.Message" > 
+      insert into MESSAGE (MESSAGE_ID, SEND_ID, RECEV_ID, MESSAGE_CONT, SEND_TIME, M_SEND, M_READ)
+      values (mess_seq.nextval, #{sendId,jdbcType=DECIMAL}, #{recevId,jdbcType=DECIMAL},#{messageCont,jdbcType=VARCHAR},
+      #{sendTime,jdbcType=TIMESTAMP}, 1,1)
+  </insert>
+  
+  <insert id="send" parameterType="com.icss.oa.message.pojo.Message" > 
+      insert into MESSAGE (MESSAGE_ID, SEND_ID, RECEV_ID, MESSAGE_CONT, SEND_TIME, M_SEND, M_READ)
+      values (mess_seq.nextval, #{sendId,jdbcType=DECIMAL}, #{recevId,jdbcType=DECIMAL},#{messageCont,jdbcType=VARCHAR},
+      #{sendTime,jdbcType=TIMESTAMP}, 2,1)
+  </insert>
+  
+  <delete id="delete" parameterType="java.lang.Integer">
+      delete from message
+      where message_id = #{messageId,jdbcType=DECIMAL}
+  </delete>
+  
+  <update id="update" parameterType="com.icss.oa.message.pojo.Message">
+      update message
+      set
+      <if test="recevId != null and recevId != ''">
+           RECEV_ID =#{recevId,jdbcType=DECIMAL},     
+      </if>
+      MESSAGE_CONT =#{messageCont,jdbcType=VARCHAR},
+      SEND_TIME =#{sendTime,jdbcType=TIMESTAMP},
+      M_SEND =#{mSend,jdbcType=DECIMAL},
+      M_READ =#{mRead,jdbcType=DECIMAL}
+      where MESSAGE_ID = #{messageId,jdbcType=DECIMAL}
+  </update>
+  
+  <update id="updateSend" parameterType="java.lang.Integer">
+      update message
+      set
+      m_send = 2
+      where message_id = #{messageId}
+  </update>
+  
+  <update id="updateRead" parameterType="java.lang.Integer">
+      update message
+      set
+      m_read = 2
+      where message_id = #{messageId}
+  </update>
+  
+  <select id="getNewCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+      select count(*)
+      from (select * from (select * from message where m_send = 2 or m_send = 3) m where m.m_read = 1)
+      where Recev_id = #{empId}
+  </select>
+  
+  <select id="getReadCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+      select count(*)
+      from (select * from (select * from message where m_send = 2 or m_send = 3) m where m.m_read != 3)
+      where Recev_id = #{empId}
+  </select>
+  
+  <select id="getReadYetCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+      select count(*)
+      from (select * from (select * from message where m_send = 2 or m_send = 3) m where m.m_read = 2)
+      where Recev_id = #{empId}
+  </select>
+  
+  <select id="getNoSendCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+      select count(*)
+      from (select * from message where m_send = 1)
+      where send_id = #{empId}
+  </select>
+  
+  <select id="getSendYetCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+      select count(*)
+      from (select * from message where m_send = 2)
+      where send_id = #{empId}
+  </select>
+  
+  <select id="getCount" resultType="java.lang.Integer">
+      select
+      count(*)
+      from message
+      
+  </select>
+  
+  <select id="query" resultMap="BaseResultMap">
+      select *
+      from (select rownum rnum,d.* from message d)
+      where rnum between #{start} and #{end}
+      order by message_id
+  </select>
+  
+  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+      select *
+      from message 
+      where message_id = #{messageId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="queryByIdRead" resultType="java.util.Map" parameterType="java.lang.Integer" >
+      select m.*,e.emp_name
+      from message m
+      left outer join emp e on m.send_id = e.emp_id
+      where message_id = #{messageId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="queryByIdSend" resultType="java.util.Map" parameterType="java.lang.Integer" >
+      select m.*,e.emp_name
+      from message m
+      left outer join emp e on m.recev_id = e.emp_id
+      where message_id = #{messageId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="queryBySend" resultType="java.util.Map" parameterType="java.util.Map">
+     select * from (select  rownum rnum,m.* from (select e.emp_name, m.* from message m
+	 left outer join emp e on m.recev_id = e.emp_id
+	 where m.send_id = #{sendId} and m_send != 3 and m_send != 4
+	 <if test="mSend != null and mSend != ''">
+     	and m_send = #{mSend}
+     </if>
+     <if test="type != 1 and type != 3">
+         ORDER BY SEND_TIME DESC
+     </if>
+     <if test="type == 1">
+         ORDER BY MESSAGE_ID
+     </if>
+     <if test="type == 3">
+         ORDER BY RECEV_ID
+     </if>
+	 ) m)
+	 where rnum between #{start} and #{end}
+  </select>
+  
+  <select id="queryByRead" resultType="java.util.Map" parameterType="java.util.Map">
+     select * from (select  rownum rnum,m.* from (select e.emp_name, m.* from message m
+	 left outer join emp e on m.send_id = e.emp_id
+	 where (m.m_send = 2 or m.m_send = 3)  and m.recev_id = #{recevId} and m_read != 3
+	 <if test="mRead != null and mRead != ''">
+     	and m_read = #{mRead}
+     </if>
+     <if test="type != 3 and type != 4 and type != 1">
+         ORDER BY SEND_TIME DESC
+     </if>
+     <if test="type == 1">
+         ORDER BY MESSAGE_ID
+     </if>
+     <if test="type == 4">
+         ORDER BY M_READ,MESSAGE_ID desc
+     </if>
+     <if test="type == 3">
+         ORDER BY SEND_ID
+     </if>
+	 ) m)
+	 where rnum between #{start} and #{end}
+  </select>
+  
+  <select id="boolOfBirth" resultType="java.util.Map" parameterType="java.util.Map">
+      select * from emp
+      where to_char(emp_birthdate,'mm') = #{month} and to_char(emp_birthdate,'dd') = #{day} 
+  </select>
+  
+</mapper>

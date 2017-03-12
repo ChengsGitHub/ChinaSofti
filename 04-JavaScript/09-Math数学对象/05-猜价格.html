@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1(){
+			
+			// 产生一个范围的随机数
+			var r = parseInt((99 - 10 + 1) * Math.random() + 10);
+
+			// console.log(r);
+			
+			// 5次机会
+			for(i = 1;i <= 5;i ++){
+
+				var str = prompt('请输入你猜的数字');
+
+				// 判断用户是否取消
+				if (str == null) {
+					alert('操作取消');
+					return;
+				}
+
+				// 判断文本框是否为空
+				if (str == '') {
+					alert('不能为空！');
+					return;
+				}
+
+				if (isNaN(str)) { //判断是否是数字
+					alert('请输入正确数字');
+				} else {					
+					str = parseInt(str);
+
+					if(str < r){
+						alert('低了');						
+					} else if(str > r){
+						alert('高了');					
+					} else{
+						alert('猜中了');
+						break;
+					}
+				}
+			}
+
+			alert('游戏结束了');
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="开始" onclick="m1();">
+	<!-- 产生一个范围的随机数字，然后用户输入猜测的值，提示高了，低了，猜中了，5次机会 -->
+</body>
+</html>

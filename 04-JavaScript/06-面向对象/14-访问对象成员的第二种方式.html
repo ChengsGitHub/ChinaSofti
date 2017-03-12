@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*
+			声明类
+		*/
+		function Person(name,age) {
+			// 声明属性
+			this.name = name;
+			this.age = age;	
+			
+			//声明方法
+			this.run = function() {
+				alert(this.name + '在跑步');
+			}
+
+			this.eat = function(food) {
+				alert(this.name + '吃' + food);
+			}
+		}
+
+		var p1 = new Person('tom',27);
+		
+		var prop = prompt('请输入你要访问的属性名：');
+
+		alert(p1[prop]);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

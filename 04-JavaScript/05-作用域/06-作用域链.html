@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var a = 10;
+		var b = 30;
+
+		function m1() {
+			var a = 20;
+			alert('a=' + a);
+			alert('b=' + b);
+			
+			// 内部嵌套函数
+			function m2() {
+				var c = 40;			
+				alert('m2_a=' + a);
+				alert('m2_b=' + b);
+				alert('m2_c=' + c);
+			}
+
+			m2();
+		}
+
+		m1();
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

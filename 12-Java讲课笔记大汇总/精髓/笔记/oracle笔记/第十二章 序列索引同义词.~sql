@@ -1,0 +1,85 @@
+--创建序列
+CREATE SEQUENCE stu_seq
+INCREMENT BY 10  --迭代值，默认1
+START WITH 100   --初始值，默认1
+NOMAXVALUE       --设置最大值，默认没有最大值NOMAXVALUE
+NOCYCLE          --如果有最大值，到达终值之后是否从头开始，默认NOCYCLE
+CACHE 10         --设置缓存的数量，默认是缓存20
+;
+
+--删除序列
+DROP SEQUENCE stu_seq;
+
+--创建序列（用默认值）
+CREATE SEQUENCE stu_seq;
+
+--使用序列的返回值
+SELECT stu_seq.nextval FROM dual;
+SELECT stu_seq.currval FROM dual;
+
+--在插入语句中使用序列
+INSERT INTO student VALUES (stu_seq.nextval,'tom','男',sysdate);
+COMMIT;
+
+--索引：可以加快查询速度，会降低DML速度
+--索引的分类：
+              --BTREE(B-树)索引：默认，适合列值基数比较高的情况
+              --位图索引：适合列值基数比较低的情况，一般用于数据仓库
+
+CREATE TABLE newemp
+AS
+SELECT * FROM employees;
+
+--自动创建索引(唯一性索引)
+ALTER TABLE newemp
+ADD CONSTRAINTS newemp_empid_pk PRIMARY KEY (employee_id);
+
+--手动创建索引（非唯一性索引）
+CREATE INDEX newemp_lastname_idx
+ON newemp (last_name);
+
+--基础函数的索引
+CREATE INDEX newemp_lastname_idx
+ON newemp (LOWER(last_name));
+
+--创建位图索引 
+create bitmap index emp_jobid_bmidx
+on newemp (job_id);
+
+SELECT * FROM newemp WHERE employee_id>=174;
+SELECT * FROM newemp WHERE last_name='Abel';
+SELECT * FROM newemp WHERE last_name IS NULL;
+SELECT * FROM newemp WHERE last_name LIKE '%en%';
+SELECT * FROM newemp WHERE lower(last_name)='abel';
+SELECT * FROM newemp WHERE job_id='xxx';
+
+--造10万条假数据
+begin
+     for i in 1..100000 loop
+         INSERT INTO student VALUES (stu_seq.nextval,'tom','男',sysdate);
+     end loop;
+     
+     commit;
+end;
+
+ALTER TABLE student
+ADD CONSTRAINTS stu_sid_pk PRIMARY KEY (sid);
+
+SELECT * FROM student WHERE sid=56789;
+
+/*
+适合创建B-TREE索引的几种情况：
+1.列中数据值分布范围很广，列值重复率很低
+2.不以空值做条件，B-TREE索引对空值无效
+3.列经常在 WHERE 子句或连接条件中出现
+4.表很大
+5.查询满足条件的数据量不超过总量的15%
+6.模糊查询不能走索引，必须使用全文检索技术
+*/
+
+--创建同义词
+CREATE SYNONYM e FOR employees;
+
+DROP SYNONYM e;
+
+SELECT * FROM e;

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 嵌套控制器，会使作用域的数据产生混乱，不推荐 -->
+	<div ng-controller="commonController">		
+		<div ng-controller="firstController">
+			用户名：<input type="text" ng-model="username">{{username}}
+		</div>
+
+		<div ng-controller="secondController">
+			用户名：<input type="text" ng-model="username">{{username}}
+		</div>
+
+		用户名：<input type="text" ng-model="username">{{username}}
+	</div>
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		myApp.controller('firstController', ['$scope', function($scope) {
+						
+		}]);
+
+		myApp.controller('secondController', ['$scope', function($scope) {
+					
+		}]);
+
+		// 父控制器
+		myApp.controller('commonController', ['$scope', function($scope){
+			
+			$scope.username = 'jack';
+
+		}]);
+	</script>
+</body>
+</html>

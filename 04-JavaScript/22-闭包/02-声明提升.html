@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		function fn(a) {
+		
+			console.log(a); //function(){}
+
+			var a = 2;
+
+			function a () {
+				alert('hello');
+			}
+
+			console.log(a); // 2
+		}
+
+		/*
+			实际运行的情况
+			function fn(a) {
+
+				var a;
+
+				function a () {
+
+				}
+
+				console.log(a);
+
+				a = 2;				
+
+				console.log(a);
+
+			}
+		*/
+
+		fn(1);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

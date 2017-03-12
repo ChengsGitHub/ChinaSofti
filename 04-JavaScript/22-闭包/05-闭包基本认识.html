@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		function m1() {
+			
+			var a = 10;			
+
+			function m2() {
+				var b = 20;
+				a ++;
+				alert(a + b);
+			}
+
+			return m2;
+		}
+
+		var fn = m1();
+		fn();//31
+		fn();//32
+		fn();//33
+	</script>
+</head>
+<body>
+</body>
+</html>

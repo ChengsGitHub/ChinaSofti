@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	//根据浏览器不同，创建并返回一个XHR核心对象
+	function getXhr() {
+		var xhr;
+		
+		if (window.ActiveXObject) {//如果是IE内核
+			xhr = new ActiveXObject("Microsoft.XMLHttp");
+		} else if (window.XMLHttpRequest) {//如果非IE且支持XHR对象的内核
+			xhr = new XMLHttpRequest();
+		}
+		
+		return xhr;
+	}
+
+	//账号文本框失去焦点触发
+	function checkUser() {
+		var username = document.form1.username;//账号文本框对象
+		var url = 'CheckUserNameServlet?username=' + username.value;//请求URL
+		
+		var xhr = getXhr();//核心对象
+		xhr.onreadystatechange = function(){
+			process(xhr);
+		};
+		xhr.open("get",url);//设置请求方式和请求URL
+		xhr.send(null);//发出异步请求		
+	}
+	
+	/*核心对象事件处理*/
+	function process(xhr) {
+		
+		if(xhr.readyState == 4) {
+			if(xhr.status == 200) {
+				
+				alert(xhr.responseText);
+				
+				if(xhr.responseText == "true") {
+					alert('用户名已经被其他人占用');
+				}else {
+					alert('这个用户名可以使用');
+				}
+			}else {
+				alert('请求异常' + xhr.status);
+			}
+		}
+	}
+	
+</script>
+</head>
+<body>
+	<form name="form1" method="post" action="xxx.jsp">
+		账号<input type="text" name="username" id="username" onblur="checkUser();">
+		<br>
+		密码<input type="password" name="userpwd" id="userpwd">
+		<br>
+		<input type="submit" value="立即注册">
+	</form>
+</body>
+</html>

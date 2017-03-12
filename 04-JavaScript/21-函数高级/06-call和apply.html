@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		// 动物类
+		function Animal() {
+			this.name = '动物';
+
+			this.showName = function(txt) {
+				alert(txt + ':' + this.name);
+			}
+		}
+
+		// 猫类
+		function Cat() {
+			this.name = '小花猫';
+		}
+
+		//狗类
+		function Dog() {
+			this.name = '旺财';
+		}
+		
+		// 创建类的对象
+		var animal = new Animal();
+		var cat = new Cat();
+		var dog = new Dog();
+
+		animal.showName('hello');
+		
+		// 一个对象的方法也可以改变调用者
+		animal.showName.apply(cat,['hello']);//cat.showName('hello')
+		animal.showName.call(dog,'hello');//dog.showName('hello')
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">
+	.bg1 {background-color:#FC0}
+	.color1 {color:red}
+	.color2 {color:blue}
+	.color3 {color:green}
+</style>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+
+	//当页面被加载完毕时
+	$(document).ready(function(e) {
+	
+		/*通过标签属性选择元素*/
+	
+		//$('input[name]').addClass('bg1');
+		
+		$('input[name="btn1"]').addClass('bg1');
+		
+		$('a[href^="http://"]').addClass('color1');
+		
+		$('a[href$=".html"]').addClass('color2');
+		
+		$('a[href*="3"]').addClass('color3');
+	});	
+	
+</script>
+
+</head>
+
+<body>
+	<input type="text" name="t1">
+    <input type="button" value="OK" name="btn1">
+	<a href="http://www.sohu.com">搜狐</a>
+    <a href="1.4.html">内部网页1</a>
+    <a href="1.3.html">内部网页2</a>
+</body>
+</html>

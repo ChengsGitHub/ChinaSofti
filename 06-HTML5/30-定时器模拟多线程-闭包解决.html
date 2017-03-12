@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		// 闭包解决定时器里的变量值问题
+		for (var i = 0;i < 3;i ++) {
+			(function(n) {
+				setTimeout(function(){
+					alert(n);
+				},n);
+			})(i);			
+		}
+	</script>
+</head>
+<body>	
+</body>
+</html>

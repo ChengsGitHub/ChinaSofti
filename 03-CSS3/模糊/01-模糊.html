@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.blur {
+			/*模糊*/
+			filter:blur(5px);
+			-webkit-filter:blur(5px);
+			-ms-filter:blur(5px);
+			transition:all 1s;
+
+			/*IE6到IE9*/
+			filter:progid:DXImageTransform.Microsoft.Blur(PexelRadius=5,MakeShadow=false);
+		}
+		.blur:hover{
+			/*filter:blur(0px);*/
+			-webkit-filter:blur(0px);
+			/*-ms-filter:blur(0px);*/
+		}
+	</style>
+</head>
+<body>
+	<img src="../images/4.jpg" alt="">
+	<img src="../images/4.jpg" alt="" class="blur">
+</body>
+</html>

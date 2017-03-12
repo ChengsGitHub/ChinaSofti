@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			
+			var t1 = document.getElementById('t1');			
+			// 获得焦点
+			t1.focus();
+
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+
+			btn2.onclick = function() {
+				btn1.click();//按钮1产生单击事件行为
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" placeholder="请输入搜索关键字" id="t1">
+	<input type="text" value="请输入搜索关键字" onmouseover="this.select();">
+	<input type="button" value="单击我" onclick="alert('按钮被单击');" id="btn1">
+	<input type="button" value="产生单击行为" id="btn2">
+</body>
+</html>

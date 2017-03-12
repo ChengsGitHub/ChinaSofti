@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1(){
+			var temp = parseFloat(document.getElementById('t1').value);
+			var trans = temp * 1.8 + 32;
+			alert('华氏温度为：' + trans);
+		}
+		function m2(){
+			var temp = parseFloat(document.getElementById('t1').value);
+			var trans = (temp - 32) / 1.8;
+			alert('摄氏温度为：' + trans);
+		}
+		
+	</script>
+</head>
+<body>
+	<!-- 华氏温度=摄氏温度x1.8+32 -->
+	<input type="text" id="t1" placeholder="PLEASE ENTER A TEMP: ">
+	<input type="button" value="HUA SHI" onclick="m1();">
+	<input type="button" value="SHE SHI" onclick="m2();">
+	
+</body>
+</html>	

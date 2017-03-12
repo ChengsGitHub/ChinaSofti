@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="firstController">
+
+	<div ng-bind="text1"></div>
+	<div ng-bind-html="text2"></div>
+		
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+
+		// 注入$sce服务
+		myApp.controller('firstController', ['$scope','$sce', function($scope,$sce) {
+			
+			// 默认转义html
+			$scope.text1 = "<h1>hello,world</h1>";
+
+			// 配合ng-bind-html指令使用，实现html不转义
+			$scope.text2 = $sce.trustAsHtml("<h1>hello,world</h1>");			
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function m1() {
+			var p1 = document.getElementById('p1');
+			
+			// p1.index = 1001;//设置自定义属性（不推荐，有兼容问题）
+
+			p1.setAttribute('index',1001);//兼容写法
+		}
+
+		function m2() {
+			var p1 = document.getElementById('p1');
+			
+			// alert(p1.index);//返回自定义属性（不推荐，有兼容问题）
+
+			alert(p1.getAttribute('index'));//兼容写法
+		}
+	</script>
+</head>
+<body>
+	<p id="p1">这是我的段落内容</p>
+	<input type="button" value="设置属性" onclick="m1();">
+	<input type="button" value="读取属性" onclick="m2();">
+</body>
+</html>

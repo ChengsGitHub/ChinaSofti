@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+$bgColor:red;
+
+/* 
+头部区域的css样式，当前scss文件纯粹为了被其他scss文件引用，
+本身不需要生成css文件，那么当前文件名前面加下划线，例如_header.scss
+但是导入文件的时候，不需要加下划线
+*/
+#header {
+	background: $bgColor;
+	width: 960px;
+}

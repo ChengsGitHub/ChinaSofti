@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*火狐兼容：方向,起始颜色，终止颜色*/
+			background: -moz-linear-gradient(top,#fff,#000);
+			/*谷歌兼容*/
+			background: -webkit-linear-gradient(top,#fff,#000);
+			/*w3c标准*/
+			background: linear-gradient(top,#fff,#000);
+		}
+
+		#div2 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*火狐兼容：方向,起始颜色，终止颜色*/
+			background: -moz-linear-gradient(left,#fff,#000);
+		}
+
+		#div3 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*火狐兼容：方向,起始颜色，终止颜色*/
+			background: -moz-linear-gradient(right,#fff,#000);
+		}
+
+		#div4 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*火狐兼容：方向,起始颜色，终止颜色*/
+			background: -moz-linear-gradient(bottom,#fff,#000);
+		}
+
+		#div5 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*火狐兼容：方向,起始颜色，终止颜色*/
+			background: -moz-linear-gradient(left top,red,green);
+		}
+
+		#div6 {
+			width: 300px;
+			height: 180px;
+			background: #789;
+			/*火狐兼容：方向,起始颜色，终止颜色*/
+			background: -moz-linear-gradient(left,yellow 30%,green 80%);
+		}
+
+		#div7 {
+			width: 300px;
+			height: 300px;
+			background: #789;
+			/*火狐兼容：中心点坐标，圆形渐变 circle farthest-corner，起始颜色，终止颜色*/
+			background: -moz-radial-gradient(50% 50%,circle farthest-corner,yellow 0%,green 100%);
+		}
+
+		#div8 {
+			width: 300px;
+			height: 300px;
+			background: #789;
+			/*火狐兼容：中心点坐标，椭圆渐变 ellipse farthest-corner，起始颜色，终止颜色*/
+			background: -moz-radial-gradient(50% 50%,ellipse farthest-corner,yellow 0%,green 100%);
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">		
+	</div>
+	<div id="div2">		
+	</div>
+	<div id="div3">		
+	</div>
+	<div id="div4">		
+	</div>
+	<div id="div5">		
+	</div>
+	<div id="div6">		
+	</div>
+	<div id="div7">		
+	</div>
+	<div id="div8">		
+	</div>
+</body>
+</html>

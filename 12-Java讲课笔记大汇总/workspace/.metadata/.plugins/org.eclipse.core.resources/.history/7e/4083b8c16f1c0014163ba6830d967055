@@ -1,0 +1,11 @@
+package com.icss.array;
+
+import java.util.Arrays;
+
+public class TestErFen {
+	public static void main(String[] args) {
+		int [] a = {3,56,23,77,5,90};
+		Arrays.sort(a);
+	}
+
+}

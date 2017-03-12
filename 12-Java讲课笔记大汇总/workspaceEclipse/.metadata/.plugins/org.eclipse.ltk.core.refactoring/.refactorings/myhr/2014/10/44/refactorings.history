@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Dept.java&apos; to &apos;javaee/src/chapter11&apos;&#x0D;&#x0A;- Original project: &apos;hr&apos;&#x0D;&#x0A;- Destination element: &apos;javaee/src/chapter11&apos;&#x0D;&#x0A;- Original element: &apos;com.icss.hr.dept.po.Dept.java&apos;" description="Copy compilation unit" destination="=javaee/src&lt;chapter11" element1="/src&lt;com.icss.hr.dept.po{Dept.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1414736627937" units="1" version="1.0"/>
+</session>

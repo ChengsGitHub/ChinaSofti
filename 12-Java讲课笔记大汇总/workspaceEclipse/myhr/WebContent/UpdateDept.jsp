@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.icss.hr.dept.po.*" %>    
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	/*表单验证函数*/
+	function checkForm() {
+		var r;
+		
+		var deptId = document.form1.deptId;
+		r = /^\d{2,3}$/;
+		if (!r.test(deptId.value)) {
+			alert('部门编号必须是2到3位数字');
+			deptId.select();
+			return false;
+		}
+		
+		var deptName = document.form1.deptName;
+		if (deptName.value == '' || deptName.value.length>10) {
+			alert('部门名称不能为空且最多10字符');
+			deptName.focus();
+			return false;
+		}
+		
+		var deptLoc = document.form1.deptLoc;
+		if (deptLoc.value == '' || deptLoc.value.length>20) {
+			alert('部门地址不能为空且最多20字符');
+			deptLoc.focus();
+			return false;
+		}
+		
+		return true;
+	}
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action="UpdateDeptServlet" onsubmit="return checkForm();">
+  <table class="table1" width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="24" colspan="2" align="center" bgcolor="#3399FF">请修改部门信息</td>
+    </tr>
+    <tr>
+      <td width="132" height="24" align="center">部门编号</td>
+      <td width="368" height="24"><input type="text" name="deptId" id="deptId" readonly value="${dept.deptId }"></td>
+    </tr>
+    <tr>
+      <td height="24" align="center">部门名称</td>
+      <td height="24"><input type="text" name="deptName" id="deptName" value="${dept.deptName }"></td>
+    </tr>
+    <tr>
+      <td height="24" align="center">部门地址</td>
+      <td height="24"><input type="text" name="deptLoc" id="deptLoc" value="${dept.deptLoc }"></td>
+    </tr>
+    <tr>
+      <td height="24" colspan="2" align="center"><input type="submit" name="button" id="button" value="提交">
+      <input type="button" name="button2" id="button2" value="取消" onClick="history.back();"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

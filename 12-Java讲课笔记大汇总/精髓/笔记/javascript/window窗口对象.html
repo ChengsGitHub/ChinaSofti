@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">
+	function openNewWin() {
+		window.open('http://192.168.2.1');	
+		window.open('1.jpg');
+	}
+	
+	function showMsg() {
+		var flag = window.confirm('确定要执行此操作？');	
+		
+		if(flag)
+			alert('操作已执行');
+		else
+			alert('没事别瞎点');
+	}
+	
+	//窗口获得焦点
+	window.setInterval('window.focus();',5000);
+</script>
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+  <input type="button" name="button" id="button" value="打开窗口" onClick="openNewWin();">
+  <input type="button" name="button2" id="button2" value="关闭窗口" onClick="window.close();">
+  <input type="button" name="button3" id="button3" value="打印窗口" onClick="window.print();">
+  <input type="button" name="button4" id="button4" value="确认框" onClick="showMsg();">
+  <input type="button" name="button5" id="button5" value="状态栏" onClick="window.status='欢迎浏览我的网站';">
+  <input type="button" name="button5" id="button5" value="标题栏" onClick="document.title='欢迎浏览我的网站';">
+</form>
+</body>
+</html>

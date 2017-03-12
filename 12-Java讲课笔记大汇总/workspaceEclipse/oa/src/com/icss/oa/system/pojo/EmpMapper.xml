@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="EMP">
+
+	<resultMap id="BaseResultMap" type="com.icss.oa.system.pojo.Emp">
+		<id column="EMP_ID" property="empId" jdbcType="DECIMAL" />
+		<result column="EMP_NAME" property="empName" jdbcType="VARCHAR" />
+		<result column="USERNAME" property="username" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="EMP_SEX" property="empSex" jdbcType="VARCHAR" />
+		<result column="EMP_BIRTHDATE" property="empBirthdate"
+			jdbcType="DATE" />
+		<result column="EMP_EMAIL" property="empEmail" jdbcType="VARCHAR" />
+		<result column="EMP_PHONE" property="empPhone" jdbcType="VARCHAR" />
+		<result column="EMP_MOBILE" property="empMobile" jdbcType="VARCHAR" />
+		<result column="EMP_ADDRESS" property="empAddress" jdbcType="VARCHAR" />
+		<result column="EMP_INFO" property="empInfo" jdbcType="VARCHAR" />
+		<result column="DEPT_ID" property="deptId" jdbcType="DECIMAL" />
+		<result column="JOB_ID" property="jobId" jdbcType="DECIMAL" />
+		<result column="isvisible" property="isVisible" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<insert id="insert" parameterType="com.icss.oa.system.pojo.Emp">
+		insert into EMP (EMP_ID, EMP_NAME, USERNAME,
+		PASSWORD, EMP_SEX, EMP_BIRTHDATE,
+		EMP_EMAIL, EMP_PHONE, EMP_MOBILE,
+		EMP_ADDRESS, EMP_INFO, DEPT_ID,
+		JOB_ID,isvisible)
+		values (emp_seq.nextval, #{empName,jdbcType=VARCHAR},
+		#{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{empSex,jdbcType=VARCHAR}, #{empBirthdate,jdbcType=DATE},
+		#{empEmail,jdbcType=VARCHAR}, #{empPhone,jdbcType=VARCHAR},
+		#{empMobile,jdbcType=VARCHAR},
+		#{empAddress,jdbcType=VARCHAR}, #{empInfo,jdbcType=VARCHAR}, #{deptId,jdbcType=DECIMAL},
+		#{jobId,jdbcType=DECIMAL},0)
+		
+	</insert>
+
+	<update id="update" parameterType="com.icss.oa.system.pojo.Emp">
+		update EMP
+		set EMP_NAME = #{empName,jdbcType=VARCHAR},
+		USERNAME = #{username,jdbcType=VARCHAR},
+		PASSWORD = #{password,jdbcType=VARCHAR},
+		EMP_SEX = #{empSex,jdbcType=VARCHAR},
+		EMP_BIRTHDATE = #{empBirthdate,jdbcType=DATE},
+		EMP_EMAIL = #{empEmail,jdbcType=VARCHAR},
+		EMP_PHONE = #{empPhone,jdbcType=VARCHAR},
+		EMP_MOBILE = #{empMobile,jdbcType=VARCHAR},
+		EMP_ADDRESS = #{empAddress,jdbcType=VARCHAR},
+		EMP_INFO = #{empInfo,jdbcType=VARCHAR},
+		DEPT_ID = #{deptId,jdbcType=DECIMAL},
+		JOB_ID = #{jobId,jdbcType=DECIMAL},
+		isvisible=0
+		where EMP_ID = #{empId,jdbcType=DECIMAL}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		update EMP
+		set isvisible=1
+		where EMP_ID = #{empId,jdbcType=DECIMAL}
+	</delete>
+
+	<select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		*
+		from EMP
+		where EMP_ID = #{empId,jdbcType=DECIMAL}
+		and isvisible=0
+	</select>
+
+	<select id="query" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * from (select rownum
+		rnum,e.* from emp e  where isvisible=0
+		)
+		where rnum between
+		#{start} and #{end}
+	</select>
+	
+	<select id="queryRole" resultType="java.util.Map" parameterType="java.util.Map">
+		select * 
+		from user_role ur
+		left outer join role r on ur.role_id=r.role_id
+		where ur.user_id = #{empId,jdbcType=DECIMAL}  
+	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select
+		count(*)
+		from emp
+		where isvisible=0
+	</select>
+
+	<select id="query2" resultType="java.util.Map" parameterType="java.util.Map">
+		select * from (select rownum rnum,
+		e.emp_id,e.emp_name,d.dept_name,j.job_name
+		from emp e
+		left outer join dept d on e.dept_id=d.dept_id
+		left outer join job j on e.job_id=j.job_id
+		where isvisible=0
+		order by emp_id desc)
+		where rnum between #{start} and #{end}
+	</select>
+	<select id="getEmpId" resultType="java.lang.Integer">
+			select emp_seq.currval from dual
+	</select>
+	
+	
+	<insert id="insertUserRole"  parameterType="java.util.Map">
+		insert into user_role (ur,user_id, role_id)
+		values (ur_seq.nextval,
+		#{empId,jdbcType=DECIMAL},
+		#{roleId,jdbcType=DECIMAL}
+		)
+	</insert>
+	
+	<delete id="deleteRole" parameterType="java.util.Map">
+		delete from user_role
+		where ur = #{ur,jdbcType=DECIMAL}
+	</delete>
+	 <select id="getPrimaryKey" resultType="java.lang.Integer">
+	      select emp_seq.nextval from dual 	    
+	  </select>
+	
+</mapper>

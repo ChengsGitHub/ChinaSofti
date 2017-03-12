@@ -1,0 +1,15 @@
+package chapter3;
+
+public class TestPager {
+
+	public static void main(String[] args) {
+		
+		int recordCount = 0;//总记录数
+		int pageSize = 6;//每页多少条
+		int totalPage = 0;//共几页
+		int pageNum = 1;//当前页码
+		
+
+	}
+
+}

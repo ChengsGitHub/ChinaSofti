@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="BUSORDER" >
+  <resultMap id="BaseResultMap" type="com.icss.oa.bus.pojo.Busorder" >
+    <id column="BORDER_ID" property="borderId" jdbcType="DECIMAL" />
+    <result column="BORDER_TYPE" property="borderType" jdbcType="VARCHAR" />
+    <result column="USE_DATE" property="useDate" jdbcType="TIMESTAMP" />
+    <result column="USE_REASON" property="useReason" jdbcType="VARCHAR" />
+    <result column="APRO_STATE" property="aproState" jdbcType="DECIMAL" />
+    <result column="EMP_ID" property="empId" jdbcType="DECIMAL" />
+  </resultMap>
+  
+   <insert id="insert" parameterType="com.icss.oa.bus.pojo.Busorder" >
+    insert into BUSORDER (BORDER_ID, BORDER_TYPE, USE_DATE, USE_REASON, APRO_STATE, EMP_ID
+      )
+    values (border_seq.nextval, #{borderType,jdbcType=VARCHAR}, #{useDate,jdbcType=TIMESTAMP}, 
+    #{useReason,jdbcType=VARCHAR}, #{aproState,jdbcType=DECIMAL}, #{empId,jdbcType=DECIMAL}
+      )
+  </insert>
+  
+  <update id="update" parameterType="com.icss.oa.bus.pojo.Busorder" >
+    update BUSORDER
+    set 
+      EMP_ID = #{empId,jdbcType=DECIMAL},
+      BORDER_TYPE = #{borderType,jdbcType=VARCHAR},
+      USE_DATE = #{useDate,jdbcType=TIMESTAMP},
+      USE_REASON = #{useReason,jdbcType=VARCHAR},
+      APRO_STATE = #{aproState,jdbcType=DECIMAL}
+    where BORDER_ID = #{borderId,jdbcType=DECIMAL}
+  </update>
+  
+  <delete id="delete" parameterType="java.lang.Integer" >
+    delete from BUSORDER
+    where BORDER_ID = #{borderId,jdbcType=DECIMAL}
+  </delete>
+  
+  
+  <select id="query" resultType="java.util.Map">
+    select 
+    *
+    from(	select rownum rnum,
+    		       b.border_id,
+    		       e.emp_name,
+	               b.border_type,
+	               b.use_date,
+	               b.use_reason,
+	               b.apro_state
+	          from busorder b
+	         inner join emp e on b.emp_id = e.emp_id
+	          <where>
+			    <if test="empId!=null and empId!='' and empId!=0">
+			        and b.emp_ID =#{empId,jdbcType=DECIMAL}
+			    </if>
+			 </where>
+	         order by border_id desc) 
+    where rnum between #{start} and #{end}
+  </select>
+  
+  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select *
+		from BUSORDER
+		where BORDER_ID = #{BORDER_ID,jdbcType=DECIMAL}
+	</select>
+  
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		select
+		count(*)
+		from BUSORDER b
+		 <where>
+			    <if test="value!=null and value!='' and value!=0" >
+			        and b.emp_ID =#{empId,jdbcType=DECIMAL}
+			    </if>
+		</where>
+	</select>
+</mapper>

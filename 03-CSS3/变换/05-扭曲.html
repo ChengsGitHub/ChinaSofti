@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 {
+			width: 300px;
+			height: 200px;
+			background: #0cc;
+			margin: 50px;
+			transition:all 1s;
+		}
+
+		#div1:hover {
+			/*水平扭曲20度*/
+			transform:skewX(-20deg);
+		}
+
+		#div2 {
+			width: 300px;
+			height: 200px;
+			background: #cc0;
+			margin: 50px;
+			transition:all 1s;
+		}
+
+		#div2:hover {
+			/*垂直扭曲20度*/
+			transform:skewY(20deg);
+		}
+
+		#div3 {
+			width: 300px;
+			height: 200px;
+			background: #ccc;
+			margin: 50px;
+			transition:all 1s;
+		}
+
+		#div3:hover {
+			/*水平垂直扭曲20度*/
+			transform:skew(20deg,20deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+</body>
+</html>

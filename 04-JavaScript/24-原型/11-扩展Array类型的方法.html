@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		// 如果Array中没有indexOf方法，在原型中定义一个indexOf方法
+		if (!Array.prototype.indexOf) {
+
+			Array.prototype.indexOf = function(val) {
+
+				for (var i = 0;i < this.length;i ++) {
+					if (val == this[i])
+						return i;
+				}
+
+				return -1;
+			}
+
+		}
+		
+		var a = [7,27,36,15,42,19];
+
+		alert(a.indexOf(36));
+
+	</script>
+</head>
+<body>	
+</body>
+</html>

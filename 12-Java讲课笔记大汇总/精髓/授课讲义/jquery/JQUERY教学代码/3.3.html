@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">	
+	#div1 {background-color:#FF6}
+</style>
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(e) {
+      
+	   $('#btn1').click(function(e) {
+       		//var str = $('#div1').css('background-color');
+			var str = $('#div1').css('backgroundColor');
+			alert(str); 
+       });
+	   
+	   $('#btn2').click(function(e) {
+       		//$('#div1').css('background-color','#0CF');	
+			//$('#div1').css('font-size','12px');
+			
+			$('#div1').css({"background-color":"#0CF","font-size":"12px","border":"1px solid #000"});		
+       });
+	   
+	   $('#btn3').click(function(e) {
+       		//$('#div1').css('width','300px');	
+			$('#div1').width(200);
+			
+			//$('#div1').css('height','200px');	
+			$('#div1').height(100);						
+       });
+	  
+	   $('#btn4').click(function(e) {       		
+			var h = $('#div1').innerHeight();
+			var w = $('#div1').innerWidth();
+			alert(h + "," + w);
+       });
+	   
+    });
+
+</script>
+</head>
+
+<body>
+
+<div id="div1">
+	<p>你好，世界</p>
+    <p>你好，世界</p>
+    <p>你好，世界</p>
+    <span>hello,world</span>
+</div>
+
+<input type="button" value="读取CSS属性" id="btn1">
+<input type="button" value="设置CSS属性" id="btn2">
+<input type="button" value="设置宽度高度" id="btn3">
+<input type="button" value="读取innerHeight" id="btn4">
+
+</body>
+</html>

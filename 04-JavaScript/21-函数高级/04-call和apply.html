@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		var a = 10;
+		
+		/*求和功能*/
+		function sum(num1,num2) {
+			alert(num1 + num2);
+		}
+
+		sum.call(window,5,3); //等价于 window.sum(5,3)
+		sum.apply(window,[5,4]); //等价于 window.sum(5,4)
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

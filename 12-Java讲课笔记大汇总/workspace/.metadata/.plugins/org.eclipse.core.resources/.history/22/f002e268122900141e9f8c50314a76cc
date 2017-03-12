@@ -1,0 +1,12 @@
+package com.icss.test;
+
+public class Test2 {
+	
+	public static void main(String[] args) {
+		float foo = -1;
+		System.out.println(foo);
+	}
+	
+
+
+}

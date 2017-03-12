@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!-- firstController控制器声明为c对象，通过c访问属性数据，无法实现双向绑定 -->
+	<div ng-controller="firstController as c">
+		<input type="text" ng-model="c.username">
+		用户名：{{c.username}}
+		<br>
+		<input type="text" ng-model="c.age">
+		年龄：{{c.age}}
+		<br>
+		<input type="button" value="查看数据" ng-click="showData();">
+	</div>
+
+	<script src="angular.min.js"></script>
+	<script>
+
+//		创建一个模块，模块名称myApp,依赖的其他模块没有，返回模块对象
+		var myApp = angular.module("myApp",[ ]);
+
+//		通过模块创建控制器，名称为firstController
+		myApp.controller('firstController',function($scope) {
+
+			// 在当前控制器对象中设置数据模型
+			this.username = 'rose';
+			this.age = 27;
+			
+			$scope.showData = function() {
+				alert(this.username + ',' + this.age);
+			}
+		
+		});
+	</script>
+</body>
+</html>

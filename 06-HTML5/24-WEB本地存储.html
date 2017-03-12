@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="增加" onclick="add();">
+	<input type="button" value="修改" onclick="update();">
+	<input type="button" value="删除" onclick="del();">
+	<input type="button" value="查询" onclick="get();">
+	<input type="button" value="返回key" onclick="getKey();">
+	<input type="button" value="清空" onclick="delAll();">
+
+	<script type="text/javascript">
+		var i = localStorage.length; //计数变量
+
+		/*
+			增加数据（键值对）
+		*/
+		function add() {
+			localStorage.setItem('username' + i,'李四' + i);
+			i ++;
+			alert('存储成功！');
+		}
+
+		/*
+			修改数据
+		*/
+		function update() {
+			localStorage.setItem('username0','赵六');
+			alert('修改成功！');
+		}
+
+		/*
+			删除数据
+		*/
+		function del() {
+			localStorage.removeItem('username0');
+			alert('删除成功！');
+		}
+
+		/*
+			返回指定key的值
+		*/
+		function get() {
+			var result = localStorage.getItem('username1');
+			alert(result);
+		}
+
+		/*
+			通过下标返回key
+		*/
+		function getKey() {
+			var key = localStorage.key(0);
+			alert(key);
+		}
+
+		/*
+			删除所有数据
+		*/
+		function delAll() {
+			localStorage.clear();
+			alert('数据被清空');
+		}
+
+	</script>
+</body>
+</html>

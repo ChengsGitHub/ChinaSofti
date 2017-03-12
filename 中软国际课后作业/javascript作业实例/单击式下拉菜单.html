@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul,li {
+			list-style-type: none;
+		}
+
+		body {
+			font-size: 12px;
+		}
+
+		#nav {
+			background: #000;
+			height: 30px;
+		}
+		
+		#nav li {
+			height: 30px;
+			float: left;
+			position: relative;
+		}
+
+		#nav li a {
+			display: block;
+			line-height: 30px;
+			text-decoration: none;
+			color: #ccc;
+			padding: 0 20px;
+		}
+
+		#nav li > a:hover {
+			background: #4c4c4c;
+			border-top: 2px solid #dd4b39;
+			height: 28px;
+			line-height: 26px;
+		}
+
+		/* 弹出菜单 */
+		#more dl {
+			border: 1px solid #ccc;
+			border-top: none;
+			position: absolute;
+			top: 30px;	
+			left: -1px;	
+			display: none;	
+		} 
+
+		#more dl a {			
+			color: #0051a1;
+			width: 80px;
+		}
+
+		#more dl a:hover {
+			background: #eff3fb;
+		}
+
+		#more dl dt {
+			padding-top: 10px;
+			border-bottom: 1px solid #ccc;
+		}
+
+		/* 更多按钮单击高亮样式 */
+		#more.active a {
+			background: #fff;
+			color: #0051a1;
+		}
+
+		#more.active a:hover {
+			background: #fff;
+			color: #0051a1;
+			height: 30px;
+			line-height: 30px;
+			border: none;
+		}
+
+		/* 弹出菜单显示 */
+		#more.active dl {
+			display: block;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+		
+			var more = document.getElementById('more');
+			
+			// 更多菜单单击事件
+			more.onclick = function(e) {				
+				
+				e = e || window.event;
+
+				// 阻止事件冒泡
+				e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+
+				if (more.className == 'active')
+					more.className = '';
+				else
+					more.className = 'active';
+				
+			}
+
+			// 文档单击事件
+			document.onclick = function(e) {
+				
+				more.className = '';
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<ul id="nav">
+		<li><a href="#">菜单1</a></li>
+		<li><a href="#">菜单2</a></li>
+		<li><a href="#">菜单3</a></li>
+		<li><a href="#">菜单4</a></li>
+		<li><a href="#">菜单5</a></li>
+		<li><a href="#">菜单6</a></li>
+		<li id="more">
+			<a href="javascript:;">更多</a>
+			<dl>
+				<dd><a href="#">子菜单1</a></dd>
+				<dd><a href="#">子菜单2</a></dd>
+				<dd><a href="#">子菜单3</a></dd>
+				<dd><a href="#">子菜单4</a></dd>
+				<dd><a href="#">子菜单5</a></dd>
+				<dd><a href="#">子菜单6</a></dd>
+				<dd><a href="#">子菜单7</a></dd>
+				<dt></dt>
+				<dd><a href="#">子菜单8</a></dd>
+				<dd><a href="#">子菜单9</a></dd>
+				<dd><a href="#">子菜单10</a></dd>
+				<dd><a href="#">子菜单11</a></dd>
+				<dd><a href="#">子菜单12</a></dd>
+				<dd><a href="#">子菜单13</a></dd>
+				<dt></dt>
+				<dd><a href="#">子菜单14</a></dd>
+				<dd><a href="#">子菜单15</a></dd>
+			</dl>
+		</li>
+		<li><a href="#">菜单8</a></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">		
+		/*
+			声明类
+		*/
+		function Person(name,age) {
+			// 声明属性
+			this.name = name;
+			this.age = age;		
+
+			//声明方法
+			this.run = function() {
+				alert(this.name + '在跑步');
+			}
+
+			this.eat = function(food) {
+				alert(this.name + '吃' + food);
+			}
+		}
+
+		var p1 = new Person('tom',27);
+		
+		// 用第二种方式访问属性
+		alert(p1['name']);
+		alert(p1['age']);
+
+		// 用第二种方式访问方法
+		p1['run']();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

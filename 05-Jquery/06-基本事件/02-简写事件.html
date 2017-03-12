@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			/*jquery提供了大量的事件方法来简化事件绑定语句*/
+			
+			$('#btn1').click(function(event) {				
+				alert('btn1被单击');
+			});
+
+			// 窗口大小改变事件
+			$(window).resize(function(event) {
+				document.title = $(window).width() + ',' + $(window).height();
+			});
+
+			// 滚动条拖动到底部提示
+			$(window).scroll(function(event) {
+				
+				if ( $(window).scrollTop() + $(window).height() >= $(document).height() ) {
+					alert('滚动条已经拖动到底部');
+				}
+
+			});
+
+			//开关事件：就是鼠标移上和离开的事件开关写法
+			$('#btn2').hover(function() {
+				$(this).css('color','red');
+			}, function() {
+				$(this).css('color','#000');
+			});
+
+			/*理论上是多个开关切换，低版本jquery支持*/
+			$('#btn3').toggle(function(){
+				$(this).css('color','red');
+			},function(){
+				$(this).css('color','green');
+			},function(){
+				$(this).css('color','blue');
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<input type="button" value="click" id="btn1">
+	<input type="button" value="hover" id="btn2">
+	<input type="button" value="toggle" id="btn3">
+
+
+	<script type="text/javascript">
+		for (var i = 0;i < 100;i ++) {
+			document.write('<p>' + i + '</p>');
+		}
+	</script>
+</body>
+</html>

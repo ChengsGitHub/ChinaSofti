@@ -1,0 +1,20 @@
+
+public class TestThread5 {
+public static void main(Stringargs[]){
+Runner5 r = new Runner5();
+Thread t = new Thread(r);
+t.start();
+try{
+t.join();
+}catch(InterruptedExceptione){
+}
+for(inti=0;i<50;i++){
+System.out.println("Ö÷Ïß³Ì:" + i);
+}
+}
+}
+class Runner5 implements Runnable{
+public void run() {
+for(inti=0;i<50;i++) System.out.println("SubThread: " + i);
+}
+}

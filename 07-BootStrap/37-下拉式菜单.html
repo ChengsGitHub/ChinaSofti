@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 视口设置 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<!-- IE优化 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 引入bootstrap的css文件 -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+	<!-- 判断，如果是IE9以下，引入兼容h5标签的js文件，注意空格的位置 -->
+	
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/html5shiv.min.js"></script>
+	<script type="text/javascript" src="js/respond.min.js"></script>
+	<![end if] -->
+
+	<!-- 引入jquery的js文件 -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!-- 引入bootstrap的js文件 -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>	
+</head>
+<body>
+	<div class="container">
+		
+		<!-- 基本下拉菜单 -->
+		<div class="dropdown">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				类别选择
+				<span class="caret"></span>
+			</button>	
+			<ul class="dropdown-menu">
+				<li><a href="#">体育</a></li>
+				<li><a href="#">娱乐</a></li>
+				<li><a href="#">股票</a></li>
+				<li><a href="#">新闻</a></li>
+			</ul>
+		</div>
+	
+		<!-- 带标题的下拉菜单 -->
+		<div class="dropdown">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				类别选择
+				<span class="caret"></span>
+			</button>	
+			<ul class="dropdown-menu">
+				<li class="dropdown-header"><a href="#">类别1</a></li>
+				<li><a href="#">体育</a></li>
+				<li><a href="#">娱乐</a></li>
+				<li><a href="#">股票</a></li>
+				<li class="dropdown-header"><a href="#">类别2</a></li>
+				<li><a href="#">新闻</a></li>
+				<li><a href="#">微博</a></li>
+				<li><a href="#">音乐</a></li>
+				<li><a href="#">视频</a></li>
+			</ul>
+		</div>
+
+		<!-- 带分割线的下拉菜单 -->
+		<div class="dropdown">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				类别选择
+				<span class="caret"></span>
+			</button>	
+			<ul class="dropdown-menu">
+				<li class="dropdown-header"><a href="#">类别1</a></li>
+				<li><a href="#">体育</a></li>
+				<li><a href="#">娱乐</a></li>
+				<li><a href="#">股票</a></li>
+				<li class="dropdown-header"><a href="#">类别2</a></li>
+				<li><a href="#">新闻</a></li>
+				<li><a href="#">微博</a></li>
+				<li class="divider"></li>
+				<li><a href="#">音乐</a></li>
+				<li><a href="#">视频</a></li>
+				<li class="disabled"><a href="#">vip专区</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

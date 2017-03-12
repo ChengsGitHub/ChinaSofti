@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		var a = [5,13,29,47,68,79,96,105];
+
+		var input = parseInt( prompt('请输入要查找的数字：') );
+
+		var index = -1;
+
+		var start = 0; //起始下标
+		var end = a.length - 1; //终止下标
+		var middle; //折半下标
+
+		while (start <= end) {
+
+			middle = parseInt((start + end) / 2);//得到折半下标
+
+			if (input == a[middle]) {
+				index = middle;
+				break;
+			} else if (input > a[middle]) {
+				start = middle + 1;
+			} else if (input < a[middle]) {
+				end = middle - 1;
+			}
+		}
+
+		alert('查找的下标是：' + index);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

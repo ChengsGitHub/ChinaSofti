@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">	
+	#div1 {background-color:#FF6; width:200px}
+</style>
+
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(e) {
+      
+	   $('#btn1').click(function(e) {
+       		$('#div1').show();
+       });
+	   
+	   $('#btn2').click(function(e) {
+       		$('#div1').hide();
+       });
+	   	   
+	   $('#btn3').click(function(e) {
+       		$('#div1').show('slow');
+       });
+	   
+	   $('#btn4').click(function(e) {
+       		$('#div1').hide('slow');
+       });
+	   
+	   $('#btn5').click(function(e) {
+       		$('#div1').show('slow',function(){
+				alert('显示完毕');	
+			});
+       });
+	   
+	   $('#btn6').click(function(e) {
+       		$('#div1').hide('slow',function(){
+				alert('显示完毕');				
+			});
+       });
+	   
+	   $('#btn7').click(function(e) {
+       		$('#div1').toggle('slow');
+       });
+	   
+	   $('#btn8').click(function(e) {
+       		$('#div1').slideDown('slow');
+       });
+	   
+	   $('#btn9').click(function(e) {
+       		$('#div1').slideUp('slow');
+       });
+	   
+	   $('#btn10').click(function(e) {
+       		$('#div1').fadeIn('slow');
+       });
+	   
+	   $('#btn11').click(function(e) {
+       		$('#div1').fadeOut('slow');
+       });
+	   
+	   $('#btn12').click(function(e) {
+       		$('#div1').fadeTo('slow',0.5);
+       });
+	   
+    });
+
+</script>
+</head>
+
+<body>
+
+<div id="div1">
+	<p>你好，世界</p>
+    <p>你好，世界</p>
+    <p>你好，世界</p>
+    <span>hello,world</span>
+</div>
+
+<input type="button" value="显示" id="btn1">
+<input type="button" value="隐藏" id="btn2">
+
+<input type="button" value="显示2" id="btn3">
+<input type="button" value="隐藏2" id="btn4">
+
+<input type="button" value="显示3" id="btn5">
+<input type="button" value="隐藏3" id="btn6">
+
+<input type="button" value="显示/隐藏" id="btn7">
+
+<input type="button" value="变大" id="btn8">
+<input type="button" value="变小" id="btn9">
+
+<input type="button" value="淡入" id="btn10">
+<input type="button" value="淡出" id="btn11">
+
+<input type="button" value="指定透明度" id="btn12">
+
+</body>
+</html>

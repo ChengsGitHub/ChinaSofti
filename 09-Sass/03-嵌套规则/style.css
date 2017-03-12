@@ -1,0 +1,33 @@
+@charset "UTF-8";
+#header {
+  width: 960px;
+  height: 180px;
+}
+#header .nav {
+  width: 90%;
+  height: 40px;
+  /* 生成父子选择器 */
+}
+#header .nav > .logo {
+  position: absolute;
+}
+#header .nav a {
+  text-decoration: none;
+}
+#header .nav a:hover {
+  text-decoration: underline;
+}
+span #header .nav {
+  display: inline-block;
+}
+
+#content {
+  width: 960px;
+  height: 400px;
+  border-top: 1px solid red;
+  border-bottom: 1px solid green;
+}
+
+#footer h1, #footer h2, #footer h3 {
+  color: #999;
+}
