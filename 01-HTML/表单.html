@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#form1 table {
+			border-collapse: collapse;
+		}
+
+		#form1 table td {
+			border: 1px solid #ccc;
+			height: 24px;
+		}
+	</style>
+</head>
+<body>
+	<form id="form1" name="myForm" method="post" action="xxx.php">
+		<table width="600" border="0" align="center">
+			<tr>
+				<td colspan="2" align="center" bgcolor="orange">请输入注册信息</td>				
+			</tr>
+			<tr>
+				<td width="100">用户名</td>
+				<td width="500">
+					<input type="text" name="username" size="10" maxlength="6" value="tom" placeholder="请输入用户名">
+				</td>
+			</tr>
+			<tr>
+				<td width="100">密码</td>
+				<td width="500">
+					<input type="password" name="userpwd" size="10" placeholder="请设置密码">
+				</td>
+			</tr>
+			<tr>
+				<td width="100">自我介绍</td>
+				<td width="500">
+					<textarea name="myinfo" cols="60" rows="5">这家伙很懒，什么都没有写。</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td width="100">性别</td>
+				<td width="500">
+					<label for="boy">
+						<input type="radio" name="sex" value="boy" id="boy">男
+					</label>
+					<label for="girl">					
+						<input type="radio" name="sex" value="girl" checked id="girl">女
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td width="100">技能</td>
+				<td width="500">
+					<input type="checkbox" value="java" name="skill" checked>java
+					<input type="checkbox" value="oracle" name="skill">oracle
+					<input type="checkbox" value="html" name="skill" checked>html
+					<input type="checkbox" value="css" name="skill">css
+				</td>
+			</tr>
+			<tr>
+				<td width="100">城市</td>
+				<td width="500">
+					<select name="city">
+						<option value="">请选择</option>
+						<option value="beijing">北京</option>
+						<option value="shanghai">上海</option>
+						<option value="shenzhen">深圳</option>
+						<option value="guangzhou" selected>广州</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td width="100">上传头像</td>
+				<td width="500">
+					<input type="file" name="photo">
+				</td>
+			</tr>
+			<tr>
+				<td width="100">隐藏域</td>
+				<td width="500">
+					<input type="hidden" name="key" value="1234rsdf234sdfsg23423">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="立即注册">
+					<input type="reset" value="重置">
+					<input type="button" value="普通按钮">
+					<button>提交按钮</button>
+					<button type="button">普通按钮2</button>
+				</td>				
+			</tr>			
+		</table>
+	</form>
+</body>
+</html>

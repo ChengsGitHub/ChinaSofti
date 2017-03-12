@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table width="800" border="1">
+		<tr>
+			<td>
+				<marquee>这是一个滚动的效果</marquee>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<marquee direction="right">这是一个向右滚动的效果</marquee>
+			</td>
+		</tr>
+		<tr>
+			<td height="200">
+				<marquee direction="up">这是一个向上滚动的效果</marquee>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<marquee scrollamount="5">这是一个每次移动5像素的效果</marquee>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<marquee scrolldelay="200" scrollamount="50">这是一个延迟200毫秒滚动的效果</marquee>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<marquee onmouseover="this.stop();" onmouseout="this.start();">这是一个鼠标移上停止的效果</marquee>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<marquee onmouseover="this.scrollAmount=1;" onmouseout="this.scrollAmount=5;">
+					这是一个鼠标移上速度变慢的效果
+				</marquee>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
